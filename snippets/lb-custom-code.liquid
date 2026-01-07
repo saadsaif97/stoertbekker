@@ -1952,35 +1952,43 @@ span.pf-189_ {
   //LOOP uses delays for everything
   const delay = 301;
 
- /* const findAbo = () => {
+  const findAbo = () => {
     const targets = Array.from(document.querySelectorAll('div[id*="loop-product-variant-"]'))
-    const target = targets.find(element => element.style.display === 'block')
-    const label = target.querySelector('.loop-selling-plan-allocation > .loop-subscription-group');
+    const target = targets?.find(element => element.style.display === 'block')
+    const label = target?.querySelector('.loop-selling-plan-allocation > .loop-subscription-group');
 
+    console.log("HERE: ", targets)
+    
     //ABO LOOP creates a 300 delay each click, so we calculate them higher
     setTimeout(() => {
-      label.click()
+      label?.click()
     }, (delay * targets.length));
   }
   
-  */
 
   document.documentElement.addEventListener('variant:change', (e) => {
     if(variant === 'b') {
       setTimeout(() => findAbo(), delay);
     }
   });
+  
 
-
-  ablyftTools.domLoaded(() => {
-    document.body.classList.add('as-st-0047', `as-st-0047-${variant}`);
-  });
-
-  ablyftTools.waitForElement('#loop-selling-plan-fieldset', (e) => {
-    if(variant === 'b') {
-      setTimeout(() => findAbo(), delay);
-    }
+  document.addEventListener("DOMContentLoaded", () => {
+    setTimeout(() => findAbo(), delay);
   })
+
+
+  if(ablyftTools) {
+    ablyftTools?.domLoaded(() => {
+      document.body.classList.add('as-st-0047', `as-st-0047-${variant}`);
+    });
+
+    ablyftTools?.waitForElement('#loop-selling-plan-fieldset', (e) => {
+      if(variant === 'b') {
+        setTimeout(() => findAbo(), delay);
+      }
+    }) 
+  }
 </script>
 
 <style>
