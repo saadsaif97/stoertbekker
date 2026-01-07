@@ -1,0 +1,50 @@
+{% assign current = product.selected_or_first_available_variant %}
+
+<div class="customPDPDeliveryTime" style="font-size: 13px;margin: 9px 0px">
+  {% if product.title contains 'Geschenkgutschein' %}
+    <div class="lb-gempages-timing2">
+      <p style="color: #3D8646">• Sofort als Download verfügbar</p>
+    </div>
+  {% else %}
+    {%- for variant in product.variants -%}
+      <div
+        class="variantRelated{% if current.id != variant.id %} d-none{% endif %}"
+        variant-id="{{ variant.id }}">
+        {%- assign variant_delivery_time = variant.metafields.my_fields.lieferzeiten -%}
+        {%- assign color = '#3D8646' -%}
+        {%- unless variant.available -%}
+          {%- assign color = '#da2c2c' -%}
+        {%- endunless -%}
+        {%- if variant_delivery_time != blank -%}
+          <p style="color:#3D8646;">
+            {{ variant.metafields.my_fields.lieferzeiten }}
+          </p>
+        {%- else -%}
+          {% if variant.available %}
+            {% if localization.country.iso_code == 'CH' %}
+            {% if canonical_url contains '.com/en' %}
+            <p style="color:{{ color }};">• In stock - In your bathroom in 3-5 days</p>
+               {% else %}
+              <p style="color:{{ color }};">• Auf Lager - In 3-5 Tagen in Deinem Badezimmer</p>
+               {% endif %}
+            {% else %}
+            {% if canonical_url contains '.com/en' %}
+            <p style="color:{{ color }};">• In stock - ships in 1-2 days</p>
+               {% else %}
+              <p style="color:{{ color }};" class="deliverytime">• Auf Lager - in 1-2 Tagen in Deinem Badezimmer</p>
+               {% endif %}
+            {% endif %}
+          {% else %}
+            <p style="color:{{ color }};">• Derzeit leider ausverkauft</p>
+          {% endif %}
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  {% endif %}
+</div>
+<style>.d-none {display: none}</style>
+
+
+<!--
+<span style=" color: #438a4d; font-weight: bold; margin: 0px 0px 12px 0px; font-size: 12px; display: block;     font-family: "Open Sans";">🎄 Garantierte Lieferung vor Weihnachten bis zum 20.12 bestellen</span>
+-->

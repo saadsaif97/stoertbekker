@@ -1,0 +1,288 @@
+<style>
+  swiper-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+
+  swiper-container {
+    width: 100%;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  swiper-slide {
+    background-size: cover;
+    background-position: center;
+  }
+
+  .mySwiper {
+    height: 80%;
+    width: 100%;
+  }
+
+  .mySwiper2 {
+    height: 20%;
+    box-sizing: border-box;
+    padding: 10px 0;
+  }
+
+  .mySwiper2 swiper-slide {
+    width: 25%;
+    height: 100%;
+    opacity: 0.4;
+  }
+
+  .mySwiper2 .swiper-slide-thumb-active {
+    opacity: 1;
+  }
+
+  swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+
+<style>
+  .mySwiper2 {
+    padding: 0px !important;
+    display: none !important;
+  }
+</style>
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="image-gallery-mobile" class="lb-biz-old">
+  {%- assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' -%}
+  {%- assign product_media = product.selected_or_first_available_variant.metafields.custom.variant_image_gallery.value | default: product.media -%}
+
+  {% assign counter2 = 0 %}
+  <swiper-container style="--swiper-navigation-color: black; --swiper-pagination-color: black" class="mySwiper media-mobile"
+    thumbs-swiper=".mySwiper2" space-between="10" navigation="false" pagination="true" pagination-clickable="true">
+
+    {%- assign forloop_index = 0 -%}
+    {% for media in product_media %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% if variant_images contains media.src %}
+            {%- assign matching_image = variant_images | where: 'src', media.src -%}
+            <swiper-slide>
+              <img slide-index="{{ forloop_index }}" related-variant-id="{{ matching_image[0].variants.first.id }}" src="{{ media | img_url: '900x' }}"/>
+            </swiper-slide>
+            {%- assign forloop_index = forloop_index | plus: 1 -%}
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+
+    {% for media in product_media %}
+          {% assign counter2 = counter2 | plus: 1 %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% unless variant_images contains media.src %}
+            {%- assign matching_image = variant_images | where: 'src', media.src -%}
+            <swiper-slide class="lb-m-test-{{ counter2 }}">
+              <img src="{{ media | img_url: '900x' }}"/>
+            </swiper-slide>
+          {% endunless %}
+        {% when 'video' %}
+          <swiper-slide>
+            {{ media | video_tag: autoplay: true, loop: true, preload: auto, muted: true, playsinline: true }}
+          </swiper-slide>
+      {% endcase %}
+    {% endfor %}
+  </swiper-container>
+
+  <swiper-container class="mySwiper2" space-between="0" slides-per-view="6" free-mode="true" watch-slides-progress="true">
+    {% unless product.selected_or_first_available_variant.featured_image == blank %}
+    <swiper-slide variant-image>
+      <img class="variant-image" src="{{ product.selected_or_first_available_variant.featured_image | img_url: '150x' }}"
+        loading="lazy" alt="{{ media.alt }}">
+    </swiper-slide>
+    {% endunless %}
+
+    {% for media in product_media %}
+    {% case media.media_type %}
+    {% when 'image' %}
+    {% unless media.src contains 'variant' %}
+    <swiper-slide>
+      <img src="{{ media | img_url: '150x' }}" />
+    </swiper-slide>
+    {% endunless %}
+    {% when 'video' %}
+    <swiper-slide>
+      {{ media | video_tag: autoplay: true, loop: true }}
+    </swiper-slide>
+    {% endcase %}
+    {% endfor %}
+  </swiper-container>
+</div>
+
+
+
+
+
+<!-- A/B Test test anfang -->
+
+
+<div id="image-gallery-mobile" class="lb-biz-metafields">
+  {%- assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' -%}
+  {%- assign product_media = product.selected_or_first_available_variant.metafields.custom.variant_image_gallery.value | default: product.media -%}
+
+    {%- assign product_media_new = product.metafields.custom.a_b_test_name_gallery.value -%}
+
+  {% assign counter2 = 0 %}
+  <swiper-container style="--swiper-navigation-color: black; --swiper-pagination-color: black" class="mySwiper media-mobile"
+    thumbs-swiper=".mySwiper2" space-between="10" navigation="false" pagination="true" pagination-clickable="true">
+
+    {%- assign forloop_index = 0 -%}
+
+    {% for media in product_media_new %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% if variant_images contains media.src %}
+            {%- assign matching_image = variant_images | where: 'src', media.src -%}
+            <swiper-slide>
+              <img slide-index="{{ forloop_index }}" related-variant-id="{{ matching_image[0].variants.first.id }}" src="{{ media | img_url: '900x' }}"/>
+            </swiper-slide>
+            {%- assign forloop_index = forloop_index | plus: 1 -%}
+            {% assign counter2 = counter2 | plus: 1 %}
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+
+
+
+
+      {% for media in product_media %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% if variant_images contains media.src %}
+            {%- assign matching_image = variant_images | where: 'src', media.src -%}
+            {% unless media.alt contains 'old' %}
+            <swiper-slide class="lb-m-test-{{ counter2 }}" related-variant-id="{{ matching_image[0].variants.first.id }}" >
+              <img slide-index="{{ forloop_index }}" src="{{ media | img_url: '900x' }}"/>
+            </swiper-slide>
+            {% endunless %}
+            {% assign counter2 = counter2 | plus: 1 %}
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+
+
+    {% for media in product_media_new %}
+          {% assign counter2 = counter2 | plus: 1 %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% unless variant_images contains media.src %}
+            {%- assign matching_image = variant_images | where: 'src', media.src -%}
+            <swiper-slide class="lb-m-test-{{ counter2 }}">
+              <img src="{{ media | img_url: '900x' }}"/>
+            </swiper-slide>
+          {% endunless %}
+        {% when 'video' %}
+          <swiper-slide>
+            {{ media | video_tag: autoplay: true, loop: true, preload: auto, muted: true, playsinline: true }}
+          </swiper-slide>
+      {% endcase %}
+    {% endfor %}
+  </swiper-container>
+</div>
+
+
+<!-- A/B Test Test Ende -->
+
+
+
+
+
+
+
+
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+
+    document.addEventListener("variant:change", async (e) => {
+
+      if(window.innerWidth >= 768) return;
+
+      console.log("variant:change")
+      const variantID = e.detail.variant.id;
+      try {
+        const sectionUrl = `/products/{{ product.handle }}?variant=${variantID}&section_id=media-mobile`;
+
+        const response = await fetch(sectionUrl);
+        const html = await response.text();
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const updatedSection = doc.getElementById('shopify-section-media-mobile').querySelector("#image-gallery-mobile").innerHTML;
+
+        document.getElementById("image-gallery-mobile").innerHTML = updatedSection
+
+        handleProductMedia(e.detail.variant.id)
+      } catch (error) {
+        console.error("Error loading preorder section:", error);
+      }
+    })
+  })
+</script>
+
+<!-- Swiper JS -->
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer></script>
+
+<!-- Initialize Swiper -->
+<script defer>
+  document.addEventListener("DOMContentLoaded", () => {
+    var swiper = new Swiper(".mySwiper", {
+      pagination: {
+        el: ".swiper-pagination",
+      },
+    });
+  });
+  window.addEventListener("load", () => {
+    var swiper = new Swiper(".mySwiper", {
+      pagination: {
+        el: ".swiper-pagination",
+      },
+    });
+  })
+</script>

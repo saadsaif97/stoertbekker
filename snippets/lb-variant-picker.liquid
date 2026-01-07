@@ -1,0 +1,2633 @@
+
+
+<style>
+
+  .lb-selector-sets {
+    display: none;
+  }
+  
+  .lb-selector {
+	margin-bottom: 9px;
+  }
+  
+  .lb-selector p {
+	font-size: 18px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: "Bebas Neue";
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  
+ .lb-selector span {
+	font-size: 10px;
+    display: block;
+  }
+
+  .lb-etuis a {
+	display: inline-block;
+	border: 1px solid #f2f2f2;
+	width: 48%;
+	margin: 1%;
+    margin-bottom: 9px;
+	background: white;
+	border-radius: 6px;
+	color: black; 
+	font-size: 12px;
+	text-align: center;
+	padding: 9px;
+	float: left;
+  }
+
+  .lb-etuis img {
+	display: block;
+	margin: 0px auto 9px auto;
+  }
+      
+  .lb-seifen a {
+	width: 23%; 
+	margin: 0.5%;
+	border: 1px solid #f2f2f2;
+    background: white;
+	padding: 9px;
+	display: inline-block;
+	border-radius: 6px;
+	text-align: center;
+    font-size: 12px;
+	color: black;
+  }
+
+
+  .lb-klingen {
+	margin: 18px 0px;
+  }
+
+    .lb-klingen a {
+	width: 23%; 
+	margin-right: 2%;
+	border: 1px solid #f2f2f2;
+	display: inline-block;
+	border-radius: 6px;
+	text-align: center;
+	color: black;
+    width: 30.33%; 
+    overflow: hidden;
+  }	
+</style>
+
+
+
+{% if product.title contains "Störtebekker Klingen 'Platinum' x5 Probierpack" or product.title contains "Störtebekker Rasierklingen 'Platinum'" %}
+  <a href="https://stoertebekker.com/products/stortebekker-rasierklingen?variant=43607715053833" rel="preload" id="klingen2" style="overflow: hidden; border-radius: 6px; border: 1px solid #f2f2f2; width: 30.33%; margin-right: 2%; display: inline-block;">
+    <img style="width: 100%; display: block;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/100.webp?v=1699424993" loading="lazy">
+  </a>
+  
+  <a href="https://stoertebekker.com/products/stortebekker-rasierklingen?variant=43607715021065" rel="preload" id="klingen1" style="overflow: hidden; border: 1px solid #f2f2f2; border-radius: 6px; width: 30.33%; margin-right: 2%; display: inline-block;">
+    <img style="width: 100%; display: block;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/20.webp?v=1699424993" loading="lazy">
+  </a>
+  			  
+  <a href="https://stoertebekker.com/products/stortebekker-klingen-x-5-probier-pack" rel="preload" id="klingen3" style="overflow: hidden; border-radius: 6px; border: 1px solid #f2f2f2; width: 30.33%; display: inline-block;">
+    <img style="width: 100%; display: block;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/5.webp?v=1699424993" loading="lazy">
+  </a>
+
+  {% if product.title contains "Störtebekker Klingen 'Platinum' x5 Probierpack" %}
+    <style>
+      #klingen3 {
+      border: 1px solid black!important;
+      }
+    </style>
+  {% elsif current_variant.title contains '100' %}
+    <style>
+      #klingen2 {
+      border: 1px solid black!important;
+      }
+    </style>
+  {% else %}
+    <style>
+      #klingen1 {
+      border: 1px solid black!important;
+      }
+    </style>
+  {% endif %}
+{% endif %}
+
+{% if product.tags contains '3er-set' %}
+  <style>
+  .tshirt-nav {display: none;}
+  .lb-product-page-form-variants {display: block!important; 	overflow: hidden;}
+
+    
+    .lb-product-page-form-checkbox {
+    display: inline-block;
+    border: 1px solid #f2f2f2;
+    width: 48%;
+    margin: 1%;
+      margin-bottom: 9px;
+    background: white;
+    border-radius: 6px;
+    color: black; 
+    font-size: 12px;
+    text-align: center;
+    padding: 9px;
+    float: left;
+    }
+    
+    .lb-product-page-form-checkbox img {
+    display: block;
+    margin: 0px auto 9px auto;
+    
+    }
+
+  </style>
+{% endif %}
+
+{% if product.variants.size == 1 %}{%else%}
+  <div class="lb-product-page-form-variants">
+
+    {% if product.tags contains '3er-set' %}
+  
+      {% for variant in product.variants %}
+	  
+    	  {% unless variant.title contains 'Ohne Seife' %} 	  
+
+          <a href="?variant={{ variant.id }}" rel="preload" class="lb-product-page-form-checkbox" {% if variant == product.selected_or_first_available_variant %} style="border: 1px solid black!important;"{% endif %}><span>
+            <img style="width: 42px;" src="{{ variant.image | img_url: '50x' }}" loading="lazy"> 
+            {{ variant.title }}
+            </span>
+          </a>
+  
+    	  {% endunless %}
+	  
+      {% endfor %}
+
+    {% endif %}
+  </div>
+{% endif %}
+
+{% unless product.title contains 'T-Shirt' or product.title contains 'Hoodie' %}
+
+{% if product.title == 'Rasierhobel Silber' %}
+  <div class="lb-selector">
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/rasierhobel-silber?variant=32082492194948" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/rasierhobel-silber?variant=32082492227716" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+  </div>
+{% endif %}  
+
+{% if product.title == 'Rasierhobel Schwarz' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+
+      <a href="https://stoertebekker.com/products/rasierhobel-schwarz?variant=32082496716932" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+      <a href="https://stoertebekker.com/products/rasierhobel-schwarz?variant=32082496749700" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+    
+  </div>
+{% endif %}  
+
+{% if product.title == 'Rasierhobel Rosé - Gold' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/rasierhobel-gold?variant=32082157469828"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/rasierhobel-gold?variant=32082157502596" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+    
+  </div>
+{% endif %}  
+
+{% if product.title == 'Rasierhobel Solingen Walnuss - Set' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/rasierhobel-solingen-walnuss-set?variant=42145136017662" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/rasierhobel-solingen-walnuss-set?variant=42145135984894" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+    
+  </div>
+{% endif %}  
+
+{% if product.title == 'Rasierhobel Solingen Stahl - Set' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/rasierhobel-solingen-set?variant=42145063338238" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/rasierhobel-solingen-set?variant=42145063305470" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+    
+  </div>
+{% endif %}  
+
+{% if product.title == 'Rasierhobel Solingen Schwarz - Set' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/rasierhobel-solingen-schwarz-set?variant=45420755648777" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/rasierhobel-solingen-schwarz-set?variant=45420755616009" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+    
+  </div>
+{% endif %}  
+
+{% if product.title == 'Rasierhobel Solingen Silber Matt - Set' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/rasierhobel-solingen-silber-set?variant=45420747718921" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/rasierhobel-solingen-silber-set?variant=45420747686153" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+    
+  </div>
+{% endif %}  
+
+{% if product.title == 'Rasiermesser mit Holzgriff' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+    <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/rasiermesser?variant=32082536890500" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/messer-schwarz.png?v=1639645736" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/rasiermesser?variant=32082536923268" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/messer-cafe.png?v=1639645736" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+    
+  </div>
+{% endif %}  
+
+{% if product.title == 'Rasiermesser Schwarz' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/rasiermesser-schwarz?variant=32157568761988" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/messer-schwarz.png?v=1639645736" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/rasiermesser-schwarz?variant=32157568794756" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/messer-cafe.png?v=1639645736" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+    
+  </div>
+{% endif %}  
+
+{% if product.title == 'Rasierset - Rasierhobel Schwarz' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+      
+      <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-schwarz?variant=36297904193691" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café -' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-schwarz?variant=36297904226459" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz -' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    </div>
+  
+    {% if product.selected_or_first_available_variant.title contains 'Schwarz' %}
+      <div class="lb-seifen">
+        <p>Wähle Deinen Duft:</p>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-schwarz?variant=36297904226459" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+          <span>Sandelholz</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-schwarz?variant=43559287849225" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Kokos' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+        <span>Kokos</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-schwarz?variant=43559287587081" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+        <span>Fresh Mint</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-schwarz?variant=43559287324937" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_400x.png?v=1687685278" loading="lazy">
+        <span>Aloe Vera</span>
+        </a>
+
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-schwarz?variant=45357640679689" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Crusoe' %}style="border: 1px solid black;"{%endif%}>
+            <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0166_a-variant_400x.png?v=1692081497" loading="lazy">
+          <span>Crusoe</span>
+          </a>
+
+            <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-schwarz?variant=45357640712457" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Tortuga' %}style="border: 1px solid black;"{%endif%}>
+            <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0150_a-variant_400x.png?v=1687628425" loading="lazy">
+          <span>Tortuga</span>
+        </a>
+      
+      </div>
+    {% endif %}
+
+    {% if product.selected_or_first_available_variant.title contains 'Café' %}
+      <div class="lb-seifen">
+        <p>Wähle Deinen Duft:</p>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-schwarz?variant=36297904193691" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+              <span>Sandelholz</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-schwarz?variant=43559288570121" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Kokos' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+        <span>Kokos</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-schwarz?variant=43559288471817" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+        <span>Fresh Mint</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-schwarz?variant=43559288176905" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}style="border: 1px solid black;"{%endif%}>
+            <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_400x.png?v=1687685278" loading="lazy">
+              <span>Aloe Vera</span>
+        </a>
+
+            
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-schwarz?variant=45357640646921" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Crusoe' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0166_a-variant_400x.png?v=1692081497" loading="lazy">
+        <span>Crusoe</span>
+        </a>
+
+          <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-schwarz?variant=45357640777993" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Tortuga' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0150_a-variant_400x.png?v=1687628425" loading="lazy">
+        <span>Tortuga</span>
+        </a>
+      
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% if product.title == 'Rasierset - Rasierhobel Silber' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=36297830629531" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz -' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=36297830596763" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café -' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+    
+    {% if product.selected_or_first_available_variant.title contains 'Schwarz' %}
+      <div class="lb-seifen">
+      <p>Wähle Deinen Duft:</p>
+      
+      <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=36297830629531" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+        <span>Sandelholz</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=43612830990601" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Kokos' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+      <span>Kokos</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=43612828172553" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+      <span>Fresh Mint</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=43612827549961" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_400x.png?v=1687685278" loading="lazy">
+      <span>Aloe Vera</span>
+      </a>
+
+        
+      <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=45357662109961" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Crusoe' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0166_a-variant_400x.png?v=1692081497" loading="lazy">
+      <span>Crusoe</span>
+      </a>
+
+      <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=45357662208265" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Tortuga' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0150_a-variant_400x.png?v=1687628425" loading="lazy">
+        <span>Tortuga</span>
+      </a>
+      
+        </div>
+    {% endif %}
+      
+    {% if product.selected_or_first_available_variant.title contains 'Café' %}
+      <div class="lb-seifen">
+      <p>Wähle Deinen Duft:</p>
+      
+      <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=36297830596763" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+            <span>Sandelholz</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=43612826468617" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Kokos' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+      <span>Kokos</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=43612824895753" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}style="border: 1px solid black;"{%endif%}>
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+      <span>Fresh Mint</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=43612820832521" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_400x.png?v=1687685278" loading="lazy">
+            <span>Aloe Vera</span>
+      </a>
+
+      
+      <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=45357662142729" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Crusoe' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0166_a-variant_400x.png?v=1692081497" loading="lazy">
+      <span>Crusoe</span>
+      </a>
+
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=45357662175497" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Tortuga' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0150_a-variant_400x.png?v=1687628425" loading="lazy">
+      <span>Tortuga</span>
+      </a>
+      
+      </div>
+    {% endif %}
+    
+  </div>
+{% endif %}
+
+{% if product.title == 'Rasierset - Rasierhobel Rosé - Gold' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=36297941418139"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz -' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=36297941385371" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café -' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+
+    {% if product.selected_or_first_available_variant.title contains 'Schwarz' %}
+      <div class="lb-seifen">
+        <p>Wähle Deinen Duft:</p>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=36297941418139" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+          <span>Sandelholz</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=43612890759433" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Kokos' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+        <span>Kokos</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=43612890726665" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+        <span>Fresh Mint</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=43612890366217" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_400x.png?v=1687685278" loading="lazy">
+        <span>Aloe Vera</span>
+        </a>
+
+          
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=45357608108297" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Crusoe' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0166_a-variant_400x.png?v=1692081497" loading="lazy">
+        <span>Crusoe</span>
+        </a>
+
+          <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=45357608042761" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Tortuga' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0150_a-variant_400x.png?v=1687628425" loading="lazy">
+        <span>Tortuga</span>
+        </a>
+        
+      </div>
+    {% endif %}
+
+    {% if product.selected_or_first_available_variant.title contains 'Café' %}
+      <div class="lb-seifen">
+        <p>Wähle Deinen Duft:</p>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=36297941385371" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+            <span>Sandelholz</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=43612890038537" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Kokos' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+        <span>Kokos</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=43612889121033" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+        <span>Fresh Mint</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=43612888563977" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}style="border: 1px solid black;"{%endif%}>
+            <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_400x.png?v=1687685278" loading="lazy">
+              <span>Aloe Vera</span>
+        </a>
+
+          
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=45357608075529" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Crusoe' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0166_a-variant_400x.png?v=1692081497" loading="lazy">
+          <span>Crusoe</span>
+        </a>
+
+        <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=44531776848137" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Tortuga' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0150_a-variant_400x.png?v=1687628425" loading="lazy">
+          <span>Tortuga</span>
+        </a>
+        
+      </div>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% if product.title == 'Rasierset - Rasiermesser Holz' %}
+  <div class="lb-selector">
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-holz?variant=36298049880219"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/messer-schwarz.png?v=1639645736" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-holz?variant=36298049847451" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/messer-cafe.png?v=1639645736" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+
+
+
+    
+    {% if product.selected_or_first_available_variant.title contains 'Schwarz' %}
+      <div class="lb-seifen">
+        <p>Wähle Deinen Duft:</p>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-holz?variant=36298049880219" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+          <span>Sandelholz</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-holz?variant=45357967802633" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Kokos' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+        <span>Kokos</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-holz?variant=45357967769865" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+        <span>Fresh Mint</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-holz?variant=45357967900937" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_400x.png?v=1687685278" loading="lazy">
+        <span>Aloe Vera</span>
+        </a>
+
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-holz?variant=45357967933705" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Crusoe' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0166_a-variant_400x.png?v=1692081497" loading="lazy">
+          <span>Crusoe</span>
+        </a>
+
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-holz?variant=45357968064777" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Tortuga' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0150_a-variant_400x.png?v=1687628425" loading="lazy">
+          <span>Tortuga</span>
+        </a>
+      </div>
+    {% endif %}
+
+
+    
+    {% if product.selected_or_first_available_variant.title contains 'Café' %}
+      <div class="lb-seifen">
+        <p>Wähle Deinen Duft:</p>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-holz?variant=36298049847451" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+              <span>Sandelholz</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-holz?variant=45357967835401" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Kokos' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+        <span>Kokos</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-holz?variant=45357967704329" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+        <span>Fresh Mint</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-holz?variant=45357967868169" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_400x.png?v=1687685278" loading="lazy">
+            <span>Aloe Vera</span>
+        </a>
+
+          
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-holz?variant=45357967999241" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Crusoe' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0166_a-variant_400x.png?v=1692081497" loading="lazy">
+        <span>Crusoe</span>
+        </a>
+
+          <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-holz?variant=45357968032009" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Tortuga' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0150_a-variant_400x.png?v=1687628425" loading="lazy">
+          <span>Tortuga</span>
+        </a>
+  
+      </div>
+    {% endif %}
+    
+  </div>
+{% endif %}
+
+{% if product.title == 'Rasierset - Rasiermesser Schwarz' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-schwarz?variant=36298015572123"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/messer-schwarz.png?v=1639645736" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-schwarz?variant=36298015539355" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/messer-cafe.png?v=1639645736" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+
+  
+    {% if product.selected_or_first_available_variant.title contains 'Schwarz' %}
+      <div class="lb-seifen">
+        <p>Wähle Deinen Duft:</p>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-schwarz?variant=36298015572123" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+          <span>Sandelholz</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-schwarz?variant=45358016626953" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Kokos' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+        <span>Kokos</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-schwarz?variant=45358016725257" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+        <span>Fresh Mint</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-schwarz?variant=45358016758025" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_400x.png?v=1687685278" loading="lazy">
+        <span>Aloe Vera</span>
+        </a>
+
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-schwarz?variant=45358016856329" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Crusoe' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0166_a-variant_400x.png?v=1692081497" loading="lazy">
+        <span>Crusoe</span>
+        </a>
+
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-schwarz?variant=45358016889097" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Tortuga' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0150_a-variant_400x.png?v=1687628425" loading="lazy">
+        <span>Tortuga</span>
+        </a>
+        
+      </div>
+    {% endif %}
+
+    {% if product.selected_or_first_available_variant.title contains 'Café' %}
+      <div class="lb-seifen">
+        <p>Wähle Deinen Duft:</p>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-schwarz?variant=36298015539355" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+              <span>Sandelholz</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-schwarz?variant=45358016659721" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Kokos' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+        <span>Kokos</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-schwarz?variant=45358016692489" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+        <span>Fresh Mint</span>
+        </a>
+        
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-schwarz?variant=45358016790793" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}style="border: 1px solid black;"{%endif%}>
+            <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_400x.png?v=1687685278" loading="lazy">
+              <span>Aloe Vera</span>
+        </a>
+
+        <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-schwarz?variant=45358016823561" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Crusoe' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0166_a-variant_400x.png?v=1692081497" loading="lazy">
+        <span>Crusoe</span>
+        </a>
+
+          <a href="https://stoertebekker.com/products/komplett-set-rasiermesser-schwarz?variant=45358016921865" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Tortuga' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0150_a-variant_400x.png?v=1687628425" loading="lazy">
+        <span>Tortuga</span>
+        </a>
+  
+      </div>
+    {% endif %} 
+  </div>
+{% endif %}  
+
+{% if product.title == 'Rasierständer Set' %}
+  <div class="lb-selector">
+    
+    <div class="lb-seifen">
+      <p>Wähle Deinen Duft:</p>
+      
+      <a href="https://stoertebekker.com/products/rasierstander-set?variant=43571926761737"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+        <span>Sandelholz</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/rasierstander-set?variant=43571926860041"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Kokos' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+      <span>Kokos</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/rasierstander-set?variant=43571926827273"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+      <span>Fresh Mint</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/rasierstander-set?variant=43571926794505"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_400x.png?v=1687685278" loading="lazy">
+      <span>Aloe Vera</span>
+      </a>
+
+      <a href="https://stoertebekker.com/products/rasierstander-set?variant=45357586055433" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Crusoe' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0166_a-variant_400x.png?v=1692081497" loading="lazy">
+      <span>Crusoe</span>
+      </a>
+
+        <a href="https://stoertebekker.com/products/rasierstander-set?variant=45357586120969" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Tortuga' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0150_a-variant_400x.png?v=1687628425" loading="lazy">
+      <span>Tortuga</span>
+      </a>
+    </div>
+
+  </div>
+{% endif %}
+
+{% if product.title == 'Rasierpinsel Set' %}
+  <div class="lb-selector">
+  
+  <div class="lb-seifen">
+    <p>Wähle Deinen Duft:</p>
+    
+    <a href="https://stoertebekker.com/products/rasierpinsel-set?variant=43569389601033" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+      <span>Sandelholz</span>
+    </a>
+    
+    <a href="https://stoertebekker.com/products/rasierpinsel-set?variant=43569389666569" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Kokos' %}style="border: 1px solid black;"{%endif%}>
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+    <span>Kokos</span>
+    </a>
+    
+    <a href="https://stoertebekker.com/products/rasierpinsel-set?variant=43569389699337" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}style="border: 1px solid black;"{%endif%}>
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+    <span>Fresh Mint</span>
+    </a>
+    
+    <a href="https://stoertebekker.com/products/rasierpinsel-set?variant=43569389633801" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}style="border: 1px solid black;"{%endif%}>
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_400x.png?v=1687685278" loading="lazy">
+    <span>Aloe Vera</span>
+    </a>
+    
+    <a href="https://stoertebekker.com/products/rasierpinsel-set?variant=44566819471625" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Tortuga' %}style="border: 1px solid black;"{%endif%}>
+      <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0150_a-variant_400x.png?v=1687628425" loading="lazy">
+    <span>Tortuga</span>
+    </a>
+    
+    <a href="https://stoertebekker.com/products/rasierpinsel-set?variant=44566818423049" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Crusoe' %}style="border: 1px solid black;"{%endif%}>
+      <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0166_a-variant_400x.png?v=1692081497" loading="lazy">
+    <span>Crusoe</span>
+    </a>
+
+      <a href="https://stoertebekker.com/products/rasierpinsel-set?variant=48021707784457" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lavendel' %}style="border: 1px solid black;"{%endif%}>
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0206_a2.png?v=1718711183" loading="lazy">
+    <span>Lavendel</span>
+    </a>
+
+      <a href="https://stoertebekker.com/products/rasierpinsel-set?variant=48021709947145" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Bergamotte' %}style="border: 1px solid black;"{%endif%}>
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0205_a2.png?v=1718711183" loading="lazy">
+    <span>Bergamotte</span>
+    </a>
+
+  </div>
+  </div>
+{% endif %}
+
+{% if product.title == 'Rasierseife & Seifendose Set' %}
+  <div class="lb-selector">
+    
+    <div class="lb-seifen">
+      <p>Wähle Deinen Duft:</p>
+      
+      <a href="https://stoertebekker.com/products/seifendose-set?variant=44503856120073" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+        <span>Sandelholz</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/seifendose-set?variant=44503856152841" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Kokos' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+      <span>Kokos</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/seifendose-set?variant=44503856185609" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+      <span>Fresh Mint</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/seifendose-set?variant=44503856218377" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_400x.png?v=1687685278" loading="lazy">
+      <span>Aloe Vera</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/seifendose-set?variant=44503856251145" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Tortuga' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0150_a-variant_600x.png?v=1687628425" loading="lazy">
+      <span>Tortuga</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/seifendose-set?variant=44560319578377" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Crusoe' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0166_a-variant_600x.png?v=1692081497" loading="lazy">
+      <span>Crusoe</span>
+      </a>
+
+        <a href="https://stoertebekker.com/products/seifendose-set?variant=48021829779721" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lavendel' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0206_a2.png?v=1718711183" loading="lazy">
+      <span>Lavendel</span>
+      </a>
+
+        <a href="https://stoertebekker.com/products/seifendose-set?variant=48021837873417" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Bergamotte' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0205_a2.png?v=1718711183" loading="lazy">
+      <span>Bergamotte</span>
+      </a>
+    </div>
+  </div>
+{% endif %}
+
+{% if product.title == 'Dusch Routine Set inkl. Tagescreme' %}
+  <div class="lb-selector">
+    
+    <div class="lb-seifen">
+      <p>Wähle Deinen Duft:</p>
+      
+      <a href="https://stoertebekker.com/products/dusch-routine-set?variant=45069170278665" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0167_a-variant_800x.png?v=1697632000" loading="lazy">
+        <span>Sandelholz</span>
+      </a>
+
+      <a href="https://stoertebekker.com/products/dusch-routine-set?variant=45069170311433" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0194_a_variant.webp?v=1705331832" loading="lazy">
+      <span>Fresh Mint</span>
+      </a>    
+
+      <a href="https://stoertebekker.com/products/dusch-routine-set?variant=45069170344201" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0192_a_variant_0d00534b-f8ae-4a72-960b-4e9f4feec6b7.webp?v=1705330130" loading="lazy">
+      <span>Aloe Vera</span>
+      </a>    
+
+      <a href="https://stoertebekker.com/products/dusch-routine-set?variant=45069170376969" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Kokos' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/stoerte-0193-a-65a54a1f4bae7_variant.webp?v=1705332107" loading="lazy">
+      <span>Kokos</span>
+      </a>    
+
+      <a href="https://stoertebekker.com/products/dusch-routine-set?variant=45069170409737" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Weihnachtsedition' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0178_a-variant_800x.webp?v=1700648269" loading="lazy">
+      <span>Zimt-Orange</span>
+      </a>
+
+      
+      <a href="https://stoertebekker.com/products/dusch-routine-set?variant=45069170442505" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Osteredition' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0195_a-variant.webp?v=1708508945" loading="lazy">
+      <span>Bergamotte</span>
+      </a>
+    
+
+    </div>
+  </div>
+{% endif %}
+  
+{% if product.title == 'Duschset' %}
+  <div class="lb-selector">
+    
+    <div class="lb-seifen">
+      <p>Wähle Deinen Duft:</p>
+      
+      <a href="https://stoertebekker.com/products/duschset?variant=44785194500361" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0167_a-variant_800x.png?v=1697632000" loading="lazy">
+        <span>Sandelholz</span>
+      </a>
+
+      <a href="https://stoertebekker.com/products/duschset?variant=44915899891977" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0194_a_variant.webp?v=1705331832" loading="lazy">
+      <span>Fresh Mint</span>
+      </a>    
+
+      <a href="https://stoertebekker.com/products/duschset?variant=44915904151817" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0192_a_variant_0d00534b-f8ae-4a72-960b-4e9f4feec6b7.webp?v=1705330130" loading="lazy">
+      <span>Aloe Vera</span>
+      </a>    
+
+      <a href="https://stoertebekker.com/products/duschset?variant=44915904184585" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Kokos' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/stoerte-0193-a-65a54a1f4bae7_variant.webp?v=1705332107" loading="lazy">
+      <span>Kokos</span>
+      </a>    
+
+      <a href="https://stoertebekker.com/products/duschset?variant=44960403816713" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Weihnachtsedition' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0178_a-variant_800x.webp?v=1700648269" loading="lazy">
+      <span>Zimt-Orange</span>
+      </a>
+
+        
+      <a href="https://stoertebekker.com/products/duschset?variant=45021253697801" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Osteredition' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0195_a-variant.webp?v=1708508945" loading="lazy">
+      <span>Bergamotte</span>
+      </a>
+
+      <a href="https://stoertebekker.com/products/duschset?variant=56545625899273" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Crusoe' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0310_a-variant_8ce0fbb6-608a-4990-a540-7a45e80d4b50.webp?v=1763712654" loading="lazy">
+      <span>Crusoe</span>
+      </a>
+    </div>
+  </div>
+{% endif %}
+
+{% if product.title == 'Festes Shampoo & Seifendose Set' %}
+  <div class="lb-selector">
+    
+    <div class="lb-seifen">
+      <p>Wähle Deinen Duft:</p>
+      
+      <a href="https://stoertebekker.com/products/festes-shampoo-seifendose-set?variant=44593727897865" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0167_a-variant_800x.png?v=1697632000" loading="lazy">
+        <span>Sandelholz</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/festes-shampoo-seifendose-set?variant=44915962380553" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0194_a_variant.webp?v=1705331832" loading="lazy">
+        <span>Fresh Mint</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/festes-shampoo-seifendose-set?variant=44915962413321" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0192_a_variant_0d00534b-f8ae-4a72-960b-4e9f4feec6b7.webp?v=1705330130" loading="lazy">
+        <span>Aloe Vera</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/festes-shampoo-seifendose-set?variant=44915962446089" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Kokos' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/stoerte-0193-a-65a54a1f4bae7_variant.webp?v=1705332107" loading="lazy">
+        <span>Kokos</span>
+      </a>
+
+      <a href="https://stoertebekker.com/products/festes-shampoo-seifendose-set?variant=44788280656137" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Weihnachtsedition' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0178_a-variant_800x.webp?v=1700648269" loading="lazy">
+      <span>Zimt-Orange</span>
+      </a>
+
+        
+      <a href="https://stoertebekker.com/products/festes-shampoo-seifendose-set?variant=45021121184009" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Osteredition' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0195_a-variant.webp?v=1708508945" loading="lazy">
+      <span>Bergamotte</span>
+      </a>
+    </div>
+  </div>
+{% endif %}  
+
+{% if product.title == 'Festes Shampoo & Sisal Säckchen Set' %}
+  <div class="lb-selector">
+    
+    <div class="lb-seifen">
+      <p>Wähle Deinen Duft:</p>
+      
+      <a href="https://stoertebekker.com/products/festes-shampoo-sisalsackchen?variant=44593772495113" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0167_a-variant_800x.png?v=1697632000" loading="lazy">
+        <span>Sandelholz</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/festes-shampoo-sisalsackchen?variant=44915992789257" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0194_a_variant.webp?v=1705331832" loading="lazy">
+        <span>Fresh Mint</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/festes-shampoo-sisalsackchen?variant=44915992822025" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0192_a_variant_0d00534b-f8ae-4a72-960b-4e9f4feec6b7.webp?v=1705330130" loading="lazy">
+        <span>Aloe Vera</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/festes-shampoo-sisalsackchen?variant=44915992854793" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Kokos' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/stoerte-0193-a-65a54a1f4bae7_variant.webp?v=1705332107" loading="lazy">
+        <span>Kokos</span>
+      </a>
+
+      <a href="https://stoertebekker.com/products/festes-shampoo-sisalsackchen?variant=44788292813065" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Weihnachtsedition' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0178_a-variant_800x.webp?v=1700648269" loading="lazy">
+      <span>Zimt-Orange</span>
+      </a>
+
+      <a href="https://stoertebekker.com/products/festes-shampoo-sisalsackchen?variant=45021245473033" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Osteredition' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0195_a-variant.webp?v=1708508945" loading="lazy">
+      <span>Bergamotte</span>
+      </a>
+    </div>
+  </div>
+{% endif %}  
+  
+{% if product.title == 'Vatertag Allround Pflegeset' %}
+  <div class="lb-selector">
+    
+    <div class="lb-seifen">
+      <p>Wähle Deinen Duft:</p>
+      
+      <a href="https://stoertebekker.com/products/vatertag-allround-pflegeset?variant=45415760527625" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0167_a-variant_800x.png?v=1697632000" loading="lazy">
+        <span>Sandelholz</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/vatertag-allround-pflegeset?variant=45415760560393" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0194_a_variant.webp?v=1705331832" loading="lazy">
+        <span>Fresh Mint</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/vatertag-allround-pflegeset?variant=45415760593161" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0192_a_variant_0d00534b-f8ae-4a72-960b-4e9f4feec6b7.webp?v=1705330130" loading="lazy">
+        <span>Aloe Vera</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/vatertag-allround-pflegeset?variant=45415760625929" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Kokos' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/stoerte-0193-a-65a54a1f4bae7_variant.webp?v=1705332107" loading="lazy">
+        <span>Kokos</span>
+      </a>
+    </div>
+  </div>
+{% endif %}  
+
+{% if product.title == 'Vatertag Premium Rasierset Solingen' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Deinen Rasierhobel:</p>
+    
+      <a href="https://stoertebekker.com/products/vatertag-premium-rasierset-solingen?variant=45415685325065"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Stahl' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Solingen-Stahl.png?v=1714387152" loading="lazy">
+        <span>Stahl</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/vatertag-premium-rasierset-solingen?variant=45415685357833" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Silber Matt' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Solingen-Silber.png?v=1714387152" loading="lazy">
+        <span>Silber Matt</span>
+      </a>
+
+      <a href="https://stoertebekker.com/products/vatertag-premium-rasierset-solingen?variant=45415723368713" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Walnuss-Holz' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Solingen-Walnuss.png?v=1714387151" loading="lazy">
+        <span>Walnuss</span>
+      </a>
+
+      <a href="https://stoertebekker.com/products/vatertag-premium-rasierset-solingen?variant=45415723401481" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Schwarz' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Solingen-Schwarz.png?v=1714387152" loading="lazy">
+        <span>Schwarz</span>
+      </a>
+    </div>
+  </div>
+{% endif %}  
+
+{% if product.title == 'Genießer Set - Rasierhobel Silber' %}
+  <div class="lb-selector">
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/geniesser-set?variant=43724224200969"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/geniesser-set?variant=43724224233737" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+  </div>
+{% endif %}
+
+{% if product.title == 'Genießer Set - Rasierhobel Schwarz' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+
+      <a href="https://stoertebekker.com/products/geniesser-set-rh-schwarz?variant=43724222955785"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/geniesser-set-rh-schwarz?variant=43724222988553" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+  </div>
+{% endif %}  
+
+{% if product.title == 'Konturen Set - Rasiermesser Holz' %}
+  <div class="lb-selector">
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/konturen-set?variant=43724231475465"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/konturen-set?variant=43724231508233" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+  </div>
+{% endif %}
+
+{% if product.title == 'Konturen Set - Rasiermesser Schwarz' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/konturen-set-rm-schwarz?variant=43724229935369"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/konturen-set-rm-schwarz?variant=43724229968137" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+    
+  </div>
+{% endif %}
+
+{% if product.title == 'All-in-one Set Rasur & Bart - Rasierhobel Schwarz' %}
+  <div class="lb-selector">
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+      <a href="https://stoertebekker.com/products/all-in-one-set-rasur-bart-rasierhobel-schwarz?variant=42058717921534"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/all-in-one-set-rasur-bart-rasierhobel-schwarz?variant=42058717888766" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>    
+    </div>
+  </div>
+{% endif %}  
+
+{% if product.title == 'All-in-one Set Rasur & Bart - Rasierhobel Silber' %}
+  <div class="lb-selector">
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/all-in-one-set-rasur-bart-rasierhobel-silber?variant=42058714448126"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/all-in-one-set-rasur-bart-rasierhobel-silber?variant=42058714480894" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+  </div>
+{% endif %}  
+
+{% if product.title == 'All-in-one Set Rasur & Bart - Rasierhobel Rosé - Gold' or product.title == 'All-in-one Set Rasur & Bart - Rasierhobel Gold' %}
+  <div class="lb-selector">
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/all-in-one-set-rasur-bart-rasierhobel-gold?variant=42058725523710"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/all-in-one-set-rasur-bart-rasierhobel-gold?variant=42058725490942" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+  </div>
+{% endif %}  
+
+{% if product.title == 'All-in-one Set Rasur & Bart - Rasiermesser Holz' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/all-in-one-set-rasur-bart-rasiermesser-holz?variant=42058729947390"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/messer-schwarz.png?v=1639645736" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/all-in-one-set-rasur-bart-rasiermesser-holz?variant=42058729914622" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/messer-cafe.png?v=1639645736" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+    
+  </div>
+{% endif %}  
+
+{% if product.title == 'Rasurpflege Set Premium - Rasierhobel Schwarz' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+
+      <a href="https://stoertebekker.com/products/rasurpflege-set-premium-rasierhobel-schwarz?variant=42058691215614"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+      <a href="https://stoertebekker.com/products/rasurpflege-set-premium-rasierhobel-schwarz?variant=42058691248382" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+    
+  </div>
+{% endif %}  
+
+{% if product.title == 'Rasurpflege Set Premium - Rasierhobel Silber' %}
+  <div class="lb-selector">
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/rasurpflege-set-premium-rasierhobel-silber?variant=42058693738750" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/rasurpflege-set-premium-rasierhobel-silber?variant=42058693705982"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    </div>
+  </div>
+{% endif %}  
+
+{% if product.title == 'Rasurpflege Set Premium - Rasierhobel Rosé - Gold' or product.title == 'Rasurpflege Set Premium - Rasierhobel Gold' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/rasurpflege-set-premium-rasierhobel-gold?variant=42058683580670" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/rasurpflege-set-premium-rasierhobel-gold?variant=42058683547902"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+
+    </div>
+    
+  </div>
+{% endif %}  
+
+{% if product.title == 'Rasurpflege Set Premium - Rasiermesser Holz' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/rasurpflege-set-premium-rasiermesser-holz?variant=42058694951166" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/messer-cafe.png?v=1639645736" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/rasurpflege-set-premium-rasiermesser-holz?variant=42058694918398"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/messer-schwarz.png?v=1639645736" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+
+    </div>
+    
+  </div>
+{% endif %}  
+
+{% if product.title == 'Rasurpflege Set' %}
+  <div class="lb-selector">
+    
+    <div class="lb-seifen">
+      <p>Wähle Deinen Duft:</p>
+      
+      <a href="https://stoertebekker.com/products/rasurpflege-set-standard?variant=43550069293321" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+        <span>Sandelholz</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/rasurpflege-set-standard?variant=43550069391625" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Kokos' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+      <span>Kokos</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/rasurpflege-set-standard?variant=43550069358857" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+      <span>Fresh Mint</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/rasurpflege-set-standard?variant=43550069326089" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_400x.png?v=1687685278" loading="lazy">
+      <span>Aloe Vera</span>
+      </a>
+
+      <a href="https://stoertebekker.com/products/rasurpflege-set-standard?variant=45357546864905" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Crusoe' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0166_a-variant_400x.png?v=1692081497" loading="lazy">
+      <span>Crusoe</span>
+      </a>
+
+        <a href="https://stoertebekker.com/products/rasurpflege-set-standard?variant=45357546930441" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Tortuga' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0150_a-variant_400x.png?v=1687628425" loading="lazy">
+        <span>Tortuga</span>
+      </a>
+      
+    </div>
+
+  </div>
+{% endif %}
+
+{% if product.title == 'Vatertag Bartpflege Essential Set' %}
+  <div class="lb-selector">
+    
+    <div class="lb-seifen">
+      <p>Wähle Deinen Duft:</p>
+      
+      <a href="https://stoertebekker.com/products/vatertag-bartpflege-essential-set?variant=45388984156425" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Crusoe' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0179_a_800x.webp?v=1702301017" loading="lazy">
+        <span>Crusoe</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/vatertag-bartpflege-essential-set?variant=45388984189193" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Tortuga' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/bartol-tortuga.webp?v=1702392062" loading="lazy">
+        <span>Tortuga</span>
+      </a>
+
+        <a href="https://stoertebekker.com/products/vatertag-bartpflege-essential-set?variant=45388984221961" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0199_a.webp?v=1712218926" loading="lazy">
+        <span>Sandelholz</span>
+      </a>
+
+    </div>
+  </div>
+{% endif %}
+  
+{% if product.title == 'Bartpflege Set' %}
+  <div class="lb-selector">
+    
+    <div class="lb-seifen">
+      <p>Wähle Deinen Duft:</p>
+      
+      <a href="https://stoertebekker.com/products/bartpflege-set?variant=44832383533321" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Crusoe' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0179_a_800x.webp?v=1702301017" loading="lazy">
+        <span>Crusoe</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/bartpflege-set?variant=44832383631625" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Tortuga' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/bartol-tortuga.webp?v=1702392062" loading="lazy">
+        <span>Tortuga</span>
+      </a>
+
+      <a href="https://stoertebekker.com/products/bartpflege-set?variant=45262279573769" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0199_a.webp?v=1712218926" loading="lazy">
+        <span>Sandelholz</span>
+      </a>
+    </div>
+  </div>
+{% endif %}
+
+{% if product.title == 'Anti Juckreiz Set' %}
+  <div class="lb-selector">
+    
+    <div class="lb-seifen">
+      <p>Wähle Deinen Duft:</p>
+      
+      <a href="https://stoertebekker.com/products/anti-juckreiz-set?variant=44832397000969" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Crusoe' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0179_a_800x.webp?v=1702301017" loading="lazy">
+        <span>Crusoe</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/anti-juckreiz-set?variant=44832397033737" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Tortuga' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/bartol-tortuga.webp?v=1702392062" loading="lazy">
+        <span>Tortuga</span>
+      </a>
+
+          <a href="https://stoertebekker.com/products/anti-juckreiz-set?variant=45262279344393" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}style="border: 1px solid black;"{%endif%}>
+        <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0199_a.webp?v=1712218926" loading="lazy">
+        <span>Sandelholz</span>
+      </a>
+
+    </div>
+  </div>
+{% endif %}  
+
+{% if product.title == 'Shaving Essential Set' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+
+      <a href="https://stoertebekker.com/products/shaving-essential-set?variant=44448908247305"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+      <a href="https://stoertebekker.com/products/shaving-essential-set?variant=44448908280073" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+  </div>
+{% endif %}  
+
+{% if product.title contains 'Shower & Shave Essential Set - Rasierhobel Rosé - Gold' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+
+      <a href="https://stoertebekker.com/products/shower-and-shave-essential-set-rasierhobel-rose-gold?variant=44985682067721"  rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+      <a href="https://stoertebekker.com/products/shower-and-shave-essential-set-rasierhobel-rose-gold?variant=44985682100489" rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+        
+  </div>
+{% endif %}  
+
+{% if product.title contains 'Shower & Shave Essential Set - Rasierhobel Schwarz' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+    <p>Wähle Dein Etui:</p>
+
+      <a href="https://stoertebekker.com/products/shower-and-shave-essential-set-rasierhobel-schwarz?variant=44985772900617"  rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+      <a href="https://stoertebekker.com/products/shower-and-shave-essential-set-rasierhobel-schwarz?variant=44985772933385" rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    
+    </div>
+        
+  </div>
+{% endif %}  
+
+{% if product.title contains 'Shower & Shave Essential Set - Rasierhobel Silber' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+
+      <a href="https://stoertebekker.com/products/shower-and-shave-essential-set-rasierhobel-silber?variant=44985788170505"  rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+      <a href="https://stoertebekker.com/products/shower-and-shave-essential-set-rasierhobel-silber?variant=44985788203273" rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+
+    </div>
+        
+  </div>
+{% endif %}  
+
+{% if product.title contains 'Rise ‘n’ Shine Shaving Set - Rasierhobel Silber' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+
+      <a href="https://stoertebekker.com/products/rise-n-shine-shaving-set-rasierhobel-silber?variant=45069639221513"  rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+      <a href="https://stoertebekker.com/products/rise-n-shine-shaving-set-rasierhobel-silber?variant=45069639254281" rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>   
+    
+    </div>
+        
+  </div>
+{% endif %}  
+
+{% if product.title contains 'Rise ‘n’ Shine Shaving Set - Rasierhobel Schwarz' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+
+      <a href="https://stoertebekker.com/products/rise-n-shine-shaving-set-rasierhobel-schwarz?variant=45069635617033"  rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+      <a href="https://stoertebekker.com/products/rise-n-shine-shaving-set-rasierhobel-schwarz?variant=45069635649801" rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+        
+    </div>
+        
+  </div>
+{% endif %}  
+  
+{% if product.title contains 'Rise ‘n’ Shine Shaving Set - Rasierhobel Rosé - Gold' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+
+      <a href="https://stoertebekker.com/products/rise-n-shine-shaving-set-rasierhobel-rose-gold?variant=45069615956233"  rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+      <a href="https://stoertebekker.com/products/rise-n-shine-shaving-set-rasierhobel-rose-gold?variant=45069615989001" rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+      
+      
+    
+    </div>
+        
+  </div>
+{% endif %}  
+
+{% if product.title == 'Gentleman Essential Set' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Deine Farbe:</p>
+
+      <a href="https://stoertebekker.com/products/gentleman-essential-set?variant=44448914637065"  rel="preload"{% if product.selected_or_first_available_variant.title contains 'Rasierhobel Schwarz - Rasierständer Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Rasierhobel Schwarz - Rasierständer Schwarz</span>
+      </a>
+      <a href="https://stoertebekker.com/products/gentleman-essential-set?variant=44448914669833" rel="preload"{% if product.selected_or_first_available_variant.title contains 'Rasierhobel Silber - Rasierständer Silber' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Rasierhobel Silber - Rasierständer Silber</span>
+      </a>
+    </div>
+        
+  </div>
+{% endif %}  
+
+{% if product.title == 'Gentleman Essential Set - Focus Deal' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Deine Farbe:</p>
+      
+      <a href="https://stoertebekker.com/products/gentleman-essential-set-focus-deal?variant=44785624645897" rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Rasierhobel Silber - Rasierständer Silber</span>
+      </a>	
+      
+      <a href="https://stoertebekker.com/products/gentleman-essential-set-focus-deal?variant=44785624613129"  rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Rasierhobel Schwarz - Rasierständer Schwarz</span>
+      </a>
+    </div>
+        
+  </div>
+{% endif %}  
+
+{% if product.title == 'Super Bowl - Offense Set' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+    <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/super-bowl-offense-set?variant=44093519921417" rel="preload"  {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/super-bowl-offense-set?variant=44093519888649" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+        
+  </div>
+{% endif %}  
+
+{% if product.title == 'Clean Shaving Set' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+
+      <a href="https://stoertebekker.com/products/clean-shaving-set?variant=44448913916169"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/clean-shaving-set?variant=44448913948937" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>   
+    </div>
+  </div>
+{% endif %}  
+
+{% if product.title == 'Anti Hautirritationen Set - Rasierhobel Silber' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/hautirritationen-bundle?variant=43724227412233"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/hautirritationen-bundle?variant=43724227445001" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+    
+  </div>
+{% endif %}  
+
+{% if product.title == 'Anti Hautirritationen Set - Rasierhobel Schwarz' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+
+      <a href="https://stoertebekker.com/products/hautirritationen-set-rh-schwarz?variant=43724225184009"  rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/hautirritationen-set-rh-schwarz?variant=43724225216777" rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+    
+  </div>
+{% endif %}  
+
+{% if product.title == 'Anti Hautirritationen Set Premium + Gratis Aftershave' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+
+      <a href="https://stoertebekker.com/products/anti-hautirritationen-set-premium-rasierhobel-schwarz-gratis-after-shave-balm?variant=44194025996553" rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+      
+      <a href="https://stoertebekker.com/products/anti-hautirritationen-set-premium-rasierhobel-schwarz-gratis-after-shave-balm?variant=44194026029321" rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>   
+    </div>
+    
+  </div>
+{% endif %}  
+
+{% if product.title == 'Anti Hautirritationen Set + Gratis Aftershave' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+
+      <a href="https://stoertebekker.com/products/anti-hautirritationen-set-rasierhobel-schwarz-gratis-after-shave-balm?variant=44193808580873"  rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+      <a href="https://stoertebekker.com/products/anti-hautirritationen-set-rasierhobel-schwarz-gratis-after-shave-balm?variant=44193808613641" rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>    
+    </div>
+    
+  </div>
+{% endif %}  
+
+{% if product.title == 'Bartschere - 4,5 Zoll / 11,4 cm' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/bartschere-kurz?variant=44373327610121"  rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0155_a-variant.png?v=1688467792" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/bartschere-kurz?variant=44193808613641" rel="preload"{% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0154_a-variant.png?v=1686906314" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+    
+  </div>
+{% endif %}  
+
+{% if product.title == 'Bartschere - 5,5 Zoll / 14 cm' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/bartschere-lang?variant=44373350187273"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0153_a-variant_d713d75d-5b0f-45cb-a445-48292c546ae4.png?v=1688467855" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/bartschere-lang?variant=44373350154505" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0152_a-variant_f49340e0-f39b-4227-b2df-c18f0bb073b0.png?v=1686906194" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+    
+  </div>
+{% endif %}  
+  
+{% if product.title == 'Rasierhobel Etui' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+      <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/rasierhobel-etui?variant=42117862064382"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/products/STOERTE_0060_e_600x.png?v=1647939725" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/rasierhobel-etui?variant=44373350154505" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/products/STOERTE_0059_d_600x.png?v=1647939700" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+    
+  </div>
+{% endif %}  
+  
+{% if product.title == 'Feather Rasierklingen' %}
+  <div class="lb-klingen">
+  
+    <a href="https://stoertebekker.com/products/feather-klingen-x200"  rel="preload" {% if product.selected_or_first_available_variant.title contains '200x' %} style="border: 1px solid black;	{%endif%}">	
+        <img style="width: 100%; display: block;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/200-feather.webp?v=1699425186" loading="lazy">
+    </a>
+  
+    <a href="https://stoertebekker.com/products/feather-klingen-x200?variant=44231180910857" rel="preload" {% if product.selected_or_first_available_variant.title contains 'x50' %} style="border: 1px solid black;	{%endif%}">	
+        <img style="width: 100%; display: block;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/50-feather.webp?v=1699425185" loading="lazy">
+    </a>
+      
+    <a href="https://stoertebekker.com/products/feather-klingen-x200?variant=44115427262729" rel="preload" {% if product.selected_or_first_available_variant.title contains '10x' %} style="border: 1px solid black;	{%endif%}">	
+        <img style="width: 100%; display: block;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/10-feather.webp?v=1699425185" loading="lazy">
+    </a>
+  </div>
+{% endif %}
+
+  <!--
+
+  {% if product.title == 'Rasierhobel Etui' %}
+  <div class="lb-selector">
+    
+    <div class="lb-etuis">
+    <p>Wähle Dein Etui:</p>
+    
+      <a href="https://stoertebekker.com/products/rasierhobel-etui?variant=42117862064382"  rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz' %}style="border: 1px solid black;"{%endif%}>
+          <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/products/STOERTE_0060_e_600x.png?v=1647939725" loading="lazy">
+        <span>Lederetui Schwarz</span>
+      </a>
+    
+      <a href="https://stoertebekker.com/products/rasierhobel-etui?variant=44373350154505" rel="preload" {% if product.selected_or_first_available_variant.title contains 'Lederetui Café' %} style="border: 1px solid black;	{%endif%}">	
+          <img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/products/STOERTE_0059_d_600x.png?v=1647939700" loading="lazy">
+        <span>Lederetui Café</span>
+      </a>
+    </div>
+    
+  </div>
+  {% endif %}  
+    
+  -->        
+  <!-- NEU UND UMGEBAUT -->
+  <!------- --------------->
+  <!------- --------------->
+  <!------- --------------->
+  <!------- --------------->
+  <!------- --------------->       
+{% endunless %}	
+	
+	
+	
+	
+	
+
+
+
+
+
+
+        
+	
+
+	
+	
+	
+	
+	
+	
+{% comment %}	
+<!-- ALT -->
+<!------- --------------->
+<!------- --------------->
+<!------- --------------->
+<!------- --------------->
+<!------- --------------->  
+
+
+
+{% if product.title contains 'Rasierset - Rasierhobel Silber' %}
+<div class="lb-selector">
+  
+  <div class="lb-etuis">
+	<p>Wähle Dein Etui:</p>
+	
+	{% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz -' %}
+  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=36297830629531" style="border: 1px solid black;">
+	{%else%}
+	  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=36297830629531">
+	{%endif%}
+	
+	<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+		<span>Lederetui Schwarz</span>
+  </a>
+	
+		{% if product.selected_or_first_available_variant.title contains 'Lederetui Café -' %}
+  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber" style="border: 1px solid black;">
+		{%else%}
+	<a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber">
+		{%endif%}
+	
+	
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+	  <span>Lederetui Café</span>
+  </a>
+	  </div>
+	
+
+{% if product.selected_or_first_available_variant.title contains 'Schwarz' %}
+  <div class="lb-seifen">
+	<p>Wähle Deinen Duft:</p>
+	
+	
+		{% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}
+  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=36297830629531" style="border: 1px solid black;">
+		{%else%}
+	<a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=36297830629531">
+			{%endif%}
+	  
+	<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+	  	  <span>Sandelholz</span>
+  </a>
+	
+		{% if product.selected_or_first_available_variant.title contains 'Kokos' %}
+  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=43612830990601" style="border: 1px solid black;">
+		{%else%}
+	  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=43612830990601">
+			{%endif%}
+		
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+			  <span>Kokos</span>
+  </a>
+	
+		{% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}
+	  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=43612828172553" style="border: 1px solid black;">
+			{%else%}
+		  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=43612828172553">
+				{%endif%}
+			
+	<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+				  <span>Fresh Mint</span>
+  </a>
+	
+		{% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}
+  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=43612827549961" style="border: 1px solid black;">
+		{%else%}
+	  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=43612827549961">
+			{%endif%}
+		
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_400x.png?v=1687685278" loading="lazy">
+			  <span>Aloe Vera</span>
+  </a>
+	  </div>
+  {% endif %}
+
+
+  
+{% if product.selected_or_first_available_variant.title contains 'Café' %}
+  <div class="lb-seifen">
+	<p>Wähle Deinen Duft:</p>
+	
+		{% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}
+  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=36297830596763" style="border: 1px solid black;">
+	{%else%}
+	<a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=36297830596763">
+	  {% endif %}
+	
+	<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+	  	  <span>Sandelholz</span>
+  </a>
+	
+		{% if product.selected_or_first_available_variant.title contains 'Kokos' %}
+  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=43612826468617" style="border: 1px solid black;">
+	{%else%}
+	<a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=43612826468617">
+	  {% endif %}
+	
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+	  	  <span>Kokos</span>
+  </a>
+	
+		{% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}
+	  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=43612824895753" style="border: 1px solid black;">
+		{%else%}
+		  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=43612824895753">
+		  {% endif %}
+		
+	<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+				  <span>Fresh Mint</span>
+  </a>
+	
+		{% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}
+  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=43612820832521" style="border: 1px solid black;">
+	{%else%}
+	<a href="https://stoertebekker.com/products/komplett-set-rasierhobel-silber?variant=43612820832521">
+	  {% endif %}
+	
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_400x.png?v=1687685278" loading="lazy">
+	  	  <span>Aloe Vera</span>
+  </a>
+	  </div>
+  {% endif %}
+  
+  
+  
+</div>
+{% endif %}
+
+
+
+
+
+
+	
+
+{% if product.title contains 'Rasierset - Rasierhobel Rosé - Gold' %}
+<div class="lb-selector">
+  
+  <div class="lb-etuis">
+	<p>Wähle Dein Etui:</p>
+	
+	{% if product.selected_or_first_available_variant.title contains 'Lederetui Schwarz -' %}
+  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=36297941418139" style="border: 1px solid black;">
+	{%else%}
+	  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=36297941418139">
+	{%endif%}
+	
+	<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+		<span>Lederetui Schwarz</span>
+  </a>
+	
+		{% if product.selected_or_first_available_variant.title contains 'Lederetui Café -' %}
+  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold" style="border: 1px solid black;">
+		{%else%}
+	<a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold">
+		{%endif%}
+	
+	
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+	  <span>Lederetui Café</span>
+  </a>
+	  </div>
+	
+	
+  
+{% if product.selected_or_first_available_variant.title contains 'Schwarz' %}
+  <div class="lb-seifen">
+	<p>Wähle Deinen Duft:</p>
+	
+	
+		{% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}
+  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=36297941418139" style="border: 1px solid black;">
+		{%else%}
+	<a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=36297941418139">
+			{%endif%}
+	  
+	<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+	  	  <span>Sandelholz</span>
+  </a>
+	
+		{% if product.selected_or_first_available_variant.title contains 'Kokos' %}
+  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=43612890759433" style="border: 1px solid black;">
+		{%else%}
+	  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=43612890759433">
+			{%endif%}
+		
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+			  <span>Kokos</span>
+  </a>
+	
+		{% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}
+	  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=43612890726665" style="border: 1px solid black;">
+			{%else%}
+		  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=43612890726665">
+				{%endif%}
+			
+	<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+				  <span>Fresh Mint</span>
+  </a>
+	
+		{% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}
+  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=43612890366217" style="border: 1px solid black;">
+		{%else%}
+	  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=43612890366217">
+			{%endif%}
+		
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_400x.png?v=1687685278" loading="lazy">
+			  <span>Aloe Vera</span>
+  </a>
+	  </div>
+  {% endif %}
+
+
+  
+{% if product.selected_or_first_available_variant.title contains 'Café' %}
+  <div class="lb-seifen">
+	<p>Wähle Deinen Duft:</p>
+	
+		{% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}
+  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=36297941385371" style="border: 1px solid black;">
+	{%else%}
+	<a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=36297941385371">
+	  {% endif %}
+	
+	<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+	  	  <span>Sandelholz</span>
+  </a>
+	
+		{% if product.selected_or_first_available_variant.title contains 'Kokos' %}
+  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=43612890038537" style="border: 1px solid black;">
+	{%else%}
+	<a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=43612890038537">
+	  {% endif %}
+	
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+	  	  <span>Kokos</span>
+  </a>
+	
+		{% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}
+	  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=43612889121033" style="border: 1px solid black;">
+		{%else%}
+		  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=43612889121033">
+		  {% endif %}
+		
+	<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+				  <span>Fresh Mint</span>
+  </a>
+	
+		{% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}
+  <a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=43612888563977" style="border: 1px solid black;">
+	{%else%}
+	<a href="https://stoertebekker.com/products/komplett-set-rasierhobel-rose-gold?variant=43612888563977">
+	  {% endif %}
+	
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_400x.png?v=1687685278" loading="lazy">
+	  	  <span>Aloe Vera</span>
+  </a>
+	  </div>
+
+  {% endif %}
+
+
+    
+  </div>
+{% endif %}
+
+
+
+
+
+   
+	
+{% if product.title contains 'Rasierständer Set' %}
+  <div class="lb-selector">
+  
+  <div class="lb-seifen">
+	<p>Wähle Deinen Duft:</p>
+	
+    {% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}
+        <a href="https://stoertebekker.com/products/rasierstander-set?variant=43571926761737" style="border: 1px solid black;">
+	{%else%}
+    	<a href="https://stoertebekker.com/products/rasierstander-set?variant=43571926761737">
+	{%endif%}
+	  
+    	<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+    	<span>Sandelholz</span>
+      </a>
+	
+	
+		{% if product.selected_or_first_available_variant.title contains 'Kokos' %}
+  <a href="https://stoertebekker.com/products/rasierstander-set?variant=43571926860041" style="border: 1px solid black;">
+		{%else%}
+	  <a href="https://stoertebekker.com/products/rasierstander-set?variant=43571926860041">
+			{%endif%}
+		
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+			  <span>Kokos</span>
+  </a>
+	
+	
+		{% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}
+	  <a href="https://stoertebekker.com/products/rasierstander-set?variant=43571926827273" style="border: 1px solid black;">
+			{%else%}
+		  <a href="https://stoertebekker.com/products/rasierstander-set?variant=43571926827273">
+				{%endif%}
+			
+	<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+				  <span>Fresh Mint</span>
+  </a>
+	
+		
+		{% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}
+  <a href="https://stoertebekker.com/products/rasierstander-set?variant=43571926794505" style="border: 1px solid black;">
+		{%else%}
+	  <a href="https://stoertebekker.com/products/rasierstander-set?variant=43571926794505">
+			{%endif%}
+		
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_400x.png?v=1687685278" loading="lazy">
+			  <span>Aloe Vera</span>
+  </a>
+	  </div>
+
+
+</div>
+
+{% endif %}
+
+
+
+					  
+		{% if product.title contains 'Shaving Essential Set' %}
+		  {% if variant.title contains 'Schwarz' %}
+			<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+		  {%else%}
+			<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+		  {% endif %}
+		{% endif %}
+
+			  
+		  
+		{% if product.title contains 'Clean Shaving Set' %}
+		  {% if variant.title contains 'Schwarz' %}
+			<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+		  {%else%}
+			<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+		  {% endif %}
+		{% endif %}
+			  
+
+			  {% if product.title == 'Rasierständer Set' %}
+		  {% if variant.title contains 'Sandelholz' %}
+			<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+		  {%endif%}
+		  {% if variant.title contains 'Kokos' %}
+			<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+		  {%endif%}
+			    {% if variant.title contains 'Mint' %}
+			<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+		  {%endif%}
+			    {% if variant.title contains 'Vera' %}
+			<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_400x.png?v=1684764649" loading="lazy">
+		  {%endif%}
+		{% endif %}
+  
+
+
+{% if product.title contains 'Anti Hautirritationen Set' %}
+			  {% unless product.title contains 'Rasierhobel' %}
+		  {% if variant.title contains 'Schwarz' %}
+		<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+		  {%else%}
+			<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+		  {% endif %}
+			  		  {% endunless %}
+		{% endif %}
+
+
+
+{% if product.title == 'Seifendose Set' %}
+<div class="lb-selector">
+  
+  
+  <div class="lb-seifen">
+	<p>Wähle Deinen Duft:</p>
+	
+	
+		{% if product.selected_or_first_available_variant.title contains 'Sandelholz' %}
+  <a href="https://stoertebekker.com/products/seifendose-set?variant=44503856120073" style="border: 1px solid black;">
+		{%else%}
+	<a href="https://stoertebekker.com/products/seifendose-set?variant=44503856120073">
+			{%endif%}
+	  
+	<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_400x.png?v=1687685236" loading="lazy">
+	  	  <span>Sandelholz</span>
+  </a>
+	
+	
+		{% if product.selected_or_first_available_variant.title contains 'Kokos' %}
+  <a href="https://stoertebekker.com/products/seifendose-set?variant=44503856152841" style="border: 1px solid black;">
+		{%else%}
+	  <a href="https://stoertebekker.com/products/seifendose-set?variant=44503856152841">
+			{%endif%}
+		
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_400x.png?v=1687685250" loading="lazy">
+			  <span>Kokos</span>
+  </a>
+	
+	
+		{% if product.selected_or_first_available_variant.title contains 'Fresh Mint' %}
+	  <a href="https://stoertebekker.com/products/seifendose-set?variant=44503856185609" style="border: 1px solid black;">
+			{%else%}
+		  <a href="https://stoertebekker.com/products/seifendose-set?variant=44503856185609">
+				{%endif%}
+			
+	<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_400x.png?v=1687685268" loading="lazy">
+				  <span>Fresh Mint</span>
+  </a>
+	
+		
+		{% if product.selected_or_first_available_variant.title contains 'Aloe Vera' %}
+  <a href="https://stoertebekker.com/products/seifendose-set?variant=44503856218377" style="border: 1px solid black;">
+		{%else%}
+	  <a href="https://stoertebekker.com/products/seifendose-set?variant=44503856218377">
+			{%endif%}
+		
+      <img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_400x.png?v=1687685278" loading="lazy">
+			  <span>Aloe Vera</span>
+  </a>
+	
+		
+		{% if product.selected_or_first_available_variant.title contains 'Tortuga' %}
+	  <a href="https://stoertebekker.com/products/seifendose-set?variant=44503856251145" style="border: 1px solid black;">
+			{%else%}
+		  <a href="https://stoertebekker.com/products/seifendose-set?variant=44503856251145">
+				{%endif%}
+			
+	<img style="width: 42px;" src="https://stoertebekker.com/cdn/shop/files/STOERTE_0150_a-variant_600x.png?v=1687628425" loading="lazy">
+				  <span>Tortuga</span>
+  </a>
+
+		
+	  </div>
+
+
+</div>
+
+		
+		<style>
+		
+		  .lb-gempages-variants {
+			display: none;
+		  }
+		  
+		</style>
+		
+		
+{% endif %}
+		
+		
+
+<div class="lb-setoo-box">
+{% if product.title == 'Rasurpflege Set' %} 
+	{% for variant in product.variants %}
+    	{% if variant == product.selected_or_first_available_variant %} 
+  			<a href="{{ variant.url }}" class="lb-setoo" style="border: 1px solid black;"><img src="{{ variant.image | img_url: '100x' }}">
+        		{% if variant.title contains 'Sandelholz' %}Sandelholz{% endif %}
+                {% if variant.title contains 'Aloe Vera' %}Aloe Vera{% endif %}
+                {% if variant.title contains 'Kokos' %}Kokos{% endif %}
+                {% if variant.title contains 'Fresh Mint' %}Fresh Mint{% endif %}		  
+            </a>
+		{% else %}	
+  			<a href="{{ variant.url }}" class="lb-setoo"><img src="{{ variant.image | img_url: '100x' }}">
+			    {% if variant.title contains 'Sandelholz' %}Sandelholz{% endif %}
+                {% if variant.title contains 'Aloe Vera' %}Aloe Vera{% endif %}
+                {% if variant.title contains 'Kokos' %}Kokos{% endif %}
+                {% if variant.title contains 'Fresh Mint' %}Fresh Mint{% endif %}  
+            </a>
+  		{%endif%}
+	{%endfor%}
+{%endif%}
+</div>
+
+<style>
+  
+  .lb-setoo-box {
+	display: none;
+    overflow: hidden;
+    margin-bottom:; 9px;
+  }
+  
+  .lb-setoo {
+    width: 22%;
+    font-size: 10px;
+    text-align: center;
+    color: grey;
+    margin-right: 3%;
+    border-radius: 9px;
+    overflow: hidden;
+    float: left;
+    border: 1px solid #f2f2f2;
+  }
+  
+</style>
+
+
+
+
+
+
+
+{% if product.title contains 'Feather Rasierklingen' %}
+
+
+<div class="lb-klingen">
+  
+  <a href="https://stoertebekker.com/products/feather-klingen-x200"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Artboard_Copy_189.png?v=1687687460"></a>
+  
+  <a href="https://stoertebekker.com/products/feather-klingen-x200?variant=44231180910857"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Artboard_Copy_190.png?v=1687687460"></a>
+  
+  <a href="https://stoertebekker.com/products/feather-klingen-x200?variant=44115427262729"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Artboard_Copy_191.png?v=1687687460"></a>
+  
+</div>
+
+
+
+<style>
+
+  .lb-klingen {
+	margin: 18px 0px;
+  }
+
+    .lb-klingen a {
+	width: 23%; 
+	margin: 0.5%;
+	border: 1px solid #f2f2f2;
+	display: inline-block;
+	border-radius: 6px;
+	text-align: center;
+	color: black;
+  }
+  
+</style>
+
+{% endif %}
+
+
+
+{% unless product.title contains 'T-Shirt' or product.title contains 'Hoodie' %}
+
+
+	  		{% if variant == product.selected_or_first_available_variant %} 
+    		<input type="radio" hidden="" name="id" value="{{ variant.id }}" checked="" style="border: 1px solid black!important;">
+    		{% else %}
+    		<input type="radio" hidden="" name="id" value="{{ variant.id }}">
+    		{% endif %}
+	  
+{% endunless %}
+
+
+
+
+
+{% for variant in product.variants %} 
+	{% assign current_variant = product.selected_or_first_available_variant %}
+{% endfor %}
+
+
+
+
+{% unless product.title contains 'T-Shirt' or product.title contains 'Hoodie' or product.title contains 'Rasierset - Rasierhobel Schwarz' or product.title contains 'Rasierset - Rasierhobel Silber' or product.title contains 'Rasierset - Rasierhobel Rosé - Gold' or product.title contains 'Rasierständer Set' or product.title contains 'Clean Shaving Set' or product.title contains 'Gentleman Essential Set' or product.title contains 'Shaving Essential Set' or product.title contains 'Rasurpflege Set' %}
+<style>
+.tshirt-nav {display: none;}
+.lb-product-page-form-variants {display: block!important; 	overflow: hidden;}
+
+  
+  .lb-product-page-form-checkbox {
+	display: inline-block;
+	border: 1px solid #f2f2f2;
+	width: 48%;
+	margin: 1%;
+	border-radius: 6px;
+	color: black; 
+	font-size: 12px;
+	text-align: center;
+	padding: 9px;
+	float: left;
+  }
+  
+  .lb-product-page-form-checkbox img {
+	display: block;
+	margin: 0px auto 9px auto;
+	
+  }
+
+</style>
+{% endunless %}
+
+
+{% if product.variants.size == 1 %}{%else%}
+  <div class="lb-product-page-form-variants">
+
+    {% unless product.title contains 'T-Shirt' or product.title contains 'Hoodie' or product.title contains 'Rasierset - Rasierhobel Schwarz' or product.title contains 'Rasierset - Rasierhobel Silber' or product.title contains 'Rasierset - Rasierhobel Rosé - Gold' or product.title contains 'Rasierständer Set' or product.title contains 'Rasierklingen' or product.title contains 'Klingen' or product.title contains 'Seifendose Set' or product.title contains 'Rasurpflege Set' or product.title contains 'Rasierständer Set' or product.title contains 'Clean Shaving Set' or product.title contains 'Gentleman Essential Set' or product.title contains 'Shaving Essential Set' %}
+  
+      {% for variant in product.variants %}
+	  
+    	  {% unless variant.title contains 'Ohne Seife' %} 	  
+
+			<a href="?variant={{ variant.id }}" class="lb-product-page-form-checkbox" {% if variant == product.selected_or_first_available_variant %} style="border: 1px solid black!important;"{% endif %}><span>
+
+			  
+			  
+		{% if product.title contains 'Rasierhobel' %}
+		  {% if variant.title contains 'Schwarz' %}
+			<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png?v=1639645070" loading="lazy">
+		  {%else%}
+			<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png?v=1639645070" loading="lazy">
+		  {% endif %}
+		{% endif %}
+			  
+	  
+			  
+
+			  		{% if product.title contains 'Rasiermesser' %}
+		  {% if variant.title contains 'Schwarz' %}
+			<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/messer-schwarz.png?v=1639645736" loading="lazy">
+		  {%else%}
+			<img style="width: 42px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/messer-cafe.png?v=1639645736" loading="lazy">
+		  {% endif %}
+		{% endif %}
+
+			   
+		{% if product.title contains 'Rasierhobel' or product.title contains 'Rasiermesser'  or product.title == 'Rasierständer Set' or product.title contains 'Anti Hautirritationen Set' or product.title contains 'Shaving Essential Set' or product.title contains 'Gentleman Essential Set' or product.title contains 'Clean Shaving Set' or product.title contains 'Anti Hautirritationen' %}{%else%}
+		  <img style="width: 42px;" src="{{ variant.image | img_url: '50x' }}" loading="lazy"> 
+		{% endif %}
+
+  {{ variant.title }}
+			  
+     </span>
+  </a>
+
+
+  
+	  {% endunless %}
+	  
+	  
+	  
+	  
+{% endfor %}
+
+{% endunless %}
+</div>
+{%endif%}
+
+
+
+
+<!-- ALT -->
+<!------- --------------->
+<!------- --------------->
+<!------- --------------->
+<!------- --------------->
+<!------- --------------->   
+{% endcomment %}		
+	
+	
+	
+
+
+ 

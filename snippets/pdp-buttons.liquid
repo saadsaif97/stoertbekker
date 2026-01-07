@@ -1,0 +1,48 @@
+    
+{%- if product.tags contains 'vorbestellung' or product.selected_or_first_available_variant.metafields.custom.varianten_vorbestellung == true -%}
+
+  {%- assign button_label = 'JETZT VORBESTELLEN' -%}
+
+  {% else %}
+
+{% if canonical_url contains '.com/en' %}
+{%- assign button_label = 'ADD TO CART' -%}
+  {%- else -%}
+{%- assign button_label = 'IN DEN WARENKORB' -%}
+{%- endif -%}
+
+
+{%- endif -%}
+<button class="lb-new-send lb-cart-drawer-opener pdpAtcBtn{% unless product.selected_or_first_available_variant.available %} d-none{% endunless %}" type="submit">{{ button_label }}</button>
+
+<button id="EmailBack" class="lb-new-send ab-btn klaviyo-bis-trigger pdpBisBtn{% if product.selected_or_first_available_variant.available %} d-none{% endif %}" type="button">Informiere mich per E-Mail</button>
+  
+<style>
+  html > body .ab-btn.d-none {
+    display: none !important;
+  }
+  .lb-new-send {
+    display: block;
+    width: 100%;
+    background-color: #232323;
+    border-radius: 6px;
+    color: white;
+    line-height: 52px;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-bottom: 9px;
+    font-family: "BebasNeue-Regular";
+    font-weight: 400;
+    font-size: 20px;
+  }
+  .old {
+    display: none !important;
+  }
+</style>
+
+<script>
+
+</script>

@@ -1,0 +1,192 @@
+<div class="lb-home-badges">
+  <div class="lb-home-badges-holder">
+    {% for block in section.blocks %}
+      <a href="{{ block.settings.url }}" {% if block.settings.image != blank %}style="background-image: url({{ block.settings.image | img_url: '400x' }});"{% endif %}>
+        <p>{{ block.settings.heading }}</p>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+ 
+<style>
+
+  {% assign lb-home-badge-font = section.settings.badgefontfamily %}
+  {{ lb-home-badge-font | font_face }}
+
+  {% if section.settings.badgecustomfontfamily != blank %}
+  @font-face {
+    font-family: "Lb-home-badge-customfont";
+    src: url("{{ section.settings.badgecustomfontfamily }}") format("woff2"),
+         url("{{ section.settings.badgecustomfontfamily }}") format("woff");
+  }
+  {% endif %}
+  
+  .lb-home-badges {
+    padding: 18px;
+  }
+
+  .lb-home-badges-holder {
+    max-width: 960px;
+    margin: auto;
+      display: flex;
+  }
+
+  .lb-home-badges a {
+    width: 100%;
+    max-width: 33.333%;
+    padding: 0px;
+    height: 112px!important;
+    background-color: {{ section.settings.backgroundcolor }};
+    border-radius: {{ section.settings.borderradius }}px;
+    overflow: hidden;
+    margin-right: 9px;
+    color: {{ section.settings.fontcolor }};
+    display: block;
+    text-decoration: none;
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+    {% if section.settings.badgecustomfontfamily == blank %}
+    font-family: {{ lb-home-badge-font.family }}, {{ lb-home-badge-font.fallback_families }} !important;
+    {% else %}
+    font-family: 'Lb-home-badge-customfont'!important;
+    {% endif %}
+  }
+
+ .lb-home-badges a:last-child {
+      margin-right: 0px!important;
+}
+
+  .lb-home-badges a p {
+    font-size: 20px;
+    line-height: 20px;
+    position: absolute;
+    margin: 0px;
+    left: 18px;
+    top: 50%;
+    max-width: 60%;
+    transform: translate(0,-50%);
+  }
+  
+  @media only screen and (max-width: 680px) {
+  .lb-home-badges-holder {
+      display: block;
+    }
+  
+    .lb-home-badges a {
+      margin-bottom: 9px;
+      max-width: 100%;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": {
+    "en": "Lb Home Badges",
+    "de": "Lb Home Badges"
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": {
+        "en": "Home Badges",
+        "de": "Home Badges"
+      }
+    },
+    {
+      "type": "color",
+      "id": "fontcolor",
+      "label": {
+        "en": "Font Color",
+        "de": "Schriftfarbe"
+      },
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "backgroundcolor",
+      "label": {
+        "en": "Hintergrundfarbe",
+        "de": "Hintergrundfarbe"
+      },
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "borderradius",
+      "label": {
+        "en": "Badge Abrundung",
+        "de": "Badge Abrundung"
+      },
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "font_picker",
+      "id": "badgefontfamily",
+      "label": {
+        "en": "Font Family",
+        "de": "Schriftart"
+      },
+      "default": "helvetica_n4"
+    },
+    {
+      "type": "text",
+      "id": "badgecustomfontfamily",
+      "label": {
+        "en": "Custom Font Family",
+        "de": "Eigene Schriftart"
+      },
+      "info": {
+        "en": "Upload your font in Shopify content and paste the file URL here.",
+        "de": "Lade Deine Schriftart in den Shopify-Inhalten hoch und füge hier die Datei-URL ein."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Block",
+      "type": "block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Anzeigebild"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Linkname",
+          "label": "Linkname",
+          "info": "Schreibe ein <br> für einen Zeilenumbruch."
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lb Home Badges",
+      "blocks": [
+        {
+          "type": "block"
+        },
+        {
+          "type": "block"
+        },
+        {
+          "type": "block"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

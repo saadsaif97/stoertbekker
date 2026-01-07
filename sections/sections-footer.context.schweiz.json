@@ -1,0 +1,27 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "sections-footer.json",
+  "context": {
+    "market": "schweiz"
+  },
+  "sections": {
+    "lb_section_footer_WRtAET": {
+      "settings": {},
+      "blocks": {
+        "footer_column_html_kFdfhe": {
+          "settings": {
+            "column_html": "<img src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/swiss-footer.png?v=1724056480\" loading=\"lazy\" style=\"width: 100%; display: block;\">\n\n<h3>Zahlung &amp; Versand</h3>\n<img src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Artboard_Copy_9_bb727f3c-ca15-49d5-a8b0-513c008c4076.png?v=1644592446\" loading=\"lazy\" style=\"display: block; width: 100%; margin-top: 18px;\">\n<br>\n<h3>Social Media</h3>\n<a href=\"https://www.instagram.com/stoertebekker_official/\" target=\"blank\" style=\"display: inline-block; max-width: 32px; margin-top: 0x;\"><img style=\"width: 100%;\" src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/instagram.png?v=1659168139\" loading=\"lazy\"></a>\n\n<a href=\"https://www.tiktok.com/@stoertebekker\" target=\"blank\" style=\"display: inline-block; max-width: 32px; margin-top: 0x;\"><img style=\"width: 100%;\" src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/tiktok.png?v=1659168139\" loading=\"lazy\"></a>\n\n<a href=\"https://www.youtube.com/@stoertebekker\" target=\"blank\" style=\"display: inline-block; max-width: 32px; margin-top: 0x;\"><img style=\"width: 100%;\" src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/social-yt_copy.png?v=1715668577\" loading=\"lazy\"></a>\n\n<a href=\"https://open.spotify.com/show/705NSkRf4VHOgm15rgQIef\" target=\"blank\" style=\"display: inline-block; max-width: 32px; margin-top: 0x;\"><img style=\"width: 100%;\" src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/social-spotify_copy_2.png?v=1715668577\" loading=\"lazy\"></a>"
+          }
+        }
+      }
+    }
+  }
+}

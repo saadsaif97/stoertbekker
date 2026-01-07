@@ -1,0 +1,576 @@
+
+
+<a href="https://stoertebekker.com/collections/gutscheine" class="new-banner">
+
+  <div>
+   Du brauchst noch ein Last-Minute Geschenk? Sichere Dir jetzt schnell einen  <u>Störtebekker Geschenkgutschein!</u>
+</div>
+
+</a>
+
+<style>
+
+  .new-banner {
+  position: fixed;
+  z-index: 999999;
+  background: #284a39;
+  color: white;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px;
+   line-height: 16px;
+   font-size: 13px;
+   }
+
+     .new-banner u {
+ text-decoration: underline;
+margin-left: 4px;
+   }
+
+
+@media (max-width: 600px) {
+  .new-banner {
+  padding: 5px;
+   }
+}
+
+</style>
+
+
+
+
+
+
+{%comment %}
+{% assign current_date_time = 'now' | date: "%Y.%m.%d-%H:%M:%S" %}
+{% assign set_full_time = section.settings.plannable-date-year-start | append: '.' | append: section.settings.plannable-date-month-start | append: '.' | append: section.settings.plannable-date-day-start | append: '-' | append: section.settings.plannable-date-time-start %}
+{% assign endDate = section.settings.plannable-date-year | append: '.' | append: section.settings.plannable-date-month | append: '.' | append: section.settings.plannable-date-day | append: '-' | append: section.settings.plannable-date-time %}
+
+{% comment %} 
+{% if current_date_time >= set_full_time and current_date_time <= endDate %}
+{% endcomment %}
+<!-- current_date_time >= set_full_time or -->
+{% if current_date_time >= set_full_time or customer.email contains '@lionsbranding.com' or customer.email contains '@stoertebekker.com' or customer.email contains 'helpingbrands.de' %}
+
+<script>
+  // Gib das gewünschte Enddatum ein (Jahr, Monat, Tag, Stunde, Minute, Sekunde)
+  const endDate = new Date("{{ section.settings.plannable-date-year }}-{{ section.settings.plannable-date-month }}-{{ section.settings.plannable-date-day }}T{{ section.settings.plannable-date-time }}").getTime();
+
+  const countdown = setInterval(function () {
+    const currentDate = new Date().getTime();
+    const timeLeft = endDate - currentDate;
+
+    if (timeLeft <= 0) {
+      clearInterval(countdown);
+      document.getElementById("countdown").innerHTML = "Countdown abgelaufen!";
+    } else {
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = String(days).padStart(2, '0');
+      document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+
+      // Überprüfe, ob es keine Tage mehr gibt und füge die Klasse "hiddendiv" hinzu
+      if (days <= 0) {
+        document.getElementById("day-item").classList.add("hiddendiv");
+      }
+      if (hours <= 0) {
+        document.getElementById("hours-item").classList.add("hiddendiv");
+      }
+      if (minutes <= 0) {
+        document.getElementById("minutes-item").classList.add("hiddendiv");
+      }
+    
+    }
+  }, 1000);
+</script>
+{% if section.settings.fixed-countdownbar == 'design2' %}
+<div class="lb-header-countdown-spacer"></div>
+{% endif %}
+<a {% if section.settings.lb-countdown-linked == true %}href="{{ section.settings.lb-countdown-link-url }}"{% endif %} class="lb-header-countdown-section">
+  <div class="lb-header-countdown-text">
+    {{ section.settings.lb-countdown-text }}
+    {% if section.settings.cta == true %}<div class="lb-header-countdown-button">{{ section.settings.lb-countdown-button-text }}</div>{% endif %}
+  </div>
+  <div id="lb-header-countdown" class="lb-header-countdown-holder-inline">
+    <div class="lb-header-countdown-holder-item" id="day-item">
+      <span id="days" class="lb-header-countdown-holder-item-number">00</span><span class="lb-header-countdown-holder-item-text">Tage</span>
+    </div>:
+    <div class="lb-header-countdown-holder-item" id="hour-item">
+      <span id="hours" class="lb-header-countdown-holder-item-number">00</span><span class="lb-header-countdown-holder-item-text">Stunden</span>
+    </div>:
+    <div class="lb-header-countdown-holder-item" id="minute-item">
+      <span id="minutes" class="lb-header-countdown-holder-item-number">00</span><span class="lb-header-countdown-holder-item-text">Minuten</span> 
+    </div>:
+    <div class="lb-header-countdown-holder-item">
+      <span id="seconds" class="lb-header-countdown-holder-item-number">00</span><span class="lb-header-countdown-holder-item-text">Sekunden</span>
+    </div>
+  </div>
+</a>
+{% endif %}
+
+{% endcomment %}
+
+
+<style>
+{% assign primary-font = section.settings.lb-primary-font %}
+{{ section.settings.primary-font | font_face }}
+{% if section.settings.lb-custom-font != blank %}
+@font-face {
+font-family: "Customfont";
+src: url("{{ section.settings.lb-custom-font }}") format("woff2"),
+     url("{{ section.settings.lb-custom-font }}") format("woff");
+}
+{% endif %}
+.lb-header-countdown-spacer {
+  height: {{ section.settings.countdownbar-height }}px;
+  display: block!important;
+}
+.lb-header-countdown-section {
+  overflow: hidden;
+  display: inline-flex;
+  padding: 0px 9px;
+
+/*
+  background-color: #0b150a;
+  background: linear-gradient(to right, #0b150a 0%, #545524 100%);
+*/
+
+  background: {{ section.settings.lb-countdown-background-color }};
+
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: {{ section.settings.lb-countdown-text-color }};
+  {% if section.settings.fixed-countdownbar == 'design1' or section.settings.fixed-countdownbar == 'design2' %}
+  position: fixed;
+  {% endif %}
+  height: {{ section.settings.countdownbar-height }}px;
+  top: 0px;
+  width: 100%;
+  z-index: 9991;
+  {% if section.settings.lb-custom-font == blank %}
+  font-family: {{ section.settings.lb-primary-font.family }}, {{ lb-primary-font.fallback_families }} !important;
+  {% else %}
+  font-family: 'Customfont'!important;
+  {% endif %}
+}
+.lb-header-countdown-text {
+  font-size: 16px;
+  line-height: 16px;
+  color: {{ section.settings.lb-countdown-text-color }};
+  margin-bottom: -2px;
+}
+.lb-header-countdown-holder-inline {
+  display: inline-flex;
+  font-weight: bold;
+  justify-content: center;
+  margin: 0px 0px 0px 4px;
+}
+.lb-header-countdown-holder-item {
+  display: inline-block;
+  background: {{ section.settings.lb-countdown-time-background-color }};
+  padding: 7px 11px 7px 11px;
+  border-radius: 3px;
+  position: relative;
+  margin: 0px 2px 0px 2px;
+}
+.lb-header-countdown-holder-item-number {
+  font-size: 16px;
+  line-height: 16px;
+  margin: 0px;
+  color: {{ section.settings.lb-countdown-time-text-color }}!important;
+  position: relative;
+  top: -4px;
+}
+.lb-header-countdown-holder-item-text {
+  font-size: 10px;
+  line-height: 10px;
+  letter-spacing: 0px;
+  margin: 0px;
+  position: absolute;
+  bottom: 3px;
+  width: 100%;
+  text-align: center;
+  color: {{ section.settings.lb-countdown-time-text-color }}!important;
+  opacity: 0.8;
+  z-index: 9;
+  font-weight: normal!important;
+  left: 0px;
+}
+.lb-header-countdown-button {
+  padding: 3px 9px;
+  border-radius: 6px;
+  background: {{ section.settings.lb-countdown-button-background-color }};
+  color: {{ section.settings.lb-countdown-button-text-color }};
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: bold;
+  display: inline-block;
+  margin: 0px 0px 0px 4px;
+  position: relative;
+  top: -2px;
+}
+@media screen and (max-width: 600px) {
+.lb-header-countdown-holder-item {
+  padding: 2px 9px 5px 9px;
+}  
+.lb-header-countdown-text {
+  font-size: 18px;
+  line-height: 18px;
+  text-align: center;
+  width: 50%;
+}
+.lb-header-countdown-holder-item-number {
+  font-size: 14px;
+  line-height: 14px;
+  top: -2px;
+}
+.lb-header-countdown-holder-item-text {
+  font-size: 7px;
+  line-height: 7px;
+}
+.lb-header-countdown-button {
+  font-size: 12px;
+  line-height: 12px;
+}
+}
+</style>
+
+{% schema %}
+{
+  "name": "Lb Header Countdown",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Countdown Settings"
+    },
+    {
+      "type": "select",
+      "id": "fixed-countdownbar",
+      "label": "Countdown Bar Darstellung",
+      "options": [
+        {"value": "design1", "label": "Fixiert und überpallend"},
+        {"value": "design2", "label": "Fixiert und drückt runter"},
+        {"value": "design3", "label": "Drüber anzeigen"}
+      ],
+      "default": "design1"
+    },  
+    {
+      "type": "range",
+      "id": "countdownbar-height",
+      "label": "Countdown Bar Höhe",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 50
+    },
+    {
+      "type": "select",
+      "id": "plannable-date-day-start",
+      "label": "Start Tag",
+      "options": [
+        {"value": "01", "label": "1"},
+        {"value": "02", "label": "2"},
+        {"value": "03", "label": "3"},
+        {"value": "04", "label": "4"},
+        {"value": "05", "label": "5"},
+        {"value": "06", "label": "6"},
+        {"value": "07", "label": "7"},
+        {"value": "08", "label": "8"},
+        {"value": "09", "label": "9"},
+        {"value": "10", "label": "10"},
+        {"value": "11", "label": "11"},
+        {"value": "12", "label": "12"},
+        {"value": "13", "label": "13"},
+        {"value": "14", "label": "14"},
+        {"value": "15", "label": "15"},
+        {"value": "16", "label": "16"},
+        {"value": "17", "label": "17"},
+        {"value": "18", "label": "18"},
+        {"value": "19", "label": "19"},
+        {"value": "20", "label": "20"},
+        {"value": "21", "label": "21"},
+        {"value": "22", "label": "22"},
+        {"value": "23", "label": "23"},
+        {"value": "24", "label": "24"},
+        {"value": "25", "label": "25"},
+        {"value": "26", "label": "26"},
+        {"value": "27", "label": "27"},
+        {"value": "28", "label": "28"},
+        {"value": "29", "label": "29"},
+        {"value": "30", "label": "30"},
+        {"value": "31", "label": "31"}
+      ],
+      "default": "01"
+    },  
+    {
+      "type": "select",
+      "id": "plannable-date-month-start",
+      "label": "Start Monat",
+      "options": [
+        {"value": "01", "label": "Januar"},
+        {"value": "02", "label": "Februar"},
+        {"value": "03", "label": "März"},
+        {"value": "04", "label": "April"},
+        {"value": "05", "label": "Mai"},
+        {"value": "06", "label": "Juni"},
+        {"value": "07", "label": "Juli"},
+        {"value": "08", "label": "August"},
+        {"value": "09", "label": "September"},
+        {"value": "10", "label": "Oktober"},
+        {"value": "11", "label": "November"},
+        {"value": "12", "label": "Dezember"}
+      ],
+      "default": "01"
+    },  
+    {
+      "type": "select",
+      "id": "plannable-date-year-start",
+      "label": "Start Jahr",
+      "options": [
+        {"value": "2024", "label": "2024"},
+        {"value": "2025", "label": "2025"},
+        {"value": "2026", "label": "2026"},
+        {"value": "2027", "label": "2027"},
+        {"value": "2028", "label": "2028"},
+        {"value": "2029", "label": "2029"},
+        {"value": "2030", "label": "2030"}
+      ],
+      "default": "2024"
+    },  
+    {
+      "type": "select",
+      "id": "plannable-date-time-start",
+      "label": "Start Uhrzeit",
+      "options": [
+        {"value": "01:00:00", "label": "1 Uhr"},
+        {"value": "02:00:00", "label": "2 Uhr"},
+        {"value": "03:00:00", "label": "3 Uhr"},
+        {"value": "04:00:00", "label": "4 Uhr"},
+        {"value": "05:00:00", "label": "5 Uhr"},
+        {"value": "06:00:00", "label": "6 Uhr"},
+        {"value": "07:00:00", "label": "7 Uhr"},
+        {"value": "08:00:00", "label": "8 Uhr"},
+        {"value": "09:00:00", "label": "9 Uhr"},
+        {"value": "10:00:00", "label": "10 Uhr"},
+        {"value": "11:00:00", "label": "11 Uhr"},
+        {"value": "12:00:00", "label": "12 Uhr (Mittag)"},
+        {"value": "13:00:00", "label": "13 Uhr"},
+        {"value": "14:00:00", "label": "14 Uhr"},
+        {"value": "15:00:00", "label": "15 Uhr"},
+        {"value": "16:00:00", "label": "16 Uhr"},
+        {"value": "17:00:00", "label": "17 Uhr"},
+        {"value": "18:00:00", "label": "18 Uhr"},
+        {"value": "19:00:00", "label": "19 Uhr"},
+        {"value": "20:00:00", "label": "20 Uhr"},
+        {"value": "21:00:00", "label": "21 Uhr"},
+        {"value": "22:00:00", "label": "22 Uhr"},
+        {"value": "23:00:00", "label": "23 Uhr"},
+        {"value": "23:59:59", "label": "Mitternacht (24 Uhr)"}
+      ],
+      "default": "23:59:59"
+    },
+    {
+      "type": "select",
+      "id": "plannable-date-day",
+      "label": "End Tag",
+      "options": [
+        {"value": "01", "label": "1"},
+        {"value": "02", "label": "2"},
+        {"value": "03", "label": "3"},
+        {"value": "04", "label": "4"},
+        {"value": "05", "label": "5"},
+        {"value": "06", "label": "6"},
+        {"value": "07", "label": "7"},
+        {"value": "08", "label": "8"},
+        {"value": "09", "label": "9"},
+        {"value": "10", "label": "10"},
+        {"value": "11", "label": "11"},
+        {"value": "12", "label": "12"},
+        {"value": "13", "label": "13"},
+        {"value": "14", "label": "14"},
+        {"value": "15", "label": "15"},
+        {"value": "16", "label": "16"},
+        {"value": "17", "label": "17"},
+        {"value": "18", "label": "18"},
+        {"value": "19", "label": "19"},
+        {"value": "20", "label": "20"},
+        {"value": "21", "label": "21"},
+        {"value": "22", "label": "22"},
+        {"value": "23", "label": "23"},
+        {"value": "24", "label": "24"},
+        {"value": "25", "label": "25"},
+        {"value": "26", "label": "26"},
+        {"value": "27", "label": "27"},
+        {"value": "28", "label": "28"},
+        {"value": "29", "label": "29"},
+        {"value": "30", "label": "30"},
+        {"value": "31", "label": "31"}
+      ],
+      "default": "01"
+    },  
+    {
+      "type": "select",
+      "id": "plannable-date-month",
+      "label": "End Monat",
+      "options": [
+        {"value": "01", "label": "Januar"},
+        {"value": "02", "label": "Februar"},
+        {"value": "03", "label": "März"},
+        {"value": "04", "label": "April"},
+        {"value": "05", "label": "Mai"},
+        {"value": "06", "label": "Juni"},
+        {"value": "07", "label": "Juli"},
+        {"value": "08", "label": "August"},
+        {"value": "09", "label": "September"},
+        {"value": "10", "label": "Oktober"},
+        {"value": "11", "label": "November"},
+        {"value": "12", "label": "Dezember"}
+      ],
+      "default": "01"
+    },  
+    {
+      "type": "select",
+      "id": "plannable-date-year",
+      "label": "End Jahr",
+      "options": [
+        {"value": "2024", "label": "2024"},
+        {"value": "2025", "label": "2025"},
+        {"value": "2026", "label": "2026"},
+        {"value": "2027", "label": "2027"},
+        {"value": "2028", "label": "2028"},
+        {"value": "2029", "label": "2029"},
+        {"value": "2030", "label": "2030"}
+      ],
+      "default": "2024"
+    },  
+    {
+      "type": "select",
+      "id": "plannable-date-time",
+      "label": "End Uhrzeit",
+      "options": [
+        {"value": "01:00:00", "label": "1 Uhr"},
+        {"value": "02:00:00", "label": "2 Uhr"},
+        {"value": "03:00:00", "label": "3 Uhr"},
+        {"value": "04:00:00", "label": "4 Uhr"},
+        {"value": "05:00:00", "label": "5 Uhr"},
+        {"value": "06:00:00", "label": "6 Uhr"},
+        {"value": "07:00:00", "label": "7 Uhr"},
+        {"value": "08:00:00", "label": "8 Uhr"},
+        {"value": "09:00:00", "label": "9 Uhr"},
+        {"value": "10:00:00", "label": "10 Uhr"},
+        {"value": "11:00:00", "label": "11 Uhr"},
+        {"value": "12:00:00", "label": "12 Uhr (Mittag)"},
+        {"value": "13:00:00", "label": "13 Uhr"},
+        {"value": "14:00:00", "label": "14 Uhr"},
+        {"value": "15:00:00", "label": "15 Uhr"},
+        {"value": "16:00:00", "label": "16 Uhr"},
+        {"value": "17:00:00", "label": "17 Uhr"},
+        {"value": "18:00:00", "label": "18 Uhr"},
+        {"value": "19:00:00", "label": "19 Uhr"},
+        {"value": "20:00:00", "label": "20 Uhr"},
+        {"value": "21:00:00", "label": "21 Uhr"},
+        {"value": "22:00:00", "label": "22 Uhr"},
+        {"value": "23:00:00", "label": "23 Uhr"},
+        {"value": "23:59:59", "label": "Mitternacht (24 Uhr)"}
+      ],
+      "default": "23:59:59"
+    },
+    {
+      "type": "color",
+      "id": "lb-countdown-background-color",
+      "label": "Hintergrundfarbe",
+      "default": "#f2f2f2"
+    },
+    {
+      "type": "font_picker",
+      "id": "lb-primary-font",
+      "default": "sans-serif",
+      "label": "Schriftart"
+    },
+    {
+      "type": "text",
+      "id": "lb-custom-font",
+      "default": "sans-serif",
+      "label": "Schriftart"
+    },
+    {
+      "type": "color",
+      "id": "lb-countdown-text-color",
+      "label": "Textfarbe",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "lb-countdown-time-background-color",
+      "label": "Time Hintergrundfarbe",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "lb-countdown-time-text-color",
+      "label": "Time Textfarbe",
+      "default": "#000000"
+    },
+    {
+      "type": "text",
+      "id": "lb-countdown-text",
+      "label": "Text"
+    },
+    {
+      "type": "checkbox",
+      "id": "lb-countdown-linked",
+      "default": false,
+      "label": "Countdown verlinken"
+    },
+    {
+      "type": "text",
+      "id": "lb-countdown-link-url",
+      "label": "Countdown Link URL"
+    },
+    {
+      "type": "header",
+      "content": ".",
+      "info": "."
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "cta",
+      "label": "Call to action anzeigen"
+    },
+    {
+      "type": "text",
+      "id": "lb-countdown-button-text",
+      "label": "Button Text"
+    },
+    {
+      "type": "color",
+      "id": "lb-countdown-button-background-color",
+      "label": "Button Hintergrundfarbe"
+    },
+    {
+      "type": "color",
+      "id": "lb-countdown-button-text-color",
+      "label": "Button Textfarbe"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lb Header Countdown"
+    }
+  ]
+}
+{% endschema %}

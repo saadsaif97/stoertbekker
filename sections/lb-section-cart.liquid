@@ -1,0 +1,1078 @@
+<div class="lb-cart-drawer-box">
+  <div class="lb-cart-drawer-box-header">
+    <div class="lb-cart-drawer-box-header-carticon">
+      {% include 'lb-icon-cart.liquid' -%}
+      {%- if cart.item_count > 0 -%}
+        <span>{{ cart.item_count }}</span>
+      {%- endif %}
+    </div>
+    <div class="lb-cart-drawer-box-header-title">{% if canonical_url contains '.com/en' %}Your shopping cart{% else %}Dein Warenkorb{% endif %}</div>
+    <div class="lb-cart-drawer-box-header-closer lb-cart-drawer-closer-upper">{% include 'lb-icon-close.liquid' %}</div>
+  </div>
+
+  <div class="lb-cart-drawer-box-loader"></div>
+
+  
+  <!-- ---------- Lb Cart Announcement bar ---------- -->
+    <div class="lb-cart-drawer-preinfo-holder">
+      {% if cart.item_count > 0 %}
+          <div class="lb-cart-drawer-preinfo" style="background: {{section.settings.announcementbarcolor}}; color: {{ section.settings.announcementbarfontcolor }};">
+            {{ section.settings.announcementbartext }}       
+          </div>
+      {% endif %}
+    </div> 
+
+  
+
+
+  <!-- ---------- Lb Cart Items ---------- -->
+  <div class="lb-cart-drawer-item-box"> 
+
+
+
+
+
+
+
+  
+
+
+
+    <!-- Gutscheine raus rechnen aus shipping bar -->
+    {% for item in cart.items %}
+      {% if item.product.title contains 'Geschenkgutschein' %}
+        {% assign geschenk_summe = geschenk_summe | plus: item.final_line_price %}
+      {% endif %}
+    {% endfor %}
+    <!-- Gutscheine raus rechnen aus shipping bar -->
+
+
+    {% assign prico = cart.total_price | minus: geschenk_summe %}
+    {% assign bisgeschenk = 11000 %}
+    {% assign restgeschenk = bisgeschenk | minus: prico %}
+
+    {% assign biszweitgeschenk = 11000 %}
+    {% assign retszweitgeschenk = biszweitgeschenk | minus: prico %}
+
+  {% if localization.country.iso_code == 'CH' %}
+  {% assign shippinglimit = 7900 %}
+    {% else %}
+      {% assign shippinglimit = section.settings.shippinglimit %}
+  {% endif %}
+ 
+  {% assign shippingprice = shippinglimit | minus: prico %}
+
+  {% assign shippingprice_one = shippinglimit | divided_by: 100 %}
+  {% assign shippingprice_9 = shippingprice_one | times: 90 %}
+  {% assign shippingprice_8 = shippingprice_one | times: 80 %}
+  {% assign shippingprice_7 = shippingprice_one | times: 70 %}
+  {% assign shippingprice_6 = shippingprice_one | times: 60 %}
+  {% assign shippingprice_5 = shippingprice_one | times: 50 %}
+  {% assign shippingprice_4 = shippingprice_one | times: 40 %}
+  {% assign shippingprice_3 = shippingprice_one | times: 30 %}
+  {% assign shippingprice_2 = shippingprice_one | times: 20 %}
+  {% assign shippingprice_1 = shippingprice_one | times: 10 %}
+
+
+{% if cart.item_count > 0 %}
+  <style> .lb-new-shipping {display: none;}</style>
+
+  <div class="lb-new-shipping" style="padding: 4px 18px;">
+    <div class="lb-cart-freeshipping-bar-holder">
+      <div class="lb-cart-freeshipping-bar">
+
+
+      {% if cart.total_price < 4900000 %} 
+
+              
+              <p class="shippingold">
+                {% if shippingprice > 0 -%}
+                  {{ section.settings.shippingleft }} {{ shippingprice | money }} {{ section.settings.shippinglefttext }}
+                {%- else -%}
+                  {{ section.settings.freeshippingbartext }}
+                {% endif %}
+              </p>
+              {% endif %}
+
+
+                 <p id="shippingnew">
+
+<!--
+                  {% if prico < 4900 %} {{ section.settings.shippingleft }} {{ shippingprice | money }} {{ section.settings.shippinglefttext }}{% endif %}   
+                  {% if prico > 4900 and  prico < 7000 %}Füge noch {{ restgeschenk | money }} hinzu und schalte die Gratis Shampoos frei!{% endif %}
+                  {% if prico > 7000  %}🎉Du erhältst kostenlosen Versand und die gratis Shampoos{% endif %}
+                  -->
+
+                   {% if prico < 4900 %} {{ section.settings.shippingleft }} {{ shippingprice | money }} {{ section.settings.shippinglefttext }}{% endif %}   
+                  {% if prico > 4900 and  prico < 11000 %}Füge noch {{ restgeschenk | money }} hinzu und schalte das Gratis Shampoo frei!{% endif %}
+                  {% if prico > 11000  %}🎉Du erhältst kostenlosen Versand und das gratis Shampoo{% endif %}
+      
+             <!--
+                  {% if prico < 4900 %} {{ section.settings.shippingleft }} {{ shippingprice | money }} {{ section.settings.shippinglefttext }}{% endif %}   
+                  {% if prico > 4900 and  prico < 7500 %}Füge noch {{ restgeschenk | money }} hinzu und schalte das nächste Geschenk frei!{% endif %}
+                  {% if prico > 7500 and  prico < 11000 %}Füge noch {{ retszweitgeschenk | money }} hinzu und schalte das nächste Geschenk frei!{% endif %}
+                  {% if prico > 11000 %}🎉 Du hast alle Geschenke und gratis Versand abgestaubt!{% endif %}
+               
+  -->
+
+              
+
+              
+                 </p>
+
+                            <style>
+#shippingnew {
+  display: none;
+}
+                </style>
+
+
+
+              
+              <div class="lb-cart-freeshipping-bar-out">
+                <div id="shippingboar">
+                  <div
+                    class="lb-cart-freeshipping-bar-inner"
+                    {% if shippingprice < 0 or shippingprice == 0 %}
+                      style="width: 100%;"
+                    {% elsif shippingprice > shippingprice_9 or shippingprice == shippingprice_9 %}
+                      style="width: 5%;"
+                    {% elsif shippingprice > shippingprice_8 or shippingprice == shippingprice_8 %}
+                      style="width: 10%;"
+                    {% elsif shippingprice > shippingprice_7 or shippingprice == shippingprice_7 %}
+                      style="width: 20%;"
+                    {% elsif shippingprice > shippingprice_6 or shippingprice == shippingprice_6 %}
+                      style="width: 30%;"
+                    {% elsif shippingprice > shippingprice_5 or shippingprice == shippingprice_5 %}
+                      style="width: 40%;"
+                    {% elsif shippingprice > shippingprice_4 or shippingprice == shippingprice_4 %}
+                      style="width: 50%;"
+                    {% elsif shippingprice > shippingprice_3 or shippingprice == shippingprice_3 %}
+                      style="width: 60%;"
+                    {% elsif shippingprice > shippingprice_2 or shippingprice == shippingprice_2 %}
+                      style="width: 70%;"
+                    {% elsif shippingprice > shippingprice_1 or shippingprice == shippingprice_1 %}
+                      style="width: 80%;"
+                    {% elsif shippingprice > 0 or shippingprice == 0 %}
+                      style="width: 90%;"
+                    {% endif %}
+                  ></div>
+                </div>
+
+
+
+
+
+                                 
+                                
+
+                                  <div class="freegiftbar">
+
+
+
+                                <!--
+                                    <div class="freegiftbar-div"
+                                      {% if prico > 7000 %}style=" width: 100%;"
+                                    {% elsif prico > 6500 %}style=" width: 70%;"
+                                    {% elsif prico > 6000 %}style=" width: 60%;" 
+                                    
+                                    {% elsif prico > 5700 %}style=" width: 50%;" 
+                                    {% elsif prico > 5200 %}style=" width: 45%;"
+                                     {% elsif prico > 4900 %}style=" width: 30%;"
+                                    {% elsif prico > 3000 %}style=" width: 10%;"
+                                    {% endif %}
+                                      >
+                                    </div>
+                                    <div class="freegiftbar-shipping {% if prico > 4900 %}freegiftbar-shipping-on{% endif %}">
+                                    <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Bitmap_Copy_2.png?v=1748426283">
+                                      49€
+                                    </div>
+                                  
+                                    <div class="freegiftbar-gift {% if prico > 7000 %}freegiftbar-gift-on{% endif %}">
+                                    <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/shampooss.png?v=1760736970">
+                                      70€
+                                    </div>
+                                  -->
+
+
+                                    
+                                    <div class="freegiftbar-div"
+                                      {% if prico > 11000 %}style=" width: 100%;"
+                                    {% elsif prico > 9500 %}style=" width: 70%;"
+                                    {% elsif prico > 9000 %}style=" width: 65%;"
+                                     {% elsif prico > 8500 %}style=" width: 60%;"
+                                    {% elsif prico > 8000 %}style=" width: 55%;"
+                                    {% elsif prico > 7000 %}style=" width: 50%;"
+                                    {% elsif prico > 6500 %}style=" width: 45%;" 
+                                    
+                                    {% elsif prico > 5900 %}style=" width: 40%;" 
+                                    {% elsif prico > 5200 %}style=" width: 35%;"
+                                     {% elsif prico > 4900 %}style=" width: 30%;"
+                                    {% elsif prico > 3000 %}style=" width: 10%;"
+                                    {% endif %}
+                                      >
+                                    </div>
+                                    <div class="freegiftbar-shipping {% if prico > 4900 %}freegiftbar-shipping-on{% endif %}">
+                                    <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Bitmap_Copy_2.png?v=1748426283">
+                                      {% unless canonical_url contains 'de-ch' %}49€{% else %}79CFH{% endunless %}
+                                    </div>
+                                  
+                                    <div class="freegiftbar-gift {% if prico > 11000 %}freegiftbar-gift-on{% endif %}">
+                                    <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Bitmap_225dfb26-fd50-41ca-bdb5-8301845d6427.png?v=1765464535">
+                                      {% unless canonical_url contains 'de-ch' %}110€{% else %}100CFH{% endunless %}
+                                    </div>
+
+                          
+                                      <style>
+                                           
+                                     .freegiftbar {
+                                      width: 70%;
+                                    }
+                                     #shippingboar {
+                                      width: 30%!important;
+                                    }
+
+                                      </style>
+                          
+                                   
+                                                                    
+
+    <!--
+                                     <div class="freegiftbar-div"
+                                      {% if prico > 11000 %}style=" width: 100%;"
+                                      {% elsif prico > 10000 %}style=" width: 90%;"
+                                      {% elsif prico > 9000 %}style=" width: 75%;"
+                                    {% elsif prico > 8500 %}style=" width: 72%;"
+                                     {% elsif prico > 8000 %}style=" width: 70%;"
+                                     {% elsif prico > 7500 %}style=" width: 68%;"
+                                     {% elsif prico > 7000 %}style=" width: 65%;"
+                                    {% elsif prico >  6500 %}style=" width: 41%;"
+                                    {% elsif prico > 6000 %}style=" width: 37%;" 
+                                    
+                                    {% elsif prico > 5700 %}style=" width: 33%;" 
+                                    {% elsif prico > 5200 %}style=" width: 28%;"
+                                     {% elsif prico > 4900 %}style=" width: 28%;"
+                                    {% elsif prico > 3000 %}style=" width: 10%;"
+                                    {% endif %}
+                                      >
+                                    </div>
+                                     <div class="freegiftbar-shipping {% if prico > 4900 %}freegiftbar-shipping-on{% endif %}">
+                                    <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Bitmap_Copy_2.png?v=1748426283">
+                                      49€
+                                    </div>
+
+
+                                      <style>
+                                           .freegiftbar-gift {
+                                      right: 33%;
+                                    }
+                                     .freegiftbar {
+                                      width: 70%;
+                                    }
+                                     #shippingboar {
+                                      width: 30%!important;
+                                    }
+
+                                      </style>
+
+
+                                    <div class="freegiftbar-gift {% if prico > 7000 %}freegiftbar-gift-on{% endif %}">
+                                    <img style="border-radius: 50px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/shampooss.png?v=1760736970">    
+                                      70€
+                                    </div>
+                                    <div class="freegiftbar-gift-2 {% if prico > 11000 %}freegiftbar-gift-2-on{% endif %}">
+                                    <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/hobel_10b0e89c-4619-49df-996e-a987dee05291.png?v=1764974580">
+                                      110€
+                                    </div>
+                                   {% if canonical_url contains 'testf' %}
+                                    {% endif %}
+
+                              --> 
+
+
+
+                                  </div>
+
+                                  <style>
+
+.freegiftbar {
+  display: none;
+}
+                                  
+                                  </style>
+
+   
+
+
+              
+</div>
+    
+</div></div>
+    </div>
+          {% endif %}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ {% if cart.total_price < 3000 %}
+   <!--
+   {% if canonical_url contains '/de-ch/' %}
+<img style="margin: 6px 2.5% 0px 2.5%; border-radius: 9px; width: 95%; display: block;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Artboard_Copy_332.png?v=1744526998">
+      {% else %}
+<img style="margin: 6px 2.5% 0px 2.5%; border-radius: 9px; width: 95%; display: block;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Artboard_Copy_331.png?v=1744492851">
+  {% endif %}
+   -->
+     <!--
+   <div style="margin: 14px 9px 0;
+    padding: 9px;
+    border-radius: 9px;
+    position: relative;
+    font-size: 14px;
+    text-align: center;
+  background: #efece0;
+    color: #000000;">
+  Hole Dir Dein gratis Weihnachtsshampoo ab 40€
+</div>
+   -->
+{% endif %}
+    
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    {% for item in cart.items %}
+
+      <div
+        class="lb-cart-drawer-item"
+        {% if item.product.metafields.custom.oberkategorie %}
+          data-category="{{ item.product.metafields.custom.oberkategorie }}"
+        {% endif %}
+        data-variantid="{{ item.id }}"
+        data-sku="{{ item.sku }}"
+        data-varianttitle="{{ item.variant.title }}"
+      >
+        <a {% unless item.title contains '2 Gratis Mini Shamp' %}href="{{ item.product.url }}"{% endunless %}
+          ><img src="{% if item.variant.image == blank %}{{ item.product.featured_image | product_img_url: '200x' }}{%else%}{{ item.variant.image  | product_img_url: '200x' }}{%endif%}"
+        ></a>
+        <div class="lb-cart-drawer-item-title">{{ item.product.title }}</div>
+
+                  {% if item.selling_plan_allocation %}
+    <div style="font-size: 12px; margin: 0px 0px 4px 0px; background: #eeece0; padding: 3px 9px; display: inline-block; border-radius: 9px;">
+    Spar-Abo: <!---15%--> {{ item.selling_plan_allocation.selling_plan.name }}
+    </div>
+  {% endif %}
+
+        {% if item.variant.title != 'Default Title' %}
+          <div class="lb-cart-drawer-item-variant">{{ item.variant.title }}</div>
+        {% endif %}
+
+
+<div style="display: none;">{{ item.selected_or_first_available_variant.id }}</div>
+
+        
+           {% if item.original_price > item.final_price %}
+                <p class="lb-cart-drawer-item-price">  {{ item.final_price | money }} <span class="lb-cart-drawer-item-price-sale">{{ item.original_price | money }}</span>
+                {% for discount_allocation in item.line_level_discount_allocations %}
+                 <span style="background: #d8ac63; padding:  2px 4px; display: inline-block; font-size: 12px; color: white; margin-right: 5px; border-radius: 4px; text-decoration: none;"> <!--{{ discount_allocation.discount_application.title }}-->Rabatt -{{ discount_allocation.amount | divided_by: item.quantity | money }}</span>
+                {% endfor %}
+                </p>
+                {% else %}
+                <p class="lb-cart-drawer-item-price"><span class="lb-cart-drawer-item-price-sale">{{ item.variant.compare_at_price | money }}</span> {{ item.price | money }}</p>
+                {% endif %}
+
+        
+        {% comment %}
+        <p class="lb-cart-drawer-item-price">
+          <span>{{ item.variant.compare_at_price | money }}</span> <!--{% if item.product.title contains 'Adventskalender' %} {% if routes.root_url contains '-ch' %}<span>€390,00</span>{% else %}<span>€300,00</span>{% endif %}{% endif %} -->{{ item.price | money }}
+        </p>
+
+ {% for discount_allocation in item.line_level_discount_allocations %}
+                 <span style="background: #AC6A2E; padding:  2px 4px; display: inline-block; font-size: 12px; color: white; margin-right: 5px; border-radius: 4px; text-decoration: none;"> <!--{{ discount_allocation.discount_application.title }}-->Rabatt -{{ discount_allocation.amount | divided_by: item.quantity | money }}</span>
+                {% endfor %}
+ {% endcomment %}
+
+        <style>
+      #weg {
+        display: none!important;
+      }
+      </style>
+
+
+          <div class="lb-cart-drawer-item-quantity-box" {% if item.title contains '2 Gratis Mini Shamp' or item.title contains '3 Gratis Mini Shampoo' or item.title contains 'Gratis Rasierhobel' or item.title contains 'Gratis Christmas Shampoo' %}id="weg"{% endif %}>
+            <div>
+              <input
+                type="button"
+                value="-"
+                class="qtyminus"
+                field="quantity"
+                data-line-id="{{ forloop.index }}"
+                data-id="{{item.variant_id}}"
+              >
+            </div>
+            <div><input type="text" class="qty" name="quantity" value="{{ item.quantity }}" disabled></div>
+            <div>
+              <input
+                type="button"
+                value="+"
+                class="qtyplus"
+                field="quantity"
+                data-line-id="{{ forloop.index }}"
+                data-id="{{item.variant_id}}"
+              >
+            </div>
+          </div>
+
+
+
+        <a
+          href="/cart/change?line={{ forloop.index }}&amp;quantity=0"
+          data-cart-remove-id="{{ item.variant.id }}"
+          class="qtydelete" {% if item.title contains '2 Gratis Mini Shamp' or item.title contains '3 Gratis Mini Shampoo' or item.title contains 'Schlüssel' or item.title contains 'Gratis Christmas' or item.title contains 'Gratis Christmas Shampoo' %}id="weg"{% endif %}
+        >
+          {%- include 'lb-icon-bin.liquid' -%}
+        </a>
+      </div>
+    {% endfor %}
+
+    <!-- Abfrage wie viele verschiedene produkte im Warenkorb sind -->
+    {% for item in cart.items %}
+      {% assign cart_items_different_quantity = forloop.index | join: ', ' %}
+    {% endfor %}
+
+    <!-- ---------- Lb Cart Upsell Items --------- -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    
+  </div>
+
+  <!-- ---------- Lb Cart Empty State ---------- -->
+
+  <div class="lb-cart-drawer-empty">
+    {% if cart.item_count == 0 %}
+      <style>
+        .lb-cart-drawer-item-box {
+          height: 100%;
+        }
+      </style>
+
+      {% include 'lb-icon-emptybox.liquid' %}
+      <p>Dein Warenkorb sieht leer aus</p>
+      <div class="lb-cart-drawer-empty-links">
+        {% for block in section.blocks %}
+          {% if block.settings.empty_links_link != blank %}
+            <a href="{{ block.settings.empty_links_link }}"
+              ><img src="{{ block.settings.empty_links_img | img_url: '200x'  }}">
+              {{- block.settings.empty_links_title -}}
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- ---------- Lb Cart Footer ---------- -->
+
+  <!-- ---------- Lb Cart Saving Calculator ---------- -->
+  {% assign total_saving = 0 %}
+  {% for item in cart.items %}
+    {% if item.variant.compare_at_price > item.variant.price %}
+      {% assign difference = item.variant.compare_at_price | minus: item.variant.price | times: item.quantity %}
+      {% assign savings = savings | plus: difference %}
+      {% assign total_saving = savings %}
+      {% assign first_total_price = cart.total_price | plus: total_saving %}
+    {% endif %}
+  {% endfor %}
+
+  <!-- ---------- Lb Cart Shipping Calculator ---------- -->
+
+  <div class="lb-cart-drawer-footer">
+    {% if cart.item_count > 0 %}
+      <div class="lb-cart-drawer-footer-holder">
+
+
+
+
+
+
+
+        <span style="margin: 0px 0px 9px 0px; display: block; font-size: 12px;" class="lb-cart-footer-reserve">{{ section.settings.reservation }}</span>
+
+        {% if section.settings.shippingcalc == false %}
+          <div class="lb-cart-drawer-footer-shipping">
+            Versand <span style="color: black; font-size: 12px;">Wird im Checkout berechnet</span>
+          </div>
+        {% else %}
+
+
+            <div class="lb-old-shipping">
+          <div class="lb-cart-freeshipping-bar-holder">
+            <div class="lb-cart-freeshipping-bar">
+
+              
+              
+
+          {% if cart.total_price < 4900000 %}
+
+              
+              <p class="shippingold">
+                {% if shippingprice > 0 -%}
+                  {{ section.settings.shippingleft }} {{ shippingprice | money }} {{ section.settings.shippinglefttext }}
+                {%- else -%}
+                  {{ section.settings.freeshippingbartext }}
+                {% endif %}
+              </p>
+              {% endif %}
+
+              
+              {% assign bisgeschenk = 7000 %}
+              {% assign geschenkcart = cart.total_price %}
+              {% assign restgeschenk = bisgeschenk | minus: geschenkcart %}
+
+
+
+
+            
+                 <p id="shippingnew">
+          {% if cart.total_price < 4900 %} {{ section.settings.shippingleft }} {{ shippingprice | money }} {{ section.settings.shippinglefttext }}{% endif %}
+                  {% if cart.total_price > 4900 %}{% if cart.total_price < 7000 %}Noch {{ restgeschenk | money }} bis zum Gratis Geschenk{% endif %}{% endif %}
+                 {% if cart.total_price > 7000 %}🎉 Du erhältst ein gratis Geschenk{% endif %}
+                 </p>
+
+                            <style>
+#shippingnew {
+  display: none;
+}
+                </style>
+
+
+
+              
+         
+                       {% if customer.email contains 'lionsbranding' %}
+                 {% endif %}
+
+
+
+              
+              <div class="lb-cart-freeshipping-bar-out">
+                <div id="shippingboar">
+                  <div
+                    class="lb-cart-freeshipping-bar-inner"
+                    {% if shippingprice < 0 or shippingprice == 0 %}
+                      style="width: 100%;"
+                    {% elsif shippingprice > shippingprice_9 or shippingprice == shippingprice_9 %}
+                      style="width: 5%;"
+                    {% elsif shippingprice > shippingprice_8 or shippingprice == shippingprice_8 %}
+                      style="width: 10%;"
+                    {% elsif shippingprice > shippingprice_7 or shippingprice == shippingprice_7 %}
+                      style="width: 20%;"
+                    {% elsif shippingprice > shippingprice_6 or shippingprice == shippingprice_6 %}
+                      style="width: 30%;"
+                    {% elsif shippingprice > shippingprice_5 or shippingprice == shippingprice_5 %}
+                      style="width: 40%;"
+                    {% elsif shippingprice > shippingprice_4 or shippingprice == shippingprice_4 %}
+                      style="width: 50%;"
+                    {% elsif shippingprice > shippingprice_3 or shippingprice == shippingprice_3 %}
+                      style="width: 60%;"
+                    {% elsif shippingprice > shippingprice_2 or shippingprice == shippingprice_2 %}
+                      style="width: 70%;"
+                    {% elsif shippingprice > shippingprice_1 or shippingprice == shippingprice_1 %}
+                      style="width: 80%;"
+                    {% elsif shippingprice > 0 or shippingprice == 0 %}
+                      style="width: 90%;"
+                    {% endif %}
+                  ></div>
+                </div>
+
+
+
+
+        
+
+                   <!-- Black Firday Shippingbar Giftbar -->
+
+                                  {% assign prico = cart.total_price %}
+
+                                  <div class="freegiftbar">
+                                    <div class="freegiftbar-div"
+                                      {% if prico > 7000 %}style=" width: 100%;"
+                                      {% elsif prico > 6500 %}style=" width: 75%;"
+                                     {% elsif prico > 5500 %}style=" width: 60%;"
+                                    {% elsif prico > 4900 %}style=" width: 45%;"
+                                    {% endif %}
+                                      >
+                                    </div>
+                                    <div class="freegiftbar-shipping" style=" {% if cart.total_price < 4900 %}background: white; color: black;{% endif %}">
+                                    <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Bitmap_Copy_2.png?v=1748426283" style="{% if cart.total_price < 4900 %}filter: invert(1);{% endif %}">
+                                      49€
+                                    </div>
+                                    <div class="freegiftbar-gift" style=" {% if cart.total_price < 7000 %}background: white; color: black;{% endif %}">
+                                    <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Bitmap_Copy.png?v=1748426283" style="{% if cart.total_price < 7000 %}filter: invert(1);{% endif %}">
+                                      70€
+                                    </div>
+                                  </div>
+
+                                  <style>
+
+.freegiftbar {
+  display: none;
+}
+                                  
+                                  </style>
+
+                  <!-- Black Firday Shippingbar Giftbar bis hier ende -->
+
+    
+                  
+
+
+
+
+              
+
+
+
+              
+
+
+
+                
+              </div>
+            </div>
+          </div>
+
+            </div>
+              
+     
+{% if localization.country.iso_code == 'CH' %}
+
+            <div class="lb-cart-drawer-footer-shipping">
+              Versand (CH)<span>
+                {%- if shippingprice > 0 %}CHF 5,90{% else %}{{ section.settings.freeforyou }}{% endif -%}
+              </span>
+            </div>
+
+{% else %}
+ {% if section.settings.shippinglimit == '0' %}
+            <div class="lb-cart-drawer-footer-shipping">{{ section.settings.shippingtext }} <span>{{ section.settings.freeforyou }}</span></div>
+          {% else %}
+            <div class="lb-cart-drawer-footer-shipping">
+              {{ section.settings.shippingtext }}<span>
+                {%- if shippingprice > 0 %} €3,90 {% else %}{{ section.settings.freeforyou }}{% endif -%}
+              </span>
+            </div>
+          {% endif %}
+        {% endif %}
+{% endif %}
+         
+
+        {% if total_saving != 0 %}
+          <div class="lb-cart-drawer-footer-compare-price">
+            {% if canonical_url contains '.com/en' %}Normal price{% else %}Normaler Preis{% endif %} <span>{{ first_total_price | money }}</span>
+          </div>
+          <div class="lb-cart-drawer-footer-save-price">
+            {% if canonical_url contains '.com/en' %}You save{% else %}Du sparst{% endif %} <span>-{{ total_saving | money }}</span>
+          </div>
+        {% endif %}
+
+        <div class="lb-cart-drawer-footer-price">
+        {% if canonical_url contains '.com/en' %}Subtotal{% else %}Zwischensumme{% endif %}  
+          <span>
+            {% if localization.country.iso_code == 'CH' %}
+                          {{ cart.total_price | money }}
+              {% else %}
+            {%- if shippingprice > 0 -%}
+              {{- cart.total_price | plus: 390 | money -}}
+            {%- else %}
+              {{ cart.total_price | money }}
+            {% endif -%}
+        {% endif %}
+          </span>
+        </div>
+
+
+
+
+                <div class="lb-delivery-green"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Bitmap_b70343e0-f8ef-4310-b9bc-c6add10b8f5f.png?v=1767616358"> In 1-2 Tagen in Deinem Badezimmer</div>
+        <style>
+.lb-delivery-green {
+color: #3f8748;
+display: none;
+font-size: 14px;
+font-weight: 500;
+text-align: center;
+}
+.lb-delivery-green img {
+width: 20px;
+position: relative;
+bottom: -2px;
+margin-right: 6px;
+}
+        </style>
+
+
+      
+
+          <!-- Normaler Button --> 
+          {% if localization.country.iso_code == 'CH' %}
+            {% if cart.total_price > 1999 %}
+          <a
+            href="https://stoertebekker.com/checkout"
+            class="lb-cart-drawer-footer-checkout-btn"
+            style="background: ##212426;" disabled
+          >
+            {{- section.settings.cart_btn_text -}}
+          </a>
+            {% else %}
+              <div style="background: grey; color: white; padding: 0px 18px;
+                border-radius: 6px; line-height: 52px; text-align: center; font-family: BebasNeue-Regular; font-size: 20px;">Bestellungen in die Schweiz ab 20 CHF möglich</div>
+               {% endif %}
+            {% else %}
+            <a
+            href="https://stoertebekker.com/checkout"
+            class="lb-cart-drawer-footer-checkout-btn"
+            style="background: ##212426;"
+          >
+            {{- section.settings.cart_btn_text -}}
+          </a>
+          {% endif %}
+
+
+                  <div class="lb-review-cart"><span>★★★★★</span>Über 300.000 zufriedene Männer</div>
+        <style>
+.lb-review-cart {
+color: black;
+display: none;
+font-size: 14px;
+text-align: center;
+}
+.lb-review-cart span {
+color: #D8AB63;
+margin-right: 6px;
+}
+        </style>
+
+
+
+      
+          {% if section.settings['after-checkout-btn-image'] != blank -%}
+            <img
+              src="{{ section.settings.after-checkout-btn-image | img_url: '500x' }}"
+              class="lb-cart-after-button-image"
+              loading="lazy"
+            >
+          {%- endif %}
+          <div>{{ section.settings['after-checkout-btn-html'] }}</div>
+        </div>
+    {% endif %}
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ---------- Lb Cart Sections Settings ---------- -->
+
+<style>
+  .lb-cart-drawer-box-upsell {
+     	background: {{ section.settings.upsell_styling_box_bgcolor }};
+     	color: {{ section.settings.upsell_styling_box_fontcolor }};
+   	}
+
+  .lb-cart-drawer-box-upsell-upselltext {
+     	background: {{ section.settings.upsell_styling_infobadge_bgcolor }};
+     	color: {{ section.settings.upsell_styling_infobadge_fontcolor }};
+   	}
+
+  .lb-cart-drawer-box-upsell-btn {
+     	background: {{ section.settings.upsell_styling_button_bgcolor }};
+     	color: {{ section.settings.upsell_styling_button_fontcolor }};
+    cursor: pointer;
+   	}
+
+     .lb-cart-drawer-footer-checkout-btn {
+  	background: {{ section.settings.cart_btn_bgcolor }};
+     	color: {{ section.settings.cart_btn_fontcolor }};
+  }
+</style>
+
+{% schema %}
+ {
+   "name": "Warenkorb",
+   "settings": [
+{
+     "type":"header",
+     "content": "Announcement Bar",
+     "info": "Zeige oben im Warenkorb einen Bereich mit Infos an. Entweder mit Text oder html."
+   },
+     {
+       "type": "color",
+       "id": "announcementbarcolor",
+       "label": "Hintergrundfarbe",
+	"default": "#f2f2f2"
+     },
+     {
+       "type": "color",
+       "id": "announcementbarfontcolor",
+       "label": "Schriftfarbe",
+	"default": "#000"
+     },
+     {
+       "type": "text",
+       "id": "announcementbartext",
+       "label": "Text",
+       "default": "Tolle Wahl! 😍 Deine Produkte!",
+	"info": "oder"
+     },
+     {
+       "type": "text",
+       "id": "reservation",
+       "label": "Reservierung",
+       "default": "Artikel im Warenkorb werden nicht reserviert",
+     },
+     {
+       "type": "text",
+       "id": "freeshippingbartext",
+       "label": "freeshippingbartext",
+       "default": "🎉 Du erhältst kostenlosen Versand",
+     },
+     {
+       "type": "text",
+       "id": "shippingtext",
+       "label": "shippingtext",
+       "default": "Versand (DE&AT)",
+     },
+     {
+       "type": "text",
+       "id": "shippingleft",
+       "label": "shippingleft",
+       "default": "Noch",
+     },
+     {
+       "type": "text",
+       "id": "shippinglefttext",
+       "label": "shippinglefttext",
+       "default": "bis zum kostenlosen Versand!",
+     },
+     {
+       "type": "text",
+       "id": "freeforyou",
+       "label": "freeforyou",
+       "default": "Gratis für dich",
+     },
+     {
+       "type": "html",
+       "id": "announcementbarhtml",
+       "label": "Html",
+	"info": "Wichtig: Wird nur angezeigt, wenn das vorherige Feld leer ist."
+     },
+     {
+       "type": "header",
+       "content": "Upsell Einstellungen",
+	"info": "Definieren das Design der Upsell-boxen. Info: Upsells definierst Du anschließend auf der Linken Seite."
+     },
+     {
+       "id":"upsell_styling_infobadge_bgcolor",
+       "type":"color",
+       "label": "Infobadge: Hintergrundfarbe",
+	"default": "#ffffff"
+     },
+     {
+       "id":"upsell_styling_infobadge_fontcolor",
+       "type":"color",
+       "label": "Infobadge: Textfarbe",
+	"default": "#000000"
+     },
+     {
+       "id":"upsell_styling_box_bgcolor",
+       "type":"color",
+       "label": "Box: Hintergrundfarbe",
+	"default": "#f2f2f2"
+     },
+     {
+       "id":"upsell_styling_box_fontcolor",
+       "type":"color",
+       "label": "Box: Textfarbe",
+	"default": "#000000"
+     },
+     {
+       "id":"upsell_styling_button_bgcolor",
+       "type":"color",
+       "label": "Button: Hintergrundfarbe",
+	"default": "#000000"
+     },
+     {
+       "id":"upsell_styling_button_fontcolor",
+       "type":"color",
+       "label": "Button: Textfarbe",
+	"default": "#ffffff"
+     },
+     {
+       "type":"header",
+       "content": "Versandkosten Einstellungen",
+       "info": "Stelle Deine Versandkostenbedingungen und Versanddarstellung ein."
+     },
+  {
+       "type": "checkbox",
+       "id": "shippingcalc",
+       "label": "Kostenlosen Versand anbieten",
+       "default": false,
+	"info": "Aktiviere den Haken, wenn Du kostenlosen Versand anbietest. Auch wenn er erst ab einen bestimmten Betrag greif."
+     },
+     {
+       "id":"shippinglimit",
+       "type":"text",
+       "label": "Limit für kostenlosen Versand.",
+	"info": "Wichtig: Ohne das Komma, Beispiel: (80,00€ = 8000)"
+     },
+  {
+       "type": "checkbox",
+       "id": "shippinglimitcheck",
+       "label": "Versandkostenbar anzeigen",
+       "default": true,
+	"info": "Zeige einen Prozessbalken zur Darstellung bis zum kostenlosen Versand an."
+     },
+     {
+       "type": "header",
+       "content": "Warenkorb Footer",
+       "info": "Style Deinen Checkout Button und füge eventuelle Elemente hinzu."
+     },
+     {
+       "id":"cart_btn_text",
+       "type":"text",
+       "label": "Buttontext",
+	"default": "Jetzt sicher zur Kasse"
+     },
+     {
+       "id":"cart_btn_bgcolor",
+       "type":"color",
+       "label": "Hintergrundfarbe",
+	"default": "#000000"
+     },
+     {
+       "id":"cart_btn_fontcolor",
+       "type":"color",
+       "label": "Textfarbe",
+	"default": "#ffffff"
+     },
+     {
+       "id":"after-checkout-btn-image",
+       "type":"image_picker",
+       "label": "Bild nach dem Button",
+	"info": "Zeige nach dem Button ein Bild an."
+     },
+     {
+       "id":"after-checkout-btn-html",
+       "type":"html",
+       "label": "Html nach dem Button",
+	"info": "Zeige nach dem Button html an."
+     }
+   ],
+
+   "blocks": [
+     {
+       "type": "footer_column_menu",
+       "name": "Cross & Upsell",
+       "settings": [
+         {
+           "type": "header",
+           "content": "Upsell & Crosssell",
+           "info": "Definiere Upsells und Crossells im Warenkorb."
+         },
+         {
+           "type":"text",
+           "id":"upsell_text",
+           "label": "Infobadge Text",
+		"info": "Was soll als Text über dem Upsell stehen?"
+         },
+	  {
+           "type":"product",
+           "id":"upsell_select",
+           "label": "Wähle das abhängige Produkt"
+         },
+         {
+           "type":"product",
+           "id":"upsell_show",
+           "label": "Wähle das angezeigte Produkt"
+         }
+       ]
+     },
+     {
+       "type": "cart_empty_links",
+       "name": "Empty Links",
+       "settings": [
+         {
+           "type": "header",
+           "content": "Empty State Verlinkungen",
+           "info": "Definiere Verlinkungen zu bestimmten Seiten oder Produkten, wenn Dein Warenkorb leer ist. Info: Wir empfehlen maximal 3-4."
+         },
+	  {
+           "type":"image_picker",
+           "id":"empty_links_img",
+           "label": "Anzeigebild"
+         },
+         {
+           "type":"text",
+           "id":"empty_links_title",
+           "label": "Verlinkung Titel"
+         },
+         {
+           "type":"text",
+           "id":"empty_links_link",
+           "label": "Ziel Verlinkung"
+         }
+       ]
+     }
+   ]
+ }
+{% endschema %}

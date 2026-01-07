@@ -1,0 +1,815 @@
+{% assign product_list = section.settings.show-all-in-themess %}
+{% for product_item in product_list %}
+{% if product_item.id == product.id %} 
+{% assign active_product = true %}
+{% endif %}
+{% endfor %}
+{% if section.settings.show-all-in-theme == true or active_product == true %}
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> 
+<div id="lb-pdp-liked-from-badge" style="display: none;"> 
+<div class="lb-set-content-section">  
+  <h3>{{ section.settings.headline }}</h3>
+    <div class="lb-set-content-section-holder">
+
+    {%  if section.settings.theme-design == '1' %}
+        <div class="lb-set-content-item-banner-holder">
+        {% for block in section.blocks %} 
+          {% if block.settings.content-siegel != blank %}
+          <img class="lb-set-content-item-banner-siegel" style="max-width: {{ block.settings.content-siegel-size }}px;" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/testsieger.png?v=1732811241&width=2048">
+                   {% endif %}
+          {% if block.settings.content-image != blank %}
+      <div class="lb-set-content-item-banner-item lb-set-content-item-banner-item-{{ forloop.index }} {% if forloop.first %}lb-set-content-active{% endif %}" style="background-image: url({{ block.settings.content-image | img_url: '900x' }})"></div>
+          {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="lb-set-content-item-opener-holder">
+
+          {% for block in section.blocks %}
+             <div class="lb-set-content-item-opener lb-set-content-item-opener-{{ forloop.index }} {% if forloop.first %}lb-set-content-item-opener-active{% endif %}" {% if forloop.first %}style="margin-left: 9px;"{% endif %}{% if forloop.last %}style="margin-right: 9px;"{% endif %}>
+        {% if block.settings.opener-image != blank %}
+               <img src="{{ block.settings.opener-image | img_url: '100x' }}">
+               {% endif %}
+        <p>{{ block.settings.opener-title }}</p>
+      </div>
+            {%endfor%}
+    </div>
+
+    <div class="lb-set-content-item-holder">
+
+       {% for block in section.blocks %}
+             <div class="lb-set-content-item lb-set-content-item-{{ forloop.index }} {% if forloop.first %}lb-set-content-active{% endif %}">
+               {%  if section.settings.theme-design == '2' %} 
+      <img src="{{ block.settings.content-image | img_url: '900x' }}">
+                 {% endif %}
+       <div class="lb-set-content-item-content">
+      <h4>{{ block.settings.content-title }}</h4>
+  <p>{{ block.settings.content-paragraph }}</p>
+         {% if block.settings.content-link-url != blank %} 
+         {% unless product.title contains "set" or product.title contains "SET" %}
+      <a href="{{ block.settings.content-link-url }}">{{ block.settings.content-link-text }}</a>
+              {% endunless %}
+           {% endif %}
+       </div>
+    </div>
+         {% endfor %}
+      
+    </div>
+  
+  
+  </div>
+</div>
+</div>
+  <script>
+$(document).ready(function() { 
+    {% for block in section.blocks %}
+      $('.lb-set-content-item-opener-{{ forloop.index }}').on('click', function() {
+        $('.lb-set-content-item-opener').removeClass('lb-set-content-item-opener-active');
+        $('.lb-set-content-item-banner-item').removeClass('lb-set-content-active');
+        $('.lb-set-content-item').removeClass('lb-set-content-active');
+        $('.lb-set-content-item-opener-{{ forloop.index }}').addClass('lb-set-content-item-opener-active');
+        $('.lb-set-content-item-banner-item-{{ forloop.index }}').addClass('lb-set-content-active');
+        $('.lb-set-content-item-{{ forloop.index }}').addClass('lb-set-content-active');
+      });
+    {% endfor %}
+});
+</script>
+
+ 
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(function() {
+  let isDown = false;
+  let startX = 0, startY = 0, startLeft = 0, startTop = 0;
+  let $active = null; // immer das gerade angeklickte Element
+
+  // nur horizontal? -> "x", nur vertikal -> "y", beides -> "both"
+  const axis = "both";
+
+  // optional schönere Cursors per CSS:
+  $(".lb-set-content-item-opener-holder").css("cursor","grab")
+    // native Browser-Drags (z.B. Bilder) verhindern
+    .on("dragstart", function(e){ e.preventDefault(); });
+
+  $(document).on("mousedown", ".lb-set-content-item-opener-holder", function(e) {
+    if (e.button !== 0) return; // nur linke Maustaste
+    $active = $(this);
+    isDown = true;
+
+    startX = e.pageX;
+    startY = e.pageY;
+    startLeft = $active.scrollLeft();
+    startTop  = $active.scrollTop();
+
+    $active.addClass("dragging").css("cursor","grabbing");
+    $("body").addClass("noselect"); // Textauswahl verhindern (CSS unten)
+    e.preventDefault(); // verhindert Fokussprung/Scroll-Jumps
+  });
+
+  $(document).on("mousemove", function(e) {
+    if (!isDown || !$active) return;
+    e.preventDefault();
+
+    const dx = e.pageX - startX;
+    const dy = e.pageY - startY;
+
+    if (axis === "both" || axis === "x") $active.scrollLeft(startLeft - dx);
+    if (axis === "both" || axis === "y") $active.scrollTop(startTop - dy);
+  });
+
+  $(document).on("mouseup", function() {
+    if (!$active) return;
+    isDown = false;
+    $active.removeClass("dragging").css("cursor","grab");
+    $("body").removeClass("noselect");
+    $active = null;
+  });
+
+  // Klicks unterdrücken, wenn beim Drag deutlich bewegt wurde (optional)
+  let moved = false;
+  $(document).on("mousemove", function(e){
+    if (!isDown) return;
+    if (Math.abs(e.pageX - startX) + Math.abs(e.pageY - startY) > 3) moved = true;
+  });
+  $(document).on("click", ".lb-set-content-item-opener-holder *", function(e){
+    if (moved) { e.preventDefault(); e.stopImmediatePropagation(); }
+    moved = false;
+  });
+});
+</script>
+
+<style>
+  .noselect { user-select: none !important; }
+  .lb-set-content-item-opener-holder.dragging { scroll-snap-type: none !important; } /* falls du scroll-snap nutzt */
+</style>
+ 
+
+
+
+
+
+
+
+<style>
+.lb-set-content-section {
+  overflow: hidden;
+padding: {{ section.settings.padding-top }}px {{ section.settings.padding-left-right }}px {{ section.settings.padding-bottom }}px {{ section.settings.padding-left-right }}px;
+background: {{ section.settings.section-bg }};
+}
+.lb-set-content-section h3 {
+text-align: center;
+  font-size: 52px;
+  margin-bottom: 9px;
+  font-weight: 400;
+  font-family: BetterTimesAlt;
+  color: {{ section.settings.section-headline-font-color }};
+}
+.lb-set-content-section-holder {
+  background: {{ section.settings.item-content-backgroundcolor }};
+max-width: {{ section.settings.holder-max-width }}px;
+border-radius: 15px;
+margin: auto;
+  overflow: hidden;
+}
+.lb-set-content-active {
+  display: block!important;
+}
+@media only screen and (max-width: 600px) {
+.lb-set-content-section {
+padding: {{ section.settings.padding-top }}px 0px {{ section.settings.padding-bottom }}px 0px;
+}
+.lb-set-content-section-holder {
+border-radius: 0px;
+}
+}
+
+
+  
+.lb-set-content-item-banner-holder {
+    border-radius: 15px;
+  overflow: hidden;
+  min-height: {{ section.settings.banner-height }}px;
+  background: {{ section.settings.item-content-backgroundcolor }};
+  display: block;
+  position: relative;
+}
+.lb-set-content-item-banner-item {
+  display: none;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-size: cover!important;
+  background-position: center center!important;
+  background-color: {{ section.settings.item-content-backgroundcolor }};
+}
+.lb-set-content-item-banner-siegel {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 3;
+}
+@media only screen and (max-width: 600px) {
+.lb-set-content-item-banner-holder {
+  min-height: {{ section.settings.banner-height-mobile }}px;
+  }
+}
+ 
+
+
+ 
+
+  
+.lb-set-content-item-opener-holder {
+  padding: 9px 0px;
+  margin: {{ section.settings.opener-holder-margin-top }}px 0px 0px 0px;
+  text-align: center;
+  overflow: scroll;
+  white-space: nowrap !important;
+  display: flex;
+  position: relative;
+  z-index: 2;
+  mask-image: linear-gradient(to right, black 90%, transparent 100%);
+  mask-mode: alpha;
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+  user-select: none;
+}
+.lb-set-content-item-opener {
+  {% if section.settings.item-max-width-check == true %}
+  max-width: {{ section.settings.item-max-width}}px;
+  width: 100%;
+  {% endif %}
+  font-size: 0px;
+  flex-shrink: 0;
+  cursor: pointer;
+margin-right: 5px;
+  padding: {{ section.settings.item-padding }}px;
+  {% if section.settings.item-icon-alignment == 'left' %}
+  background: {{ section.settings.item-background }};
+  border: 1px solid {{ section.settings.item-border-color }};
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  {% elsif section.settings.item-icon-alignment == 'center-seperate' %}
+  background: none!important; 
+  border: none!important;
+  {% else %}
+  background: {{ section.settings.item-background }};
+  border: 1px solid {{ section.settings.item-border-color }};
+  display: inline-block; 
+  {% endif %}
+  border-radius: {{ section.settings.item-border-radius }}px;
+}
+.lb-set-content-item-opener-holder::before,
+.lb-set-content-item-opener-holder::after {
+  content: "";
+  flex: 1; /* nimmt gleichmäßig Platz links und rechts ein */
+}
+.lb-set-content-item-opener-active {
+  {% unless section.settings.item-icon-alignment == 'center-seperate' %}
+  border: 1px solid {{ section.settings.active-item-border-color }}!important;
+  background: {{ section.settings.active-item-background }};
+  {% endunless %}
+}
+.lb-set-content-item-opener-active p {
+  color: {{ section.settings.active-item-fontcolor }}!important;
+  {% if section.settings.item-icon-alignment == 'center-seperate' %}
+  text-decoration: underline!important; 
+  {% endif %}
+}
+.lb-set-content-item-opener-active img {
+    {% if section.settings.item-icon-alignment == 'center-seperate' %}
+    border: 3px solid {{ section.settings.active-item-border-color }}!important;
+      {% endif %}
+}
+.lb-set-content-item-opener img {
+  border-radius: {{ section.settings.item-image-border-radius }}px;
+  {% if section.settings.item-icon-alignment == 'center-seperate' %}
+  border: 3px solid {{ section.settings.item-border-color }};
+    margin-bottom: 12px!important;
+  background: #eeebdf;
+  {% endif %}
+  width: {{ section.settings.item-icon-size }}px;
+  {% if section.settings.item-icon-alignment == 'left' %}
+    margin: 0px 9px 0px 0px;
+    {% else %}
+    margin: 0px;
+    {% endif %}
+}
+.lb-set-content-item-opener p {
+  font-size: 18px;
+font-family: "Bebas Neue";
+  color: {{ section.settings.item-fontcolor }};
+  margin: 0px;
+}
+@media only screen and (max-width: 600px) {
+  .lb-set-content-item-content {
+  padding: {{ section.settings.item-padding }}px 0px;
+  }
+
+  .lb-set-content-item-opener-holder {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+}
+}
+
+
+  
+.lb-set-content-item {
+  display: none;
+}
+.lb-set-content-item img {
+  width: 100%;
+  max-width: {{ section.settings.banner-max-width }}px;
+  margin: auto;
+  display: block;
+}
+.lb-set-content-item-content {
+  padding: 18px 36px 36px 36px; 
+  {% if section.settings.item-content-alignment == 'center' %}
+  text-align: center;
+    {% endif %}
+}
+.lb-set-content-item-content h4 {
+  margin: 0px 0px 9px 0px;
+  font-size: 30px;
+  font-family: "Bebas Neue";
+  line-height: 34px;
+  color: {{ section.settings.item-content-headline-color }};
+}
+.lb-set-content-item-content p {
+  margin: 0px;
+  color: {{ section.settings.item-content-paragraph-color }};
+}
+.lb-set-content-item-content a {
+text-decoration: none;
+  line-height: 52px;
+  max-width: 200px;
+  display: inline-block;
+  text-align: center;
+  width: 100%; 
+  font-size: 18px;
+  margin: 18px 0px 0px 0px;
+font-family: "Bebas Neue";
+  color: {{ section.settings.item-content-link-font-color }};
+  background: {{ section.settings.item-content-link-backgroundcolor }};
+  border: 1px solid {{ section.settings.item-content-link-border-color }};
+  border-radius: {{ section.settings.item-content-link-border-radius }}px;
+}
+</style>
+{% endif %}
+{% schema %}
+{
+  "name": "lb set content",
+  "settings": [
+    {
+      "type": "header",
+      "content": {
+        "de": "Anzeige Einstellungen",
+        "en": "Intro"
+      }
+    },
+     {
+      "type": "checkbox",
+     "id": "show-all-in-theme",
+     "default": true,
+     "label": "Für alle Produkte in diesem Theme anzeigen"
+    },
+     {
+      "type": "product_list",
+     "id": "show-all-in-themess",
+     "label": "Für alle Produkte in diesem Theme anzeigen"
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": {
+        "de": "Section Einstellungen",
+        "en": "Intro"
+      }
+    },
+   {
+      "type": "text",
+     "id": "headline",
+     "default": "Das ist in diesem Set",
+     "label": "Headline"
+    },
+     {
+      "type": "font_picker",
+     "id": "headlinefont",
+     "default": "work_sans_n4",
+     "label": "Bannertext"
+    },
+       {
+      "type": "range",
+      "id": "holder-max-width",
+      "label": "Maximale Breite",
+      "min": 500,
+      "max": 1400,
+      "step": 20,
+      "unit": "px",
+      "default": 900
+    },
+       {
+      "type": "range",
+      "id": "padding-top",
+      "label": "Abstand oben",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 72
+    },
+       {
+      "type": "range",
+      "id": "padding-bottom",
+      "label": "Abstand unten",
+      "min": 0,
+      "max": 140,
+      "step": 2,
+      "unit": "px",
+      "default": 72
+    },
+       {
+      "type": "range",
+      "id": "padding-left-right",
+      "label": "Abstand Links und Rechts",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "color",
+     "id": "section-bg",
+     "default": "#ffffff",
+     "label": "Section Hintergrundfarbe"
+    },
+    {
+      "type": "color",
+     "id": "section-headline-font-color",
+     "default": "#000000",
+     "label": "Section Headline Schriftfarbe"
+    },
+{
+  "type": "select",
+  "id": "theme-design",
+  "label": "Für alle Produkte in diesem Theme anzeigen",
+  "default": "1",
+  "options": [
+    {
+      "value": "1",
+      "label": "Design 1"
+    },
+    {
+      "value": "2",
+      "label": "Design 2"
+    }
+  ]
+},
+      {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": {
+        "de": "Item Settings",
+        "en": "Item Settings"
+      }
+    },
+   {
+      "type": "checkbox",
+      "id": "item-max-width-check",
+      "label": "Mindestbreite aktivieren",
+      "default": true
+    },
+   {
+      "type": "range",
+      "id": "item-max-width",
+      "label": "Maximale Breite",
+      "min": 0,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "default": 150
+    },
+{
+  "type": "select",
+  "id": "item-icon-alignment",
+  "label": "Icon Richtung",
+  "default": "top",
+  "options": [
+    {
+      "value": "top",
+      "label": "Drüber"
+    },
+    {
+      "value": "left",
+      "label": "Links"
+    },
+    {
+      "value": "center-seperate",
+      "label": "Mittig getrennt"
+    }
+  ]
+},
+   {
+      "type": "range",
+      "id": "item-icon-size",
+      "label": "Icon Größe",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 75
+    },
+   {
+      "type": "range",
+      "id": "opener-holder-margin-top",
+      "label": "Opener Abstand oben",
+      "min": -100,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 0
+    },
+   {
+      "type": "range",
+      "id": "item-padding",
+      "label": "Item Innderer Abstand",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 9
+    },
+    {
+      "type": "range",
+      "id": "item-border-radius",
+      "label": "Item Abrundung",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "item-image-border-radius",
+      "label": "Bild Abrundung",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+        {
+          "type": "color",
+          "id": "item-fontcolor",
+          "default": "#000000",
+          "label": "Item Schriftfarbe"
+        },
+        {
+          "type": "color",
+          "id": "item-background",
+          "default": "#ffffff",
+          "label": "Item Hintergrundfarbe"
+        },
+        {
+          "type": "color",
+          "id": "item-border-color",
+          "default": "#ffffff",
+          "label": "Item Randfarbe"
+        },
+        {
+          "type": "color",
+          "id": "active-item-fontcolor",
+          "default": "#000000",
+          "label": "Active Item Schriftfarbe"
+        },
+        {
+          "type": "color",
+          "id": "active-item-background",
+          "default": "#ffffff",
+          "label": "Active Item Hintergrundfarbe"
+        },
+        {
+          "type": "color",
+          "id": "active-item-border-color",
+          "default": "#000000",
+          "label": "Active Item Randfarbe"
+        },
+
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": {
+        "de": "Content Item",
+        "en": "Intro"
+      }
+    },
+   {
+      "type": "range",
+      "id": "banner-height",
+      "label": "Banner Höhe",
+     "info": "Nur in Design 1",
+      "min": 100,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "default": 400
+    },
+   {
+      "type": "range",
+      "id": "banner-height-mobile",
+      "label": "Banner Höhe Mobile",
+     "info": "Nur in Design 1",
+      "min": 100,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "default": 400
+    },
+   {
+      "type": "range",
+      "id": "banner-max-width",
+      "label": "Banner maximale Breite",
+     "info": "Nur in Design 2",
+      "min": 100,
+      "max": 900,
+      "step": 10,
+      "unit": "px",
+      "default": 400
+    },
+{
+  "type": "select",
+  "id": "item-content-alignment",
+  "label": "Content Ausrichtung",
+  "default": "left",
+  "options": [
+    {
+      "value": "left",
+      "label": "Links"
+    },
+    {
+      "value": "center",
+      "label": "Mittig"
+    }
+  ]
+},
+        {
+          "type": "color",
+          "id": "item-content-backgroundcolor",
+          "default": "#000000",
+          "label": "Item Content Hintergrundfarbe"
+        },
+        {
+          "type": "color",
+          "id": "item-content-headline-color",
+          "default": "#000000",
+          "label": "Item Content Headline Schriftfarbe"
+        },
+        {
+          "type": "color",
+          "id": "item-content-paragraph-color",
+          "default": "#000000",
+          "label": "Item Content Paragraph Schriftfarbe"
+        },
+        {
+          "type": "color",
+          "id": "item-content-link-border-color",
+          "default": "#000000",
+          "label": "Item Content Link Randfarbe"
+        },
+        {
+          "type": "color",
+          "id": "item-content-link-font-color",
+          "default": "#000000",
+          "label": "Item Content Link Schriftfarbe"
+        },
+        {
+          "type": "color",
+          "id": "item-content-link-background-color",
+          "default": "#000000",
+          "label": "Item Content Link Hintergrundfarbe"
+        },
+   {
+      "type": "range",
+      "id": "item-content-link-border-radius",
+      "label": "Button Abrundung",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 6
+    }
+  ],
+  "blocks": [
+    {
+      "name": {
+        "en": "Block",
+        "de": "Block"
+      },
+      "type": "block",
+      "settings": [
+    {
+      "type": "header",
+      "content": {
+        "de": "Öffner Einstellungen",
+        "en": "Intro"
+      }
+    },
+        {
+          "type": "image_picker",
+          "id": "opener-image",
+          "label": "Produkt Vorschaubild"
+        },
+        {
+          "type": "text",
+          "id": "opener-title",
+          "default": "Titel",
+          "label": "Titel"
+        },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": {
+        "de": "Content Einstellungen",
+        "en": "Intro"
+      }
+    },
+        {
+          "type": "image_picker",
+          "id": "content-image",
+          "label": "Content Banner"
+        },
+        {
+          "type": "image_picker",
+          "id": "content-siegel",
+          "label": "Siegel"
+        },
+   {
+      "type": "range",
+      "id": "content-siegel-size",
+      "label": "Siegel Größe",
+      "min": 0,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 90
+    },
+        {
+          "type": "text",
+          "id": "content-title",
+          "default": "Titel",
+          "label": "Content Titel"
+        },
+        {
+          "type": "richtext",
+          "id": "content-paragraph",
+          "label": "Content Paragraph",
+          "default": "<p>✓ Lorem ipsum dolor sit amet, consectetur adipiscing elit <br>✓  Ut enim ad minim veniam, quis nostrud exercitation<br><br> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>"
+        },
+        {
+          "type": "text",
+          "id": "content-link-text",
+          "label": "Content Link Text",
+          "default": "Zum Produkt"
+        },
+        {
+          "type": "url",
+          "id": "content-link-url",
+          "label": "Content Link URL"
+        },
+        {
+          "type": "checkbox",
+          "id": "highlight",
+          "label": {
+            "en": "Highlight Link",
+            "de": "Link hervorheben"
+          }
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "lb set content"
+    }
+  ]
+}
+{% endschema %}
+

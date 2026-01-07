@@ -1,0 +1,127 @@
+{%- comment -%}
+  Combined swatch-custo-image.liquid logic with inline product-specific swatch rendering (fixed case/when misuse)
+{%- endcomment -%}
+
+{%- assign title = product.title -%}
+
+{%- if
+  title == 'Rasurpflege Set'
+  or title == "Rasierset - Rasierhobel 'Hamburg' Schwarz"
+  or title == "Rasierset - Rasierhobel 'Hamburg' Silber"
+  or title == "Rasierset - Rasierhobel 'Hamburg' Rosé - Gold"
+  or title == "Rasierset - Rasiermesser 'Heartwood'"
+  or title == "Rasierset - Rasiermesser 'Blackbeard'"
+  or title == "Rasierständer Set 'Anchor'"
+  or title == "Rasierpinsel Set 'Compass'"
+  or title == 'Rasierseife & Soap Box Set'
+-%}
+  {%- if value contains 'Sandelholz' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_100x.png' -%}
+  {%- elsif value contains 'Kokos' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_100x.png' -%}
+  {%- elsif value contains 'Fresh Mint' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeFreshMint_variant_100x.png' -%}
+  {%- elsif value contains 'Aloe Vera' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_100x.png' -%}
+  {%- elsif value contains 'Tortuga' -%}{%- assign swatch_url = 'https://stoertebekker.com/cdn/shop/files/STOERTE_0150_a-variant_100x.png' -%}
+  {%- elsif value contains 'Crusoe' -%}{%- assign swatch_url = 'https://stoertebekker.com/cdn/shop/files/STOERTE_0166_a-variant_100x.png' -%}
+  {%- elsif value contains 'Lavendel' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0206_a2_100x.png' -%}
+  {%- elsif value contains 'Bergamotte' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0205_a2_100x.png' -%}
+  {%- elsif value contains 'Sea Breeze' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0263_a-variant_adbce58a-f18e-4a9c-a9eb-2b979f6fa468.webp?v=1736870347' -%}
+  {%- elsif value contains 'Active Carbon' -%}{%- assign swatch_url = 'https://stoertebekker.com/cdn/shop/files/STOERTE_0285_a-variant_150x.webp?v=1747659023' -%}
+  {%- endif -%}
+
+{%- elsif
+  title == 'Dusch Routine Set inkl. Tagescreme'
+  or title == 'Premium Duschset - Hair'
+  or title == 'Premium Duschset - Hair & Body'
+  or title == 'Duschset (Test)'
+  or title == 'Festes Shampoo & Soap Box Set'
+  or title == 'Festes Shampoo & Soap Bag Set'
+  or title == 'Vatertag Allround Pflegeset'
+  or title == 'Premium Duschset - Hair inkl. GRATIS Scalp Brush'
+
+-%}
+  {%- if value contains 'Sandelholz' -%}{%- assign swatch_url = 'https://stoertebekker.com/cdn/shop/files/STOERTE_0167_a-variant_800x.png' -%}
+  {%- elsif value contains 'Fresh Mint' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0194_a_variant.webp' -%}
+  {%- elsif value contains 'Aloe Vera' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0192_a_variant_0d00534b-f8ae-4a72-960b-4e9f4feec6b7.webp' -%}
+  {%- elsif value contains 'Kokos' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/stoerte-0193-a-65a54a1f4bae7_variant.webp' -%}
+  {%- elsif value contains 'Zimt-Orange' or value contains 'Orange-Zimt' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0178_a-variant_Kopie_7c380b35-ae3d-4d97-a401-68b709c81f2f.webp?v=1751462931' -%}
+  {%- elsif value contains 'Bergamotte' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0195_a-variant.webp' -%}
+  {%- elsif value contains 'Sea Breeze' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0207_a-variant_1.webp?v=1719820733' -%}
+  {%- elsif value contains 'Tortuga' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0262_a.png?v=1733741525' -%}
+  {%- elsif value contains 'Citrus' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0260_a.png?v=1733741508' -%}
+  {%- elsif value contains 'Lavendel' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0261_a.png?v=1733741516' -%}
+  {%- elsif value contains 'Anti-Schuppen' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0281_a-variant_1.png?v=1744143965' -%}
+  {%- elsif value contains 'Active Carbon' -%}{%- assign swatch_url = 'https://stoertebekker.com/cdn/shop/files/STOERTE_0285_a-variant_150x.webp?v=1747659023' -%}
+  {%- elsif value contains 'Crusoe' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0310_a.webp?v=1763717187' -%}
+  {%- endif -%}
+
+
+{%- elsif
+  
+        
+  title == 'Premium Duschset - Body'
+  
+
+-%}
+  {%- if value contains 'Sandelholz' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0286_a-variant_1_2.webp?v=1766129427' -%}
+  {%- elsif value contains 'Sea Breeze' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0288_a_variant_1.webp?v=1761125059' -%}
+  {%- elsif value contains 'Tortuga' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0287_a_variant_1.webp?v=1761125057' -%}
+  {%- endif -%}
+
+
+
+
+{%- elsif
+  title == 'Vatertag Bartpflege Essential Set'
+  or title == 'Bartpflege Set'
+  or title == 'Anti Juckreiz Set'
+-%}
+  {%- if value contains 'Crusoe' -%}{%- assign swatch_url = 'https://stoertebekker.com/cdn/shop/files/STOERTE_0179_a_800x.webp' -%}
+  {%- elsif value contains 'Tortuga' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/bartol-tortuga.webp' -%}
+  {%- elsif value contains 'Sandelholz' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0199_a.webp' -%}
+  {%- endif -%}
+
+{%- elsif title contains 'Störtebekker Rasierklingen' or title contains "Störtebekker Klingen 'Platinum' x5 Probierpack" -%}
+  {%- if value contains '100x' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/100.webp' -%}
+  {%- elsif value contains '20x' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/20.webp' -%}
+  {%- elsif value contains '5x' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/5.webp' -%}
+  {%- endif -%}
+
+{%- elsif title contains 'Gentleman Essential Set' -%}
+  {%- if value contains 'Schwarz' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/GES-Schwarz.png?v=1719393103' -%}
+  {%- elsif value contains 'Silber' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/GES-Silber.png?v=1719393103' -%}
+  {%- endif -%}
+
+{%- elsif title == "Pomade Ölbasiert 'Torreto Series'" or title == "Pomade Ölbasiert 'Torreto Series' Set" -%}
+  {%- if value contains 'Sandelholz' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/SANDAL.webp?v=1731526624' -%}
+  {%- elsif value contains 'Fresh Apple' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/APPLE.webp?v=1731526641' -%}
+  {%- elsif value contains 'Tortuga' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/TORTUGA.webp?v=1731526604' -%}
+  {%- elsif value contains 'Crusoe' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/CRUSOE.webp?v=1731526662' -%}
+  {%- endif -%}
+
+{%- elsif title == "Pomade Wasserbasiert 'Torreto Series'" or title == "Pomade Wasserbasiert 'Torreto Series' Set" or title == "Pomade 'Torreto Series' Signature Bundle" -%}
+  {%- if value contains 'Sandelholz' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0254_d_f2b58bd0-7962-4f41-a5bc-21e88f5f3f7e.webp?v=1733826192' -%}
+  {%- elsif value contains 'Fresh Apple' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0253_d.webp?v=1733826184' -%}
+  {%- elsif value contains 'Tortuga' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0252_d.webp?v=1733826199' -%}
+  {%- endif -%}
+
+{%- elsif title contains "xDuschs" or title contains 'xDusch Routin' or title contains 'xShampoo & Seifendo' or title contains 'xShampoo & Sis' -%}
+  {%- if value contains 'Sandelholz' -%}{%- assign swatch_url = 'https://stoertebekker.com/cdn/shop/files/STOERTE_0167_a-variant_800x.png' -%}
+  {%- elsif value contains 'Fresh Mint' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0194_a_variant.webp' -%}
+  {%- elsif value contains 'Aloe Vera' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0192_a_variant_0d00534b-f8ae-4a72-960b-4e9f4feec6b7.webp' -%}
+  {%- elsif value contains 'Kokos' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/stoerte-0193-a-65a54a1f4bae7_variant.webp' -%}
+  {%- elsif value contains 'Zimt-Orange' or value contains 'Orange-Zimt' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0178_a-variant_Kopie_7c380b35-ae3d-4d97-a401-68b709c81f2f.webp?v=1751462931' -%}
+  {%- elsif value contains 'Bergamotte' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0195_a-variant.webp' -%}
+  {%- elsif value contains 'Sea Breeze' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0207_a-variant_1.webp?v=1719820733' -%}
+  {%- elsif value contains 'Tortuga' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0262_a.png?v=1733741525' -%}
+  {%- elsif value contains 'Citrus' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0260_a.png?v=1733741508' -%}
+  {%- elsif value contains 'Lavendel' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0261_a.png?v=1733741516' -%}
+  {%- elsif value contains 'Anti-Schuppen' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0281_a-variant_1.png?v=1744143965' -%}
+  {%- elsif value contains 'Active Carbon' -%}{%- assign swatch_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0285_a.webp?v=1750841603' -%}
+  {%- endif -%}
+
+{%- endif -%}
+
+{%- if swatch_url -%}
+  <img class="media-swatch--image" src="{{ swatch_url }}" loading="lazy" style="width: 62px; height: 62px;">
+{%- else -%}
+  {{- media | image_url: width: media.width | image_tag: loading: 'lazy', sizes: '42px', widths: '42,84', class: 'media-swatch--image' -}}
+{%- endif -%}

@@ -1,0 +1,99 @@
+  {% if section.settings.show_timer == true %}
+    <div class="timer_wrap">
+      <div class="timer_inner">{{ section.settings.timer_text }}</div>
+    </div>
+    {% endif %}
+{% schema %}
+  {
+    "name": "Countdown Timer",
+    "settings": [
+       {
+      "id":"show_timer",
+      "type":"checkbox",
+      "label":"Show timer",
+      "default": false 
+       },
+      {
+      "id":"timer_text",
+      "type":"html",
+      "label":"Timer text"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+.timer_inner {
+    background: #f9f9f9;
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    max-width: 400px;
+      font-size: 14px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+.timer_inner #ten-countdown, .timer_inner b {
+    font-weight: bold;
+    color: #000;
+}
+  .timer_wrap {
+    padding-bottom: 15px;
+}
+  @media  screen and (max-width:999px){
+    .timer_wrap {
+      padding-bottom: 25px;
+       margin-top: -10px;
+}
+  }
+    @media  screen and (max-width:590px){
+    .timer_wrap {
+    padding-bottom: 20px;
+    margin-top: -15px;
+}
+      .timer_inner {
+        font-size:13px;
+      }
+  }
+</style>
+
+<script>
+var timerCount = '';
+function startTimer(){
+	var presentTime = document.getElementById('ten-countdown').innerHTML;
+	var timeArray = presentTime.split(/[:]+/);
+	var m = timeArray[0];
+	var s = checkSecond((timeArray[1] - 1));
+	if(s==59){m=m-1}
+	if(m<0){
+        document.getElementById('ten-countdown').innerHTML = 15 + ":" + 00;
+        startTimer();
+		return;
+	}
+	timerCount = m + ":" + s;
+	document.getElementById('ten-countdown').innerHTML = timerCount;
+	localStorage.setItem('storeTime',timerCount);
+	setTimeout(startTimer, 1000);
+}
+
+function checkSecond(sec){
+	if (sec < 10 && sec >= 0) {sec = "0" + sec};
+	if (sec < 0) {sec = "59"};
+	return sec;
+}
+
+let getTimerCount = localStorage.getItem('storeTime');
+if(getTimerCount && getTimerCount != '0:00'){
+	let getTime = getTimerCount.split(':');
+	let getMins = getTime[0];
+	let seconds = getTime[1];
+    if(isNaN(seconds) == true || seconds == '' || seconds == 0){
+      seconds = '00';
+    }
+	document.getElementById('ten-countdown').innerHTML = getMins + ":" + seconds;
+}else{
+	document.getElementById('ten-countdown').innerHTML = 15 + ":" + 00;
+}
+startTimer();
+</script>

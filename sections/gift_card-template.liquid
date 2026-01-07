@@ -1,0 +1,239 @@
+{% layout none %}
+{% assign formatted_initial_value = gift_card.initial_value | money_without_trailing_zeros: gift_card.currency %}
+{% assign formatted_initial_value_stripped = formatted_initial_value | strip_html %}
+<!DOCTYPE html>
+<html>
+<head>
+{{ 'vendor/qrcode.js' | shopify_asset_url | script_tag }}
+</head>
+<body>
+<div class="gift-card">
+  <img src="{{ section.settings.gutscheindesign | img_url: 'master' }}">
+  {% if section.settings.showqrcode == true %}<div id="qr-code"></div>{% endif %}
+  <h1>{{ gift_card.balance | money }}</h1>
+  <h2>{{ gift_card.code | format_code }}</h2>
+  <a href="#" class="gift-card-download" onclick="window.print();">Jetzt ausdrucken</a>
+</div>
+<script>
+  new QRCode(document.getElementById('qr-code'), {
+    text: '{{ gift_card.qr_identifier }}',
+    width: 120,
+    height: 120
+  });
+</script>
+</body>
+</html>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=5">
+<style>
+
+    #qr-code {
+    position: absolute;
+    top: 2%;
+    left: 5%;
+    width: 10%;
+  }
+  
+  {{ section.settings.wertfont | font_face }}
+  {{ section.settings.codefont | font_face }}
+  .gift-card {
+    max-width: 795px;
+    width: 100%;
+    position: relative;
+    margin: auto;
+  }
+  .gift-card img {
+    width: 100%;
+    margin: auto;
+    display: block;
+  }
+  .gift-card h1 {
+    position: absolute;
+    top: {{ section.settings.werttop }}%;
+    color: {{ section.settings.wertcolor }};
+    font-size: {{ section.settings.wertsize }}px;
+    left: {{ section.settings.wertleft }}%;
+      font-family : "Bebas Neue" !important;
+    transform: rotate(90deg);
+  }
+  @media screen and (max-width: 600px) {
+      .gift-card h1{
+  font-size: 200%;
+        }
+}
+  @media screen and (max-width: 450px) {
+      .gift-card h1{
+  font-size: 130%;
+        }
+}
+  .gift-card h2 {
+    position: absolute;
+    top: {{ section.settings.codetop }}%;
+    color: {{ section.settings.codecolor }};
+    font-size: {{ section.settings.codesize }}px;
+    left: {{ section.settings.codeleft }}%;
+    transform: rotate(90deg);
+      font-family : "Bebas Neue" !important;
+  }
+  @media screen and (max-width: 640px) {
+      .gift-card h2{
+  font-size: 50%;
+        }
+}
+  @media screen and (max-width: 450px) {
+      .gift-card h2{
+  font-size: 35%;
+        }
+}
+  .gift-card-download {
+    padding: 9px 35px;
+    border-radius: 50px;
+    color: {{ section.settings.buttonfontcolor }};
+    background: {{ section.settings.buttoncolor }};
+    margin: 18px auto 0px auto;
+    display: block;
+    position: fixed;
+    bottom: 36px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    max-width: 250px;
+    font-family: sans-serif;
+    font-size: 14px;
+    text-align: center;
+    line-height: 32px;
+    text-decoration: none;
+    box-shadow: 1px 1px 30px -4px rgba(64, 63, 61, .78);
+  }
+  @media print {
+    .gift-card-download {
+      display: none;
+    }
+  }
+</style>
+{% schema %}
+{
+  "name": {
+    "de": "Gutschein"
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Gutscheindesign",
+      "info": "Lade Dein fertiges Gutscheindesign hoch"
+    },
+    {
+      "type": "image_picker",
+      "id": "gutscheindesign",
+      "label": "Gutscheindesign"
+    },
+    {
+      "type": "header",
+      "content": "Einstellungen",
+      "info": "Verschiebe die dynamischen Elemente"
+    },
+    {
+      "type": "range",
+      "id": "werttop",
+      "label": "Wert Abstand oben",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 27
+    },
+    {
+      "type": "range",
+      "id": "wertleft",
+      "label": "Wert Abstand links",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 27
+    },
+    {
+      "type": "color",
+      "id": "wertcolor",
+      "label": "Wertfarbe",
+      "default": "#000000"
+    },
+    {
+      "type": "font_picker",
+      "id": "wertfont",
+      "label": "Wert Schriftart",
+      "default": "sans-serif"
+    },
+    {
+      "type": "text",
+      "id": "wertsize",
+      "label": "Wertgröße",
+      "default": "42"
+    },
+    {
+      "type": "range",
+      "id": "codetop",
+      "label": "Code Abstand oben",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 27
+    },
+    {
+      "type": "range",
+      "id": "codeleft",
+      "label": "Code Abstand links",
+      "min": 1,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 27
+    },
+    {
+      "type": "color",
+      "id": "codecolor",
+      "label": "Codefarbe",
+      "default": "#000000"
+    },
+    {
+      "type": "font_picker",
+      "id": "codefont",
+      "label": "Wert Schriftart",
+      "default": "sans-serif"
+    },
+    {
+      "type": "text",
+      "id": "codesize",
+      "label": "Codegröße",
+      "default": "11"
+    },
+    {
+      "type": "header",
+      "content": "Einstellungen",
+      "info": "Definiere die Farben des Buttons"
+    },
+    {
+      "type": "color",
+      "id": "buttoncolor",
+      "label": "Hintergrundfarbe",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "buttonfontcolor",
+      "label": "Schriftfarbe",
+      "default": "#ffffff"
+    },
+      {
+        "type": "header",
+        "content": "QR Code anzeigen",
+		 "info": "Zeige einen QR Code für Shopify POS an"
+      },
+      {
+        "type": "checkbox",
+        "id": "showqrcode",
+        "label": "QR Code anzeigen",
+        "default": false
+      }
+  ]
+}
+{% endschema %}

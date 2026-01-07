@@ -1,0 +1,80 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "header",
+  "name": "Footer",
+  "sections": {
+    "lb_seo_footer_BcffnV": {
+      "type": "lb-seo-footer",
+      "settings": {
+        "link-url": ""
+      }
+    },
+    "lb_section_footer_WRtAET": {
+      "type": "lb-section-footer",
+      "blocks": {
+        "footer_column_menu_PjxagE": {
+          "type": "footer_column_menu",
+          "settings": {
+            "column_headline": "Hilfe & Kontakt",
+            "column_menu": "hilfe-kontakt"
+          }
+        },
+        "footer_column_menu_UxwFdt": {
+          "type": "footer_column_menu",
+          "settings": {
+            "column_headline": "Arbeite mit uns",
+            "column_menu": "arbeite-mit-uns"
+          }
+        },
+        "footer_column_menu_ykTgBe": {
+          "type": "footer_column_menu",
+          "settings": {
+            "column_headline": "Allgemeines",
+            "column_menu": "footer"
+          }
+        },
+        "footer_column_menu_VqMUmC": {
+          "type": "footer_column_menu",
+          "settings": {
+            "column_headline": "Über uns",
+            "column_menu": "ber-uns"
+          }
+        },
+        "footer_column_html_kFdfhe": {
+          "type": "footer_column_html",
+          "settings": {
+            "column_headline": "Bewertungen & Sicherheit",
+            "column_html": "<img src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Artboard_d7553e37-fec7-45dc-994d-5f6c4ac26123.png?v=1750429231\" loading=\"lazy\" style=\"width: 100%; display: block;\">\n\n<h3>Zahlung &amp; Versand</h3>\n<img src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Artboard_Copy_9_bb727f3c-ca15-49d5-a8b0-513c008c4076.png?v=1644592446\" loading=\"lazy\" style=\"display: block; width: 100%; margin-top: 18px;\">\n<br>\n<h3>Social Media</h3>\n\n\n<a href=\"https://www.tiktok.com/@stoertebekker\" target=\"blank\" style=\"display: inline-block; max-width: 32px; margin-top: 0x;\"><img style=\"width: 100%;\" src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/tiktok.png?v=1659168139\" loading=\"lazy\"></a>\n\n<a href=\"https://www.youtube.com/@stoertebekker\" target=\"blank\" style=\"display: inline-block; max-width: 32px; margin-top: 0x;\"><img style=\"width: 100%;\" src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/social-yt_copy.png?v=1715668577\" loading=\"lazy\"></a>\n<a href=\"https://www.instagram.com/stoertebekker_official/\" target=\"blank\" style=\"display: inline-block; max-width: 32px; margin-top: 0x;\"><img style=\"width: 100%;\" src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/instagram.png?v=1659168139\" loading=\"lazy\"></a>\n\n<a href=\"https://www.facebook.com/stoertebekkerofficial/\" target=\"blank\" style=\"display: inline-block; max-width: 32px; margin-top: 0x;\"><img style=\"width: 100%;\" src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Design_ohne_Titel_59.png?v=1761031522\" loading=\"lazy\"></a>\n\n<a href=\"https://open.spotify.com/show/705NSkRf4VHOgm15rgQIef\" target=\"blank\" style=\"display: inline-block; max-width: 32px; margin-top: 0x;\"><img style=\"width: 100%;\" src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/social-spotify_copy_2.png?v=1715668577\" loading=\"lazy\"></a>"
+          }
+        }
+      },
+      "block_order": [
+        "footer_column_menu_PjxagE",
+        "footer_column_menu_UxwFdt",
+        "footer_column_menu_ykTgBe",
+        "footer_column_menu_VqMUmC",
+        "footer_column_html_kFdfhe"
+      ],
+      "settings": {
+        "footer_bg": "#ffffff",
+        "footer_color": "#232323",
+        "footer_header_font_family": "sans_serif_n4",
+        "footer_header_font_family_size": 18,
+        "footer_body_font_family": "sans_serif_n4",
+        "footer_body_font_family_size": 16
+      }
+    }
+  },
+  "order": [
+    "lb_seo_footer_BcffnV",
+    "lb_section_footer_WRtAET"
+  ]
+}

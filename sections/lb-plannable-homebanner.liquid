@@ -1,0 +1,225 @@
+{% assign current_date_time = 'now' | date: "%Y.%m.%d-%H:%M:%S" %}
+{% assign set_full_time = section.settings.plannable-date-year | append: '.' | append: section.settings.plannable-date-month | append: '.' | append: section.settings.plannable-date-day | append: '-' | append: section.settings.plannable-date-time %}
+<a href="{% if current_date_time >= set_full_time or customer.email contains '@lionsbranding.com' or customer.email contains '@stoertebekker.com' or customer.email contains 'lhelpingbrands.de' %}{{ section.settings.plannable-homebanner-link }}{% else %}{{ section.settings.default-homebanner-link }}{% endif %}" class="lb-planned-homebanner-section" id="{{ section.settings.abid }}">
+  {% if section.settings.plannable-homebanner-preview == true %}
+    <div class="lb-planned-homebanner">
+      <img class="lb-planned-homebanner-desktop" src="{{ section.settings.planned-homebanner-desktop | img_url: '2500x' }}">
+      <img class="lb-planned-homebanner-mobile" src="{{ section.settings.planned-homebanner-mobile | img_url: '900x' }}">
+    </div>
+  {% else %}
+    {% if current_date_time >= set_full_time or customer.email contains '@lionsbranding.com' or customer.email contains '@stoertebekker.com' or customer.email contains 'lhelpingbrands.de' %}
+      <div class="lb-planned-homebanner">
+        <img class="lb-planned-homebanner-desktop" src="{{ section.settings.planned-homebanner-desktop | img_url: '2500x' }}">
+        <img class="lb-planned-homebanner-mobile" src="{{ section.settings.planned-homebanner-mobile | img_url: '900x' }}">
+      </div>
+    {% else %}
+      <div class="lb-default-homebanner">
+        <img class="lb-default-homebanner-desktop" src="{{ section.settings.default-homebanner-desktop | img_url: '2500x' }}">
+        <img class="lb-default-homebanner-mobile" src="{{ section.settings.default-homebanner-mobile | img_url: '900x' }}">
+      </div>
+    {% endif %}
+  {% endif %} 
+</a>
+
+<style>
+#withoutbadge { 
+  display: none;
+}
+
+.lb-planned-homebanner-section {
+  display: block;
+}
+.lb-planned-homebanner-section img {
+  width: 100%;
+  display: block;
+}
+.lb-default-homebanner-mobile, .lb-planned-homebanner-mobile {
+  display: none!important;
+}
+@media only screen and (max-width: 600px) {
+.lb-default-homebanner-desktop, .lb-planned-homebanner-desktop {
+  display: none!important;
+}
+.lb-default-homebanner-mobile, .lb-planned-homebanner-mobile {
+  display: block!important;
+}
+}  
+</style>
+
+{% schema %}
+{
+  "name": "Lb Plannable Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "abid",
+      "label": "AB Test ID"
+    },
+    {
+      "type": "header",
+      "content": "Default Banner",
+      "info": "Stelle folgend alle Einstellungen für das default Banner ein."
+    },
+    {
+      "type": "url",
+      "id": "default-homebanner-link",
+      "label": "Default Verlinkung"
+    },
+    {
+      "type": "image_picker",
+      "id": "default-homebanner-desktop",
+      "label": "Default Homebanner Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "default-homebanner-mobile",
+      "label": "Default Homebanner Mobile"
+    },
+    {
+      "type": "header",
+      "content": ".",
+      "info": "."
+    },
+    {
+      "type": "header",
+      "content": "Plannable Banner",
+      "info": "Stelle folgend alle Einstellungen für das geplante Banner ein."
+    },
+    {
+      "type": "checkbox",
+      "id": "plannable-homebanner-preview",
+      "label": "Plannable Preview"
+    },
+    {
+      "type": "text",
+      "id": "plannable-homebanner-link",
+      "label": "Plannable Verlinkung"
+    },
+    {
+      "type": "select",
+      "id": "plannable-date-day",
+      "label": "Tag",
+      "options": [
+        {"value": "01", "label": "1"},
+        {"value": "02", "label": "2"},
+        {"value": "03", "label": "3"},
+        {"value": "04", "label": "4"},
+        {"value": "05", "label": "5"},
+        {"value": "06", "label": "6"},
+        {"value": "07", "label": "7"},
+        {"value": "08", "label": "8"},
+        {"value": "09", "label": "9"},
+        {"value": "10", "label": "10"},
+        {"value": "11", "label": "11"},
+        {"value": "12", "label": "12"},
+        {"value": "13", "label": "13"},
+        {"value": "14", "label": "14"},
+        {"value": "15", "label": "15"},
+        {"value": "16", "label": "16"},
+        {"value": "17", "label": "17"},
+        {"value": "18", "label": "18"},
+        {"value": "19", "label": "19"},
+        {"value": "20", "label": "20"},
+        {"value": "21", "label": "21"},
+        {"value": "22", "label": "22"},
+        {"value": "23", "label": "23"},
+        {"value": "24", "label": "24"},
+        {"value": "25", "label": "25"},
+        {"value": "26", "label": "26"},
+        {"value": "27", "label": "27"},
+        {"value": "28", "label": "28"},
+        {"value": "29", "label": "29"},
+        {"value": "30", "label": "30"},
+        {"value": "31", "label": "31"}
+      ],
+      "default": "01"
+    },  
+    {
+      "type": "select",
+      "id": "plannable-date-month",
+      "label": "Monat",
+      "options": [
+        {"value": "01", "label": "Januar"},
+        {"value": "02", "label": "Februar"},
+        {"value": "03", "label": "März"},
+        {"value": "04", "label": "April"},
+        {"value": "05", "label": "Mai"},
+        {"value": "06", "label": "Juni"},
+        {"value": "07", "label": "Juli"},
+        {"value": "08", "label": "August"},
+        {"value": "09", "label": "September"},
+        {"value": "10", "label": "Oktober"},
+        {"value": "11", "label": "November"},
+        {"value": "12", "label": "Dezember"}
+      ],
+      "default": "01"
+    },  
+    {
+      "type": "select",
+      "id": "plannable-date-year",
+      "label": "Jahr",
+      "options": [
+        {"value": "2020", "label": "2020"},
+        {"value": "2021", "label": "2021"},
+        {"value": "2022", "label": "2022"},
+        {"value": "2023", "label": "2023"},
+        {"value": "2024", "label": "2024"},
+        {"value": "2025", "label": "2025"},
+        {"value": "2026", "label": "2026"},
+        {"value": "2027", "label": "2027"},
+        {"value": "2028", "label": "2028"},
+        {"value": "2029", "label": "2029"},
+        {"value": "2030", "label": "2030"}
+      ],
+      "default": "2024"
+    },  
+    {
+      "type": "select",
+      "id": "plannable-date-time",
+      "label": "Uhrzeit",
+      "options": [
+        {"value": "01:00:00", "label": "1 Uhr"},
+        {"value": "02:00:00", "label": "2 Uhr"},
+        {"value": "03:00:00", "label": "3 Uhr"},
+        {"value": "04:00:00", "label": "4 Uhr"},
+        {"value": "05:00:00", "label": "5 Uhr"},
+        {"value": "06:00:00", "label": "6 Uhr"},
+        {"value": "07:00:00", "label": "7 Uhr"},
+        {"value": "08:00:00", "label": "8 Uhr"},
+        {"value": "09:00:00", "label": "9 Uhr"},
+        {"value": "10:00:00", "label": "10 Uhr"},
+        {"value": "11:00:00", "label": "11 Uhr"},
+        {"value": "12:00:00", "label": "12 Uhr (Mittag)"},
+        {"value": "13:00:00", "label": "13 Uhr"},
+        {"value": "14:00:00", "label": "14 Uhr"},
+        {"value": "15:00:00", "label": "15 Uhr"},
+        {"value": "16:00:00", "label": "16 Uhr"},
+        {"value": "17:00:00", "label": "17 Uhr"},
+        {"value": "18:00:00", "label": "18 Uhr"},
+        {"value": "19:00:00", "label": "19 Uhr"},
+        {"value": "20:00:00", "label": "20 Uhr"},
+        {"value": "21:00:00", "label": "21 Uhr"},
+        {"value": "22:00:00", "label": "22 Uhr"},
+        {"value": "23:00:00", "label": "23 Uhr"},
+        {"value": "23:59:59", "label": "Mitternacht (24 Uhr)"}
+      ],
+      "default": "23:59:59"
+    },
+    {
+      "type": "image_picker",
+      "id": "planned-homebanner-desktop",
+      "label": "Plannable Homebanner Desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "planned-homebanner-mobile",
+      "label": "Plannable Homebanner Mobile"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lb Plannable Banner"
+    }
+  ]
+}
+{% endschema %}

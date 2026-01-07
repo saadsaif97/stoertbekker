@@ -1,0 +1,147 @@
+
+
+  
+<div class="lb-gradient-header-section">
+  <div class="lb-gradient-header-section-holder">
+
+    
+    <div class="lb-gradient-header-section-holder-reviews"><span>★★★★★</span> (19.683)</div>
+  <h1>{{ collection.title }}</h1>
+  <p>{{ collection.description }}</p>
+
+
+      
+  </div>
+</div>
+
+
+
+
+<style>
+
+  .lb-gradient-header-section:before {
+    content: ' ';
+    height: 0px;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    background: linear-gradient(180deg,rgba(34, 36, 38, 0) 0%, rgba(34, 36, 38, 1) 100%);
+  }
+
+  .lb-gradient-header-section:after {
+    content: ' ';
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+    background: linear-gradient(180deg,rgba(34, 36, 38, 0) 0%, rgba(34, 36, 38, 1) 100%);
+
+    backdrop-filter: blur(10px); /* für halbtransparente Elemente */
+  -webkit-backdrop-filter: blur(10px);
+  mask-image: linear-gradient(to top, black 50%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, black 50%, transparent 100%);
+  }
+  
+  .lb-gradient-header-section {
+    display: none;
+    position: relative;
+    padding: 182px 18px 18px 18px;
+  background: url("{{ collection.metafields.custom.header_image | img_url: '2000x' }}") no-repeat center center;
+    background-size: cover;
+    background-position: top center; 
+  }
+
+  
+  .lb-gradient-header-section-holder {
+    max-width: 1180px;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+  }
+
+.lb-gradient-header-section-holder-reviews {
+ margin: 0px 0px 4px 0px; 
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.lb-gradient-header-section-holder-reviews span {
+  color: #d9ad5f;
+}
+  
+  .lb-gradient-header-section h1 {
+    color: white;
+  font-family: BebasNeue-Regular;
+  font-size: 24px;
+  line-height: 30px;
+    margin: 0px 0px 3px 0px!important;
+    font-size: 30px;
+    line-height: 36px;
+            max-width: 800px;
+    width: 80%;
+  }
+
+  .lb-gradient-header-section p {
+    color: white;
+    margin: 0px!important;
+    font-size: 20px;
+    line-height: 26px;
+            max-width: 800px;
+    width: 80%;
+  }
+
+
+@media only screen and (max-width: 600px) {
+  .lb-gradient-header-section {
+    padding: 172px 18px 18px 18px;
+    background-position: center center;/*
+    background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8)),
+    url('{{ collection.metafields.custom.lb_categorie_mobile_image.value | image_url }}');*/
+  }
+
+  .lb-gradient-header-section h1 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .lb-gradient-header-section p {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  
+}
+  
+</style>
+
+{% schema %}
+{
+  "name": {
+    "en": "Lb Gradient Header",
+    "de": "Lb Gradient Header"
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": {
+        "en": "Section Settings",
+        "de": "Abschnittseinstellungen"
+      },
+      "info": {
+        "en": "Customize the design of the search for your online shop.",
+        "de": "Passe das Design der Suche für deinen Onlineshop an."
+      }
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lb Gradient Header"
+    }
+  ]
+}
+{% endschema %}

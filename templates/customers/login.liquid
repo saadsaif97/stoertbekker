@@ -1,0 +1,27 @@
+<div class="lb-accounting">
+	{% form 'customer_login' %}
+  		<div class="lb-accounting-holder">
+      		<h1 class="lb-accounting-headline">Anmelden </h1>	
+          
+        	<div class="lb-login-error">{{ form.errors | default_errors }}</div>
+      		<input type="email" required name="customer[email]" placeholder="Email…" id="CustomerEmail" class="lb-accounting-input" autocorrect="off" autocapitalize="off" autofocus>
+      		<input type="password" required value="" placeholder="Passwort…" name="customer[password]" id="CustomerPassword" class="lb-accounting-input">
+      		
+          	<p id="lb-password-reset-trigger" class="lb-login-reset-password lb-reset-password">Passwort vergessen?</p>
+          
+      		<input type="submit" class="lb-accounting-btn" value="Anmelden">
+      		<a href="{% if routes.root_url != '/' %}{{ shop.url }}{{ routes.root_url }}{% endif %}/account/register" class="lb-accounting-link">Du hast noch kein Konto? <u>Konto erstellen</u></a>
+    	</div>
+	{% endform %}
+
+  	{% form 'recover_customer_password' %}
+    	<div class="lb-accounting-holder">
+      		<div class="lb-password-reset-form">
+            	{{ form.errors | default_errors }}
+            	<input class="lb-accounting-input" required placeholder="Email…" type="email" name="email" />
+            	<input class="lb-accounting-btn" type="submit" value="Passwort zurücksetzen" />
+      		</div>
+    	</div>
+	{% endform %}
+</div>
+<!-- {{ routes.root_url }} -->

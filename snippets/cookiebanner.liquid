@@ -1,0 +1,179 @@
+<div class="banner">
+  <h2>Schön, dass du da bist!</h2>
+  <p>Wir verwenden Cookies, um Inhalte und Anzeigen zu personalisieren, Funktionen für soziale Medien anbieten zu können und die Zugriffe auf unsere Website zu analysieren. Außerdem geben wir Informationen zu Ihrer Verwendung unserer Website an unsere Partner für soziale Medien, Werbung und Analysen weiter.</p>
+  <div style="overflow: hidden; margin-bottom: 18px; margin-top: 18px; color: #CBCBCB;">
+    <div style="width: 50%; float: left;">
+      <div style="display: block;overflow: hidden; margin-bottom: 9px;"><div style="width: 18px; margin-right: 9px; height:18px; border: 1px solid #CBCBCB; float: left;"><span>✓</span></div> Notwendige</div>
+      <div style="display: block;overflow: hidden; margin-bottom: 9px;"><div style="width: 18px; margin-right: 9px; height:18px; border: 1px solid #CBCBCB; float: left;"><span class="checker" id="checker1">✓</span></div> Analyse</div>
+    </div>
+    <div style="width: 50%; float: left;">
+      <div style="display: block;overflow: hidden; margin-bottom: 9px;"><div style="width: 18px; margin-right: 9px; height:18px; border: 1px solid #CBCBCB; float: left;"><span class="checker" id="checker2">✓</span></div> Marketing</div>
+      <div style="display: block;overflow: hidden; margin-bottom: 9px;"><div style="width: 18px; margin-right: 9px; height:18px; border: 1px solid #CBCBCB; float: left;"><span class="checker" id="checker3">✓</span></div> Sonstige</div>
+    </div>
+  </div>
+  <button class="link" onclick="setCookie('cookie', 'empty', 30); $('div.banner').remove();">AUSWAHL ZULASSEN</button>
+  <button class="a" onclick="setCookie('cookie', 'empty', 30); $('div.banner').remove();">COOKIES ZULASSEN</button>
+</div>
+
+<style>
+  
+.checker {
+  opacity: 0;
+}
+  
+.checker-active {
+  opacity: 1!important;
+}  
+  
+.banner span {
+  display: block;
+  text-align: center;
+}
+  
+.banner {
+  position: fixed;
+  box-shadow: 0 10px 38px -1px rgba(0, 0, 0, .13);
+  bottom: 18px;
+  left: 18px;
+  width: 90%;
+  background: white;
+  padding: 18px;
+  z-index: 99999;
+  font-size: 12px;
+  border-radius: 10px;
+  max-width: 350px;
+  animation-name: movesss;
+  animation-duration: 5s;
+}
+
+@keyframes movesss {
+  0% {
+    opacity: 0;
+      bottom: -500px;
+  }
+ 99% {
+    opacity: 0;
+         bottom: -500px;
+  }
+  100% {
+    opacity: 1;
+      bottom: 18px;
+  }
+}
+  
+.banner img {
+  width: 102px;
+  margin-bottom:9px;
+}
+
+.banner h2 {
+  text-align: left;
+  margin-bottom: 9px;
+  line-height: 18px;
+  color: black;
+  font-family: 'Bebas Neue';
+  font-size: 20px; 
+  color: #3C3C3B;
+}
+  
+.banner p {
+  margin-bottom: 9px;
+  line-height: 18px;
+  color: #3C3C3B;
+}
+  
+.link {
+  color: black;
+  background: #efece0;
+  margin-right: 18px;
+  width: 100%;
+  border:none;
+  line-height: 42px;
+  display: block;
+  text-align: center;
+  margin-bottom: 9px;
+  cursor: pointer;
+}
+
+.a {
+  background: #3C3C3B;
+  border: none;
+  color: #FFFFFF;  
+  width: 100%;
+  line-height: 42px;
+  border-radius: 0px;
+  display: inline-block;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.banner-hide {
+  display:none
+}
+  
+</style>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+
+
+ <script>
+  document.getElementById("checker1").onclick = function() {myFunctionchecker()};
+    function myFunctionchecker() {
+      document.getElementById("checker1").classList.toggle("checker-active");
+    }
+   
+  document.getElementById("checker2").onclick = function() {myFunctionchecker2()};
+    function myFunctionchecker2() {
+      document.getElementById("checker2").classList.toggle("checker-active");
+    }
+   
+  document.getElementById("checker3").onclick = function() {myFunctionchecker3()};
+    function myFunctionchecker3() {
+      document.getElementById("checker3").classList.toggle("checker-active");
+    }
+</script>
+
+
+
+
+  <script type="text/javascript">
+function setCookie(name, value, exdays) {
+    var exdate = new Date();
+    exdate.setDate(exdate.getDate() + exdays);
+    var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
+    document.cookie = name + "=" + c_value;
+}
+
+function hasCookie(cname) {
+            var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var result = false;
+    $(decodedCookie.split(";")).each(function(ind, val){
+    		var cccval = val.split('=');
+       
+        if(cccval[0].replace(/[\W]+/g,"") === cname){
+         result = true;
+        }
+    });
+    
+    
+    return result;
+}
+
+$( document ).ready(function() {
+	if(hasCookie('cookie')){$('div.banner').remove();} else {$('button.a').removeClass('banner-hide')}
+});
+    
+$( document ).ready(function() {
+	if(hasCookie('cookie')){$('div.full-banner').remove();} else {$('button.a').removeClass('banner-hide')}
+});
+
+</script>
+
+
+
+
+
+

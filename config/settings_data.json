@@ -1,0 +1,1281 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "favicon": "shopify://shop_images/apple-icon-sb.png",
+    "apple_touch": "shopify://shop_images/apple-icon-sb.png",
+    "plannable-date-day": "01",
+    "plannable-date-month": "12",
+    "plannable-date-year": "2025",
+    "plannable-date-time": "23:59:59",
+    "showCartLayerPopup": false,
+    "change_expres_button_order": true,
+    "google_expres_button_order": false,
+    "shopify_expres_button_order": false,
+    "activate_delivery_badges": false,
+    "tick": true,
+    "aroma_trigger_option_names": "Color,Duft,Material,Farbe,Seife",
+    "checkout_logo_image": "shopify://shop_images/100_Tage_Rueckgabe_1.png",
+    "checkout_logo_position": "center",
+    "checkout_logo_size": "large",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#ffffff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#efece0",
+    "checkout_heading_font": "Open Sans",
+    "checkout_body_font": "Open Sans",
+    "checkout_accent_color": "#3c3c3b",
+    "checkout_button_color": "#3c3c3b",
+    "checkout_error_color": "#e32c2b",
+    "cookiebanner": "",
+    "lb_primary_color": "#66634e",
+    "color_body_bg": "#f8f8f7",
+    "hover_color": "#66634e",
+    "border-radius": "5px",
+    "textareas": "15px",
+    "lb_font": "avenir_next_n4",
+    "apple-touch": "shopify://shop_images/apple-icon-sb.png",
+    "lbbanner": false,
+    "color_text": "#3d4246",
+    "color_body_text": "#69727b",
+    "color_sale_text": "#557b97",
+    "color_borders": "#e8e9eb",
+    "color_button": "#000000",
+    "color_button_text": "#fff",
+    "color_small_button": "#fff",
+    "color_small_button_text": "#3d4246",
+    "color_text_field": "#fff",
+    "color_text_field_text": "#000",
+    "color_image_overlay_text": "#fff",
+    "color_image_overlay": "#3d4246",
+    "image_overlay_opacity": 40,
+    "type_header_font": "avenir_next_n4",
+    "type_header_base_size": 26,
+    "type_base_font": "work_sans_n4",
+    "type_base_size": 16,
+    "type_bold_product_titles": false,
+    "share_image": "",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_twitter_link": "",
+    "social_facebook_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "https://www.instagram.com/corown/",
+    "social_tumblr_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "sections": {
+      "gift_card-template": {
+        "type": "gift_card-template",
+        "settings": {
+          "gutscheindesign": "shopify://shop_images/10_c5d392e8-538d-40dd-b911-b40a382dce78.png",
+          "werttop": 69,
+          "wertleft": 32,
+          "wertcolor": "#3c3c3b",
+          "wertfont": "open_sans_n4",
+          "wertsize": "52",
+          "codetop": 72,
+          "codeleft": 20,
+          "codecolor": "#3c3c3b",
+          "codefont": "open_sans_n4",
+          "codesize": "24",
+          "buttoncolor": "#3c3c3b",
+          "buttonfontcolor": "#ffffff",
+          "showqrcode": false
+        }
+      },
+      "lb-section-cart": {
+        "type": "lb-section-cart",
+        "settings": {
+          "announcementbarcolor": "#7cc58c",
+          "announcementbarfontcolor": "#ffffff",
+          "announcementbartext": "Gute Wahl - deine Produkte sind nun im Warenkorb",
+          "reservation": "Artikel im Warenkorb werden nicht reserviert",
+          "freeshippingbartext": "🎉 Du erhältst kostenlosen Versand",
+          "shippingtext": "Versand (DE&AT)",
+          "shippingleft": "Noch",
+          "shippinglefttext": "bis zum kostenlosen Versand!",
+          "freeforyou": "Gratis für dich",
+          "announcementbarhtml": "",
+          "upsell_styling_infobadge_bgcolor": "#ffffff",
+          "upsell_styling_infobadge_fontcolor": "#000000",
+          "upsell_styling_box_bgcolor": "#efece0",
+          "upsell_styling_box_fontcolor": "#000000",
+          "upsell_styling_button_bgcolor": "#3c3c3b",
+          "upsell_styling_button_fontcolor": "#ffffff",
+          "shippingcalc": true,
+          "shippinglimit": "4900",
+          "shippinglimitcheck": true,
+          "cart_btn_text": "Jetzt sicher zur Kasse",
+          "cart_btn_bgcolor": "#232323",
+          "cart_btn_fontcolor": "#ffffff",
+          "after-checkout-btn-html": "<img class=\"lb-cart-payments\" src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Artboard_Copy_9_bb727f3c-ca15-49d5-a8b0-513c008c4076.png?v=1644592446\" style=\"display: block; width: 100%;\">"
+        }
+      },
+      "lb-section-header": {
+        "type": "lb-section-header",
+        "blocks": {
+          "03c48cee-6347-426f-9741-49260687c77a": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Blog",
+              "subimgurl": "shopify://shop_images/BLog_2996f9f5-5ce4-4fbf-bfd6-8de788103c11.png"
+            }
+          },
+          "eeb4147b-9b0e-4174-a3d7-b6edd4d1cb6f": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Bartkamm",
+              "subimgurl": "shopify://shop_images/Kamm_252f730c-82c2-48ba-b379-fe0af37b433b.png"
+            }
+          },
+          "611816e0-47da-4292-8fef-bc90e9b5b499": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Bartbürste",
+              "subimgurl": "shopify://shop_images/Buerste.png"
+            }
+          },
+          "be394436-cc88-4c7a-8faf-8c42a613556c": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Bartbalm",
+              "subimgurl": "shopify://shop_images/Balm_f21ab43d-0e66-4750-915f-5695bdbe0c27.png"
+            }
+          },
+          "47727afe-6d08-45ea-a878-e15d4b382a60": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Bartöl",
+              "subimgurl": "shopify://shop_images/76beard_oil.png"
+            }
+          },
+          "be9e9274-8ebe-4da2-bac0-9abb1d03d974": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Mental health",
+              "subimgurl": "shopify://shop_images/Stuerrad_freigestellt-02.png"
+            }
+          },
+          "365eccb5-f52c-4e4f-be21-92a9a41f7827": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Rasierseife",
+              "subimgurl": "shopify://shop_images/Seife_59c0ed26-181b-410a-b953-8acff6296d59.png"
+            }
+          },
+          "3e2b8670-d1d7-42b8-93a1-def8d3c7156a": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Jobs",
+              "subimgurl": "shopify://shop_images/jobs-1_0c8765b5-fcd5-45eb-b064-5a684051d5c9.png"
+            }
+          },
+          "e981f083-116d-4219-add9-a7cae1327677": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Team",
+              "subimgurl": "shopify://shop_images/team-klein.webp"
+            }
+          },
+          "6a2fbcee-c840-4937-8615-5b70c8afa783": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Story",
+              "subimgurl": "shopify://shop_images/story-klein.webp"
+            }
+          },
+          "659f48ba-0dbe-4b61-b623-7d726d463eeb": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Rasierzubehör",
+              "subimgurl": "shopify://shop_images/shaving-foam.webp"
+            }
+          },
+          "a6916c3c-8a2f-4997-86c5-8aa484afbecd": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Rasierhobel",
+              "subimgurl": "shopify://shop_images/safetyRazor_896d5b9c-0a24-4b5f-9393-7ca270d101a9.webp"
+            }
+          },
+          "99d05b3b-7b50-43cd-8ab1-519e2bf866d9": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Rasiermesser",
+              "subimgurl": "shopify://shop_images/Rasiermesser.webp"
+            }
+          },
+          "4b3c42b4-b5e8-4922-9f93-783a0db6b417": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Rasierklingen",
+              "subimgurl": "shopify://shop_images/klinge_4b1d4ea9-0171-4308-96f7-f54d606d8368.png"
+            }
+          },
+          "2d6e0edf-af9c-45d7-8fd6-16b5c57bb688": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Bartshampoo",
+              "subimgurl": "shopify://shop_images/Seife_59c0ed26-181b-410a-b953-8acff6296d59.png"
+            }
+          },
+          "footer_column_menu_zBBeLJ": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Straight razor",
+              "subimgurl": "shopify://shop_images/Rasiermesser.webp"
+            }
+          },
+          "ca036d35-2d32-43b6-8e86-0c75ea18eef0": {
+            "type": "search_recommendations",
+            "settings": {
+              "search_recommendations_text": "Klingen",
+              "search_recommendations_url": "https://stoertebekker.com/products/stortebekker-rasierklingen"
+            }
+          },
+          "d0f94b39-ddbd-4204-9577-57da8a4fed9a": {
+            "type": "search_recommendations",
+            "settings": {
+              "search_recommendations_text": "Rasierständer",
+              "search_recommendations_url": "https://stoertebekker.com/products/rasierstander"
+            }
+          },
+          "404506eb-3173-44d8-b29e-9852e6e0fb6a": {
+            "type": "search_recommendations",
+            "settings": {
+              "search_recommendations_text": "After Shave",
+              "search_recommendations_url": "https://stoertebekker.com/products/after-shave-balm"
+            }
+          },
+          "04f6ea28-d189-419f-a937-60d11a5ad03a": {
+            "type": "search_recommendations",
+            "settings": {
+              "search_recommendations_text": "Alaunstein",
+              "search_recommendations_url": "https://stoertebekker.com/products/alaunstein"
+            }
+          },
+          "a6c85389-c55c-4f9f-8a13-5176bd9fd07a": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Bartwachs",
+              "subimgurl": "shopify://shop_images/Balm_f21ab43d-0e66-4750-915f-5695bdbe0c27.png"
+            }
+          },
+          "93588f4c-a5f1-4f47-b682-4a068ace5601": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Nagelset",
+              "subimgurl": "shopify://shop_images/Nagelschere.png"
+            }
+          },
+          "bf52c7d9-1742-4926-b524-2c2cb9541ebf": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Shampoo",
+              "subimgurl": "shopify://shop_images/Festes-shampoo.png"
+            }
+          },
+          "773581e6-0a84-4acf-b43a-b6b6237ef462": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Bartpflege",
+              "subimgurl": "shopify://shop_images/76beard_oil.png"
+            }
+          },
+          "dc8e2709-7b98-42a4-8f63-5a728d4344ca": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Bartstyling",
+              "subimgurl": "shopify://shop_images/Buerste.png"
+            }
+          },
+          "footer_column_menu_XAnECM": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Pomade",
+              "subimgurl": "shopify://shop_images/Artboard_Copy_143_7761da62-c306-4c5d-860a-4e42b557e33a.png"
+            }
+          },
+          "footer_column_menu_BcT4EB": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Festes Shampoo",
+              "subimgurl": "shopify://shop_images/Artboard_Copy_144_d645122e-1ed5-4fa3-994c-d75cf2bf3fe6.png"
+            }
+          },
+          "footer_column_menu_6DRTRg": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Gesichtspflege",
+              "subimgurl": "shopify://shop_images/Artboard_Copy_145_bc56c343-f816-4f77-89c1-b44fdd9da745.png"
+            }
+          },
+          "footer_column_menu_qwRXDY": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Deo",
+              "subimgurl": "shopify://shop_images/Artboard_Copy_146_1caa1187-1060-4d6e-b6d3-56bd1d0896f0.png"
+            }
+          },
+          "footer_column_menu_4prrcw": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Hair & Body Wash",
+              "subimgurl": "shopify://shop_images/soap_1e06d328-1350-4119-bdbc-952b0bfc644f.png"
+            }
+          },
+          "footer_column_menu_DmUcTa": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Sea Salt Spray",
+              "subimgurl": "shopify://shop_images/SSS_-_Icon_7c108d07-3178-40e5-b8e4-f55afd77346d.png"
+            }
+          },
+          "footer_column_menu_YwERYN": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Haar Booster",
+              "subimgurl": "shopify://shop_images/booster.png"
+            }
+          },
+          "footer_column_menu_NMhBGC": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Body Bar",
+              "subimgurl": "shopify://shop_images/Artboard_Copy_346.png"
+            }
+          },
+          "footer_column_menu_wp3gkL": {
+            "type": "footer_column_menu",
+            "settings": {
+              "subimgtitle": "Handsoap",
+              "subimgurl": "shopify://shop_images/Handsoap_New.png"
+            }
+          }
+        },
+        "block_order": [
+          "03c48cee-6347-426f-9741-49260687c77a",
+          "eeb4147b-9b0e-4174-a3d7-b6edd4d1cb6f",
+          "611816e0-47da-4292-8fef-bc90e9b5b499",
+          "be394436-cc88-4c7a-8faf-8c42a613556c",
+          "47727afe-6d08-45ea-a878-e15d4b382a60",
+          "be9e9274-8ebe-4da2-bac0-9abb1d03d974",
+          "365eccb5-f52c-4e4f-be21-92a9a41f7827",
+          "3e2b8670-d1d7-42b8-93a1-def8d3c7156a",
+          "e981f083-116d-4219-add9-a7cae1327677",
+          "6a2fbcee-c840-4937-8615-5b70c8afa783",
+          "659f48ba-0dbe-4b61-b623-7d726d463eeb",
+          "a6916c3c-8a2f-4997-86c5-8aa484afbecd",
+          "99d05b3b-7b50-43cd-8ab1-519e2bf866d9",
+          "4b3c42b4-b5e8-4922-9f93-783a0db6b417",
+          "2d6e0edf-af9c-45d7-8fd6-16b5c57bb688",
+          "footer_column_menu_zBBeLJ",
+          "ca036d35-2d32-43b6-8e86-0c75ea18eef0",
+          "d0f94b39-ddbd-4204-9577-57da8a4fed9a",
+          "404506eb-3173-44d8-b29e-9852e6e0fb6a",
+          "04f6ea28-d189-419f-a937-60d11a5ad03a",
+          "a6c85389-c55c-4f9f-8a13-5176bd9fd07a",
+          "93588f4c-a5f1-4f47-b682-4a068ace5601",
+          "bf52c7d9-1742-4926-b524-2c2cb9541ebf",
+          "773581e6-0a84-4acf-b43a-b6b6237ef462",
+          "dc8e2709-7b98-42a4-8f63-5a728d4344ca",
+          "footer_column_menu_XAnECM",
+          "footer_column_menu_BcT4EB",
+          "footer_column_menu_6DRTRg",
+          "footer_column_menu_qwRXDY",
+          "footer_column_menu_4prrcw",
+          "footer_column_menu_DmUcTa",
+          "footer_column_menu_YwERYN",
+          "footer_column_menu_NMhBGC",
+          "footer_column_menu_wp3gkL"
+        ],
+        "settings": {
+          "benefitsheight": 40,
+          "benefitsback": "#efece0",
+          "benefits_text_color": "#66634e",
+          "first_benefit": "",
+          "second_benefit": "",
+          "third_benefit": "",
+          "fullsize_benefit_html": "<div class=\"new-top-banner newbranding-bg-soft\">\n\n<div class=\"new-top-banner-reviews\">\n{% if canonical_url contains '.com/en' %}\n<div class=\"reviews-io-rating-bar-widget\" data-widget-id=\"vu4ZAMLXsVQrcmUY\" data-store-name=\"strtebekker-shaving-accessories\" lang=\"en\"></div>\n<script src=\"//widget.reviews.io/modern-widgets/rating-bar.js\" defer></script>\n{% else %}\n<div class=\"reviews-io-rating-bar-widget\" data-widget-id=\"vu4ZAMLXsVQrcmUY\" data-store-name=\"strtebekker-shaving-accessories\" lang=\"de\"></div>\n<script src=\"//widget.reviews.io/modern-widgets/rating-bar.js\" defer></script>\n{% endif %}\n\n</div>\n\n \n\n\n  \n  <p class=\"new-top-banner-p-3\"> \n\n</p> \n<div class=\"new-top-banner-text\">\n    <p class=\"new-top-banner-p-1\"><img src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/benefit-1_copy_9.png?v=1752223747\"> {% if canonical_url contains '.com/en' %}Free shipping from {% else %}Kostenloser Versand ab {% endif %}\n{% if localization.country.iso_code == 'CH' %}\n79 CHF\n{% else %}\n49€\n{% endif %}\n</p> \n    <p class=\"new-top-banner-p-2\"><img src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/benefit-2_copy.png?v=1623320808\"> \n{% if canonical_url contains '.com/en' %}100 days return{% else %}100 Tage Rückgaberecht{% endif %}</p>\n  </div>\n</div>\n\n\n\n\n<style>\n\n.R-PlatformIcon {\ndisplay: none!important;\n}\n\n.RatingBarWidget__inner {\nfont-size: 14px!important;\n}\n\n\n\n  \n  .new-top-banner {\n    padding: 0px 18px 5px 18px;\n    background: #232323;\n    position: fixed;\n    color: #66634E;\n    z-index: 9;\n    top: 0px; \nleft: 0px;\n    width: 100%;\n    height: 30px;\n    font-size: 10px;\n  }\n  \n\n  \n\n  .new-top-banner-reviews {\n    text-align: center;\n  \tposition: absolute;\n    top: 4px;\n    left: 50%;\n    font-size: 13px;\n    width: 100%;\n\ttransform: translate(-50%);\n  }\n  \n  .new-top-banner-text {\n  \tposition: absolute;\n    top: 6px;\n    width: 100%;\n    left: 0px;\n    padding: 0px 18px;\n  }\n  \n  .new-top-banner-img {\n  \twidth: 102px;\n    display: inline;\n    position: relative;\n    top: 5px;\n    margin-right: 6px;\n  }\n  \n  .new-top-banner-p-1 {\n  \ttext-align: left;\n    font-size: 13px;\n    float: left;\n        line-height: 28px;\n    margin: 0px!important;\n  }\n  \n  .new-top-banner-p-2 {\n  \ttext-align: right;\n    font-size: 13px;\n        line-height: 28px;\n    margin: 0px!important;\n  }\n  \n  .new-top-banner-p-3 {\n  \ttext-align: center;\n    font-size: 13px;\n        line-height: 28px;\n    margin-top: 5px!important;\n  }\n  \n  .new-top-banner p img  {\n  \twidth: 20px;\n    position: relative;\n    top: 5px;\n    display: inline-block;\n  }\n  \n  .new-top-banner b {\n  \tcolor: black;\n    font-weight: 800;\n  }\n  \n  \n  \n  \n   @media only screen and (max-width: 900px) {\n\n     \n       .new-top-banner-reviews {\n    top: -5px;\n         font-size: 9px;\n  }\n     \n\n       .new-top-banner-text {\n    top: 15px;\n         width: 450px;\n         left: 50%;\n   \n         line-height: 0px;\n         transform: translate(-50%);\n         text-align: center;\n  }\n     \n     \n  \n       .new-top-banner-img {\n  \twidth: 92px;\n    display: inline;\n    position: relative;\n    top: 5px;\n    margin-right: 6px;\n  }\n     \n     \n  .new-top-banner-p-1 {\n  \ttext-align: right;\n    float: none;\n    display: inline-block;\n    font-size: 10px;\n            line-height: 0px;\n  }\n  \n  .new-top-banner-p-2 {\n  \ttext-align: left;\n    float: none;\n    display: inline-block;\n    font-size: 10px;\n            line-height: 0px;\n  }\n  \n  .new-top-banner-p-3 {\n  \tdisplay: block;\n    font-size: 11px;\n    margin-top: 0px!important;\n  }   \n   \n     \n       \n  .new-top-banner p img  {\n  \twidth: 16px;\n  }\n     \n     \n   }\n  \n</style>",
+          "logo": "shopify://shop_images/Screenshot_2020-01-31_at_21.35.08.png",
+          "header_logosize": 180,
+          "header_bg": "#ffffff",
+          "header_font_color": "#000000",
+          "header_sub_bg": "#ffffff",
+          "header_font_color_submenu": "#000000",
+          "header_icon_color_pick": "#000000",
+          "header_font_family": "figtree_n4",
+          "header_font_size": 14,
+          "main_linklist": "main-menu",
+          "menu_break_point": 1300,
+          "search": true,
+          "search_placeholder": "Wonach suchst Du heute?",
+          "account_enabled": true,
+          "warenkorb_bg": "#efece0",
+          "warenkorb_active_color": "#232323",
+          "warenkorb_color": "#ffffff"
+        }
+      },
+      "lb-section-footer": {
+        "type": "lb-section-footer",
+        "blocks": {
+          "845e8d30-1621-45ed-8a7f-00ba42b1305d": {
+            "type": "footer_column_menu",
+            "settings": {
+              "column_headline": "Hilfe & Kontakt",
+              "column_menu": "hilfe-kontakt"
+            }
+          },
+          "46929038-a89c-4a4e-ae47-bd3a0fda727b": {
+            "type": "footer_column_menu",
+            "settings": {
+              "column_headline": "Arbeite mit uns",
+              "column_menu": "arbeite-mit-uns"
+            }
+          },
+          "296106d2-5b6b-4a27-8729-39a77bf2a8a5": {
+            "type": "footer_column_menu",
+            "settings": {
+              "column_headline": "Allgemeines",
+              "column_menu": "footer"
+            }
+          },
+          "footer_column_menu_kejXKx": {
+            "type": "footer_column_menu",
+            "settings": {
+              "column_headline": "Über Uns",
+              "column_menu": "ber-uns"
+            }
+          },
+          "510a2243-b3fe-4188-8b36-2ec34b290fff": {
+            "type": "footer_column_html",
+            "settings": {
+              "column_headline": "Bewertungen & Sicherheit",
+              "column_html": "<img src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/footer-bild.webp?v=1689257623\" loading=\"lazy\" style=\"width: 100%; display: block;\">\n\n<h3>Zahlung &amp; Versand</h3>\n<img src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Artboard_Copy_9_bb727f3c-ca15-49d5-a8b0-513c008c4076.png?v=1644592446\" loading=\"lazy\" style=\"display: block; width: 100%; margin-top: 18px;\">\n<br>\n<h3>Social Media</h3>\n<a href=\"https://www.instagram.com/stoertebekker_official/\" target=\"blank\" style=\"display: inline-block; max-width: 32px; margin-top: 0x;\"><img style=\"width: 100%;\" src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/instagram.png?v=1659168139\" loading=\"lazy\"></a>\n\n<a href=\"https://www.tiktok.com/@stoertebekker\" target=\"blank\" style=\"display: inline-block; max-width: 32px; margin-top: 0x;\"><img style=\"width: 100%;\" src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/tiktok.png?v=1659168139\" loading=\"lazy\"></a>\n\n<a href=\"https://www.youtube.com/@stoertebekker\" target=\"blank\" style=\"display: inline-block; max-width: 32px; margin-top: 0x;\"><img style=\"width: 100%;\" src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/social-yt_copy.png?v=1715668577\" loading=\"lazy\"></a>\n\n<a href=\"https://open.spotify.com/show/705NSkRf4VHOgm15rgQIef\" target=\"blank\" style=\"display: inline-block; max-width: 32px; margin-top: 0x;\"><img style=\"width: 100%;\" src=\"https://cdn.shopify.com/s/files/1/0317/7116/4804/files/social-spotify_copy_2.png?v=1715668577\" loading=\"lazy\"></a>"
+            }
+          }
+        },
+        "block_order": [
+          "845e8d30-1621-45ed-8a7f-00ba42b1305d",
+          "46929038-a89c-4a4e-ae47-bd3a0fda727b",
+          "296106d2-5b6b-4a27-8729-39a77bf2a8a5",
+          "footer_column_menu_kejXKx",
+          "510a2243-b3fe-4188-8b36-2ec34b290fff"
+        ],
+        "settings": {
+          "footer_bg": "#ffffff",
+          "footer_color": "#3c3c3b",
+          "footer_header_font_family": "playfair_display_n4",
+          "footer_header_font_family_size": 20,
+          "footer_body_font_family": "open_sans_n4",
+          "footer_body_font_family_size": 16
+        }
+      },
+      "pagefly-home": {
+        "type": "pagefly-home",
+        "settings": {}
+      },
+      "mobile_checkout_logo": {
+        "type": "mobile_checkout_logo",
+        "settings": {
+          "logo_image": "shopify://shop_images/image_11.png",
+          "review_image": "shopify://shop_images/Group_681.png"
+        }
+      },
+      "trust_section": {
+        "type": "trust_section",
+        "blocks": {
+          "25a2e2a1-e95c-436f-9a71-eca1e370157e": {
+            "type": "text",
+            "settings": {
+              "trst_img": "shopify://shop_images/image_13.png",
+              "trst_heading": "Kostenlose Retouren +",
+              "trst_desc": "Teste Risikofrei unsere exklusiven Rasierer. Wir setzen bei unseren Produkten und dem Service auf Top Qualität! Du erhältst dein Geld zurück, wenn du nicht zu 100% zufrieden bist."
+            }
+          },
+          "fbbba7f4-7e98-4a72-9216-8a967d77359c": {
+            "type": "text",
+            "settings": {
+              "trst_img": "shopify://shop_images/liketag.png",
+              "trst_heading": "Mehr als 100.000 zufriedene Kunden",
+              "trst_desc": "Bereits mehr als 100.000 Kunden vertrauen auf das Reiseerlebnis von Störtebeker."
+            }
+          }
+        },
+        "block_order": [
+          "25a2e2a1-e95c-436f-9a71-eca1e370157e",
+          "fbbba7f4-7e98-4a72-9216-8a967d77359c"
+        ],
+        "settings": {}
+      },
+      "checkout_timer": {
+        "type": "checkout_timer",
+        "settings": {
+          "show_timer": false,
+          "timer_text": "<b>Fast geschafft -</b> Wir haben dir deinen Warenkorb für die nächsten <span id=\"ten-countdown\"></span> <b>Minuten</b> reserviert"
+        }
+      },
+      "lb-campaign-blackfriday-preoptin": {
+        "type": "lb-campaign-blackfriday-preoptin",
+        "blocks": {
+          "f9b637e8-ae44-4dd7-999d-9244ae1aa9be": {
+            "type": "block",
+            "settings": {
+              "icon": "shopify://shop_images/3_b17e474e-e1b8-4721-a211-c127cc7032b8.png",
+              "headline": "Early Access",
+              "subheadline": "Shoppe schon 24h vor allen anderen unsere Black Deals"
+            }
+          },
+          "7938376a-11b5-4d7c-8364-7c7b00a18335": {
+            "type": "block",
+            "settings": {
+              "icon": "shopify://shop_images/Icon.png",
+              "headline": "Geheimes Geschenk",
+              "subheadline": "Zu jeder Bestellung gibt es ein GRATIS Überraschungsprodukt"
+            }
+          },
+          "b2f92074-530e-44ee-b96a-7f5bac15375f": {
+            "type": "block",
+            "settings": {
+              "icon": "shopify://shop_images/5_ac790c47-9190-4be7-9401-fc10e036a36f.png",
+              "headline": "Gratis Einkauf",
+              "subheadline": "Gewinne 1 von 10 GRATIS Einkäufen und erhalte Dein Geld zurück."
+            }
+          },
+          "2525c26b-eff9-4943-a0b8-4d3078bb9002": {
+            "type": "block",
+            "settings": {
+              "icon": "shopify://shop_images/Icon_e6999b74-b173-4b33-b77b-bb702e87c5ed.png",
+              "headline": "70% mehr Shampoo",
+              "subheadline": "sichere dir als einer der ersten unsere neuen 100g Shampoos"
+            }
+          }
+        },
+        "block_order": [
+          "f9b637e8-ae44-4dd7-999d-9244ae1aa9be",
+          "7938376a-11b5-4d7c-8364-7c7b00a18335",
+          "b2f92074-530e-44ee-b96a-7f5bac15375f",
+          "2525c26b-eff9-4943-a0b8-4d3078bb9002"
+        ],
+        "custom_css": [],
+        "settings": {
+          "bannertext": "BLACK DAYS | BIS ZU 50%",
+          "bannerbg": "#000000",
+          "bannerbgimage": "shopify://shop_images/Bildschirmfoto_2024-11-08_um_17.43.13.png",
+          "bannerfontcolor": "#000000",
+          "bannerfont": "abril_fatface_n4",
+          "customfont": "https://cdn.shopify.com/s/files/1/0317/7116/4804/files/BEBAS.ttf?v=1684935277",
+          "introbackground": "#f1eee5",
+          "introbackgroundimage": "shopify://shop_images/Bildschirmfoto_2024-11-08_um_17.45.14.png",
+          "introtextcolor": "#ffffff",
+          "primaryfont": "sans-serif",
+          "secondaryfont": "open_sans_n4",
+          "date": "Exklusiver Zugang am 21.11.",
+          "headline": "MEN DAYS",
+          "headlinelogo": "shopify://shop_images/logo_e016a550-2146-4737-b4cb-6f7575da5a4a.png",
+          "subheadline": "Sichere Dir vor allen anderen bis zu 50% Rabatt auf unsere Produkte und weitere exklusive Vorteile.",
+          "countdowndate": "2024-11-21",
+          "countdowntime": "00:00:00",
+          "countdownnumberbackground": "#ceb77f",
+          "countdownnumbercolor": "#000000",
+          "countdowndaycolor": "#ffffff",
+          "embedform": "<div class=\"klaviyo-form-X8iVbh\"></div>\n\n<span style=\"color: white; font-size: 14px; margin: 9px 0px 0px 0px; display: block;\">\nTrage Dich ein und erhalte Dein Passwort per E-Mail zum Start.\n</span>"
+        }
+      },
+      "lb-black-friday-lp": {
+        "type": "lb-black-friday-lp",
+        "blocks": {
+          "db8d2685-5227-43c3-94ec-089074d6542c": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Alle",
+              "selected_collection": "alle-produkte"
+            }
+          },
+          "categories_JVNGAi": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Körper & Haar",
+              "selected_collection": "koerper-haar"
+            }
+          },
+          "357fa793-b699-4be9-8f24-683e447b38a5": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Rasierer",
+              "selected_collection": "alle-rasierer"
+            }
+          },
+          "categories_aJ7pkA": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Sets",
+              "selected_collection": "sets"
+            }
+          },
+          "categories_tNNTCK": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Neuheiten",
+              "selected_collection": "neuheiten"
+            }
+          },
+          "ae01d778-a4b8-4876-98c3-fdac093dcf85": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Bart",
+              "selected_collection": "bart"
+            }
+          },
+          "7c06caae-c3b0-4bb5-a080-c0f06b6471d8": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Pflege",
+              "selected_collection": "geschenke-pflegeprodukte"
+            }
+          },
+          "e42b57b1-4be1-4393-b57a-5dcb7371e3d0": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Zubehör",
+              "selected_collection": "geschenke-zubehor"
+            }
+          },
+          "25f6ee96-c837-425c-a236-3c4cdabf5a9c": {
+            "type": "filter",
+            "settings": {
+              "tagfiltername": "30%",
+              "tagfilter": "blackdays30"
+            }
+          },
+          "8f60c787-e74b-4f6a-b114-15398397bb02": {
+            "type": "filter",
+            "settings": {
+              "tagfiltername": "20%",
+              "tagfilter": "blackdays20"
+            }
+          },
+          "cde89637-12fb-49dc-800d-d1bd57f66f95": {
+            "type": "filter",
+            "settings": {
+              "tagfiltername": "10%",
+              "tagfilter": "blackdays10"
+            }
+          }
+        },
+        "block_order": [
+          "db8d2685-5227-43c3-94ec-089074d6542c",
+          "categories_JVNGAi",
+          "357fa793-b699-4be9-8f24-683e447b38a5",
+          "categories_aJ7pkA",
+          "categories_tNNTCK",
+          "ae01d778-a4b8-4876-98c3-fdac093dcf85",
+          "7c06caae-c3b0-4bb5-a080-c0f06b6471d8",
+          "e42b57b1-4be1-4393-b57a-5dcb7371e3d0",
+          "25f6ee96-c837-425c-a236-3c4cdabf5a9c",
+          "8f60c787-e74b-4f6a-b114-15398397bb02",
+          "cde89637-12fb-49dc-800d-d1bd57f66f95"
+        ],
+        "settings": {
+          "bannertext": "BLACK WEEK | BIS ZU -30%",
+          "bannerbg": "#d8ac63",
+          "bannerfontcolor": "#000000",
+          "bannerfont": "system_ui_n4",
+          "customfont": "https://cdn.shopify.com/s/files/1/0317/7116/4804/files/BebasNeue-Regular_0ba96735-e582-4946-bbd6-edd171187d1a.ttf?v=1698664985",
+          "introdate": "Nur für kurze Zeit",
+          "introheadline": "",
+          "headlinelogo": "shopify://shop_images/logo_06e05e3b-3140-4341-b677-f3ccca5e3113.png",
+          "introparagraph": "Spare bis zu -30% auf unser gesamtes Sortiment beim größten Sale des Jahres",
+          "plannable-date-day": "01",
+          "plannable-date-month": "12",
+          "plannable-date-year": "2025",
+          "plannable-date-time": "23:59:59",
+          "introbackground": "#000000",
+          "introtextcolor": "#ffffff",
+          "collectionbackground": "#000000",
+          "collectiontextcolor": "#ffffff",
+          "filtertext": "Entdecke unsere Black Days Deals",
+          "filtercolor": "#ffffff",
+          "filterborder": "#ffffff",
+          "filtercoloractive": "#000000",
+          "filterborderactive": "#d8ac63",
+          "collectionproductitembackground": "#1d1d1d",
+          "productitemborderradius": "#f2f2f2",
+          "productitemcolor": "#ffffff",
+          "productitempricecolor": "#ffffff",
+          "productitempricesalecolor": "#e32c2b",
+          "product-item-save-bg-color": "#000000",
+          "product-item-save-font-color": "#ffffff",
+          "product-item-customcode": "",
+          "productitembadgecolor": "#000000",
+          "productitembadgebg": "#d8ac63",
+          "endsectionheadline": "Viel Spass mit Deinen Produkten!",
+          "endsectionparagraph": "Dein Team von Störtebekker",
+          "endsectionimage": "shopify://shop_images/stortebekker_team.webp",
+          "endsectionbackgroundcolor": "#f2f2f2",
+          "endsectioncolor": "#ffffff",
+          "endsectionbackgroundimage": "shopify://shop_images/Bildschirmfoto_2024-11-08_um_17.45.14.png"
+        }
+      },
+      "men-days-collection": {
+        "type": "men-days-collection",
+        "blocks": {
+          "d92591c9-0466-4b8f-801f-2ec491fe825c": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Alle",
+              "selected_collection": "alle-produkte"
+            }
+          },
+          "45d38b95-4867-44d6-a7a3-95b5967a2e35": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Sets",
+              "selected_collection": "bf-sets"
+            }
+          },
+          "6286271c-54f9-48bc-8223-a098f794a003": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Neuheiten",
+              "selected_collection": "neue-produkte"
+            }
+          },
+          "6b537691-56b4-4634-9573-bb516cb81bac": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Rasierer",
+              "selected_collection": "bf-rasierer"
+            }
+          },
+          "08eca581-2efe-427e-928c-9d43fcd877cc": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Zubehör",
+              "selected_collection": "bf-zubehor"
+            }
+          },
+          "8b2918e9-dcd6-4c98-b838-5fa530b4e977": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Bart",
+              "selected_collection": "bart"
+            }
+          },
+          "f9b31efd-ad83-4f18-a87d-b7ae773c7b87": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Körper <br>& Haar",
+              "selected_collection": "koerper-haar"
+            }
+          },
+          "fc205aa3-2f2d-43a1-8ea4-d9d879c76c47": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Gutscheine",
+              "selected_collection": "gutscheine"
+            }
+          },
+          "7bbf06bc-d10a-4455-826d-b631a9d3529a": {
+            "type": "filter",
+            "settings": {
+              "tagfilter": "bf10"
+            }
+          },
+          "29f75ffd-f8d0-45f7-a59c-16a452f14121": {
+            "type": "filter",
+            "settings": {
+              "tagfilter": "bf25"
+            }
+          },
+          "737bf4c3-34e0-4945-90d4-1955fff5e8b8": {
+            "type": "filter",
+            "settings": {
+              "tagfilter": "bf50"
+            }
+          }
+        },
+        "block_order": [
+          "d92591c9-0466-4b8f-801f-2ec491fe825c",
+          "45d38b95-4867-44d6-a7a3-95b5967a2e35",
+          "6286271c-54f9-48bc-8223-a098f794a003",
+          "6b537691-56b4-4634-9573-bb516cb81bac",
+          "08eca581-2efe-427e-928c-9d43fcd877cc",
+          "8b2918e9-dcd6-4c98-b838-5fa530b4e977",
+          "f9b31efd-ad83-4f18-a87d-b7ae773c7b87",
+          "fc205aa3-2f2d-43a1-8ea4-d9d879c76c47",
+          "7bbf06bc-d10a-4455-826d-b631a9d3529a",
+          "29f75ffd-f8d0-45f7-a59c-16a452f14121",
+          "737bf4c3-34e0-4945-90d4-1955fff5e8b8"
+        ],
+        "settings": {
+          "bannertext": "BLACK DAYS | BIS ZU 50%",
+          "bannerbg": "#e3bc5a",
+          "bannerbgimage": "shopify://shop_images/black-days-banderole.webp",
+          "bannerfontcolor": "#000000",
+          "bannerfont": "abril_fatface_n4",
+          "customfont": "https://cdn.shopify.com/s/files/1/0317/7116/4804/files/BebasNeue-Regular_0ba96735-e582-4946-bbd6-edd171187d1a.ttf?v=1698664985",
+          "introdate": "Vom 16.11 bis 27.11.",
+          "introheadline": "Black Week",
+          "headlinelogo": "shopify://shop_images/Black_Friday_Logos.png",
+          "introparagraph": "Spare bis zu 50% auf ausgewählte Produkte beim größten Sale des Jahres",
+          "introbackground": "#ffffff",
+          "bannerbackgroundimage": "shopify://shop_images/Black-Deals-Background.webp",
+          "introtextcolor": "#ffffff",
+          "collectionbackground": "#000000",
+          "collectiontextcolor": "#e3bc5a",
+          "filtertext": "Entdecke unsere Black days Deals",
+          "filtercolor": "#ffffff",
+          "filterborder": "#ffffff",
+          "filtercoloractive": "#000000",
+          "filterborderactive": "#e3bc5a",
+          "filterbackgroundimageactive": "shopify://shop_images/Last_hours_banderole.png",
+          "collectionproductitembackground": "#1d1d1d",
+          "productitemborderradius": "2",
+          "productitemcolor": "#e3bc5a",
+          "productitempricecolor": "#ffffff",
+          "productitempricesalecolor": "#e3bc5a",
+          "productitembadgecolor": "#000000",
+          "productitembadgebg": "#d8ab63",
+          "badgebackgroundimage": "shopify://shop_images/black-days-banderole.webp",
+          "endsectionheadline": "Viel Spass mit Deinen Produkten!",
+          "endsectionparagraph": "Dein Team von Störtebekker",
+          "endsectionimage": "shopify://shop_images/teamfoto-_2_-1654598460445_1200x_jpeg.webp",
+          "endsectioncolor": "#ffffff"
+        }
+      },
+      "lb-blackfriday-password": {
+        "type": "lb-blackfriday-password",
+        "settings": {
+          "bannertext": "OSTER SALE | Bis zu 30%",
+          "bannerbg": "#d8ac63",
+          "bannerfontcolor": "#101010",
+          "bannerfont": "open_sans_n4",
+          "customfont": "https://cdn.shopify.com/s/files/1/0317/7116/4804/files/BebasNeue-Regular_0ba96735-e582-4946-bbd6-edd171187d1a.ttf?v=1698664985",
+          "introbackground": "#000000",
+          "introbackgroundimage": "shopify://shop_images/Christmas_Deals_4494a684-deb8-4a82-b0fa-a03478f4ffc2.png",
+          "introtextcolor": "#ffffff",
+          "primaryfont": "open_sans_n4",
+          "secondaryfont": "open_sans_n4",
+          "date": "EXKLUSIVER PRESALE",
+          "headline": "BLACK DAYS",
+          "headlinelogo": "shopify://shop_images/Group_2.png",
+          "subheadline": "Gebe Dein Passwort aus Deiner Mail ein und sichere Dir vor allen anderen bis zu -30% Rabatt auf unsere Produkte und weitere exklusive Vorteile.",
+          "countdowndate": "2025-04-14",
+          "countdowntime": "23:59:59",
+          "embedform": "<div class=\"klaviyo-form-TCeWWk\"></div>"
+        }
+      },
+      "lb-seo-footer": {
+        "type": "lb-seo-footer",
+        "settings": {
+          "link-url": ""
+        }
+      },
+      "ostern-lp": {
+        "type": "ostern-lp",
+        "blocks": {
+          "categories_fREmKp": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Sets",
+              "selected_collection": "sets"
+            }
+          },
+          "categories_TMDtiV": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Neuheiten",
+              "selected_collection": "neue-produkte"
+            }
+          },
+          "categories_fdRgPM": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Rasierer",
+              "selected_collection": "bf-rasierer"
+            }
+          },
+          "categories_L7zBg8": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Zubehör",
+              "selected_collection": "bf-zubehor"
+            }
+          },
+          "categories_FfNbeX": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Bart",
+              "selected_collection": "bart"
+            }
+          },
+          "categories_JhH6YC": {
+            "type": "categories",
+            "settings": {
+              "rabatttext": "Körper<br>& Haar",
+              "selected_collection": "koerper-haar"
+            }
+          }
+        },
+        "block_order": [
+          "categories_fREmKp",
+          "categories_TMDtiV",
+          "categories_fdRgPM",
+          "categories_L7zBg8",
+          "categories_FfNbeX",
+          "categories_JhH6YC"
+        ],
+        "settings": {
+          "bannertext": "OSTER DEALS | BIS ZU 20% auf alles",
+          "bannerbg": "#a0c15f",
+          "bannerfontcolor": "#ffffff",
+          "bannerfont": "sans-serif",
+          "customfont": "https://cdn.shopify.com/s/files/1/0317/7116/4804/files/BebasNeue-Regular_0ba96735-e582-4946-bbd6-edd171187d1a.ttf?v=1698664985",
+          "introdate": "<b>29.03. - 01.04.</b>",
+          "introheadline": "Black Week",
+          "headlinelogo": "shopify://shop_images/osterdeals_mit_eiern.webp",
+          "introparagraph": "Fülle Deinen Osterkorb und spare bis zu <b>20%</b> auf Deine neue Frühlingsroutine",
+          "primaryfont": "open_sans_n4",
+          "secondaryfont": "open_sans_n4",
+          "countdowndate": "2024-04-01",
+          "countdowntime": "23:59:59",
+          "countdownnumberbackground": "#faa350",
+          "countdownnumbercolor": "#ffffff",
+          "countdowndaycolor": "#faa350",
+          "introbackground": "#3c3c3b",
+          "bannerbackgroundimage": "shopify://shop_images/Bildschirmfoto_2024-03-20_um_14.07.59.webp",
+          "introtextcolor": "#3c3c3b",
+          "product": "",
+          "collectionbafckground": "#f2f2f2",
+          "collectiowefnbafckground": "#f2f2f2",
+          "collectionbackground": "#ffffff",
+          "filtertext": "Je mehr du kaufst, desto mehr sparst du",
+          "collectiontextcolor": "#3c3c3b",
+          "filtercolor": "#faa350",
+          "filterborder": "#faa350",
+          "filtercoloractive": "#ffffff",
+          "filterborderactive": "#faa350",
+          "collectionproductitembackground": "#faf9f7",
+          "productitemborderradius": 0,
+          "productitemcolor": "#3c3c3b",
+          "productitemtitlesize": 20,
+          "productitemtitlesizemobile": 18,
+          "subheadline": "<div style=\"color: #3c3c3b!important;\">{{ product.metafields.my_fields.subheadlines }}</div>",
+          "productitempricecolor": "#3c3c3b",
+          "productitempricesalecolor": "#da2c2c",
+          "reviewfontscolor": "#3c3c3b",
+          "customliquid": "",
+          "showautodiscountbadge": false,
+          "showsavesbadge": false,
+          "productitembadgecolor": "#f2f2f2",
+          "productitembadgebg": "#f2f2f2",
+          "endsectionheadline": "Viel Spass mit Deinen Produkten!",
+          "endsectionparagraph": "Dein Team von Störtebekker",
+          "endsectionimage": "shopify://shop_images/teamfoto-_2_-1654598460445_1200x_jpeg.webp",
+          "endsectionbg": "#3c3c3b",
+          "endsectionbackgroundimage": "shopify://shop_images/Bildschirmfoto_2024-03-20_um_14.07.59.webp",
+          "endsectioncolor": "#3c3c3b"
+        }
+      },
+      "ostern-preoptin": {
+        "type": "ostern-preoptin",
+        "blocks": {
+          "block_CN6cyt": {
+            "type": "block",
+            "settings": {
+              "icon": "shopify://shop_images/Artboard_c25688ff-8d0d-44bf-9ac3-3bada68d9641.png",
+              "headline": "Early access",
+              "subheadline": "Shoppe schon 24h vor allen anderen unsere Oster Deals"
+            }
+          },
+          "block_VQaRBN": {
+            "type": "block",
+            "settings": {
+              "icon": "shopify://shop_images/Artboard_Copy_327.png",
+              "headline": "geheimes geschenk",
+              "subheadline": "Gratis Shampoo ab 30€ Warenkorbwert"
+            }
+          },
+          "block_qzmXrh": {
+            "type": "block",
+            "disabled": true,
+            "settings": {
+              "icon": "shopify://shop_images/Artboard_Copy_328.png",
+              "headline": "5% extra rabatt",
+              "subheadline": "Spare nochmal 5% EXTRA auf alle Produkte"
+            }
+          }
+        },
+        "block_order": [
+          "block_CN6cyt",
+          "block_VQaRBN",
+          "block_qzmXrh"
+        ],
+        "settings": {
+          "bannertext": "Oster deals | BIS ZU 30% Rabatt",
+          "bannerbg": "#d8ab63",
+          "bannerfontcolor": "#ffffff",
+          "bannerfont": "open_sans_n4",
+          "customfont": "https://cdn.shopify.com/s/files/1/0317/7116/4804/files/BebasNeue-Regular_0ba96735-e582-4946-bbd6-edd171187d1a.ttf?v=1698664985",
+          "introbackground": "#ffffff",
+          "introbackgroundimage": "shopify://shop_images/Christmas_Deals_4494a684-deb8-4a82-b0fa-a03478f4ffc2.png",
+          "introtextcolor": "#ffffff",
+          "primaryfont": "sans-serif",
+          "secondaryfont": "open_sans_n4",
+          "date": "Exklusiver Presale am 13.04.",
+          "headline": "Oster Deals",
+          "headlinelogo": "shopify://shop_images/Group_2.png",
+          "subheadline": "Sichere Dir vor allen anderen bis zu <b>30% Rabatt</b> und weitere exklusive Vorteile. Melde Dich jetzt an und wir sagen Dir Bescheid, sobald es losgeht!",
+          "countdowndate": "2025-04-13",
+          "countdowntime": "23:59:59",
+          "countdownnumberbackground": "#d8ab63",
+          "countdownnumbercolor": "#ffffff",
+          "countdowndaycolor": "#d8ab63",
+          "embedform": ""
+        }
+      },
+      "lb-header-countdown": {
+        "type": "lb-header-countdown",
+        "settings": {
+          "plannable-date-day": "04",
+          "plannable-date-month": "08",
+          "plannable-date-year": "2024",
+          "plannable-date-time": "23:59:59",
+          "lb-countdown-background-color": "#b5a399",
+          "lb-primary-font": "sans-serif",
+          "lb-custom-font": "https://cdn.shopify.com/s/files/1/0317/7116/4804/files/BebasNeue-Regular_0ba96735-e582-4946-bbd6-edd171187d1a.ttf?v=1698664985",
+          "lb-countdown-text-color": "#000000",
+          "lb-countdown-time-background-color": "#ffffff",
+          "lb-countdown-time-text-color": "#000000",
+          "lb-countdown-text": "Barber Week | Doppelte Treuemünzen",
+          "lb-countdown-linked": false,
+          "lb-countdown-link-url": "",
+          "cta": false,
+          "lb-countdown-button-text": "Sichern",
+          "lb-countdown-button-background-color": "#efece0",
+          "lb-countdown-button-text-color": "#000000"
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "10112296718403049266": {
+        "type": "shopify://apps/influence-io-loyalty-rewards/blocks/floating-widget/7f1703c2-e0cb-4bd4-bb47-6548c1722f52",
+        "disabled": true,
+        "settings": {}
+      },
+      "6828711692300896689": {
+        "type": "shopify://apps/influence-io-loyalty-rewards/blocks/headless-widget/7f1703c2-e0cb-4bd4-bb47-6548c1722f52",
+        "disabled": true,
+        "settings": {}
+      },
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      },
+      "15871026291228209630": {
+        "type": "shopify://apps/sc-conjured-referrals/blocks/embed-floating-button/259a1e76-fe9f-44e8-b3bd-171319d52fc6",
+        "disabled": true,
+        "settings": {
+          "button_text": "Get $XX",
+          "button_background": "#000",
+          "button_color": "#fff",
+          "referral_display": "popup",
+          "campaign_id": "",
+          "referral_link": "",
+          "custom_css": ""
+        }
+      },
+      "10830403595879607806": {
+        "type": "shopify://apps/reviews-io/blocks/reviewsio-core/92a082e5-b297-4e88-b428-ac96cbc505f9",
+        "disabled": false,
+        "settings": {
+          "url_key": "strtebekker-shaving-accessories",
+          "lang": "auto"
+        }
+      },
+      "2498716461440425698": {
+        "type": "shopify://apps/influence-io-loyalty-rewards/blocks/popup-widget/7f1703c2-e0cb-4bd4-bb47-6548c1722f52",
+        "disabled": true,
+        "settings": {}
+      },
+      "10384935893930344104": {
+        "type": "shopify://apps/seoant-broken-link-redirect/blocks/brokenlink-404/cc7b1996-e567-42d0-8862-356092041863",
+        "disabled": false,
+        "settings": {}
+      },
+      "2209279550302034861": {
+        "type": "shopify://apps/shop-quiz/blocks/link-popup/672f3d48-fd3b-4227-8778-c6e58c4f8a98",
+        "disabled": false,
+        "settings": {
+          "show_list": true
+        }
+      },
+      "5281749993944428517": {
+        "type": "shopify://apps/variant-image-wizard-swatch/blocks/app-embed/66205c03-f474-4e2c-b275-0a2806eeac16",
+        "disabled": false,
+        "settings": {}
+      },
+      "16278478101612877664": {
+        "type": "shopify://apps/pagefly-landing-page-builder/blocks/app-embed/83e179f7-59a0-4589-8c66-c0dddf959200",
+        "disabled": false,
+        "settings": {}
+      },
+      "124348908681409149": {
+        "type": "shopify://apps/simple-bundles-kits/blocks/simple-bundles-v2/e553276b-36b2-446d-b80a-aa47fe5f96ac",
+        "disabled": true,
+        "settings": {
+          "select_placeholder": "Bitte Option auswählen",
+          "disable_oos_options": true,
+          "custom_css": "",
+          "custom_js": ""
+        }
+      },
+      "8218531531362863771": {
+        "type": "shopify://apps/kite-discount-free-gift/blocks/app-embed/2c7302c4-455d-4078-a829-48563ba26089",
+        "disabled": false,
+        "settings": {}
+      },
+      "11348531219507317188": {
+        "type": "shopify://apps/eb-easy-bundle-builder/blocks/app-embed/05b1325c-6303-4da5-8e2f-b13ab2a50e1a",
+        "disabled": false,
+        "settings": {}
+      },
+      "3262716516794085085": {
+        "type": "shopify://apps/decify-surveys/blocks/decify/59fee63a-c47e-4c8d-8d07-7f1e9128e2e5",
+        "disabled": false,
+        "settings": {}
+      },
+      "8211952794210754605": {
+        "type": "shopify://apps/sovendus-app-stoertebekker/blocks/app-block/317024c0-c2a9-4233-86df-91ccb6f58a63",
+        "disabled": false,
+        "settings": {}
+      },
+      "15316669992541710076": {
+        "type": "shopify://apps/reviews-io/blocks/reviewsio-rating-snippet/92a082e5-b297-4e88-b428-ac96cbc505f9",
+        "disabled": true,
+        "settings": {
+          "star": "#d8ab63",
+          "text_color": "#333333",
+          "snippet_mode": "default",
+          "text": "Reviews",
+          "line_break": false,
+          "listen_for_changes": true,
+          "rating_without_brackets": false,
+          "format_review_count": false,
+          "show_popup": false,
+          "anchor_to_reviews_widget": true,
+          "show_empty_stars": false
+        }
+      },
+      "7351849606909341038": {
+        "type": "shopify://apps/recobounce/blocks/recobounce/84c9eb95-7050-4505-bd0c-9e1e9bb08f75",
+        "disabled": false,
+        "settings": {}
+      },
+      "10312807297210203588": {
+        "type": "shopify://apps/aftersell-by-rokt/blocks/utm-triggers/509ec35d-0632-4dfc-a105-fa799cd9d149",
+        "disabled": false,
+        "settings": {}
+      },
+      "14429071373314833104": {
+        "type": "shopify://apps/candy-rack/blocks/head/cb9c657f-334f-4905-80c2-f69cca01460c",
+        "disabled": false,
+        "settings": {}
+      },
+      "77299668761589900000": {
+        "type": "shopify://apps/pandectes-gdpr/blocks/banner/58c0baa2-6cc1-480c-9ea6-38d6d559556a",
+        "disabled": false,
+        "settings": {}
+      }
+    }
+  },
+  "presets": {
+    "Default": {
+      "color_text": "#3d4246",
+      "color_body_text": "#69727b",
+      "color_sale_text": "#557B97",
+      "color_borders": "#e8e9eb",
+      "color_button": "#557B97",
+      "color_button_text": "#fff",
+      "color_small_button": "#fff",
+      "color_small_button_text": "#3d4246",
+      "color_text_field": "#fff",
+      "color_text_field_text": "#000",
+      "color_image_overlay_text": "#fff",
+      "color_image_overlay": "#3d4246",
+      "image_overlay_opacity": 40,
+      "color_body_bg": "#fff",
+      "type_header_font": "work_sans_n6",
+      "type_header_base_size": 26,
+      "type_base_font": "work_sans_n4",
+      "type_base_size": 16,
+      "type_bold_product_titles": false,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "content_for_index": []
+    },
+    "Light": {
+      "color_text": "#162950",
+      "color_body_text": "#6d6d6d",
+      "color_sale_text": "#DA2F0C",
+      "color_borders": "#e4e4e4",
+      "color_button": "#DA2F0C",
+      "color_button_text": "#ffffff",
+      "color_small_button": "#eaeaea",
+      "color_small_button_text": "#162950",
+      "color_text_field": "#ffffff",
+      "color_text_field_text": "#162950",
+      "color_image_overlay_text": "#ffffff",
+      "color_image_overlay": "#3d3d3d",
+      "image_overlay_opacity": 40,
+      "color_body_bg": "#f8f8f8",
+      "type_header_font": "muli_n6",
+      "type_header_base_size": 26,
+      "type_base_font": "muli_n4",
+      "type_base_size": 18,
+      "type_bold_product_titles": true,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "social_twitter_link": "",
+      "social_facebook_link": "",
+      "social_pinterest_link": "",
+      "social_instagram_link": "",
+      "social_tumblr_link": "",
+      "social_snapchat_link": "",
+      "social_youtube_link": "",
+      "social_vimeo_link": "",
+      "favicon": "",
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "small",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#ffffff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#e8f3f6",
+      "checkout_heading_font": "Roboto",
+      "checkout_body_font": "Source Sans Pro",
+      "checkout_accent_color": "#1990c6",
+      "checkout_button_color": "#23314e",
+      "checkout_error_color": "#ff6d6d",
+      "content_for_index": []
+    }
+  }
+}

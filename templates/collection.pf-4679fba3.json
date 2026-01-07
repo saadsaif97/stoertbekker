@@ -1,0 +1,340 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "lb_collection_header_wA3rqd": {
+      "type": "lb-collection-header",
+      "settings": {
+        "customhtml": ""
+      }
+    },
+    "lb_category_tag_navigation_rtPTfy": {
+      "type": "lb-category-tag-navigation",
+      "blocks": {
+        "block_bxPkpW": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "heading": "Alle",
+            "url": ""
+          }
+        },
+        "block_Ch3xRT": {
+          "type": "block",
+          "settings": {
+            "heading": "Festes Shampoo",
+            "url": ""
+          }
+        },
+        "block_qJPAVP": {
+          "type": "block",
+          "settings": {
+            "heading": "Rasierhobel",
+            "url": ""
+          }
+        },
+        "block_Yiccih": {
+          "type": "block",
+          "settings": {
+            "heading": "Pomade",
+            "url": ""
+          }
+        },
+        "block_gfDKHW": {
+          "type": "block",
+          "settings": {
+            "heading": "Rasiermesser",
+            "url": ""
+          }
+        },
+        "block_HbeiYc": {
+          "type": "block",
+          "settings": {
+            "heading": "Neuheiten",
+            "url": ""
+          }
+        },
+        "block_8gH4B8": {
+          "type": "block",
+          "settings": {
+            "heading": "Sets",
+            "url": ""
+          }
+        },
+        "block_VGxtit": {
+          "type": "block",
+          "settings": {
+            "heading": "Gesicht & Körper",
+            "url": ""
+          }
+        },
+        "block_KVYfGt": {
+          "type": "block",
+          "settings": {
+            "heading": "Bart",
+            "url": ""
+          }
+        },
+        "block_PQ8GNT": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "heading": "Haare",
+            "url": ""
+          }
+        },
+        "block_VU7Ge4": {
+          "type": "block",
+          "settings": {
+            "heading": "Zubehör",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "block_bxPkpW",
+        "block_Ch3xRT",
+        "block_qJPAVP",
+        "block_Yiccih",
+        "block_gfDKHW",
+        "block_HbeiYc",
+        "block_8gH4B8",
+        "block_VGxtit",
+        "block_KVYfGt",
+        "block_PQ8GNT",
+        "block_VU7Ge4"
+      ],
+      "disabled": true,
+      "name": "Lb Category Tag Navigation",
+      "settings": {
+        "background-color": "#f2f2f2",
+        "max-show": "2400",
+        "abgerundete_ecken": 6,
+        "schriftfarbe": "#232323",
+        "link-border-color": "#000000",
+        "link-backgroundcolor": "#ffffff",
+        "active-font-color": "#ffffff",
+        "active-link-border-color": "#000000",
+        "active-backgroundcolor": "#000000",
+        "categoryimagenavigationfontfamily": "system_ui_n4",
+        "lb-category-image-navigation-customfont": ""
+      }
+    },
+    "lb_category_tag_navigation_YhHEpp": {
+      "type": "lb-category-tag-navigation",
+      "blocks": {
+        "block_mUKjYK": {
+          "type": "block",
+          "settings": {
+            "heading": "Alle Produkte",
+            "url": "alle-produkte"
+          }
+        },
+        "block_mzYYmd": {
+          "type": "block",
+          "settings": {
+            "heading": "Festes Shampoo",
+            "url": "festes-shampoo"
+          }
+        },
+        "block_7tb8iY": {
+          "type": "block",
+          "settings": {
+            "heading": "Rasierhobel",
+            "url": "rasierhobel"
+          }
+        },
+        "block_PJP4w9": {
+          "type": "block",
+          "settings": {
+            "heading": "Pomade",
+            "url": "pomade"
+          }
+        },
+        "block_XLbypm": {
+          "type": "block",
+          "settings": {
+            "heading": "Haar Booster",
+            "url": "rosmarinwasser-rosmarinol-torreto-series"
+          }
+        },
+        "block_7FCa9z": {
+          "type": "block",
+          "settings": {
+            "heading": "Rasiermesser",
+            "url": "rasiermesser"
+          }
+        },
+        "block_iQXfzW": {
+          "type": "block",
+          "settings": {
+            "heading": "Neuheiten",
+            "url": "neuheiten"
+          }
+        },
+        "block_yzkbVL": {
+          "type": "block",
+          "settings": {
+            "heading": "Sets",
+            "url": "sets"
+          }
+        },
+        "block_xX8b8A": {
+          "type": "block",
+          "settings": {
+            "heading": "Körper & Haar",
+            "url": "koerper-haar"
+          }
+        },
+        "block_dhDhRG": {
+          "type": "block",
+          "settings": {
+            "heading": "Zubehör",
+            "url": "zubehoer"
+          }
+        },
+        "block_fH4jK7": {
+          "type": "block",
+          "settings": {
+            "heading": "Rasierseife",
+            "url": "rasierseife"
+          }
+        },
+        "block_ranUcn": {
+          "type": "block",
+          "settings": {
+            "heading": "Rasierklingen",
+            "url": "rasierklingen"
+          }
+        },
+        "block_MUhAch": {
+          "type": "block",
+          "settings": {
+            "heading": "Bart",
+            "url": "bart"
+          }
+        },
+        "block_xw66Wb": {
+          "type": "block",
+          "settings": {
+            "heading": "Gutscheine",
+            "url": "gutscheine"
+          }
+        },
+        "block_i69ncc": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "heading": "Kleidung",
+            "url": "stortebekker-kleidung"
+          }
+        }
+      },
+      "block_order": [
+        "block_mUKjYK",
+        "block_mzYYmd",
+        "block_7tb8iY",
+        "block_PJP4w9",
+        "block_XLbypm",
+        "block_7FCa9z",
+        "block_iQXfzW",
+        "block_yzkbVL",
+        "block_xX8b8A",
+        "block_dhDhRG",
+        "block_fH4jK7",
+        "block_ranUcn",
+        "block_MUhAch",
+        "block_xw66Wb",
+        "block_i69ncc"
+      ],
+      "settings": {
+        "background-color": "#ffffff",
+        "max-show": "2400",
+        "abgerundete_ecken": 6,
+        "schriftfarbe": "#232323",
+        "link-border-color": "#efece0",
+        "link-backgroundcolor": "#efece0",
+        "active-font-color": "#ffffff",
+        "active-link-border-color": "#232323",
+        "active-backgroundcolor": "#232323",
+        "categoryimagenavigationfontfamily": "system_ui_n4",
+        "lb-category-image-navigation-customfont": ""
+      }
+    },
+    "lb_collection_header_gradient_7N6hrb": {
+      "type": "lb-collection-header-gradient",
+      "settings": {}
+    },
+    "lb_collection_rabattcode_kEiiXV": {
+      "type": "lb-collection-rabattcode",
+      "disabled": true,
+      "settings": {
+        "section_bg_color": "#ffffff",
+        "section_abstaende_top_bottom": 9,
+        "section_text": "-20% sparen mit dem Code",
+        "box_bg_color": "#efece0",
+        "box_border_color": "#014e43",
+        "text_color": "#014e43",
+        "box_border_radius": 6,
+        "button_code_text": "GESCHENK",
+        "lb-copy-button-background-normal": "#014e43",
+        "lb-copy-button-text-normal": "#ffffff",
+        "lb-copy-button-icon-normal": "#ffffff",
+        "button_copy_text": "kopiert",
+        "lb-copy-button-background-copied": "#9de49d",
+        "lb-copy-button-text-copied": "#000000",
+        "lb-copy-button-icon-copied": "#000000"
+      }
+    },
+    "lb_collection_kategorie_filter_qe4A3G": {
+      "type": "lb-collection-kategorie-filter",
+      "settings": {
+        "customhtml": ""
+      }
+    },
+    "pf-4679fba3": {
+      "type": "pf-4679fba3",
+      "disabled": true,
+      "settings": {}
+    },
+    "lb_collection_ackhHJ": {
+      "type": "lb-collection",
+      "name": "lb collection",
+      "settings": {
+        "collection-background": "#ffffff",
+        "anzahl_produkte": 4,
+        "anzahl-mobile": "2",
+        "abstand_oben": 20,
+        "subtitle": "",
+        "reviews": "",
+        "product-item-align": "center",
+        "product-item-radius": "9",
+        "product-item-image-background-color": "#faf9f7",
+        "product-item-background-color": "#ffffff",
+        "product-item-font-color": "#212426",
+        "wefproduct-item-font-color": "#000000",
+        "product-compare-at-price-color": "#da2d2b",
+        "sale-badge-text": "Du sparst",
+        "sale-badge-background-color": "#d8ac63",
+        "sale-badge-font-color": "#000000"
+      }
+    }
+  },
+  "order": [
+    "lb_collection_header_wA3rqd",
+    "lb_category_tag_navigation_rtPTfy",
+    "lb_category_tag_navigation_YhHEpp",
+    "lb_collection_header_gradient_7N6hrb",
+    "lb_collection_rabattcode_kEiiXV",
+    "lb_collection_kategorie_filter_qe4A3G",
+    "pf-4679fba3",
+    "lb_collection_ackhHJ"
+  ]
+}

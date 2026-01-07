@@ -1,0 +1,188 @@
+
+{%- assign metafield_gallery = product.selected_or_first_available_variant.metafields.custom.variant_image_gallery.value -%}
+{%- if metafield_gallery != blank -%}
+  <div data-variant-image-gallery="true"></div>
+{%- endif -%}
+
+{%- assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' -%}
+<div id="image-gallery-desktop" class="lb-image-list-box mod-desktop lb-biz-old">
+
+    {%- assign product_media = metafield_gallery | default: product.media -%}
+
+  <ul class="image-list mediaDesktopThumbs">
+    {%- assign counter = 0 -%}
+    {% for media in product_media %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% if variant_images contains media.src %}
+            {%- assign matching_image = variant_images | where: 'src', media.src -%}
+            <li
+              class="image-list-item-1 galleryThumb{% if counter > 0 %} mediaishidden{% endif %}" 
+              related-variant="{{ matching_image[0].variants.first.id }}"
+            >
+              <img src="{{ media | img_url: '150x' }}" loading="lazy" alt="{{ media.alt }}">
+            </li>
+            {%- assign counter = counter | plus: 1 -%}
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+{% assign counter = 0 %}
+    {% for media in product_media %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% unless variant_images contains media.src %}
+            {% assign counter = counter | plus: 1 %}
+            <li class="image-list-item-1 galleryThumb"><img src="{{ media | img_url: '150x' }}" loading="lazy" alt="{{ media.alt }}" class="lb-test-{{ counter }}"></li>
+          {% endunless %}
+        {% when 'video' %}
+          <li class="image-list-item-1 galleryThumb">{{ media | video_tag: autoplay: true, loop: true }}</li>
+      {% endcase %}
+    {% endfor %}
+  </ul>
+
+  <div class="image-preview mediaDesktopImages">
+    {% for media in product_media %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% if variant_images contains media.src %}
+            {%- assign matching_image = variant_images | where: 'src', media.src -%}
+            <div class="image-preview-item-1 galleryItem"
+              related-variant-main="{{ matching_image[0].variants.first.id }}">
+              <img src="{{ media | img_url: '1000x' }}" loading="lazy" alt="{{ media.alt }}" >
+            </div>
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+{% assign counter1 = 0 %}
+    {% for media in product_media %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% unless variant_images contains media.src %}
+          {% assign counter1 = counter1 | plus: 1 %}
+            <div class="image-preview-item-1 galleryItem"><img src="{{ media | img_url: '1000x' }}" loading="lazy" alt="{{ media.alt }}" class="lb-test-{{ counter1 }}"></div>
+          {% endunless %}
+        {% when 'video' %}
+          <div class="image-preview-item-1 galleryItem">{{ media | video_tag: autoplay: true, loop: true }}</div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+<div id="image-gallery-desktop" class="lb-image-list-box mod-desktop lb-biz-metafields">
+
+  {%- assign product_media_new = product.metafields.custom.a_b_test_name_gallery.value -%}
+
+  <ul class="image-list mediaDesktopThumbs">
+    {%- assign counter = 0 -%}
+    {% for media in product_media_new %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% if variant_images contains media.src %}
+            {%- assign matching_image = variant_images | where: 'src', media.src -%}
+            <li
+              class="image-list-item-1 galleryThumb{% if counter > 0 %} mediaishidden{% endif %} " 
+              related-variant="{{ matching_image[0].variants.first.id }}"
+            >
+              <img src="{{ media | img_url: '150x' }}" loading="lazy" alt="{{ media.alt }}">
+            </li>
+            {%- assign counter = counter | plus: 1 -%}
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+    {% for media in product_media %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% if variant_images contains media.src %}
+            {%- assign matching_image = variant_images | where: 'src', media.src -%}
+            {% unless media.alt contains 'old' %}
+            <li
+              class="image-list-item-1 galleryThumb{% if counter > 0 %} mediaishidden{% endif %} " 
+              related-variant="{{ matching_image[0].variants.first.id }}"
+            >
+              <img src="{{ media | img_url: '150x' }}" loading="lazy" alt="{{ media.alt }}">
+            </li>
+            {% endunless %}
+            {%- assign counter = counter | plus: 1 -%}
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+{% assign counter = 0 %} 
+    {% for media in product_media_new %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% unless variant_images contains media.src %}
+            {% assign counter = counter | plus: 1 %}
+            <li class="image-list-item-1 galleryThumb"><img src="{{ media | img_url: '150x' }}" loading="lazy" alt="{{ media.alt }}" class="lb-test-{{ counter }}"></li>
+          {% endunless %}
+        {% when 'video' %}
+          <li class="image-list-item-1 galleryThumb">{{ media | video_tag: autoplay: true, loop: true }}</li>
+      {% endcase %}
+    {% endfor %}
+
+  </ul>
+
+  <div class="image-preview mediaDesktopImages">
+    {% for media in product_media_new %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% if variant_images contains media.src %}
+            {%- assign matching_image = variant_images | where: 'src', media.src -%}
+            <div class="image-preview-item-1 galleryItem"
+              related-variant-main="{{ matching_image[0].variants.first.id }}">
+              <img src="{{ media | img_url: '1000x' }}" loading="lazy" alt="{{ media.alt }}" >
+            </div>
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+        {% for media in product_media %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% if variant_images contains media.src %}
+            {%- assign matching_image = variant_images | where: 'src', media.src -%}
+            <div class="image-preview-item-1 galleryItem"
+              related-variant-main="{{ matching_image[0].variants.first.id }}">
+              <img src="{{ media | img_url: '1000x' }}" loading="lazy" alt="{{ media.alt }}" >
+            </div>
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+{% assign counter1 = 0 %}
+    {% for media in product_media_new %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% unless variant_images contains media.src %}
+          {% assign counter1 = counter1 | plus: 1 %}
+            <div class="image-preview-item-1 galleryItem"><img src="{{ media | img_url: '1000x' }}" loading="lazy" alt="{{ media.alt }}" class="lb-test-{{ counter1 }}"></div>
+          {% endunless %}
+        {% when 'video' %}
+          <div class="image-preview-item-1 galleryItem">{{ media | video_tag: autoplay: true, loop: true }}</div>
+      {% endcase %}
+    {% endfor %}
+    {% for media in product_media %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% unless variant_images contains media.src %}
+          {% assign counter1 = counter1 | plus: 1 %}
+            <div class="image-preview-item-1 galleryItem"><img src="{{ media | img_url: '1000x' }}" loading="lazy" alt="{{ media.alt }}" class="lb-test-{{ counter1 }}"></div>
+          {% endunless %}
+        {% when 'video' %}
+          <div class="image-preview-item-1 galleryItem">{{ media | video_tag: autoplay: true, loop: true }}</div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+
+</div>

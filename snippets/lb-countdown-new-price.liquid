@@ -1,0 +1,24 @@
+
+<div class="lb-countdown-new-price">
+  {% if product.tags contains 'blackdays10' %}
+    {% assign reduced_price = product.selected_or_first_available_variant.price | times: 0.9 %}
+  {% elsif product.tags contains 'blackdays20' %}
+    {% assign reduced_price = product.selected_or_first_available_variant.price | times: 0.80 %}
+  {% elsif product.tags contains 'blackdays30' %}
+    {% assign reduced_price = product.selected_or_first_available_variant.price | times: 0.7 %}
+  {% endif %}
+
+  <span>{{ product.selected_or_first_available_variant.price | money }}</span>
+
+  {% assign reduced_price_money = reduced_price | money %}
+  {% if reduced_price_money contains ',00' %}
+    {{ reduced_price | money }}
+    {% assign save_reduced_price = product.selected_or_first_available_variant.price | minus: reduced_price %}
+  {% else %}
+    {% assign adjusted_price = reduced_price | plus: 1 %}
+    {{ adjusted_price | money }}
+    {% assign save_reduced_price = product.selected_or_first_available_variant.price | minus: adjusted_price %}
+  {% endif %}
+
+  <div>Du sparst {{ save_reduced_price | money }}</div>
+</div>

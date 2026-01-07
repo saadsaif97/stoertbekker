@@ -1,0 +1,1270 @@
+<div class="lb-campaign-collection-section">  
+  <div class="lb-campaign-collection-section-holder"> 
+
+
+
+
+
+     {% if canonical_url contains 'deals-der-woche'  %} 
+
+
+   
+
+    
+{% for product in collection.products %}
+
+  {% for variant in product.variants %}
+
+      {% if variant.metafields.custom.deal_der_woche == 'Deal der Woche' %}
+
+
+        {% assign savings = product.compare_at_price | minus: product.price %}
+        {% assign discount_percent = savings | times: 100 | divided_by: product.compare_at_price %}
+
+        <a href="{{ variant.url }}" class="lb-campaign-collection-item {% if product.tags contains 'abtestonlysets' %}lb-set-hide{% endif %}">
+          <div class="lb-campaign-collection-item-image">
+            <div class="lb-campaign-collection-item-badges">
+              {% if product.metafields.custom.custom_tag != blank %}<div>{{ product.metafields.custom.custom_tag }}</div>{% endif %}
+            </div>
+              {% if product.compare_at_price > product.price %}
+                <div class="lb-campaign-collection-item-salebadge">-{{ discount_percent | round }}%</div>
+              {% endif %}
+
+        
+
+<div class="lb-item-img-holder">
+
+
+  {% if product.selected_or_first_available_variant.featured_image == blank %}
+  <img class="lb-item-img" id="{{ img_id }}" src="{{ product.featured_image | img_url: '600x' }}" data-src="{{ img_url }}" alt="" loading="lazy">
+  {%else%}
+<img class="lb-item-img" id="{{ img_id }}" src="{{ variant.featured_image | img_url: '600x' }}" data-src="{{ img_url }}" alt="" loading="lazy">
+  {%endif%}         
+
+  
+   {% if product.title contains 'Geschenkgutschein' or product.title contains 'Hoodie' or product.title contains 'T-Shirt' %}
+     <img class="pdp-item-video" id="{{ img_id }}" src="{{ product.featured_image | img_url: '400x' }}" data-src="{{ img_url }}" alt="" loading="lazy">
+  {% else %}
+  
+
+<img src="{{  product.images[3] | img_url: '600x' }}" loading="lazy" class="pdp-item-video">
+  {% endif %}
+  
+</div>
+
+
+
+<style>
+  
+  .lb-item-img-holder {
+	display: block;
+	overflow: hidden;
+	position: relative;
+  }
+
+  
+  
+  .lb-item-img-holder:hover .pdp-item-video {
+	opacity: 1;
+  }
+
+  .lb-item-img {  
+width: 100%;
+  }
+
+   .lb-item-img-holder:hover .lb-item-img {
+opacity: 0!important;
+  }
+
+
+  @media only screen and (max-width: 600px) {
+  .lb-item-img-holder:hover .pdp-item-video {
+	opacity: 0;
+  }
+   .lb-item-img-holder:hover .lb-item-img {
+opacity: 1!important;
+  }
+}
+  
+  
+    .pdp-item-video {
+	opacity: 0;
+	transition: all 0.3s;
+	top: 0px;
+		width: 100%;
+	display: block;
+	position: absolute;
+	left: 0px;
+  }
+	
+
+  
+  @media only screen and (max-width: 600px) {
+  
+  .pdp-item-video {
+
+	display: none!important;
+  }
+	
+  }
+  
+</style>
+  
+
+
+
+{% include 'lb-product-item-badges' %}
+
+
+
+
+
+            {% if product.tags contains 'toretto' %}
+<img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/torettoseries.png?v=1732608022" style="position: absolute; bottom: 0px; left: 50%; transform: translate(-50%); width: 100px; border-radius: 9px 9px 0px 0px;">
+{% endif %}
+
+             
+          </div>
+          <div class="lb-collection-item-content">
+            <h3>{{ product.title }}{% unless variant.title contains 'Default' %} | {{ variant.title }}{% endunless %}</h3><!--
+            <p>{{ section.settings.subtitle }}</p>-->
+
+            <div class="lb-collection-subheadlinee"> 
+  <p> {{product.metafields.custom.kategorieseite_subheadlines}}</p>
+</div>
+
+<style>  
+  .lb-collection-subheadlinee {
+    font-family: 'Open Sans';
+    font-size: 14px;
+        margin: 0px;
+    color: #808080;
+    text-align: center;
+padding: 0px 6px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .lb-collection-subheadlinee {
+      font-family: 'Open Sans';
+      font-size: 12px;
+      color: #808080;
+      text-align: center;
+    }
+
+  }
+</style>
+
+
+
+            
+            {% include 'lb-collection-variants' %}
+            <div class="lb-campaign-collection-item-reviews"></div>
+
+            <div class="ruk_rating_snippet" style="margin-bottom:4px;margin-top: 4px;" data-sku="{{ product.handle }};{{ product.variants | map: 'sku' | join: ';' }};{{ product.variants | map: 'id' | join: ';' }}"></div>
+            
+
+
+
+            <div class="lb-campaign-collection-item-price">
+              {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+                <div class="lb-campaign-collection-item-price-box">
+                <span class="lb-campaign-collection-item-compare-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span>
+                {{ product.selected_or_first_available_variant.price | money }}
+                </div>
+                {% if product.metafields.custom.custom_savings != blank %}
+                <span class="lb-savings">{{ product.metafields.custom.custom_savings }}</span>
+                {% endif %}
+                <span class="lb-savings">{{ section.settings.sale-badge-text }} {{ product.selected_or_first_available_variant.compare_at_price | minus: product.price | money }}</span>
+              {% else %}
+                {{ product.selected_or_first_available_variant.price | money }}
+              {% endif %}
+            </div>
+
+         
+
+
+            <!--Preis pro Unit-->
+          </div>
+        </a>
+
+
+  {% endif %}
+
+          {% endfor %}
+ {% endfor %}
+
+
+
+<!-- End of Deald der Woche -->
+
+
+
+
+
+
+
+
+{% elsif canonical_url contains 'bestseller-2' %} 
+
+
+   
+
+    
+{% for product in collection.products %}
+
+  {% for variant in product.variants %}
+
+      {% if variant.metafields.custom.bestseller_lp == 'Bestseller-LP' %}
+
+
+        {% assign savings = product.compare_at_price | minus: product.price %}
+        {% assign discount_percent = savings | times: 100 | divided_by: product.compare_at_price %}
+        <a href="{{ variant.url }}" class="lb-campaign-collection-item {% if product.tags contains 'abtestonlysets' %}lb-set-hide{% endif %}">
+          <div class="lb-campaign-collection-item-image">
+            <div class="lb-campaign-collection-item-badges">
+              {% if product.metafields.custom.custom_tag != blank %}<div>{{ product.metafields.custom.custom_tag }}</div>{% endif %}
+            </div>
+              {% if product.compare_at_price > product.price %}
+                <div class="lb-campaign-collection-item-salebadge">-{{ discount_percent | round }}%</div>
+              {% endif %}
+
+        
+
+<div class="lb-item-img-holder">
+
+
+  {% if product.selected_or_first_available_variant.featured_image == blank %}
+  <img class="lb-item-img" id="{{ img_id }}" src="{{ product.featured_image | img_url: '600x'  }}" data-src="{{ img_url }}" alt="" loading="lazy">
+  {%else%}
+<img class="lb-item-img" id="{{ img_id }}" src="{{ variant.featured_image | img_url: '600x' | img_url: '600x' }}" data-src="{{ img_url }}" alt="" loading="lazy">
+  {%endif%}         
+
+  
+   {% if product.title contains 'Geschenkgutschein' or product.title contains 'Hoodie' or product.title contains 'T-Shirt' %}
+    <img class="pdp-item-video" id="{{ img_id }}" src="{{ product.featured_image | img_url: '400x' }}" data-src="{{ img_url }}" alt="" loading="lazy">
+  {% else %} 
+  
+
+<img src="{{  product.images[3] | img_url: '600x' }}" loading="lazy" class="pdp-item-video">
+  {% endif %}
+  
+</div>
+
+
+
+<style>
+  
+  .lb-item-img-holder {
+	display: block;
+	overflow: hidden;
+	position: relative;
+  }
+
+  
+  
+  .lb-item-img-holder:hover .pdp-item-video {
+	opacity: 1;
+  }
+
+  .lb-item-img {  
+width: 100%;
+  }
+
+   .lb-item-img-holder:hover .lb-item-img {
+opacity: 0!important;
+  }
+
+
+  @media only screen and (max-width: 600px) {
+  .lb-item-img-holder:hover .pdp-item-video {
+	opacity: 0;
+  }
+   .lb-item-img-holder:hover .lb-item-img {
+opacity: 1!important;
+  }
+}
+  
+  
+    .pdp-item-video {
+	opacity: 0;
+	transition: all 0.3s;
+	top: 0px;
+		width: 100%;
+	display: block;
+	position: absolute;
+	left: 0px;
+  }
+	
+
+  
+  @media only screen and (max-width: 600px) {
+  
+  .pdp-item-video {
+
+	display: none!important;
+  }
+	
+  }
+  
+</style>
+  
+
+
+{% include 'lb-product-item-badges' %}
+
+
+
+ 
+
+
+
+<!--
+{% if product.tags contains 'summer10' or product.tags contains 'summer20' or product.tags contains 'summer30'
+%}
+<div class="lb-campaign-collection-item-salebadge">-{% if product.tags contains 'summer10' %}10%{% endif %}{% if
+  product.tags contains 'summer20' %}20%{% endif %}{% if product.tags contains 'summer30' %}30%{% endif %}
+</div>
+{% endif %}
+<style>
+  .lb-campaign-collection-item-salebadge {
+    position: absolute;
+    background: #ceb77f;
+    color: black;
+       {% unless customer.email contains 'lionsbranding' %}
+    display: none;
+       {% endunless %}
+    top: 5px;
+    right: 5px;
+    border-radius: 50px;
+    padding: 9px;
+    text-transform: uppercase;
+    z-index: 99;
+    font-family: BebasNeue-Regular;
+  }
+</style>
+
+-->
+
+            {% if product.tags contains 'toretto' %}
+<img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/torettoseries.png?v=1732608022" style="position: absolute; bottom: 0px; left: 50%; transform: translate(-50%); width: 100px; border-radius: 9px 9px 0px 0px;">
+{% endif %}
+
+             
+          </div>
+          <div class="lb-collection-item-content">
+            <h3>{{ product.title }}{% unless variant.title contains 'Default' %} | {{ variant.title }}{% endunless %}</h3><!--
+            <p>{{ section.settings.subtitle }}</p>-->
+
+            <div class="lb-collection-subheadlinee"> 
+  <p> {{product.metafields.custom.kategorieseite_subheadlines}}</p>
+</div>
+
+<style>  
+  .lb-collection-subheadlinee {
+    font-family: 'Open Sans';
+    font-size: 14px;
+        margin: 0px;
+    color: #808080;
+    text-align: center;
+padding: 0px 6px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .lb-collection-subheadlinee {
+      font-family: 'Open Sans';
+      font-size: 12px;
+      color: #808080;
+      text-align: center;
+    }
+
+  }
+</style>
+
+
+
+            
+            {% include 'lb-collection-variants' %}
+            <div class="lb-campaign-collection-item-reviews"></div>
+
+            <div class="ruk_rating_snippet" style="margin-bottom:4px;margin-top: 4px;" data-sku="{{ product.handle }};{{ product.variants | map: 'sku' | join: ';' }};{{ product.variants | map: 'id' | join: ';' }}"></div>
+            
+
+
+
+            <div class="lb-campaign-collection-item-price">
+              {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+                <div class="lb-campaign-collection-item-price-box">
+                <span class="lb-campaign-collection-item-compare-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span>
+                {{ product.selected_or_first_available_variant.price | money }}
+                </div>
+                <span class="lb-savings">{{ section.settings.sale-badge-text }} {{ product.selected_or_first_available_variant.compare_at_price | minus: product.price | money }}</span>
+              {% else %}
+                {{ product.selected_or_first_available_variant.price | money }}
+              {% endif %}
+            </div>
+
+         
+
+
+            <!--Preis pro Unit-->
+          </div>
+        </a>
+
+
+  {% endif %}
+
+          {% endfor %}
+ {% endfor %}
+
+
+
+<!-- End of Deald der Bestseller -->
+
+
+
+
+
+    
+
+{% else %}
+
+
+
+
+  
+
+
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const sortForm = document.getElementById("SortForm");
+  const sortSelect = document.getElementById("SortBy");
+  const productGrid = document.getElementById("ProductGrid");
+
+  sortSelect.addEventListener("change", function () {
+    const formData = new FormData(sortForm);
+    const params = new URLSearchParams(formData).toString();
+
+    fetch(`${sortForm.action}?section_id={{ section.id }}&${params}`, {
+      headers: { "X-Requested-With": "XMLHttpRequest" }
+    })
+    .then(res => res.text())
+    .then(html => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const newGrid = doc.getElementById('ProductGrid');
+      if (newGrid) productGrid.innerHTML = newGrid.innerHTML;
+    });
+  });
+});
+</script>
+
+<div class="collection-filter-section">
+
+  <!-- Sort Dropdown -->
+  <div style="text-align: right;">
+  <div class="sort-dropdown">
+<!--    <label for="SortBy">Sortiert nach:</label>-->
+    <form id="SortForm" method="get" action="{{ collection.url }}">
+      <select id="SortBy" name="sort_by">
+        <option value="relevance" {% if collection.sort_by == 'relevance' %}selected{% endif %}>Sortiert nach: Beliebteste</option><!--
+        <option value="best-selling" {% if collection.sort_by == 'best-selling' %}selected{% endif %}>Sortiert nach: Bestseller</option>-->
+        <option value="price-ascending" {% if collection.sort_by == 'price-ascending' %}selected{% endif %}>Sortiert nach: Preis aufsteigend</option>
+        <option value="price-descending" {% if collection.sort_by == 'price-descending' %}selected{% endif %}>Sortiert nach: Preis absteigend</option>
+        <option value="created-descending" {% if collection.sort_by == 'created-descending' %}selected{% endif %}>Sortiert nach: Neueste</option>
+        <option value="created-ascending" {% if collection.sort_by == 'created-ascending' %}selected{% endif %}>Sortiert nach: Älteste</option>
+      </select>
+    </form>
+  </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+  const select = document.getElementById("SortBy");
+  if (!select) return;
+
+  // Wrapper erstellen, falls nicht vorhanden
+  let wrapper = select.parentElement;
+  wrapper.style.position = "relative";
+  wrapper.style.display = "inline-block";
+
+  // Unsichtbarer Text-Messer
+  const measurer = document.createElement("span");
+  measurer.style.visibility = "hidden";
+  measurer.style.whiteSpace = "nowrap";
+  measurer.style.position = "absolute";
+  measurer.style.left = "0";
+  measurer.style.top = "0";
+  measurer.style.pointerEvents = "none";
+  measurer.style.fontSize = window.getComputedStyle(select).fontSize;
+  wrapper.appendChild(measurer);
+
+  function updateWidth() {
+    const activeText = select.options[select.selectedIndex].text;
+    measurer.textContent = activeText;
+
+    // Platz für den Dropdown-Pfeil (iPhone benötigt etwas mehr)
+    const newWidth = measurer.offsetWidth + 34;
+
+    select.style.width = newWidth + "px";
+  }
+
+  // Initiale Breite
+  updateWidth();
+
+  // Bei Änderung aktualisieren
+  select.addEventListener("change", updateWidth);
+});
+
+  </script>
+
+  <!-- Product Grid Wrapper -->
+  <div id="ProductGrid" class="lb-product-grid">
+
+    <style>
+
+      #SortBy {
+      width: -moz-fit-content;
+  width: fit-content;
+}
+
+.collection-filter-section {
+width: 100%;
+}
+
+.sort-dropdown {
+  display: flex; /*flex;*/
+  justify-content: end;
+margin: 0px 0px 0px auto;
+padding: 18px 26px 18px 18px;
+font-size: 14px;
+line-height: 20px;
+position: relative;
+}
+
+.sort-dropdown label {
+margin-right: 4px;
+  display: inline-block;
+  float: left;
+  font-weight: normal;
+}
+
+.sort-dropdown select {
+  display: inline-block;
+border: none;
+font-size: 14px;
+text-align: right;
+padding-right: 9px;
+color: black;
+background: none;
+height: 20px;
+font-weight: normal;
+
+appearance: none; /* Standard: entfernt native Styles in den meisten Browsern */
+  -webkit-appearance: none; /* Safari / iOS */
+  -moz-appearance: none; /* Firefox */
+
+  border: none;
+  outline: none;
+}
+
+.sort-dropdown::after {
+  content: "";
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+
+  background-image: url('data:image/svg+xml;utf8,<svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 490"><polygon points="490,157.332 244.996,407.369 0,157.332 76.493,82.631 244.996,254.598 413.507,82.631"/></svg>');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.sort-dropdown select:focus {
+order-color: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+
+
+      .lb-product-grid {
+      margin: auto;
+    justify-content: start;
+    flex-wrap: wrap;
+    display: flex;
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+{% paginate collection.products by 1000 %}
+  {% for product in collection.products limit: 1000 %}
+        {% assign savings = product.compare_at_price | minus: product.price %}
+        {% assign discount_percent = savings | times: 100 | divided_by: product.compare_at_price %}
+        <a href="{{ product.url }}" class="lb-campaign-collection-item {% if product.tags contains 'abtestonlysets' %}lb-set-hide{% endif %}">
+          <div class="lb-campaign-collection-item-image">
+            <div class="lb-campaign-collection-item-badges">
+              {% if product.metafields.custom.custom_tag != blank %}<div>{{ product.metafields.custom.custom_tag }}</div>{% endif %}
+            </div>
+              {% if product.compare_at_price > product.price %}
+                <div class="lb-campaign-collection-item-salebadge">-{{ discount_percent | round }}%</div>
+              {% endif %}
+
+        
+
+<div class="lb-item-img-holder">
+  
+  {% if product.selected_or_first_available_variant.featured_image == blank %}
+  <img class="lb-item-img" id="{{ img_id }}" src="{{ product.featured_image | img_url: '600x' }}" data-src="{{ img_url }}" alt="" loading="lazy">
+  {%else%}
+<img class="lb-item-img" id="{{ img_id }}" src="{{ product.selected_or_first_available_variant.featured_image | img_url: '600x' }}" data-src="{{ img_url }}" alt="" loading="lazy">
+  {%endif%}         
+  
+   {% if product.title contains 'Geschenkgutschein' or product.title contains 'Hoodie' or product.title contains 'T-Shirt' %} 
+     <img class="pdp-item-video" id="{{ img_id }}" src="{{ product.featured_image | img_url: '400x' }}" data-src="{{ img_url }}" alt="" loading="lazy">
+ 
+  {% elsif product.title contains 'Soap Box ' %} 
+    <img src="{{ product.images[2] | img_url: '600x' }}" loading="lazy" class="pdp-item-video">
+    {% else %}
+  
+
+<img src="{{ product.images[3] | img_url: '600x' }}" loading="lazy" class="pdp-item-video">
+  {% endif %}
+  
+</div>
+
+
+
+<style>
+  
+  .lb-item-img-holder {
+	display: block;
+	overflow: hidden;
+	position: relative;
+  }
+
+  
+  
+  .lb-item-img-holder:hover .pdp-item-video {
+	opacity: 1;
+  }
+
+  .lb-item-img {  
+width: 100%;
+  }
+
+   .lb-item-img-holder:hover .lb-item-img {
+opacity: 0!important;
+  }
+
+
+  @media only screen and (max-width: 600px) {
+  .lb-item-img-holder:hover .pdp-item-video {
+	opacity: 0;
+  }
+   .lb-item-img-holder:hover .lb-item-img {
+opacity: 1!important;
+  }
+}
+  
+  
+    .pdp-item-video {
+	opacity: 0;
+	transition: all 0.3s;
+	top: 0px;
+		width: 100%;
+	display: block;
+	position: absolute;
+	left: 0px;
+  }
+	
+
+  
+  @media only screen and (max-width: 600px) {
+  
+  .pdp-item-video {
+
+	display: none!important;
+  }
+	
+  }
+  
+</style>
+            <!--
+        
+            <img class="lb-campaign-collection-item-img" src="{{ product.selected_or_first_available_variant.image.src | img_url: '600x' }}" alt="{{ product.title }}">
+-->
+
+        
+
+
+{% include 'lb-product-item-badges' %}
+
+
+
+
+            {% if product.tags contains 'toretto' %}
+<img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/torettoseries.png?v=1732608022" style="position: absolute; bottom: 0px; left: 50%; transform: translate(-50%); width: 100px; border-radius: 9px 9px 0px 0px;">
+{% endif %}
+
+            
+          </div>
+          <div class="lb-collection-item-content">
+            <h3>{{ product.title }}</h3><!--
+            <p>{{ section.settings.subtitle }}</p>-->
+
+            <div class="lb-collection-subheadlinee"> 
+  <p> {{product.metafields.custom.kategorieseite_subheadlines}}</p>
+</div>
+
+<style>  
+  .lb-collection-subheadlinee {
+    font-family: 'Open Sans';
+    font-size: 14px;
+        margin: 0px;
+    color: #808080;
+    text-align: center;
+padding: 0px 6px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .lb-collection-subheadlinee {
+      font-family: 'Open Sans';
+      font-size: 12px;
+      color: #808080;
+      text-align: center;
+    }
+
+  }
+</style>
+
+
+
+            
+            {% include 'lb-collection-variants' %}
+            <div class="lb-campaign-collection-item-reviews"></div>
+
+            <div class="ruk_rating_snippet" style="margin-bottom:4px;margin-top: 4px;" data-sku="{{ product.handle }};{{ product.variants | map: 'sku' | join: ';' }};{{ product.variants | map: 'id' | join: ';' }}"></div>
+            
+
+                  {% include 'lb-collection-codeprice' %}
+
+            <div class="lb-campaign-collection-item-price if-codeprice-hide">
+              {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+                <div class="lb-campaign-collection-item-price-box">
+                <span class="lb-campaign-collection-item-compare-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span>
+                {{ product.selected_or_first_available_variant.price | money }}
+                </div>
+                <span class="lb-savings">{{ section.settings.sale-badge-text }} {{ product.selected_or_first_available_variant.compare_at_price | minus: product.price | money }}</span>
+              {% else %}
+                {{ product.selected_or_first_available_variant.price | money }}
+              {% endif %}
+            </div>
+
+
+
+        
+
+
+
+
+
+
+            <!--Preis pro Unit-->
+          </div>
+        </a>
+
+
+
+    
+      {% endfor %}
+  
+{% endpaginate %}
+  
+</div>
+
+  
+{% endif %}
+
+    
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+.lb-campaign-collection-section {
+  padding: 0px 0% 0px 0%;
+  background: {{ section.settings.collection-background }};
+}
+.lb-campaign-collection-section-holder {
+  margin: auto;
+justify-content: start;
+  flex-wrap: wrap; 
+  display: flex;
+}
+.lb-campaign-collection-item {
+  width: 24%;
+  margin: 0.5%;
+  display: block;
+  background: {{ section.settings.product-item-background-color }};
+  padding: 0px 0px 18px 0px;
+  color: {{ section.settings.product-item-font-color }};
+  text-decoration: none;
+  position: relative;
+  border-radius: 0px;/*{{ section.settings.product-item-radius }}
+  border: 0.5px solid #d9d9d9;*/
+  cursor: pointer!important;
+  {% if section.settings.product-item-align == 'center' %}
+  text-align: center!important;
+  {% else %}
+  text-align: left!important;
+  {% endif %}
+}
+/*
+.lb-campaign-collection-section {
+  padding: 18px 1% 72px 1%;
+  background: {{ section.settings.collection-background }};
+}
+.lb-campaign-collection-section-holder {
+  max-width: 1180px;
+  margin: auto;
+  justify-content: space-between;
+  flex-wrap: wrap; 
+  display: flex;
+}
+.lb-campaign-collection-item {
+  width: 31.33%;
+  margin: 1%;
+  display: block;
+  background: {{ section.settings.collectionproductitembackground }};
+  padding: 0px;
+  color: {{ section.settings.product-item-font-color }};
+  text-decoration: none;
+  position: relative;
+  border-radius: {{ section.settings.product-item-radius }}px;
+}
+*/
+.lb-campaign-collection-item-image {
+  background: {{ section.settings.product-item-image-background-color }};
+  border-radius: 0px;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 36px 0px 0px 0px; 
+}
+.lb-campaign-collection-item-image img {/*
+  mix-blend-mode: multiply;*/
+  display: block;
+}
+.lb-campaign-collection-item-badges {
+  position: absolute;
+  top: 5px;
+  left: 5px;   
+  display: flex;
+  z-index: 9;
+}
+.lb-campaign-collection-item-badges div {
+  background: #8acdc7;
+  color: black;
+  padding: 5px 9px;
+  border-radius: 0px;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 600;
+}
+.lb-campaign-collection-item-salebadge {
+  background: {{ section.settings.sale-badge-background-color }};
+  color: {{ section.settings.sale-badge-font-color }}; 
+  display: inline-block;
+  text-align: center;
+  padding: 5px 9px;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: bold;
+  margin: 0px 0px 0px 3px;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: none;
+}
+.lb-campaign-collection-item-img {
+  display: block;
+  width: 100%;
+}
+.lb-collection-item-content {
+  padding: 9px 9px 12px 9px;
+}
+.lb-campaign-collection-item h3 {
+  font-family: BebasNeue-Regular;
+  color: {{ section.settings.collectionproductitemcolor }};
+  margin: 0px 0px 4px 0px;
+  line-height: 24px;
+  font-size: 20px;
+  {% if section.settings.product-item-align == 'center' %}
+  text-align: center!important;
+  {% else %}
+  text-align: left!important;
+  {% endif %}
+}
+.lb-campaign-collection-item p {
+  margin: 0px 0px 9px 0px;
+  font-size: 14px;
+  line-height: 20px;
+  {% if section.settings.product-item-align == 'center' %}
+  text-align: center!important;
+  {% else %}
+  text-align: left!important;
+  {% endif %}
+}
+.lb-campaign-collection-item-reviews {
+  margin: 0px 0px 9px 0px;
+  width: 115px;
+  overflow: hidden;
+}
+.lb-campaign-collection-item-reviews div {
+  width: 230px;
+  height: 20px;
+}
+.lb-campaign-collection-item-price-box {
+  display: inline-block;
+}
+.lb-campaign-collection-item-price {
+  color: black;
+  font-size: 16px;
+  line-height: 22px;
+}
+.lb-campaign-collection-item-compare-price {
+  color: {{ section.settings.product-compare-at-price-color }};
+  text-decoration: line-through;
+}
+.lb-savings {
+  color: {{ section.settings.sale-badge-font-color }};
+  padding: 4px 9px;
+  border-radius: 6px;
+  font-size: 10px;
+  line-height: 10px;
+  display: inline-block;
+  margin: 0px 0px 0px 0px;
+  position: relative;
+  top: -2px;
+  background: {{ section.settings.sale-badge-background-color }};
+}
+@media only screen and (max-width: 600px) {
+.lb-campaign-collection-item {
+  width: 48%;
+  margin: 1%;
+}
+.lb-campaign-collection-item h3 {
+  font-size: 17px/*calc(22px * 0.6)*/; 
+  line-height: 22px/*calc(24px * 0.7)*/; 
+}
+.lb-campaign-collection-item p {
+  font-size: calc(14px * 0.9); 
+  line-height: calc(20px * 0.9); 
+}
+.lb-campaign-collection-item-price {
+  font-size: calc(16px * 0.9); 
+  line-height: calc(22px * 0.9); 
+}
+.lb-campaign-collection-item-price-box {
+  display: block;
+}
+.lb-savings {
+  top: 0px;
+}
+.lb-campaign-collection-item-salebadge {
+  width: 32px;
+  line-height: 32px;
+  height: 32px;
+  font-size: 10px;
+}
+.lb-campaign-collection-item-nicolaus-badge {
+  font-size: 7px;
+  line-height: 7px;
+  width: 32px;
+  height: 32px;
+  right: 40px;
+  font-weight: bold;
+}
+.lb-campaign-collection-item-nicolaus-badge span {
+  font-size: 6px;
+}
+}
+</style>
+{% schema %}
+{
+  "name": "lb collection",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Collection Settings"
+    },
+    {
+      "type": "color",
+     "id": "collection-background",
+     "default": "#F4F0ED",
+     "label": "Hintegrundfarbe"
+    },
+   {
+      "type": "range",
+      "id": "anzahl_produkte",
+      "label": "Anzahl der Produkte",
+      "min": 2,
+      "max": 12,
+      "step": 2,
+      "default": 4,
+      "unit": "Stk"
+    },
+    {
+      "type": "select",
+      "id": "anzahl-mobile",
+      "label": "Mobile Anahl",
+      "default": "2",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ]
+    }, 
+    {
+      "type": "range",
+      "id": "abstand_oben",
+      "label": "Abstand oben",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "liquid",
+      "label": "Subtitle",
+      "id": "subtitle",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmo"
+    },
+    {
+      "type": "liquid",
+      "label": "Reviews",
+      "id": "reviews",
+      "info": "Füge hier Deinen Review Code ein",
+      "default": "★★★★★ 241 Bewertungen"
+    },
+    {
+      "type": "header",
+      "content": ".",
+      "info": "."
+    },
+    {
+      "type": "header",
+      "content": "Product Item Settings"
+    },
+    {
+      "type": "select",
+      "id": "product-item-align",
+      "label": "Textausrichtung",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Linksbündig"
+        },
+        {
+          "value": "center",
+          "label": "Zentriert"
+        }
+      ]
+    }, 
+    {
+      "type": "text",
+      "id": "product-item-radius",
+      "default": "9",
+      "label": "Bild Abrundung"
+    },
+    {
+      "type": "color",
+     "id": "product-item-image-background-color",
+     "default": "#ffffff",
+     "label": "Bild Hintegrundfarbe"
+    },
+    {
+      "type": "color",
+     "id": "product-item-background-color",
+     "default": "#ffffff",
+     "label": "Card Hintegrundfarbe"
+    },
+    {
+      "type": "color",
+     "id": "product-item-font-color",
+     "default": "#000000", 
+     "label": "Schriftfarbe"
+    },
+    {
+      "type": "color",
+     "id": "wefproduct-item-font-color",
+     "default": "#000000", 
+     "label": "Schriftfarbe"
+    },
+    {
+      "type": "color",
+     "id": "product-compare-at-price-color",
+     "default": "#da2d2b", 
+     "label": "Vergleichspreis Schriftfarbe"
+    },
+    {
+      "type": "image_picker",
+     "id": "action-badge",
+      "info": "Füge ein Action Badge der Aktion hinzu",
+     "label": "Action Badeg"
+    },
+    {
+      "type": "text",
+      "id": "sale-badge-text",
+      "default": "Du sparst",
+      "label": "Sale badge Text"
+    },
+    {
+      "type": "color",
+     "id": "sale-badge-background-color",
+     "default": "#c81e38",
+     "label": "Sale Badge Hintegrundfarbe"
+    },
+    {
+      "type": "color",
+     "id": "sale-badge-font-color",
+     "default": "#ffffff",
+     "label": "Sale Badge Schriftfarbe"
+    }
+  ],
+  "presets": [
+    {
+      "name": "lb collection"
+    }
+  ]
+}
+{% endschema %}
+
+
+
+
+
+
+
+
+
+{% comment %}
+
+
+{% if canonical_url contains 'gutscheine' %}
+
+<div class="collection-filter-section">
+  <!-- Sort Dropdown -->
+  <div class="sort-dropdown">
+    <label for="SortBy">Sortierung:</label>
+    <form id="SortForm" method="get" action="{{ collection.url }}">
+      <select id="SortBy" name="sort_by">
+        <option value="relevance" {% if collection.sort_by == 'relevance' %}selected{% endif %}>Standard</option>
+        <option value="best-selling" {% if collection.sort_by == 'best-selling' %}selected{% endif %}>Bestseller</option>
+        <option value="price-ascending" {% if collection.sort_by == 'price-ascending' %}selected{% endif %}>Preis aufsteigend</option>
+        <option value="price-descending" {% if collection.sort_by == 'price-descending' %}selected{% endif %}>Preis absteigend</option>
+        <option value="created-descending" {% if collection.sort_by == 'created-descending' %}selected{% endif %}>Neueste</option>
+        <option value="created-ascending" {% if collection.sort_by == 'created-ascending' %}selected{% endif %}>Älteste</option>
+      </select>
+    </form>
+  </div>
+
+  <!-- Product Grid -->
+  <div id="ProductGrid" class="product-grid">
+    {% if collection.products_count > 0 %}
+      <ul class="product-list">
+        {% for product in collection.products %}
+          <li class="product-item">
+            <a href="{{ product.url }}">
+              {{ product.featured_image | image_url: width: 400 | image_tag: alt: product.title }}
+              <h3>{{ product.title }}</h3>
+              <p>{{ product.price | money }}</p>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>Keine Produkte gefunden.</p>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const sortForm = document.getElementById("SortForm");
+  const sortSelect = document.getElementById("SortBy");
+  const productGrid = document.getElementById("ProductGrid");
+
+  sortSelect.addEventListener("change", function () {
+    const formData = new FormData(sortForm);
+    const params = new URLSearchParams(formData).toString();
+
+    fetch(`${sortForm.action}?section_id={{ section.id }}&${params}`, {
+      headers: { "X-Requested-With": "XMLHttpRequest" }
+    })
+    .then(response => response.text())
+    .then(data => {
+      const parser = new DOMParser();
+      const html = parser.parseFromString(data, "text/html");
+      const updatedGrid = html.getElementById("ProductGrid");
+      if (updatedGrid) productGrid.innerHTML = updatedGrid.innerHTML;
+    });
+  });
+});
+</script>
+
+
+{% endif %}
+
+
+{% endcomment %}

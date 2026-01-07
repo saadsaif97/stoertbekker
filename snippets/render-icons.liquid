@@ -1,0 +1,25 @@
+{% assign icon = icon  %}
+{% assign color = color | default: "var(--header-icon-color)" %}
+{% assign width = width | default: "100%" %}
+{% assign height = height | default: "100%" %}
+
+{%- case icon -%}
+    {%- when "404" -%}
+        {% render "icon__404", width: width, height: height, color: color %}
+    {%- when "empty-box" -%}
+        {% render "icon__empty-box", width: width, height: height, color: color %}
+    {%- when "cart" -%}
+        {% render "icon__cart", width: width, height: height, color: color %}
+    {%- when "bin" -%}
+        {% render "icon__bin", width: width, height: height, color: color %}
+    {%- when "close" -%}
+        {% render "icon__close", width: width, height: height, color: color %}
+    {%- when "customer" -%}
+        {% render "icon__customer", width: width, height: height, color: color %}
+    {%- when "arrow-down" -%}
+        {% render "icon__arrow-down", width: width, height: height, color: color %}
+    {%- when "navigation" -%}
+        {% render "icon__navigation", width: width, height: height, color: color %}
+    {%- when "search" -%}
+        {% render "icon__search", width: width, height: height, color: color %}
+{%- endcase -%}

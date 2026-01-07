@@ -1,0 +1,361 @@
+
+
+<div class="lb-category-tag-navigation">
+  <div class="lb-category-tag-navigation-holder" id="lb-category-tag-navigation-holder-test">
+    {% for block in section.blocks %}
+      {% unless localization.country.iso_code == 'CH' and block.settings.url contains 'gutscheine' %}   
+      <a href="{{ block.settings.url }}" {% if collection.handle == block.settings.url %}class="lb-category-tag-navigation-active-link" id="lb-category-tag-navigation-holder-test-active" style="  font-weight: 600 !important;"{% endif %}>
+
+
+
+        
+        {% if block.settings.heading == 'Körper & Haar' %}
+<img src="https://stoertebekker.com/cdn/shop/files/Artboard_Copy_144_d645122e-1ed5-4fa3-994c-d75cf2bf3fe6_200x.png?v=1736001150"  class="tag-icon">
+      {% elsif block.settings.heading == 'Alle Produkte' %}
+          <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/all_eb87eb1b-29da-467c-a897-bef2a49a64e2.png?v=1746171338" class="tag-icon">
+
+{% elsif block.settings.heading == 'Rasierseife' %}
+        <img src="https://stoertebekker.com/cdn/shop/files/Seife_59c0ed26-181b-410a-b953-8acff6296d59_200x.png?v=1650540956"  class="tag-icon">
+
+{% elsif block.settings.heading == 'Rasiermesser' %}
+        <img src="https://stoertebekker.com/cdn/shop/files/Rasiermesser_200x.webp?v=1652204964"  class="tag-icon">
+
+{% elsif block.settings.heading == 'Neuheiten' %}
+        <img src="https://stoertebekker.com/cdn/shop/files/SSS_-_Icon_7c108d07-3178-40e5-b8e4-f55afd77346d_200x.png?v=1745314946"  class="tag-icon">
+
+
+        {% elsif block.settings.heading == 'Zubehör' %}
+        <img src="https://stoertebekker.com/cdn/shop/files/shaving-foam_200x.webp?v=1713339738"  class="tag-icon">
+
+      {% elsif block.settings.heading == 'Bart' %}
+        <img src="https://stoertebekker.com/cdn/shop/files/76beard_oil_200x.png?v=1650535569"  class="tag-icon">
+
+     {% elsif block.settings.heading == 'Sets' %}
+        <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/sets_168e2e36-1f92-4991-82df-1df704049f72.png?v=1746171118" class="tag-icon">
+        
+ {% elsif block.settings.heading == 'Rasierklingen' %}
+        <img src="https://stoertebekker.com/cdn/shop/files/klinge_4b1d4ea9-0171-4308-96f7-f54d606d8368_200x.png?v=1650541392" class="tag-icon">
+
+
+ {% elsif block.settings.heading == 'Gutscheine' %}
+        <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/gift_0dd33b87-d786-470c-aeb1-98df0a664b5e.png?v=1746795994" class="tag-icon">
+
+          
+          
+          {% else %}
+        <img src="https://stoertebekker.com/cdn/shop/files/safetyRazor_896d5b9c-0a24-4b5f-9393-7ca270d101a9_200x.webp?v=1652204964" class="tag-icon">
+        {% endif %}
+
+
+        
+        
+        <div>
+        {{ block.settings.heading }}</div>
+      </a>
+        {% endunless %}
+    {% endfor %}
+  </div>
+</div>
+
+
+
+{% if canonical_url contains '/collections/' %}
+  <script>
+$(document).ready(function() {
+    $(window).on('scroll', function() {
+        if ($(this).scrollTop() > 100) {
+            $('.lb-category-tag-navigation')
+                .addClass('lb-category-tag-navigation-fixed')
+                .attr('id', 'lb-category-tag-navigation-fixed');
+        } else {
+            $('.lb-category-tag-navigation')
+                .removeClass('lb-category-tag-navigation-fixed')
+                .removeAttr('id');
+        }
+    });
+});
+  </script>
+<style>
+
+  .tag-icon {
+    display: none;
+    width: 20px; 
+    float: left;
+    margin-right: 9px;
+    filter: invert(1);
+  }
+
+  
+  .lb-category-tag-navigation-fixed {
+    position: fixed;
+    top: 90px;
+    background: white;
+    z-index: 200;
+    width: 100%;
+  }
+</style>
+{% endif %}
+  
+<style>
+  {% assign lb-category-image-navigation-font = section.settings.categoryimagenavigationfontfamily %}
+  {{ lb-category-image-navigation-font | font_face }}
+
+  {% if section.settings.lb-category-image-navigation-customfont != blank %}
+  @font-face {
+    font-family: "lb-category-image-navigation-customfont";
+    src: url("{{ section.settings.lb-category-image-navigation-customfont }}") format("woff2"),
+         url("{{ section.settings.lb-category-image-navigation-customfont }}") format("woff");
+  }
+  {% endif %}
+ 
+  .lb-category-tag-navigation {
+    background: {{ section.settings.background-color }};
+    display: block;
+    padding: 18px 0px 18px 0px;
+    border-bottom: 1px solid #f2f2f2;
+    overflow: hidden;
+  }
+
+  /*
+  @media only screen and (min-width: {{ section.settings.max-show }}px) {
+    .lb-category-tag-navigation {
+      display: none!important;
+    }
+  }
+  */
+ 
+  .lb-category-tag-navigation-holder {
+    max-width: 100% !important;
+    margin: auto !important;
+    text-align: center !important;
+    overflow: auto !important;
+    white-space: nowrap !important;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    padding-left: 0px;
+    display: flex!important;
+    align-items: center !important;
+    padding: 0px 32px 0px 9px;
+  }
+
+  .lb-category-tag-navigation-holder::-webkit-scrollbar {
+    display: none;
+  }
+
+  .lb-category-tag-navigation-holder a {
+    display: inline-flex !important;
+    margin-right: 9px !important;
+    font-size: 12px !important;
+    line-height: 20px !important;
+    color: {{ section.settings.schriftfarbe }} ;
+    font-weight: 600 !important;
+    {% if section.settings.lb-category-image-navigation-customfont == blank %}
+    font-family: {{ lb-category-image-navigation-font.family }}, {{ lb-category-image-navigation-font.fallback_families }} !important;
+    {% else %}
+    font-family: 'lb-category-image-navigation-customfont'!important;
+    {% endif %}
+    text-decoration: none !important;
+    border: 1px solid {{ section.settings.link-border-color }};
+    padding: 9px 18px;
+    border-radius: {{ section.settings.abgerundete_ecken }}px;
+    background: {{ section.settings.link-backgroundcolor }};
+  }
+
+  .lb-category-tag-navigation-active-link {
+    order: -1!important;
+    background: {{ section.settings.active-backgroundcolor }}!important;
+    color: {{ section.settings.active-font-color }}!important;
+    border: 1px solid {{ section.settings.active-link-border-color }}!important;
+  }
+
+  @media only screen and (max-width: 600px) {  
+    .lb-category-tag-navigation-holder {
+      justify-content: flex-start !important;
+    }
+  }
+</style>
+{% schema %}
+{
+  "name": {
+    "en": "Lb Category Tag Nav",
+    "de": "Lb Kategorie Tag Navigation"
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": {
+        "en": "Section Settings",
+        "de": "Abschnittseinstellungen"
+      }
+    },
+    {
+      "type": "color",
+      "id": "background-color",
+      "default": "#f2f2f2",
+      "label": {
+        "en": "Background Color",
+        "de": "Hintergrundfarbe"
+      },
+      "info": {
+        "en": "Choose the background color of the section",
+        "de": "Wähle die Hintergrundfarbe des Abschnitts"
+      }
+    },
+    {
+      "type": "text",
+      "id": "max-show",
+      "default": "2400", 
+      "label": {
+        "en": "Maximum Display",
+        "de": "Maximale Anzeige"
+      },
+      "info": {
+        "en": "Maximum display width in pixels",
+        "de": "Maximale Anzeigebreite in Pixel"
+      }
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": {
+        "en": "Link Settings",
+        "de": "Link-Einstellungen"
+      }
+    },
+    {
+      "type": "range",
+      "id": "abgerundete_ecken",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 6,
+      "label": {
+        "en": "Rounded Corners",
+        "de": "Link Abrundung"
+      }
+    },
+    {
+      "type": "color",
+      "id": "schriftfarbe",
+      "default": "#000",
+      "label": {
+        "en": "Text Color",
+        "de": "Schriffarbe"
+      }
+    },
+    {
+      "type": "color",
+      "id": "link-border-color",
+      "default": "#000",
+      "label": {
+        "en": "Border Color",
+        "de": "Randfarbe"
+      }
+    },
+    {
+      "type": "color",
+      "id": "link-backgroundcolor",
+      "default": "#ffffff",
+      "label": {
+        "en": "Background Color",
+        "de": "Hintergrundfarbe"
+      }
+    },
+    {
+      "type": "color",
+      "id": "active-font-color",
+      "default": "#ffffff",
+      "label": {
+        "en": "Active Text Color",
+        "de": "Aktive Schriffarbe"
+      }
+    },
+    {
+      "type": "color",
+      "id": "active-link-border-color",
+      "default": "#000",
+      "label": {
+        "en": "Active Border Color",
+        "de": "Aktive Randfarbe"
+      }
+    },
+    {
+      "type": "color",
+      "id": "active-backgroundcolor",
+      "default": "#000",
+      "label": {
+        "en": "Active Background Color",
+        "de": "Aktive Hintergrundfarbe"
+      }
+    },
+    {
+      "type": "font_picker",
+      "id": "categoryimagenavigationfontfamily",
+      "default": "sans-serif",
+      "label": {
+        "en": "Font Family",
+        "de": "Schriftart"
+      }
+    },
+    {
+      "type": "text",
+      "id": "lb-category-image-navigation-customfont",
+      "label": {
+        "en": "Custom Font Family",
+        "de": "Eigene Schriftartfamilie"
+      },
+      "info": {
+        "en": "Upload your font into Shopify content and paste the file URL here.",
+        "de": "Lade Deine Schriftart in den Shopify-Inhalten hoch und füge hier die Datei-URL ein."
+      }
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Block",
+      "type": "block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Link Name",
+          "label": {
+            "en": "Link Name",
+            "de": "Linkname"
+          }
+        },
+        {
+          "type": "collection",
+          "id": "url",
+          "label": {
+            "en": "Link URL",
+            "de": "Link-URL"
+          }
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lb Category Tag Navigation",
+      "blocks": [
+        {
+          "type": "block"
+        },
+        {
+          "type": "block"
+        },
+        {
+          "type": "block"
+        },
+        {
+          "type": "block"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

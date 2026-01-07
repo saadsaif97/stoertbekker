@@ -1,0 +1,113 @@
+<div class="lb-biz-metafields">
+
+  <div class="black-benefits">
+
+
+    <div class="black-benefit-item">
+      {% for image in product.metafields.custom.a_b_test_4_black_benefits_icons.value | limit: 1 %}
+      <img src="{{ image | image_url: width: '80x' }}" loading="lazy"/>
+      {% endfor %}
+      <span>{{ product.metafields.custom.a_b_test_4_black_benefits.value[0] }}</span>
+    </div>
+
+    <div class="black-benefit-item">
+  {% for image in product.metafields.custom.a_b_test_4_black_benefits_icons.value limit: 1 offset: 1 %}
+    <img src="{{ image | image_url: width: '80x' }}" loading="lazy"/>
+  {% endfor %}
+  <span>{{ product.metafields.custom.a_b_test_4_black_benefits.value[1] }}</span>
+</div>
+
+
+<div class="black-benefit-item">
+  {% for image in product.metafields.custom.a_b_test_4_black_benefits_icons.value limit: 1 offset: 2 %}
+    <img src="{{ image | image_url: width: '80x' }}" loading="lazy"/>
+  {% endfor %}
+  <span>{{ product.metafields.custom.a_b_test_4_black_benefits.value[2] }}</span>
+</div>
+
+
+<div class="black-benefit-item">
+  {% for image in product.metafields.custom.a_b_test_4_black_benefits_icons.value limit: 1 offset: 3 %}
+    <img src="{{ image | image_url: width: '80x' }}" loading="lazy"/>
+  {% endfor %}
+  <span>{{ product.metafields.custom.a_b_test_4_black_benefits.value[3] }}</span>
+</div>
+
+
+
+
+
+  </div>
+
+</div>
+
+<style>
+  .black-benefits {
+    overflow: hidden;
+  }
+
+  .black-benefit-item {
+    width: 25%;
+    float: left;
+    text-align: center;
+    font-family: "Open Sans";
+    font-size: 14px;
+    color: rgb(239, 236, 224);
+    margin-top: 9px;
+    margin-bottom: 0px;
+    padding: 0px;
+  }
+
+  .black-benefit-item img {
+    width: 100%;
+    height: auto;
+    max-width: 60px;
+    display: block;
+    margin: auto;
+  }
+
+  .black-benefit-item {
+    padding: 0px 12px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .black-benefit-item {
+      width: 50%;
+      float: left;
+    }
+  }
+</style>
+
+
+
+<style>
+  .black-benefits {
+    overflow: hidden;
+  }
+
+  .black-benefit-item {
+    width: 25%;
+    float: left;
+    text-align: center;
+    font-family: "Open Sans";
+    font-size: 14px;
+    color: rgb(239, 236, 224);
+    margin-top: 9px;
+    margin-bottom: 0px;
+  }
+
+  .black-benefit-item img {
+    width: 100%;
+    height: auto;
+    max-width: 60px;
+    display: block;
+    margin: auto;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .black-benefit-item {
+      width: 50%;
+      float: left;
+    }
+  }
+</style>

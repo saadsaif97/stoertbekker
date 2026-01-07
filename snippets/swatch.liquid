@@ -1,0 +1,192 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+OPTION SWATCH
+----------------------------------------------------------------------------------------------------------------------
+
+This component renders a single option swatch. The supported options depend on the type of swatch.
+
+********************************************
+Supported variables
+********************************************
+
+* selected: if set to true, this swatch is preselected
+* allow_multiple: if set to true, it allows several values to be selected (by using a checkbox instead of radio)
+* value: the color value
+* name: the name attribute when field is submitted
+* disabled: if set to true allow to disable the swatch
+* href: if a link is provided, the swatch is created as a link instead of an input
+* form: the form id to use for the input
+
+Media swatch specific parameters:
+
+* media: the media to use
+* size: can be 'sm' to make it smaller
+* bordered: if set to true, a border is added when the media is not selected
+
+Block swatch specific parameters
+
+* show_color: if set to true, show the color as a small tile.
+
+Color swatch specific parameters:
+
+* size: can be 'sm' to make it smaller
+* show_tooltip: if set to true, display a tooltip on hover
+{%- endcomment -%}
+
+{%- capture id -%}swatch-{{ picker }}-{{ form }}-{{ name | handle }}-{{ value | handle }}{%- endcapture -%}
+
+<input class="sr-only" type="{% if allow_multiple %}checkbox{% else %}radio{% endif %}" name="{{ name }}" {% if form %}form="{{ form | escape }}"{% endif %} id="{{ id | escape }}" value="{{ value | escape }}" {% if disabled %}disabled{% endif %} {% if selected %}checked="checked"{% endif %}>
+
+{%- assign switch_group_attr = '' -%}
+{%- if value contains 'Lederetui' -%}
+  {%- assign val_split = value | split: ' - ' -%}
+  {%- assign case_color = val_split[0] -%}
+  {%- if case_color != blank and case_color != '' -%}
+    {%- capture switch_group_attr -%}
+      switchgroup="{{ case_color }}"
+    {%- endcapture -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- case swatch -%}
+  {%- when 'media' -%}
+    {%- if media != blank -%}
+
+  
+      {% unless value == 'x6x 100g' %}
+
+        {% if value == 'x3x 100g' or value == 'x3er Bundle' %}
+          <a href="{% for variant in product.variants %}{% if variant.title contains '3er' or variant.title contains '3x' or value == 'Anti-Schuppen' %}{{ variant.url }}{% endif %}{% endfor %}" class="media-swatch" data-value="{{ value }}" for="{{ id | escape }}" data-option-value {{ switch_group_attr }}>
+        {% elsif value contains 'xFestes Shampoo' or value contains 'xRasierseife' or value contains 'xBartseife' or value contains 'x1x' or value == 'x100x' or value == 'x20x' %}
+          <a href="{% for variant in product.variants %}{% if variant.title contains 'Festes Shampoo' or value contains 'Rasierseife' or value contains 'Bartseife' or value contains '1x' or value == '100x' or value == '20x' %}{{ variant.url }}{% endif %}{% endfor %}" class="media-swatch" data-value="{{ value }}" for="{{ id | escape }}" data-option-value {{ switch_group_attr }}>
+        {% else %}
+         <label class="media-swatch" data-value="{{ value }}" for="{{ id | escape }}" data-option-value {{ switch_group_attr }}>
+        {% endif %}    
+
+        {% if product.title contains 'Shampoo' %}
+          {% if value == '3x 100g' %}
+            <div class="lb-percentage-saving-badge">bis zu -15%<!--Du sparst -5%--></div>
+          {% endif %}
+        
+          {% if value == '6x 100g' %}
+            <div class="lb-percentage-saving-badge">bis zu -15%<!--Du sparst -10%--></div>
+          {% endif %}
+        {% endif %}
+        
+        {% if product.title contains 'Rasierseife' %}
+          {% if value == '3x 70g' %}
+            <div class="lb-percentage-saving-badge">Du sparst -10%</div>
+          {% endif %}
+        
+          {% if value == '6er Bundle' %}
+            <div class="lb-percentage-saving-badge">Du sparst -15%</div>
+          {% endif %}
+        {% endif %}
+        
+        {% if product.title contains 'Bartseife' %}
+          {% if value == '3er Bundle' %}
+            <div class="lb-percentage-saving-badge">Du sparst -17%</div>
+          {% endif %}
+        {% endif %}
+
+         {% if product.title contains 'Body Ba' %}
+          {% if value == '3x 120g' %}
+            <div class="lb-percentage-saving-badge">bis zu -15%<!--Du sparst -5%--></div>
+          {% endif %}
+           {% if value == '6x 120g' %}
+            <div class="lb-percentage-saving-badge">bis zu -15%<!--Du sparst -10%--></div>
+          {% endif %}
+        {% endif %}
+        {% if product.title contains 'Handsoap' %}
+          {% if value == '3x 100g' %}
+            <div class="lb-percentage-saving-badge">Du sparst -5%</div>
+          {% endif %}
+           {% if value == '6x 100g' %}
+            <div class="lb-percentage-saving-badge">Du sparst -10%</div>
+          {% endif %}
+        {% endif %}
+
+        {% if product.title == "Störtebekker Rasierklingen 'Platinum'" %}
+          {% if value == '100x' %}
+            <div class="lb-percentage-saving-badge">0,25€/Klinge</div>
+          {% endif %}
+          {% if value == '20x' %}
+            <div class="lb-percentage-saving-badge">0,60€/Klinge</div>
+          {% endif %}
+        {% endif %}
+        
+        {% if product.title == "Störtebekker Klingen 'Platinum' x5 Probierpack" %}
+          {% if value == '100x' %}
+            <div class="lb-percentage-saving-badge">0,25€/Klinge</div>
+          {% endif %}
+          {% if value == '20x' %}
+            <div class="lb-percentage-saving-badge">0,60€/Klinge</div>
+          {% endif %}
+        {% endif %}
+        
+        {% if product.title == 'Feather Rasierklingen' %}
+          {% if value == '200x' %}
+            <div class="lb-percentage-saving-badge">0,32€/Klinge</div>
+          {% endif %}
+          {% if value == 'x50' %}
+              <div class="lb-percentage-saving-badge">0,70€/Klinge</div>
+          {% endif %}
+        {% endif %}
+
+        {% render 'swatch-custom-image', media: media, value: value, product: product %}
+        <span class="media-swatch--label">
+          {%- if value contains 'Lederetui' -%}
+            {%- assign value_split = value | split: ' - ' -%}
+            {{ value_split[1] }}
+          {%- elsif product.title == 'Rasurpflege Set' and value contains 'Rasierseife' -%}
+            {%- assign value_split = value | split: 'Rasierseife ' -%}
+            {{ value_split[1] }}
+          {%- else -%}
+            {% unless value == '100x' or value == '20x'  %}{{ value }}{% endunless %}
+          {%- endif -%}
+        </span> 
+
+        {% if value == 'x3x 100g' or value == 'x3er Bundle' %}
+          </a>
+        {% elsif value == 'xFestes Shampoo' or value == 'xRasierseife' or value == 'xBartseife' or value contains 'x1x' or value == 'x100x' or value == 'x20x'  %}
+          </a>
+        {% else %}
+          </label>
+        {% endif %}
+
+    {% endunless %} <!-- Ende 6er Bundle -->
+
+  {%- else -%}
+    <label class="block-swatch mod-media" data-value="{{ value }}" for="{{ id | escape }}" data-option-value {{ switch_group_attr }}>
+      {{ value }}
+    </label>
+  {%- endif -%}
+
+  {%- when 'block' -%}
+    <label class="block-swatch mod-block" data-value="{{ value }}" for="{{ id | escape }}" data-option-value {{ switch_group_attr }}>
+      <span>{{ value }}</span>
+    </label>
+{%- endcase -%}
+
+
+
+
+
+
+
+
+
+            
+    <!--
+{% assign saving = product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | times: 100 | divided_by: product.selected_or_first_available_variant.compare_at_price %}
+{% assign percentage_saving = saving | at_least: percentage %}
+
+{% if product.selected_or_first_available_variant.compare_at_price != blank %}
+{% if percentage_saving > 0 %}
+<div class="lb-percentage-saving-badge">
+Du sparst - {{ percentage_saving }}%
+</div>
+{% endif %} 
+{% endif %} 
+
+      -->

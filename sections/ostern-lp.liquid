@@ -1,0 +1,1890 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<div class="banneranimation-section">
+  <div class="banneranimation">
+    <span>{{ section.settings.bannertext }}</span> 
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+  </div>
+</div>
+
+
+
+
+<style>
+
+  {% assign primaryfont = section.settings.primaryfont %}
+  {% assign secondaryfont = section.settings.secondaryfont %}
+  {% assign bannerfont = section.settings.bannerfont %}
+  {{ section.settings.primaryfont | font_face }}
+  {{ section.settings.secondaryfont | font_face }}
+  {{ section.settings.bannerfont | font_face }}
+
+  {% if section.settings.customfont != blank %}
+  @font-face {
+    font-family: "Customfont";
+    src: url("{{ section.settings.customfont }}") format("woff");
+  }
+  {% endif %}
+
+
+  
+.banneranimation-section {
+  background-color: {{ section.settings.bannerbg }};
+  color: {{ section.settings.bannercolor }};
+  {% if section.settings.bannerbgimage != blank %}
+  background-image: url({{ section.settings.bannerbgimage | img_url: '1200x' }});
+  {% endif %}
+  background-repeat: repeat-x !important;
+  background-size: 100% 100% !important;
+  padding-top: 18px !important;
+  padding-bottom: 18px !important;
+  overflow-x: clip !important;
+} 
+
+.banneranimation { 	
+    font-size:25px;
+    margin:0;
+    white-space:nowrap;
+    width:auto;
+    perspective:900px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    animation: ss-scroller-left 18s linear infinite;
+    color: {{ section.settings.bannerfontcolor }};
+}
+    
+
+
+@media only screen and (max-width: 600px) {
+
+.banneranimation { 	
+    animation: ss-scroller-left 10s linear infinite;
+}
+
+}
+
+@keyframes banneranimation {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+  
+  @keyframes ss-scroller-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+
+.banneranimation span { 	
+  margin-right: 18px;
+  line-height: 17px;
+  font-size: 17px;
+  {% if section.settings.customfont == blank %}
+  font-family: {{ section.settings.bannerfont.family }}, {{ bannerfont.fallback_families }} !important;
+  {% else %}
+  font-family: 'Customfont'!important;
+  {% endif %}
+}
+
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="lb-campaign-intro-section">
+
+  <div class="lb-campaign-intro-section-holder">
+    <p class="lb-campaign-intro-section-firsttext">{{ section.settings.introdate }}</p>
+    {% if section.settings.headlinelogo == blank %}
+    <h2 class="lb-campaign-intro-section-headline">{{ section.settings.introheadline }}</h2>
+    {% else %}
+    <img class="lb-campaign-intro-section-headline-logo" src="{{ section.settings.headlinelogo | img_url: '500x' }}">
+    {% endif %}
+    <p class="lb-campaign-intro-section-subtext">{{ section.settings.introparagraph }}</p>
+
+    <div id="countdown" class="lb-countdown-holder">
+          <div class="lb-countdown-holder-item">
+              <span id="days" class="lb-countdown-holder-item-number">00</span>
+              <span class="lb-countdown-holder-item-text">Tage</span>
+          </div>
+          <div class="lb-countdown-holder-item">
+              <span id="hours" class="lb-countdown-holder-item-number">00</span>
+              <span class="lb-countdown-holder-item-text">Stunden</span>
+          </div>
+          <div class="lb-countdown-holder-item">
+              <span id="minutes" class="lb-countdown-holder-item-number">00</span>
+              <span class="lb-countdown-holder-item-text">Minuten</span>
+          </div>
+          <div class="lb-countdown-holder-item">
+              <span id="seconds" class="lb-countdown-holder-item-number">00</span>
+              <span class="lb-countdown-holder-item-text">Sekunden</span>
+          </div>
+      </div>
+
+
+    <div class="lb-morebenefits">
+            <div>
+      <p>ab 0€ = 10%</p>
+                 <p>ab 50€ = 15%</p>
+                 <p>ab 100€ = 20%</p>
+        </div>
+
+          <div class="lb-morebenefits-2">
+            <div>
+      <p>Gratis Ostershampoo ab 100€</p>
+        </div>
+
+      
+
+<div>
+
+      </div>
+
+      <style>
+
+        .lb-morebenefits {
+          margin-top: 18px;
+        }
+
+          .lb-morebenefits p {
+            padding: 9px;
+            border: 1px solid #a0c15f;
+            background-color: #a0c15f;
+            color: white;
+            border-radius: 5px;
+            display: inline-block;
+            font-size: 14px;
+            font-family: "Open Sans";
+            font-weight: 600!important;
+            margin: 3px;
+            display: inline-block;
+        }
+
+        .lb-morebenefits-2 p {
+            padding: 9px;
+            border: 1px solid white;
+            background-color: white;
+            color: #3c3c3b;
+            border-radius: 5px;
+            display: inline-block;
+            font-size: 14px;
+            font-family: "Open Sans";
+            margin: 3px;
+            margin-top: 9px;
+            display: inline-block;
+        }
+        
+      </style>
+      
+    </div>
+    
+      <a href="#deals" class="lb-campaign-intro-section-svg">
+        <?xml version="1.0" encoding="UTF-8"?>
+        <svg width="392px" height="210px" viewBox="0 0 392 210" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <title>Path 104</title>
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+                <g id="arrow-down-copy" transform="translate(-4, -95)" stroke="#FFFFFF" stroke-width="28">
+                    <polyline id="Path-104" points="18 109 200 291 382 109"></polyline>
+                </g>
+            </g>
+        </svg>
+      </a>
+ 
+  </div>
+</div>
+</div>
+  
+
+<style>
+
+
+    .lb-campaign-intro-section {
+      padding: 52px 18px 36px 18px;
+      {% if section.settings.bannerbackgroundimage != blank %}
+      background-image: url({{ section.settings.bannerbackgroundimage | img_url: '1200x' }});
+      {% endif %}
+      background-color: {{ section.settings.introbackground }};
+      background-position: center center;
+      background-size: cover;
+    }
+
+  .lb-campaign-intro-section-holder {
+    text-align: center;
+  }
+
+    .lb-campaign-intro-section-firsttext {
+      color: {{ section.settings.introtextcolor }};
+      text-align: center;
+      margin: 0px 0px 9px 0px;
+    }
+
+    .lb-campaign-intro-section-headline {
+      color: {{ section.settings.introtextcolor }};
+      text-align: center;
+      font-size: 52px;
+      margin: 0px 0px 9px 0px;
+      line-height: 58px;
+          font-family: {{ section.settings.primaryfont.family }}, {{ primaryfont.fallback_families }} !important;
+    }
+
+  .lb-campaign-intro-section-headline-logo {
+        width: 90%;
+        display: block;
+        margin: 18px auto;
+        max-width: 400px;
+}
+
+    .lb-campaign-intro-section-subtext {
+      color: {{ section.settings.introtextcolor }};
+      text-align: center;
+       margin: 0px auto;
+      font-size: 20px;
+      line-height: 26px;
+      max-width: 500px;
+      font-family: {{ section.settings.secondaryfont.family }}, {{ secondaryfont.fallback_families }} !important;
+    }
+
+
+    .lb-campaign-intro-section h3 {
+      color: {{ section.settings.introtextcolor }};
+      text-align: center;
+    }
+
+
+  
+    .lb-campaign-intro-section-svg {
+      width: 32px;
+        display: block;
+      height:32px;
+      margin: 18px auto 0px auto;
+    }
+
+    .lb-campaign-intro-section-svg svg {
+      width: 100%;
+        display: block;
+        height: 100%;
+    }
+
+    .lb-campaign-intro-section-svg svg g {
+      stroke: {{ section.settings.introtextcolor }};
+    }
+
+
+
+    @media only screen and (max-width: 600px) {
+
+      .lb-campaign-intro-section {
+        padding: 36px 18px;
+      }
+
+      .lb-campaign-intro-section-headline {
+        font-size: 32px;
+        line-height: 40px;
+      }
+
+      .lb-campaign-intro-section-subtext {
+        font-size: 18px;
+        line-height: 24px;
+      }
+    
+    }
+
+  
+  </style>
+
+
+
+      <!-- ------
+      Countdown styling
+      --------->
+
+ <style>
+
+    .lb-countdown-holder {
+      max-width: 300px;
+      margin: 18px auto 0px auto;
+      display: flex;
+    }
+
+    .lb-countdown-holder-item {
+      width: 25%;
+    }
+
+    .lb-countdown-holder-item-number {
+      font-size: 32px;
+      background: {{ section.settings.countdownnumberbackground }};
+      color: {{ section.settings.countdownnumbercolor }};
+      padding: 9px;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 5px;
+      
+          text-transform: uppercase;
+  {% if section.settings.customfont == blank %}
+  font-family: {{ section.settings.bannerfont.family }}, {{ bannerfont.fallback_families }} !important;
+  {% else %}
+  font-family: 'Customfont'!important;
+  {% endif %}
+    }
+
+    .lb-countdown-holder-item-text {
+      font-size: 14px;
+      display: block;
+      color: {{ section.settings.countdowndaycolor }};
+    }
+     
+    </style>
+
+    <script>
+        // Gib das gewünschte Enddatum ein (Jahr, Monat, Tag, Stunde, Minute, Sekunde)
+        const endDate = new Date("{{ section.settings.countdowndate }}T{{ section.settings.countdowntime }}").getTime();
+
+        const countdown = setInterval(function() {
+            const currentDate = new Date().getTime();
+            const timeLeft = endDate - currentDate;
+
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                document.getElementById("countdown").innerHTML = "Countdown abgelaufen!";
+            } else {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                document.getElementById("days").textContent = String(days).padStart(2, '0');
+                document.getElementById("hours").textContent = String(hours).padStart(2, '0');
+                document.getElementById("minutes").textContent = String(minutes).padStart(2, '0');
+                document.getElementById("seconds").textContent = String(seconds).padStart(2, '0');
+            }
+        }, 1000);
+    </script>
+
+
+
+
+
+
+
+
+      
+
+
+<!--
+
+<div class="lb-campaign-benefits-section">
+
+<div class="lb-campaign-benefits-section-holder">
+  <div class="lb-campaign-benefits-section-item">Spare nur heute 11%</div>
+  <div class="lb-campaign-benefits-section-item">ExklusiveAngebote</div>
+  <div class="lb-campaign-benefits-section-item">Schnelle Lieferzeit</div>
+</div>
+  
+</div>
+
+-->
+
+
+
+<!--
+
+<div class="lb-campaign-featured-section">
+{% assign selected_product = section.settings.product %}
+{% if selected_product != blank %}
+  <a href="{{ selected_product.url }}" class="lb-campaign-featured-item">
+        <img src="{{ selected_product.featured_image.src | img_url: 'medium' }}" alt="{{ selected_product.title }}">
+    <div>
+      Sichere Dir das beste Angebot!
+    <h2>{{ selected_product.title }}</h2>
+    <p>{{ selected_product.price | money }}</p>
+      <div>Deals sichern</div>
+    </div>
+  </a>
+{% else %}
+  <p>Bitte wählen Sie ein Produkt aus dem Schema aus.</p>
+{% endif %}
+</div>
+
+-->
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="lb-campaign-collection-section" id="deals">
+
+  <div class="lb-campaign-collection-intro">
+    <h3>{{ section.settings.filtertext }}</h3>
+  </div>
+
+  {% for block in section.blocks %}
+              {% if block.type == 'categories' %}
+    {% if forloop.first %}
+      <script>
+        $(document).ready(function r() {
+          $('.lb-campaign-collection-filter-item-{{ block.id }}').addClass('lb-campaign-collection-filter-item-active');
+          $('.lb-campaign-collection-section-holder-{{ block.id }}').addClass('lb-campaign-collection-section-holder-active');   
+        });
+      </script>
+    {% endif %}
+                    {% endif %}
+  {% endfor %}
+
+  
+  <div class="lb-campaign-collection-filter">
+          
+    {% if section.blocks != blank %}
+      {% for block in section.blocks %} 
+              {% if block.type == 'categories' %}
+        <div class="lb-campaign-collection-filter-item lb-campaign-collection-filter-item-{{ block.id }}"><div>{{ block.settings.rabatttext }}</div></div>
+        <script>
+          $(document).ready(function() {
+            $('.lb-campaign-collection-filter-item-{{ block.id }}').click(function() {
+              
+              // Alle Elemente mit der Klasse 'lb-campaign-collection-filter-item' zurücksetzen
+              $('.lb-campaign-collection-filter-item').removeClass('lb-campaign-collection-filter-item-active');
+              
+              // Aktuelles Element hervorheben
+              $(this).toggleClass('lb-campaign-collection-filter-item-active');
+              
+              // Alle anderen Elemente mit der Klasse 'lb-campaign-collection-section-holder' zurücksetzen
+              $('.lb-campaign-collection-section-holder').removeClass('lb-campaign-collection-section-holder-active');
+              
+              // Aktuellen Inhalt hervorheben
+              $('.lb-campaign-collection-section-holder-{{ block.id }}').toggleClass('lb-campaign-collection-section-holder-active');
+            });
+          });
+        </script>
+                 {% endif %}
+      {% endfor %}
+    {% endif %}
+
+  </div>
+
+
+    
+  <style>
+
+    .lb-campaign-collection-filter {
+      overflow: hidden;
+      text-align: center;
+      margin: 0px 0px 18px 0px;
+    overflow: auto !important;
+    white-space: nowrap !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  scrollbar-width: none; /* Firefox */
+}
+
+    .lb-campaign-collection-filter::-webkit-scrollbar {
+  display: none;
+}
+
+    .lb-campaign-collection-filter p {
+      color: white;
+      margin: 0px 0px 9px 0px;
+      font-size: 20px;
+    }
+
+  
+.lb-campaign-collection-filter-item {
+  background: {{ section.settings.filterbg }};
+display: inline-block;
+    position: relative;
+  font-size: 18px;
+  line-height: 20px;
+  margin: 3px;
+  color: {{ section.settings.filtercolor }};
+  width: 82px;
+    height: 82px;
+  text-align: center;
+  border-radius: 50px;
+  border: 1px solid {{ section.settings.filterborder }};
+  cursor: pointer;
+  transition: all 0.3s;
+
+      text-transform: uppercase;
+  {% if section.settings.customfont == blank %}
+  font-family: {{ section.settings.bannerfont.family }}, {{ bannerfont.fallback_families }} !important;
+  {% else %}
+  font-family: 'Customfont'!important;
+  {% endif %}
+}
+
+
+
+    .lb-campaign-collection-filter-item div {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    }
+
+
+    .lb-campaign-collection-filter-item-active, .lb-campaign-collection-filter-item:hover, .lb-campaign-collection-filter-item-active:first-child {
+                      {% if section.settings.filterbackgroundimageactive == blank %}
+      background-color: {{ section.settings.filterborderactive }};
+    {% else %}
+      background-image: url({{ section.settings.filterbackgroundimageactive| img_url: '200x' }});
+    {% endif %}
+              border: 1px solid {{ section.settings.filterborderactive }};
+              color: {{ section.settings.filtercoloractive }};
+    }
+
+
+
+
+@media only screen and (max-width: 600px) {
+        
+.lb-campaign-collection-filter-item {
+  font-size: 14px;
+  line-height: 16px;
+  height: 62px;
+  width: 62px;
+  margin: 0px 4px 0px 0px;
+}
+
+    }
+        
+  </style>
+
+
+<!--
+          <div class="lb-campaign-collection-section-holde-tag-filter">
+          <span style="color: white; font-weight: bold;">Spare:</span>
+            <div class="lb-campaign-collection-section-holde-tag-filter-item lb-campaign-collection-section-holde-tag-filter-item-all lb-campaign-collection-section-holde-tag-filter-item-active">Alle</div>
+            {% for block in section.blocks %}
+              {% if block.type == 'filter' %}
+                <div class="lb-campaign-collection-section-holde-tag-filter-item lb-campaign-collection-section-holde-tag-filter-item-{{ block.settings.tagfilter }}">{{ block.settings.tagfiltershow }}</div>
+              {% endif %}
+            {% endfor %}
+          </div>
+--> 
+          <style>
+
+            .lb-campaign-collection-section-holde-tag-filter {
+              display: block;
+              text-align: center;
+            }
+
+            .lb-campaign-collection-section-holde-tag-filter-item {
+ border: 1px solid {{ section.settings.filterborder }};
+              color: {{ section.settings.filtercolor }};
+              
+              padding: 4px 9px;
+              display: inline-block;
+              margin: 5px;
+              border-radius: 6px;
+              cursor: pointer;
+
+                  text-transform: uppercase;
+  {% if section.settings.customfont == blank %}
+  font-family: {{ section.settings.bannerfont.family }}, {{ bannerfont.fallback_families }} !important;
+  {% else %}
+  font-family: 'Customfont'!important;
+  {% endif %}
+            }
+
+            .lb-campaign-collection-section-holde-tag-filter-item-active {
+                                 {% if section.settings.filterbackgroundimageactive == blank %}
+      background-color: {{ section.settings.filterborderactive }};
+    {% else %}
+      background-image: url({{ section.settings.filterbackgroundimageactive| img_url: '200x' }});
+    {% endif %}
+              border: 1px solid {{ section.settings.filterborderactive }};
+              color: {{ section.settings.filtercoloractive }};
+            }
+            
+            </style>
+
+
+    <script>
+      $(".lb-campaign-collection-section-holde-tag-filter-item-all").click(function() {
+        $(".lb-campaign-collection-section-holde-tag-filter-item").removeClass("lb-campaign-collection-section-holde-tag-filter-item-active");
+        $(".lb-campaign-collection-section-holde-tag-filter-item-all").addClass("lb-campaign-collection-section-holde-tag-filter-item-active");
+        $(".lb-campaign-collection-item").removeClass("lb-campaign-collection-item-active");
+      });
+    </script>
+
+    {% for block in section.blocks %}
+      {% if block.type == 'filter' %}
+        <script>
+        $(".lb-campaign-collection-section-holde-tag-filter-item-{{ block.settings.tagfilter }}").click(function() {
+          $(".lb-campaign-collection-section-holde-tag-filter-item").removeClass("lb-campaign-collection-section-holde-tag-filter-item-active");
+          $(".lb-campaign-collection-section-holde-tag-filter-item-{{ block.settings.tagfilter }}").addClass("lb-campaign-collection-section-holde-tag-filter-item-active");
+          $(".lb-campaign-collection-item").addClass("lb-campaign-collection-item-active");
+          $(".lb-campaign-collection-item-{{ block.settings.tagfilter }}").removeClass("lb-campaign-collection-item-active");
+        });
+        </script>
+      {% endif %}
+    {% endfor %}
+
+
+    <style>
+
+      .lb-campaign-collection-item-active {
+        display: none!important;
+      }
+      
+      </style>
+
+
+
+
+  
+      
+
+    
+    
+    {% if section.blocks != blank %}
+      {% for block in section.blocks %}
+        <div class="lb-campaign-collection-section-holder lb-campaign-collection-section-holder-{{ block.id }}">
+          
+          {% if block.settings.selected_collection %}
+            {% assign collection_handle = block.settings.selected_collection %}
+            {% assign collection = collections[collection_handle] %}
+
+              {% paginate collection.products by 1000 %}
+              {% for product in collection.products %} 
+              {% assign original_price = product.selected_or_first_available_variant.compare_at_price %}
+              {% assign current_price = product.selected_or_first_available_variant.price %}
+              {% assign savings = original_price | minus: current_price %}
+              {% assign discount_percent = savings | times: 100 | divided_by: original_price %}
+    
+             <a href="{{ product.url }}" class="lb-campaign-collection-item lb-campaign-collection-item-{% for block in section.blocks %}{% if block.type == 'filter' %}{% for tag in product.tags %}{% if tag == block.settings.tagfilter %}{{ tag }}{% endif %}{% endfor %}{% endif %}{% endfor %}">  
+                   
+              {% if section.settings.showautodiscountbadge == true %}
+              {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+                  <div class="lb-campaign-collection-item-salebadge">-{{ discount_percent }}%</div>
+                {% endif %}
+                {% endif %}
+                  
+                <div>        
+                {% if product.selected_or_first_available_variant.image.src != blank %}
+                  <img src="{{ product.selected_or_first_available_variant.image.src | img_url: '400x' }}" alt="{{ product.title }}" loading="lazy">
+                {% else %}
+                  <img src="{{ product.featured_image.src | img_url: '400x' }}" alt="{{ product.title }}" loading="lazy">
+                {% endif %}
+                </div>
+              
+                <div>
+                  <h3>{{ product.title }}</h3>
+
+                  <div class="lb-campaign-collection-item-subheadline">
+                    <div style="color: #3c3c3b; margin-bottom: 9px; font-size: 14px; line-height: 20px;">{{ product.metafields.my_fields.subheadlines }}</div>
+                    {{ section.settings.subheadline }}
+                  </div>
+
+                  
+                 <div class="ruk_rating_snippet" data-sku="{{ product.handle }};{{ product.variants | map: 'sku' | join: ';' }};{{ product.variants | map: 'id' | join: ';' }}" style="color: white; margin: 5px 0px;"></div></div>
+             <style>.ruk-rating-snippet-count {color: {{ section.settings.reviewfontscolor }}!important;}</style>
+
+              
+       
+                
+                  <p class="lb-campaign-collection-item-price">
+                    {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+                      <span class="lb-campaign-collection-item-compare-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span>
+                        {{ product.selected_or_first_available_variant.price | money }}
+                      {% if section.settings.showsavebadge == true %}
+                      <span class="lb-savings">Du sparst {{ product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | money }}</span>
+                    {% endif %}
+                    {% else %}
+                      {{ product.selected_or_first_available_variant.price | money }}
+                    {% endif %}
+                  </p>
+      
+              {{ section.settings.customliquid }}
+{% if product.tags contains 'bf10' %}
+<div class="lb-customtag">-10%</div>
+{% endif %}
+{% if product.tags contains 'bf25' %}
+<div class="lb-customtag">-25%</div>       
+{% endif %}
+{% if product.tags contains 'bf50' %}
+<div class="lb-customtag">-50%</div>
+{% endif %}
+
+{% if product.tags contains 'NEU' %}
+<div class="lb-badge">NEU</div>
+{% endif %}  
+
+
+
+          
+<style>
+.lb-customtag {
+position: absolute;
+padding: 5px 9px;
+border-radius: 5px;
+top: 9px;
+font-family: "Bebas Neue";
+font-size: 16px;
+right: 9px;
+background: #E3BC5A;
+color: black;
+}
+
+.lb-badge {
+position: absolute;
+padding: 3px 9px;
+border-radius: 5px;
+top: 9px;
+font-family: "Open Sans";
+font-size: 12px;
+left: 9px;
+background: #E3BC5A;
+color: black;
+}              
+</style>
+
+
+             
+              </a>
+
+            {% endfor %}
+                {% endpaginate %}
+          {% endif %}
+        </div>
+      {% endfor %}
+    {% else %}
+
+ 
+  
+  <div class="lb-campaign-collection-section-holder" style="display: flex;">
+  {% if section.settings.selected_collection %}
+    {% assign collection_handle = section.settings.selected_collection %}
+    {% assign collection = collections[collection_handle] %}
+
+    {% paginate collection.products by 1000 %}
+    {% for product in collection.products %}
+      <a href="{{ product.url }}" class="lb-campaign-collection-item">
+        <div class="lb-campaign-collection-item-salebadge">- 11%</div> 
+        <div>
+          <img src="{{ product.featured_image.src | img_url: '600x' }}" alt="{{ product.title }}">
+        </div>
+        <div>
+          <h3>{{ product.title }}</h3>
+          <p class="lb-campaign-collection-item-price">
+            {% if product.compare_at_price > product.price %}
+              <span class="lb-campaign-collection-item-compare-price">{{ product.compare_at_price | money }}</span>
+            {% endif %}
+            {{ product.price | money }}
+          </p>
+          <p>{{ product.metafields.global.custom_field }}</p>
+        </div>
+      </a>
+    {% endfor %}
+{% endpaginate %}
+  {% endif %}
+</div>
+  
+    {% endif %}
+
+
+
+
+
+  
+  
+
+
+
+  
+</div>
+
+
+<style>
+
+.lb-campaign-collection-section {
+  padding: 36px 0px;
+   background: {{ section.settings.collectionbackground }};
+}
+
+.lb-campaign-collection-intro {
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+}
+
+.lb-campaign-collection-intro h3 {
+  margin: 0px 0px 9px 0px!important;
+  color: {{ section.settings.collectiontextcolor }};
+  padding: 0px 18px;
+}
+
+
+
+  
+.lb-campaign-collection-section-holder {
+  max-width: 1180px;
+  margin: auto;
+ flex-wrap: wrap; 
+    display: none;
+}
+
+
+
+
+  
+
+    .lb-campaign-collection-section-holder-active {
+    display: flex!important;
+  }
+
+
+  .lb-campaign-collection-item {
+    width: 31.33%;
+    margin: 1%;
+    display: block;
+    background: {{ section.settings.collectionproductitembackground }};
+    padding: 18px;
+    text-decoration: none;
+    position: relative;
+    border-radius: {{ section.settings.productitemborderradius }};
+  }
+
+
+
+  .lb-campaign-collection-item h3 {
+  color: {{ section.settings.productitemcolor }};
+    margin: 0px 0px 9px 0px;
+    font-size: {{ section.settings.productitemtitlesize }}px; 
+    line-height: 1.5;
+    
+    text-transform: uppercase;
+  {% if section.settings.customfont == blank %}
+  font-family: {{ section.settings.bannerfont.family }}, {{ bannerfont.fallback_families }} !important;
+  {% else %}
+  font-family: 'Customfont'!important;
+  {% endif %}
+}
+
+  .lb-campaign-collection-item-subheadline {
+
+  }
+
+
+      
+.lb-campaign-collection-item-salebadge {
+  position: absolute;
+      {% if section.settings.badgebackgroundimage == blank %}
+      background-color: {{ section.settings.productitembadgebg }};
+    {% else %}
+      background-image: url({{ section.settings.badgebackgroundimage| img_url: '200x' }});
+    {% endif %}
+    color: {{ section.settings.productitembadgecolor }};
+  top: 9px;
+  right: 9px;
+  border-radius: 50px;
+  padding:9px;
+
+          text-transform: uppercase;
+  {% if section.settings.customfont == blank %}
+  font-family: {{ section.settings.bannerfont.family }}, {{ bannerfont.fallback_families }} !important;
+  {% else %}
+  font-family: 'Customfont'!important;
+  {% endif %}
+}
+
+  .lb-campaign-collection-item img {
+    display: block;
+    width: 100%;
+    margin-bottom: 9px;
+  }
+
+.lb-campaign-collection-item-price {
+  font-size: 16px;
+  color: {{ section.settings.productitempricecolor }};
+}
+
+  .lb-campaign-collection-item-compare-price {
+    color: {{ section.settings.productitempricesalecolor }}!important;
+    font-size: 18px;
+    text-decoration: line-through;
+  }
+
+  .lb-savings {
+      {% if section.settings.badgebackgroundimage == blank %}
+      background-color: {{ section.settings.productitembadgebg }};
+    {% else %}
+      background-image: url({{ section.settings.badgebackgroundimage| img_url: '200x' }});
+    {% endif %}
+    color: {{ section.settings.productitembadgecolor }};
+    font-size: 12px;
+    padding: 4px 9px;
+    margin-left: 9px;
+    border-radius: 6px;
+    font-weight: bold;
+  }
+
+
+  @media only screen and (max-width: 600px) {
+
+  .lb-campaign-collection-item {
+    width: 48%;
+        padding: 9px;
+  }
+
+  .lb-campaign-collection-item h3 {
+    font-size: {{ section.settings.productitemtitlesizemobile }}px; 
+
+}
+
+
+
+.lb-campaign-collection-item-price {
+  font-size: 14px;
+}
+
+  .lb-campaign-collection-item-compare-price {
+    font-size: 16px;
+  }
+    
+
+     .lb-savings {
+      display: inline-block;
+    margin-left: 0px;
+       margin-top: 5px;
+       font-size: 10px;
+  }
+
+    .lb-campaign-collection-section {
+  padding: 36px 1%;
+}
+    
+}
+
+
+  </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="banneranimation-section">
+  <div class="banneranimation">
+    <span>{{ section.settings.bannertext }}</span> 
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="lb-campaign-end-section">
+  <div class="lb-campaign-end-section-holder ">  
+    <h2>{{ section.settings.endsectionheadline }}</h2>
+    <p>{{ section.settings.endsectionparagraph }}</p>
+    <img src="{{ section.settings.endsectionimage | img_url: '600x' }}"> 
+  </div>
+</div>
+
+<style>
+
+  
+
+  .lb-campaign-end-section {
+  padding: 72px 18px;
+  background: {{ section.settings.endsectionbg }};
+  {% if section.settings.endsectionbackgroundimage != blank %}
+   background-image: url({{ section.settings.endsectionbackgroundimage| img_url: '200x' }});
+  {% endif %}
+  background-size: cover;
+     background-position: center center;
+}
+
+  .lb-campaign-end-section-holder {
+  max-width: 1180px;
+  margin: auto;
+    text-align: center;
+}
+
+  .lb-campaign-end-section-holder h2 {
+  color: {{ section.settings.endsectioncolor }};
+    margin: 0px 0px 9px 0px;
+  {% if section.settings.customfont == blank %}
+  font-family: {{ section.settings.bannerfont.family }}, {{ bannerfont.fallback_families }} !important;
+  {% else %}
+  font-family: 'Customfont'!important;
+  {% endif %}
+}
+
+  .lb-campaign-end-section-holder p {
+  color: {{ section.settings.endsectioncolor }};
+    margin: 0px 0px 18px 0px;
+}
+
+  .lb-campaign-end-section-holder img {
+  max-width: 600px;
+    width: 100%;
+    margin: auto;
+}
+  
+  </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+
+
+
+  
+
+  
+  .lb-campaign-benefits-section   {
+  padding: 72px 18px;
+    }
+
+.lb-campaign-benefits-section-holder {
+  max-width: 700px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+    }
+
+  .lb-campaign-benefits-section-item {
+    width: 31.333%;
+    margin: 1%;
+    padding: 9px;
+    background: #f2f2f2;
+    border-radius: 9px;
+  
+  }
+
+
+
+
+
+
+
+
+  
+
+  .lb-campaign-featured-section   {
+  padding: 72px 18px;
+    }
+
+.lb-campaign-featured-item {
+  max-width: 600px;
+  margin: auto;
+  display: flex;
+  background: #f2f2f2;
+  padding: 18px;
+  border-radius: 9px;
+  align-items: center;
+  text-decoration: none;
+}
+
+.lb-campaign-featured-item h2 {
+  margin: 0px;
+}
+
+.lb-campaign-featured-item p {
+  margin: 0px;
+}
+  
+.lb-campaign-featured-item img {
+  margin-right: 18px;
+}
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  
+  
+  
+</style>
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+{
+  "name": "Black Friday Landingpage",
+  "settings": [
+    {
+      "type": "header",
+      "content": {
+        "de": "Laufschrift Banner",
+        "en": "Laufschrift Banner"
+      },
+      "info": "Definiere das Styling der Laufschrift Banner"
+    },
+   {
+      "type": "text",
+     "id": "bannertext",
+     "default": "BLACK WEEK | BIS ZU 50%",
+     "label": "Bannertext"
+    },
+    {
+      "type": "color",
+     "id": "bannerbg",
+     "default": "#61F4B4",
+     "label": "Background"
+    },
+   {
+      "type": "image_picker",
+     "id": "bannerbgimage",
+     "label": "Badge Background Color"
+    },
+    {
+      "type": "color",
+     "id": "bannerfontcolor",
+     "default": "#000000",
+     "label": "Schriftfarbe"
+    },
+    {
+      "type": "font_picker",
+      "id": "bannerfont",
+      "default": "sans-serif",
+      "label": "Schriftart"
+    },
+    {
+      "type": "text",
+      "id": "customfont",
+      "default": "sans-serif",
+      "label": "Schriftart"
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "info": "Der Header Deiner Landingpage",
+      "content": {
+        "de": "Intro Banner",
+        "en": "Intro Banner"
+      }
+    },
+    {
+      "type": "text",
+     "id": "introdate",
+     "default": "Vom 17.11 bis zum 27.11",
+     "label": "Firsttext"
+    },
+    {
+      "type": "text",
+     "id": "introheadline",
+     "default": "Black Week",
+     "label": "Headline"
+    },
+   {
+      "type": "image_picker",
+     "id": "headlinelogo",
+     "label": "Headlinelogo"
+    },
+    {
+      "type": "text",
+     "id": "introparagraph",
+     "default": "Spare bis zu 60% auf ausgewählte Artikel beim größten Sale des Jahres",
+     "label": "Paragraph"
+    },
+    {
+      "type": "font_picker",
+      "id": "primaryfont",
+      "default": "sans-serif",
+      "label": "Hauptschriftart"
+    },
+    {
+      "type": "font_picker",
+      "id": "secondaryfont",
+      "default": "sans-serif",
+      "label": "Zweitschriftart"
+    },
+    {
+      "type": "header",
+      "content": {
+        "de": "Countdown",
+        "en": "Countdown"
+      }
+    },
+    {
+  "type": "select",
+  "id": "countdowndate",
+  "label": "Datum",
+  "options": [
+  {
+    "value": "2024-03-19",
+    "label": "19.03.2024"
+  },
+  {
+    "value": "2024-03-20",
+    "label": "20.03.2024"
+  },
+  {
+    "value": "2024-03-21",
+    "label": "21.03.2024"
+  },
+  {
+    "value": "2024-03-22",
+    "label": "22.03.2024"
+  },
+  {
+    "value": "2024-03-23",
+    "label": "23.03.2024"
+  },
+  {
+    "value": "2024-03-24",
+    "label": "24.03.2024"
+  },
+  {
+    "value": "2024-03-25",
+    "label": "25.03.2024"
+  },
+  {
+    "value": "2024-03-26",
+    "label": "26.03.2024"
+  },
+  {
+    "value": "2024-03-27",
+    "label": "27.03.2024"
+  },
+  {
+    "value": "2024-03-28",
+    "label": "28.03.2024"
+  },
+  {
+    "value": "2024-03-29",
+    "label": "29.03.2024"
+  },
+  {
+    "value": "2024-03-30",
+    "label": "30.03.2024"
+  },
+  {
+    "value": "2024-03-31",
+    "label": "31.03.2024"
+  },
+  {
+    "value": "2024-04-01",
+    "label": "01.04.2024"
+  }
+  ],
+  "default": "2024-04-01"
+},  
+    {
+  "type": "select",
+  "id": "countdowntime",
+  "label": "Uhrzeit",
+  "options": [
+    {
+      "value": "00:00:00",
+      "label": "0 Uhr"
+    },
+    {
+      "value": "01:00:00",
+      "label": "1 Uhr"
+    },
+    {
+      "value": "02:00:00",
+      "label": "2 Uhr"
+    },
+    {
+      "value": "03:00:00",
+      "label": "3 Uhr"
+    },
+    {
+      "value": "04:00:00",
+      "label": "4 Uhr"
+    },
+    {
+      "value": "05:00:00",
+      "label": "5 Uhr"
+    },
+    {
+      "value": "06:00:00",
+      "label": "6 Uhr"
+    },
+    {
+      "value": "07:00:00",
+      "label": "7 Uhr"
+    },
+    {
+      "value": "08:00:00",
+      "label": "8 Uhr"
+    },
+    {
+      "value": "09:00:00",
+      "label": "9 Uhr"
+    },
+    {
+      "value": "10:00:00",
+      "label": "10 Uhr"
+    },
+    {
+      "value": "11:00:00",
+      "label": "11 Uhr"
+    },
+    {
+      "value": "12:00:00",
+      "label": "12 Uhr (Mittag)"
+    },
+    {
+      "value": "13:00:00",
+      "label": "13 Uhr"
+    },
+    {
+      "value": "14:00:00",
+      "label": "14 Uhr"
+    },
+    {
+      "value": "15:00:00",
+      "label": "15 Uhr"
+    },
+    {
+      "value": "16:00:00",
+      "label": "16 Uhr"
+    },
+    {
+      "value": "17:00:00",
+      "label": "17 Uhr"
+    },
+    {
+      "value": "18:00:00",
+      "label": "18 Uhr"
+    },
+    {
+      "value": "19:00:00",
+      "label": "19 Uhr"
+    },
+    {
+      "value": "20:00:00",
+      "label": "20 Uhr"
+    },
+    {
+      "value": "21:00:00",
+      "label": "21 Uhr"
+    },
+    {
+      "value": "22:00:00",
+      "label": "22 Uhr"
+    },
+    {
+      "value": "23:00:00",
+      "label": "23 Uhr"
+    },
+    {
+      "value": "23:59:59",
+      "label": "Mitternacht (23:59:59 Uhr)"
+    }
+  ],
+  "default": "23:59:59"
+},
+    {
+      "type": "color",
+     "id": "countdownnumberbackground",
+     "default": "#ffffff",
+     "label": "Countdown Nummerhintergrund"
+    },
+    {
+      "type": "color",
+     "id": "countdownnumbercolor",
+     "default": "#000000",
+     "label": "Countdown Nummerfarbe"
+    },
+    {
+      "type": "color",
+     "id": "countdowndaycolor",
+     "default": "#000000",
+     "label": "Countdown Tagfarbe"
+    },
+    {
+      "type": "color",
+     "id": "introbackground",
+     "default": "#f2f2f2",
+     "label": "Background"
+    },
+   {
+      "type": "image_picker",
+     "id": "bannerbackgroundimage",
+     "label": "Hintergrundbild"
+    },
+   {
+      "type": "color",
+     "id": "introtextcolor",
+     "default": "#f2f2f2",
+     "label": "Schriftfarbe"
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": {
+        "de": "Featured products",
+        "en": "Featured products"
+      },
+      "info": "wkjef kwjbfjkwe kjbw. kjbwkfjb wkefj "
+    },
+    {
+      "type": "product",
+          "id": "product", 
+      "label": "Wählen Sie ein Produkt aus"
+    },
+   {
+      "type": "color",
+     "id": "collectionbafckground",
+     "default": "#f2f2f2",
+     "label": "Collection Background"
+    },
+   {
+      "type": "color",
+     "id": "collectiowefnbafckground",
+     "default": "#f2f2f2",
+     "label": "Collection Background"
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": {
+        "de": "Kategorie",
+        "en": "Kategorie"
+      },
+      "info": "wkjef kwjbfjkwe kjbw. kjbwkfjb wkefj "
+    },
+   {
+      "type": "color",
+     "id": "collectionbackground",
+     "default": "#f2f2f2",
+     "label": "Collection Background"
+    },
+   {
+      "type": "text",
+     "id": "filtertext",
+     "default": "Entdecke unsere Green Friday Deals",
+     "label": "Filtertext"
+    },
+   {
+      "type": "color",
+     "id": "collectiontextcolor",
+     "default": "#f2f2f2",
+     "label": "Überschrift Schriftfarbe"
+    },
+   {
+      "type": "color",
+     "id": "filtercolor",
+     "default": "#f2f2f2",
+     "label": "Kategorie Filterschriftfarbe"
+    },
+    {
+      "type": "color",
+     "id": "filterborder",
+     "default": "#f2f2f2",
+     "label": "Kategorie Filterrandfarbe"
+    },
+   {
+      "type": "color",
+     "id": "filtercoloractive",
+     "default": "#ffffff",
+     "label": "Kategorie Filter Schriftfarbe Aktiv"
+    },
+   {
+      "type": "color",
+     "id": "filterborderactive",
+     "default": "#f2f2f2",
+     "label": "Kategorie Filter Hintergrund Aktiv"
+    },
+   {
+      "type": "image_picker",
+     "id": "filterbackgroundimageactive",
+     "label": "Kategorie Filter Hintergrundbild Aktiv"
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": {
+        "de": "Kategorie Produkt Item",
+        "en": "Kategorie Produkt Item"
+      },
+      "info": "Definieren den Style der Produktkarten"
+    },
+   {
+      "type": "color",
+     "id": "collectionproductitembackground",
+     "default": "#f2f2f2",
+     "label": "Collection Product Item Background"
+    },
+    {
+      "type": "range",
+      "id": "productitemborderradius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Abgerundete Ecken",
+      "default": 0
+    },
+    {
+      "type": "color",
+     "id": "productitemcolor",
+     "default": "#f2f2f2",
+     "label": "Titel Color"
+    },
+    {
+      "type": "range",
+      "id": "productitemtitlesize",
+      "min": 16,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Titel Schriftgröße",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "productitemtitlesizemobile",
+      "min": 12,
+      "max": 26,
+      "step": 1,
+      "unit": "px",
+      "label": "Titel Schriftgröße Mobile",
+      "default": 14
+    },
+    {
+      "type": "liquid",
+     "id": "subheadline",
+     "label": "Subtitle Metafield"
+    },
+   {
+      "type": "color",
+     "id": "productitempricecolor",
+     "default": "#f2f2f2",
+     "label": "Price Color"
+    },
+   {
+      "type": "color",
+     "id": "productitempricesalecolor",
+     "default": "#f2f2f2", 
+     "label": "Sales Price Color"
+    },
+   {
+      "type": "color",
+     "id": "reviewfontscolor",
+     "default": "#000000",
+     "label": "Review Schriftfarbe"
+    },
+    {
+      "type": "liquid",
+     "id": "customliquid",
+     "label": "Custom html & liquid"
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": {
+        "de": "Badge",
+        "en": "Kategorie Produkt Item"
+      }
+    },
+{
+  "type": "checkbox",
+  "id": "showautodiscountbadge",
+  "label": "Automatisches Prozentbadge anzeigen",
+  "default": true
+},
+{
+  "type": "checkbox",
+  "id": "showsavesbadge",
+  "label": "Du sparst Badge anzeigen",
+  "default": true
+},
+   {
+      "type": "color",
+     "id": "productitembadgecolor",
+     "default": "#f2f2f2",
+     "label": "Badge Color"
+    },
+   {
+      "type": "color",
+     "id": "productitembadgebg",
+     "default": "#f2f2f2",
+     "label": "Badge Background"
+    },
+   {
+      "type": "image_picker",
+     "id": "badgebackgroundimage",
+     "label": "Hintergrundbild"
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "info": "Schließe die Salepage mit einem persönlichen Bereich ab.",
+      "content": {
+        "de": "Endsection",
+        "en": "Endsection"
+      }
+    },
+   {
+      "type": "text",
+     "id": "endsectionheadline",
+     "default": "Viel Spaß mit Deinen Produkten!",
+     "label": "Headline"
+    },
+   {
+      "type": "textarea",
+     "id": "endsectionparagraph",
+     "default": "Dein Team von Lionsbranding",
+     "label": "Paragraph"
+   },
+   {
+      "type": "image_picker",
+     "id": "endsectionimage",
+     "label": "Bild"
+    },
+    {
+      "type": "color",
+     "id": "endsectionbg",
+     "default": "#f2f2f2",
+     "label": "Hindergrundfarbe"
+    },
+   {
+      "type": "image_picker",
+     "id": "endsectionbackgroundimage",
+     "label": "Hintergrundbild"
+    },
+   {
+      "type": "color",
+     "id": "endsectioncolor",
+     "default": "#f2f2f2",
+     "label": "Schriftfarbe"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Kategorie",
+      "type": "categories",
+      "settings": [
+        {
+          "type": "text",
+          "id": "rabatttext",
+          "default": "40$",
+          "label": "Rabatttext"
+        },
+    {
+      "type": "collection",
+      "label": "Wähle die Produktkategorie aus",
+      "id": "selected_collection"
+    }
+      ]
+    },
+   {
+      "name": "Filter",
+      "type": "filter",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tagfilter",
+          "label": "Filter Tag"
+        },
+        {
+          "type": "text",
+          "id": "tagfiltershow",
+          "label": "Filter Anzeigetext"
+        }
+      ] 
+    }
+  ]
+}
+{% endschema %}
+
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

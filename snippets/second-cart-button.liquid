@@ -1,0 +1,448 @@
+
+
+{% comment %} abscale ST-0015 START 
+{% if canonical_url contains '/products/' %}
+<script>
+  if (window.innerWidth <= 768) {
+  
+document.addEventListener("DOMContentLoaded", function () {
+  try {
+  
+  
+  const variants = document.querySelectorAll(".sc-dtDOqo.lfZCLK.pf-43_");
+  const safe_info = document.querySelectorAll(".sc-dtDOqo.lfZCLK.pf-65_");
+  const button_text = document.querySelector(".lb-new-send");
+  const price = document.querySelector('[data-product-type="price"]');
+  let old_content = "";
+
+  if (variants.length && safe_info.length) {
+      variants.forEach((variant) => {
+          variant.classList.add("as-st-0015-varaints");
+      });
+
+      safe_info.forEach((info) => {
+          info.classList.add("as-st-0015-safe-info");
+          info.parentNode.insertBefore(info, variants[0].nextSibling);
+      });
+  }
+
+  if (button_text && price) {
+      const btn_div = document.createElement("div");
+      const parent_btn = button_text.parentNode;
+
+      const price_text = price.textContent;
+      old_content = button_text.innerHTML;
+      button_text.innerHTML = old_content;
+
+      btn_div.classList.add("as-st-0015-button");
+      button_text.classList.add("as-st-0015-button-text");
+
+      btn_div.appendChild(button_text);
+      parent_btn.parentNode.insertBefore(btn_div, parent_btn.nextSibling);
+  }
+
+  /**
+   * Waits for the specified element(s) to be present in the DOM and then executes a callback function.
+   *
+   * @param {string} selector - The CSS selector for the element(s) to wait for.
+   * @param {Function} callback - The callback function to execute when the element(s) are found.
+   * @param {boolean} [waitOnce=false] - Optional. Specifies whether to wait for the element(s) only once. Default is false.
+   */
+  function tsDev_waitForElement(selector, callback, waitOnce = false) {
+      if (typeof selector !== "string") {
+          console.error("1. Argument: selector must be a string.");
+          return;
+      }
+  
+      if (typeof callback !== "function") {
+          console.error("2. Argument: callback must be a function.");
+          return;
+      }
+  
+      if (typeof waitOnce !== "boolean") {
+          console.error("3. Argument: waitOnce must be a boolean.");
+          return;
+      }
+  
+      const observedElements = new Set();
+  
+      const queryMethodType = waitOnce ? "querySelector" : "querySelectorAll";
+  
+      const handleMutations = (mutationsList, observer) => {
+          const elements = waitOnce
+              ? [document[queryMethodType](selector)]
+              : document[queryMethodType](selector);
+          elements.forEach((element) => {
+              if (element && !observedElements.has(element)) {
+                  observedElements.add(element);
+                  callback(element);
+                  if (waitOnce) {
+                      observer.disconnect();
+                      return;
+                  }
+              }
+          });
+      };
+  
+      const elements = waitOnce
+          ? [document[queryMethodType](selector)]
+          : document[queryMethodType](selector);
+      elements.forEach((element) => {
+          if (element && !observedElements.has(element)) {
+              observedElements.add(element);
+              callback(element);
+              if (waitOnce) {
+                  return;
+              }
+          }
+      });
+  
+      const observer = new MutationObserver(handleMutations);
+      observer.observe(document.documentElement, {
+          childList: true,
+          subtree: true,
+          attributes: false,
+      });
+  }
+  
+  tsDev_waitForElement(".needsclick.kl-teaser-TLexcU", (element) => {
+      console.log("Multiple Element Check:", element);
+      const save = document.querySelector(".needsclick.kl-teaser-TLexcU");
+          if (save) {
+              save.classList.add("as-st-0015-save");
+          }
+  });
+
+  const target = document.querySelector(
+      "[data-pf-type='ProductPrice'][data-product-type='price']"
+  );
+
+  const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+          as_st_0015_updatePrice();
+      });
+  });
+  observer.observe(target, {
+      attributes: true,
+      childList: true,
+      subtree: true,
+      characterData: true,
+  });
+
+function as_st_0015_updatePrice() {
+    const prices = document.querySelectorAll(
+        ".lb-pricing-new [data-pf-type='ProductPrice']"
+    );
+    const price =
+        prices[prices.length - 1] ||
+        document.querySelector("[data-pf-type='ProductPrice']");
+    if (price && button_text) {
+        // Ignoriere den Preis
+        const price_text = ""; // Überspringe die Preis-Verwendung
+        button_text.innerHTML = old_content; // Zeige nur den alten Inhalt
+    }
+}
+
+    
+} catch (error) {
+  console.error("Error in ST-0015:", error);
+}
+});
+}
+</script>
+
+  <!--
+
+  function as_st_0015_updatePrice() {
+      const prices = document.querySelectorAll(
+          ".lb-pricing-new [data-pf-type='ProductPrice']"
+      );
+      const price =
+          prices[prices.length - 1] ||
+          document.querySelector("[data-pf-type='ProductPrice']");
+      if (price && button_text) {
+          const price_text = price.textContent || "";
+          button_text.innerHTML = old_content + " - " + price_text;
+      }
+  }
+
+  -->
+
+{% style %}
+@media (max-width: 768px) {
+
+.isActive {
+  bottom: 140px!important;
+}
+
+.R-LauncherButton {
+    bottom: 90px !important;
+}
+
+.as-st-0015-varaints{
+    margin-bottom: 6px !important;
+} 
+
+.as-st-0015-safe-info{
+    margin-bottom: 0 !important;
+}
+
+.as-st-0015-button-text{
+    margin-bottom: 0 !important;
+}
+
+.as-st-0015-save{
+    width: 185px !important;
+}
+
+
+    .as-st-0015-button{
+        position: fixed;
+        height: 90px;
+        bottom: 0;
+        width: 100%;
+        z-index: 100;
+        background-color: white;
+        right: 0;
+        padding: 15px;
+    }
+    .as-st-0015-save{
+        bottom: 90px !important;
+        filter: none !important;
+    }
+
+}
+{% endstyle %}
+{% endif %}
+
+abscale ST-0015 END {% endcomment %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+<div id="second-cart">
+    <div class="second-cart-holder">
+		{% for image in product.images limit: 1 %} 
+			<img class="second-cart-img" id="{{ img_id }}" src="{{ image | img_url: '100x' }}" loading="lazy">
+		{% endfor %}
+		<div class="second-cart-info">
+        	<h2>{{ product.title }}</h2>
+
+
+        
+{% if product.variants.size > 1 %}
+            <p class="lb-second-cart-bar-varian-title" style="font-size: 12px; color: grey;">{{ product.selected_or_first_available_variant.title }}</p>
+{% endif %}
+  
+          <a href="#ReviewsWidget"><div class="ruk_rating_snippet" data-sku="{{ product.handle }};{{ product.variants | map: 'sku' | join: ';' }};{{ product.variants | map: 'id' | join: ';' }}"></div></a>      
+			
+  <!--
+          <div class="price-color lb-second-cart-bar-price" style="float: left; margin-right: 9px; line-height:28px; font-size: 16px;color: black;"><span style="color: #DA2C2C; font-size: 16px;text-decoration: line-through;">{{ current_variant.compare_at_price | money }}</span> {{ product.selected_or_first_available_variant.price | money }}</div>
+        -->
+        
+        </div>  
+
+
+          
+        <a href="#buy" class="lb-buy-btn lb-second-cart-bar-old-cta" id="lb-buy-btn">{% if canonical_url contains '.com/en' %}BACK TO PRODCUT{% else %}ZUM PRODUKT{% endif %}</a>
+      
+<div class="lb-second-cart-bar-direct-cta">
+
+  	<form action="/cart/add" method="post" enctype="multipart/form-data" id="add-to-cart-{{ product.handle }}">
+          <input type="text" name="id" value="{{ product.selected_or_first_available_variant.id }}" hidden>
+          <button class="lb-buy-btn lb-cart-drawer-opener" type="submit" name="add" data-add-to-cart>IN DEN WARENKORB</button>
+		</form>
+</div>      
+
+
+      
+    </div>
+</div>
+
+
+
+
+
+<style>
+
+  .lb-second-cart-bar-varian-title {
+    display: none;
+  }
+
+.lb-second-cart-bar-direct-cta  {
+    display: none;
+  }
+  
+  </style>
+
+
+
+
+
+
+
+
+<style>
+  
+#second-cart {
+  margin: 0px auto;
+  position: fixed;
+  display: none;
+  bottom: 18px;
+  height: 90px;
+  width: 100%;
+  z-index: 9994;
+	box-shadow: 0px 0px 40px rgba(0,0,0,0.2);
+  background: white;
+  border-radius: 15px 15px 0px 0px;
+  padding: 12px;
+  bottom: 0;
+  left:0;
+  font-family: "Open Sans";
+}
+  
+.newClass {
+  border:none;
+}
+  
+  
+
+  .second-cart-holder {
+  	max-width: 800px;
+    margin: auto;
+  }
+  
+  .second-cart-img {
+  width: 72px;
+  float: left;
+	margin-right: 2%;
+}
+  
+  
+  
+  .second-cart-info {
+  	float: left;
+  }
+  
+  .second-cart-info h2 {
+  	font-size: 14px;
+    line-height: 22px;
+    max-width: 200px;
+    height: 22px;
+    overflow: hidden;
+    color: #3c3c3b;
+  font-family : "BebasNeue-Regular" !important;
+  font-size : 18px !important;
+	}
+  
+  .second-cart-info img {
+  	width: 72px;
+    clear: both;
+	}
+
+	.second-cart-info .lb-product-price div {
+ 	 font-size: 14px !important;
+      display: inline-block;
+      margin: 0px 0px 0px 4px !important;
+	}
+
+  .lb-buy-btn {
+  	background: #3C3C3B;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    margin-top: 5px;
+    padding: 0px 9px;
+    line-height: 52px;
+    font-size: 12px;
+    cursor: pointer;
+	float: right;
+    font-weight: 400;
+  }  
+  
+  
+  
+  
+  .rating-2 {
+  font-size: 14px;
+    color: black;
+  }
+  
+
+  
+
+  
+  
+@media only screen and (max-width: 600px) {
+
+  #second-cart img:nth-child(1) {
+  	display: none;
+	}
+  
+  
+  
+    .lb-buy-btn {
+      position: absolute;
+right: 18px;
+    bottom: 18px;
+    }
+  
+  
+
+}
+
+
+  
+  
+@keyframes movenew {
+  0% {
+      opacity: 0;
+
+  }
+
+  100% {
+      opacity: 1;
+  }
+} 
+
+</style>
+
+
+
+
+
+<script>
+  
+  $(window).scroll(function(){
+    if ($(this).scrollTop() > 850) {
+       $('#second-cart').addClass('newClass');
+    } else {
+       $('#second-cart').removeClass('newClass');
+    }
+});
+</script>
+
+
+<style>
+
+  .lb-buy-btn {
+  	background: #3C3C3B;
+    border-radius: 5px;
+
+</style>

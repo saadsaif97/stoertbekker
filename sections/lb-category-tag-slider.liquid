@@ -1,0 +1,188 @@
+
+<div class="lb-swiper-kategorie-tags">
+  <div class="lb-swiper-kategorie-tags-holder">
+    
+    {% for block in section.blocks %}
+      <a href="{{ block.settings.url }}">
+        {% if block.settings.image != blank %}<img src="{{ block.settings.image | img_url: '52x' }}" alt="{{ block.settings.heading }}">{% endif %}
+        {{ block.settings.heading }}
+      </a>
+    {% endfor %}
+
+  </div>
+</div>
+
+
+<style>
+
+  .lb-swiper-kategorie-tags {
+    padding: 18px 0px 18px 18px !important;
+    background: {{ section.settings.background-color }}!important;
+    display: block;
+  }
+ 
+
+  .lb-swiper-kategorie-tags-holder {
+    max-width: 100% !important;
+    margin: auto !important;
+    text-align: center !important;
+    overflow: auto !important;
+    white-space: nowrap !important; 
+    display: flex !important;
+    justify-content: flex-start!important;
+    align-items: center !important;
+      -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;  /* Firefox */
+}
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .lb-swiper-kategorie-tags-holder::-webkit-scrollbar {
+    display: none !important;
+}
+
+
+ 
+   .lb-swiper-kategorie-tags-holder span {
+     font-weight: 600 !important;
+     margin-right: 9px !important;
+     display: inline-block !important;
+     margin-left: 9px !important;
+    } 
+  
+.lb-swiper-kategorie-tags a {
+  padding: 10px 24px !important;
+  border: 1px solid {{ section.settings.border-color }} !important;
+  background: {{ section.settings.tag-background-color }} !important;
+  border-radius: 6px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-right: 4px !important;
+  font-size: 12px !important;
+  color: {{ section.settings.text-color }} !important;
+  font-weight: 600 !important;
+  text-decoration: none!important;
+}
+
+  @media only screen and (max-width: 600px) {
+  .lb-swiper-kategorie-tags-holder {
+    justify-content: flex-start !important;
+}
+    
+.lb-swiper-kategorie-tags a  {
+    margin-right: 2% !important;
+  }
+}
+
+  
+.lb-swiper-kategorie-tags a img {
+  display: inline-block !important;
+  width: 20px !important;
+  margin-right: 5px !important;
+}
+  
+</style>
+
+
+
+{% schema %}
+{
+  "name": {
+    "en": "Lb Kategorie Tags"
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Einstellungen"
+    },
+    {
+      "type": "color",
+      "id": "background-color",
+      "default": "#f2f2f2",
+      "label": "Hintergrundfarbe",
+      "info": "Wähle den Hintergrund der Section"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "default": "Unsere Kategorien",
+      "label": "Headline"
+    },
+    {
+      "type": "header",
+      "content": "Link Einstellungen"
+    },
+    {
+      "type": "color",
+      "id": "tag-background-color",
+      "default": "#f2f2f2",
+      "label": "Link Hintergrundfarbe"
+    },
+    {
+      "type": "color",
+      "id": "text-color",
+      "default": "#000",
+      "label": "Link Schriftfarbe"
+    },
+    {
+      "type": "color",
+      "id": "border-color",
+      "default": "#D5D5D5",
+      "label": "Link Randfarbe"
+    },
+    {
+      "type": "range",
+      "id": "max-show",
+      "min": 400,
+      "max": 2000,
+      "step": 20,
+      "default": 2000,
+      "label": "Maximale Anzeige",
+      "info": "Maximale Anzeigebreite in Pixel"
+    }
+  ],
+  "blocks": [
+  {
+    "name": "Block",
+    "type": "block",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Anzeigebild"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "default": "Linkname",
+        "label": "Linkname"
+      },
+      {
+        "type": "url",
+        "id": "url",
+        "label": "Link url"
+      }
+    ]
+  }
+],
+  "presets": [
+    {
+      "name": "Lb Kategorie Tags",
+      "blocks": [
+        {
+          "type": "block"
+        },
+        {
+          "type": "block"
+        },
+        {
+          "type": "block"
+        },
+        {
+          "type": "block"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

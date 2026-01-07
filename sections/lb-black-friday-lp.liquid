@@ -1,0 +1,1265 @@
+<style>
+  .lb-countdown-new-price {
+  color: white!important;
+}
+</style>
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+  {% assign primaryfont = section.settings.primaryfont %}
+  {% assign secondaryfont = section.settings.secondaryfont %}
+  {% assign bannerfont = section.settings.bannerfont %}
+  {{ section.settings.primaryfont | font_face }}
+  {{ section.settings.secondaryfont | font_face }}
+  {{ section.settings.bannerfont | font_face }}
+
+  
+
+  {% if section.settings.customfont != blank %}
+  @font-face {
+    font-family: "Customfont";
+    src: url("{{ section.settings.customfont }}") format("woff2"),
+         url("{{ section.settings.customfont }}") format("woff");
+  }
+  {% endif %}
+
+
+  .ruk_rating_snippet .ruk-rating-snippet-count {
+    color: white!important;
+  }
+</style>
+
+
+<div class="banneranimation-section">
+  <div class="banneranimation">
+    <span>{{ section.settings.bannertext }}</span> 
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span> 
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span> 
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span> 
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span> 
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span> 
+    <span>{{ section.settings.bannertext }}</span>
+  </div>
+</div>
+<style>
+.banneranimation-section {
+background: {{ section.settings.bannerbg }};
+color: {{ section.settings.bannerfontcolor }};
+{% if section.settings.bannerbgimage != blank %}
+background-image: url({{ section.settings.bannerbgimage | img_url: '1200x' }});
+{% endif %}
+background-repeat: repeat-x !important;
+background-size: 100% 100% !important; 
+padding-top: 18px !important;
+padding-bottom: 18px !important;
+overflow-x: clip !important;
+{% if section.settings.customfont == blank %}
+font-family: {{ section.settings.bannerfont.family }}, {{ bannerfont.fallback_families }} !important;
+{% else %}
+font-family: 'Customfont'!important;
+{% endif %}
+} 
+.banneranimation { 	
+position: relative; 	
+animation-name: banneranimation; 	
+animation-duration: 40s; 	
+animation-iteration-count: infinite; 	
+animation-timing-function: linear;
+display: flex;
+width: 1900%;
+}
+@media only screen and (max-width: 600px) {
+.banneranimation { 	
+animation-duration: 30s;
+}
+}
+@keyframes banneranimation {
+0%   { 	left: 0%; }
+50%   { left: -50%; }
+100% { 	left: 0%; }
+}
+.banneranimation span { 	
+margin-right: 18px;
+line-height: 17px;
+font-size: 20px;
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="lb-campaign-intro-section">
+  <div class="lb-campaign-intro-section-holder">
+    <p class="lb-campaign-intro-section-firsttext">{{ section.settings.introdate }}</p>
+    {% if section.settings.headlinelogo == blank %}
+    <h2 class="lb-campaign-intro-section-headline">{{ section.settings.introheadline }}</h2>
+    {% else %}
+    <img class="lb-campaign-intro-section-headline-logo" src="{{ section.settings.headlinelogo | img_url: '500x' }}">
+    {% endif %}
+    <p class="lb-campaign-intro-section-subtext">{{ section.settings.introparagraph }}</p>
+    <div id="countdown1" class="lb-countdown-holder">
+          <div class="lb-countdown-holder-item">
+              <span id="days1" class="lb-countdown-holder-item-number">00</span>
+              <span class="lb-countdown-holder-item-text">Tage</span>
+          </div>
+          <div class="lb-countdown-holder-item">
+              <span id="hours1" class="lb-countdown-holder-item-number">00</span>
+              <span class="lb-countdown-holder-item-text">Stunden</span>
+          </div>
+          <div class="lb-countdown-holder-item">
+              <span id="minutes1" class="lb-countdown-holder-item-number">00</span>
+              <span class="lb-countdown-holder-item-text">Minuten</span>
+          </div>
+          <div class="lb-countdown-holder-item">
+              <span id="seconds1" class="lb-countdown-holder-item-number">00</span>
+              <span class="lb-countdown-holder-item-text">Sekunden</span>
+          </div>
+      </div>
+      <div class="lb-campaign-intro-section-svg">
+        <svg width="392px" height="210px" viewBox="0 0 392 210" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+                <g id="arrow-down-copy" transform="translate(-4, -95)" stroke="#FFFFFF" stroke-width="28">
+                    <polyline id="Path-104" points="18 109 200 291 382 109"></polyline>
+                </g>
+            </g>
+        </svg>
+      </div>
+  </div>
+</div>
+<style>
+.lb-campaign-intro-section {
+padding: 52px 18px 18px 18px;
+{% if section.settings.bannerbackgroundimage != blank %}
+background-image: url({{ section.settings.bannerbackgroundimage | img_url: '1200x' }});
+{% endif %}
+background-color: {{ section.settings.introbackground }};
+background-position: center center;
+background-size: cover;
+font-family: "Open Sans";
+}
+.lb-campaign-intro-section-holder {
+text-align: center;
+}
+.lb-campaign-intro-section-firsttext {
+color: {{ section.settings.introtextcolor }};
+text-align: center;
+margin: 0px 0px 9px 0px;
+}
+.lb-campaign-intro-section-headline {
+color: {{ section.settings.introtextcolor }};
+text-align: center;
+font-size: 52px;
+margin: 0px 0px 9px 0px;
+line-height: 58px;
+}
+.lb-campaign-intro-section-headline-logo {
+width: 90%;
+display: block;
+margin: 18px auto;
+max-width: 400px;
+}
+.lb-campaign-intro-section-subtext {
+color: {{ section.settings.introtextcolor }};
+text-align: center;
+margin: -12px auto 0px auto;
+font-size: 20px;
+line-height: 26px;
+max-width: 500px;
+  font-weight: bold;
+}
+.lb-campaign-intro-section h3 {
+color: {{ section.settings.introtextcolor }};
+text-align: center;
+}
+.lb-campaign-intro-section-svg {
+width: 32px;
+height:32px;
+margin: 18px auto 0px auto;
+}
+.lb-campaign-intro-section-svg svg {
+width: 100%;
+display: block;
+height: 100%;
+}
+.lb-campaign-intro-section-svg svg g {
+stroke: {{ section.settings.introtextcolor }};
+}
+@media only screen and (max-width: 600px) {
+.lb-campaign-intro-section {
+padding: 18px 18px 0px 18px;
+}
+.lb-campaign-intro-section-headline {
+font-size: 32px;
+line-height: 40px;
+}
+.lb-campaign-intro-section-subtext {
+font-size: 18px;
+line-height: 24px;
+}    
+}
+</style>
+<!------- Countdown styling --------->
+<style>
+.lb-countdown-holder {
+max-width: 300px;
+margin: 18px auto 0px auto;
+display: flex;
+}
+.lb-countdown-holder-item {
+width: 25%;
+}
+.lb-countdown-holder-item-number {
+font-size: 32px;
+background: #d8ac63;
+padding: 9px;
+color: black;
+border-radius: 6px;
+display: inline-block;
+margin-bottom: 5px;
+text-transform: uppercase;
+{% if section.settings.customfont == blank %}
+font-family: {{ section.settings.bannerfont.family }}, {{ bannerfont.fallback_families }} !important;
+{% else %}
+font-family: 'Customfont'!important;
+{% endif %}
+}
+.lb-countdown-holder-item-text {
+font-size: 14px;
+display: block;
+color: {{ section.settings.introtextcolor }};
+}
+</style>
+<script>
+const endDate1 = new Date("{{ section.settings.plannable-date-year }}-{{ section.settings.plannable-date-month }}-{{ section.settings.plannable-date-day }}T{{ section.settings.plannable-date-time }}").getTime();
+const countdown1 = setInterval(function() {
+const currentDate = new Date().getTime();
+const timeLeft1 = endDate1 - currentDate;
+if (timeLeft1 <= 0) {
+  clearInterval(countdown1);
+  document.getElementById("countdown1").innerHTML = "Countdown abgelaufen!";
+} else {
+  const days = Math.floor(timeLeft1 / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((timeLeft1 % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((timeLeft1 % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((timeLeft1 % (1000 * 60)) / 1000);
+  document.getElementById("days1").textContent = String(days).padStart(2, '0');
+  document.getElementById("hours1").textContent = String(hours).padStart(2, '0');
+  document.getElementById("minutes1").textContent = String(minutes).padStart(2, '0');
+  document.getElementById("seconds1").textContent = String(seconds).padStart(2, '0');
+  }
+}, 1000);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!------ Start Collection + Filter ------>
+<div class="lb-campaign-collection-section">
+
+
+
+
+
+
+
+
+{% for block in section.blocks %}
+  {% if block.type == 'filter' %}
+    {% assign filter_count = filter_count | plus: 1 %}
+  {% endif %}
+{% endfor %}
+{% if filter_count > 0 %} 
+  <div class="lb-campaign-collection-section-holde-tag-filter">
+    <div class="lb-campaign-collection-section-holde-tag-filter-item lb-campaign-collection-section-holde-tag-filter-item-all lb-campaign-collection-section-holde-tag-filter-item-active">Alle</div>
+    {% for block in section.blocks %}
+      {% if block.type == 'filter' %}
+        <div class="lb-campaign-collection-section-holde-tag-filter-item lb-campaign-collection-section-holde-tag-filter-item-{{ block.settings.tagfilter }}">{{ block.settings.tagfiltername }}</div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}
+<style>
+.lb-campaign-collection-section-holde-tag-filter {
+display: block;
+text-align: center;
+  margin: 0px 0px 18px 0px;
+}
+.lb-campaign-collection-section-holde-tag-filter-item {
+border: 1px solid {{ section.settings.filtercolor }};
+padding: 4px 9px;
+display: inline-block;
+color: {{ section.settings.filtercolor }};
+margin: 5px;
+border-radius: 6px;
+font-size: 20px;
+{% if section.settings.customfont == blank %}
+font-family: {{ section.settings.bannerfont.family }}, {{ bannerfont.fallback_families }} !important;
+{% else %}
+font-family: 'Customfont'!important;
+{% endif %}
+}
+.lb-campaign-collection-section-holde-tag-filter-item:hover, .lb-campaign-collection-section-holde-tag-filter-item-active {
+border: 1px solid {{ section.settings.filterborderactive }};
+background: {{ section.settings.filterborderactive }};
+color: {{ section.settings.filtercoloractive }};
+  cursor: pointer;
+}            
+</style>
+<script>
+$(".lb-campaign-collection-section-holde-tag-filter-item-all").click(function() {
+$(".lb-campaign-collection-section-holde-tag-filter-item").removeClass("lb-campaign-collection-section-holde-tag-filter-item-active");
+$(".lb-campaign-collection-section-holde-tag-filter-item-all").addClass("lb-campaign-collection-section-holde-tag-filter-item-active");
+$(".lb-campaign-collection-item").removeClass("lb-campaign-collection-item-active");
+});
+</script>  
+{% for block in section.blocks %}
+<script>
+$(".lb-campaign-collection-section-holde-tag-filter-item-{{ block.settings.tagfilter }}").click(function() {
+$(".lb-campaign-collection-section-holde-tag-filter-item").removeClass("lb-campaign-collection-section-holde-tag-filter-item-active");
+$(".lb-campaign-collection-section-holde-tag-filter-item-{{ block.settings.tagfilter }}").addClass("lb-campaign-collection-section-holde-tag-filter-item-active");
+$(".lb-campaign-collection-item").addClass("lb-campaign-collection-item-active");
+$(".lb-campaign-collection-item-{{ block.settings.tagfilter }}").removeClass("lb-campaign-collection-item-active");
+});
+</script>
+{% endfor %}
+<style>
+.lb-campaign-collection-item-active {
+display: none!important;
+}
+</style>
+
+  
+
+ 
+  
+
+  
+
+
+  
+  {% for block in section.blocks %}
+    {% if forloop.first %}
+      <script>
+        $(document).ready(function r() {
+          $('.lb-campaign-collection-filter-item-{{ block.id }}').addClass('lb-campaign-collection-filter-item-active');
+          $('.lb-campaign-collection-section-holder-{{ block.id }}').addClass('lb-campaign-collection-section-holder-active');   
+        });
+      </script>
+    {% endif %}
+  {% endfor %}
+    <div class="lb-campaign-collection-filter">
+      <p>{{ section.settings.filtertext }}</p>
+      {% if section.blocks != blank %} 
+        {% for block in section.blocks %}
+          {% if block.type == 'categories' %}
+          <div class="lb-campaign-collection-filter-item lb-campaign-collection-filter-item-{{ block.id }}"><span>{{ block.settings.rabatttext }}</span></div>
+          <script>
+            $(document).ready(function() {
+              $('.lb-campaign-collection-filter-item-{{ block.id }}').click(function() {
+                $('.lb-campaign-collection-filter-item').removeClass('lb-campaign-collection-filter-item-active');
+                $(this).toggleClass('lb-campaign-collection-filter-item-active');  
+                $('.lb-campaign-collection-section-holder').removeClass('lb-campaign-collection-section-holder-active');            
+                $('.lb-campaign-collection-section-holder-{{ block.id }}').toggleClass('lb-campaign-collection-section-holder-active');
+              });
+            });
+          </script>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    </div>
+<style>
+.lb-campaign-collection-filter {
+text-align: center;
+margin: 0px 0px 18px 0px;
+}
+.lb-campaign-collection-filter p {
+color: {{ section.settings.filtercolor }};
+margin: 0px 0px 9px 0px;
+font-size: 20px;
+display: none;
+}
+.lb-campaign-collection-filter-item {
+background: {{ section.settings.filterbg }};
+display: inline-flex;
+position: relative;
+align-items: center;
+justify-content: center;
+font-size: 20px;
+line-height: 20px;
+margin: 3px;
+color: {{ section.settings.filtercolor }};
+width: 82px;
+height: 82px;
+text-align: center;
+border-radius: 50px;
+border: 1px solid {{ section.settings.filterborder }};
+cursor: pointer;
+transition: all 0.3s;
+{% if section.settings.customfont == blank %}
+font-family: {{ section.settings.bannerfont.family }}, {{ bannerfont.fallback_families }} !important;
+{% else %}
+font-family: 'Customfont'!important;
+{% endif %}
+}
+.lb-campaign-collection-filter-item span {
+position: absolute;
+top: 50%;
+left: 0px;
+width: 100%;
+display: block;
+  margin: 0px;
+transform: translate(0%,-50%);
+}
+.lb-campaign-collection-filter-item-active, .lb-campaign-collection-filter-item:hover, .lb-campaign-collection-filter-item-active:first-child {
+border: 1px solid {{ section.settings.filterborderactive }};
+color: {{ section.settings.filtercoloractive }};
+background: {{ section.settings.filterborderactive }};
+}
+</style>
+
+
+
+
+
+
+
+  
+
+      
+
+
+
+
+
+  
+    
+    
+
+{% for block in section.blocks %}
+  <div class="lb-campaign-collection-section-holder lb-campaign-collection-section-holder-{{ block.id }}">
+    {% if block.settings.selected_collection %}
+      {% assign collection_handle = block.settings.selected_collection %}
+      {% assign collection = collections[collection_handle] %}
+      {% paginate collection.products by 1000 %} 
+        {% for product in collection.products %}
+          {% assign original_price = product.compare_at_price %}
+          {% assign current_price = product.price %}
+          {% assign savings = original_price | minus: current_price %}
+          {% assign discount_percent = savings | times: 100 | divided_by: original_price %}
+          <a href="{{ product.url }}" class="lb-campaign-collection-item lb-campaign-collection-item-{% for block in section.blocks %}{% if block.type == 'filter' %}{% if product.tags  contains block.settings.tagfilter  %}{{ block.settings.tagfilter }}{% endif %}{% endif %}{% endfor %}">  
+         {% if product.tags contains 'bestseller' %}<div style="padding: 3px 9px;
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+    font-family: 'Open Sans';
+    font-size: 12px;
+    background: #3C3C3B;
+                                                      position: absolute; top: 9px; left: 9px;">Bestseller</div>{% endif %}
+            
+             {% comment %}
+            {% if product.tags contains 'blackdays10' or product.tags contains 'blackdays20' or product.tags contains 'blackdays30' %}
+              <div class="lb-campaign-collection-item-salebadge">-{% if product.tags contains 'blackdays10' %}10%{% endif %}{% if product.tags contains 'blackdays20' %}20%{% endif %}{% if product.tags contains 'blackdays30' %}30%{% endif %}<!--{{ discount_percent }}%--></div>
+           {% endif %}
+{% endcomment %} 
+
+            {% if product.compare_at_price > product.price %}  
+          {% endif %}
+          <div>
+          <img src="{% if product.selected_or_first_available_variant.image.src != blank %}{{ product.selected_or_first_available_variant.image.src | img_url: '600x' }}{% else %}{{ product.featured_image.src | img_url: '600x' }}{% endif %}" alt="{{ product.title }}">
+        </div>
+        <div>
+          <h3>{{ product.title }}</h3>
+          <p class="lb-campaign-collection-item-subheadline">{{ product.metafields.custom.kategorieseite_subheadlines }}</p>
+          <div class="lb-campaign-collection-item-custom-code"><div class="ruk_rating_snippet" style="margin-bottom:4px;margin-top: 4px; text-align: center; color: white!important;" data-sku="{{ product.handle }};{{ product.variants | map: 'sku' | join: ';' }};{{ product.variants | map: 'id' | join: ';' }}"></div>{{ section.settings.product-item-customcode }}</div> 
+          {% include 'lb-collection-codeprice' %}
+         
+          <p class="lb-campaign-collection-item-price">
+            {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+              <span class="lb-campaign-collection-item-compare-price">{{ product.selected_or_first_available_variant.compare_at_price | money }}</span>
+              {{ product.selected_or_first_available_variant.price | money }}
+              <span class="lb-savings">Du sparst {{ product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | money }}</span>
+            {% else %}
+              {{ product.selected_or_first_available_variant.price | money }}
+            {% endif %}
+          </p>
+           <!--
+          -->
+        </div>
+      </a>
+    {% endfor %}
+  {% endpaginate %}
+  {% endif %}
+  </div>
+{% endfor %}
+</div>
+<!------ End Collection + Filter ------>
+<style>
+.lb-campaign-collection-section {
+padding: 0px 0px 36px 0px;
+{% if section.settings.collectionbackgroundimage != blank %}
+background: url({{ section.settings.collectionbackgroundimage | img_url: '900x' }});
+{% else %} 
+background: {{ section.settings.collectionbackground }};
+{% endif %}
+}
+.lb-campaign-collection-section-holder {
+max-width: 1180px;
+margin: auto;
+flex-wrap: wrap;
+display: none;
+}
+.lb-campaign-collection-section-holder-active {
+display: flex!important;
+}
+.lb-campaign-collection-item {
+width: 32.33%;
+margin: 0.5%;
+display: block;
+background: {{ section.settings.collectionproductitembackground }};
+padding: 26px 18px 18px 18px;
+text-decoration: none;
+position: relative;
+border-radius: {{ section.settings.productitemborderradius }}px;
+}
+.lb-campaign-collection-item h3 {
+color: {{ section.settings.productitemcolor }};
+margin: 0px 0px 4px 0px;
+display: block;
+font-size: 18px;
+  text-align: center;
+{% if section.settings.customfont == blank %}
+font-family: {{ section.settings.bannerfont.family }}, {{ bannerfont.fallback_families }} !important;
+{% else %}
+font-family: 'Customfont'!important;
+{% endif %}
+line-height: 22px;
+}
+.lb-campaign-collection-item-subheadline {
+font-family: 'Open Sans';
+font-size: 14px;
+color: #808080;
+text-align: center;
+padding: 0px 6px;
+margin: 0px 0px 5px 0px;
+}
+.lb-campaign-collection-item-salebadge {
+position: absolute;
+{% if section.settings.badgebackgroundimage == blank %}
+background-color: {{ section.settings.productitembadgebg }};
+{% else %}
+background-image: url({{ section.settings.badgebackgroundimage| img_url: '200x' }});
+{% endif %}
+color: {{ section.settings.productitembadgecolor }};
+top: 9px;
+right: 9px;
+border-radius: 50px;
+padding: 9px;
+text-transform: uppercase;
+{% if section.settings.customfont == blank %}
+font-family: {{ section.settings.bannerfont.family }}, {{ bannerfont.fallback_families }} !important;
+{% else %}
+font-family: 'Customfont'!important;
+{% endif %}
+}
+.lb-campaign-collection-item img {
+display: block;
+width: 100%;
+margin-bottom: 9px;
+}
+.lb-campaign-collection-item-custom-code {
+  display: block;
+  margin: 9px 0px 0px 0px;
+}
+.lb-campaign-collection-item-price {
+font-size: 16px;
+color: {{ section.settings.productitempricecolor }};
+  margin: 0px;
+  text-align: center;
+}
+.lb-campaign-collection-item-compare-price {
+color: {{ section.settings.productitempricesalecolor }}!important;
+font-size: 18px;
+text-decoration: line-through;
+}
+.lb-savings {
+background-color: {{ section.settings.product-item-save-bg-color }};
+color: {{ section.settings.product-item-save-font-color }};
+font-size: 12px;
+padding: 4px 9px;
+margin-left: 9px;
+border-radius: 6px;
+font-weight: bold;
+}
+@media only screen and (max-width: 600px) {
+.lb-campaign-collection-item {
+width: 48%;
+margin: 1%;
+padding: 36px 9px 9px 9px;
+}
+.lb-campaign-collection-item h3 {
+font-size: 14px;
+line-height: 20px;
+}
+.lb-campaign-collection-item-subheadline {
+font-family: 'Open Sans';
+font-size: 12px;
+color: #808080;
+text-align: center;
+}
+.lb-campaign-collection-item-price {
+font-size: 14px;
+}
+.lb-campaign-collection-item-compare-price {
+font-size: 16px;
+}
+.lb-savings {
+display: inline-block;
+margin-left: 0px;
+margin-top: 5px;
+font-size: 10px;
+}
+.lb-campaign-collection-section {
+padding: 18px 1% 36px 1%;
+}
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="banneranimation-section">
+  <div class="banneranimation">
+    <span>{{ section.settings.bannertext }}</span> 
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span> 
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span> 
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span> 
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span> 
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span>
+    <span>{{ section.settings.bannertext }}</span> 
+    <span>{{ section.settings.bannertext }}</span>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="lb-campaign-end-section">
+  <div class="lb-campaign-end-section-holder ">  
+    <h2>{{ section.settings.endsectionheadline }}</h2>
+    <p>{{ section.settings.endsectionparagraph }}</p>
+    <img src="{{ section.settings.endsectionimage | img_url: '600x' }}"> 
+  </div>
+</div>
+<style> 
+.lb-campaign-end-section {
+padding: 72px 18px;
+{% if section.settings.endsectionbackgroundimage != blank %}
+background: url({{ section.settings.endsectionbackgroundimage | img_url: '900x' }});
+{% else %}
+background: {{ section.settings.endsectionbackgroundcolor }};
+{% endif %}
+background-position: center center;
+background-size: cover;
+}
+.lb-campaign-end-section-holder {
+max-width: 1180px;
+margin: auto;
+text-align: center;
+}
+.lb-campaign-end-section-holder h2 {
+color: {{ section.settings.endsectioncolor }};
+margin: 0px 0px 9px 0px;
+font-size: 32px;
+{% if section.settings.customfont == blank %}
+font-family: {{ section.settings.bannerfont.family }}, {{ bannerfont.fallback_families }} !important;
+{% else %}
+font-family: 'Customfont'!important;
+{% endif %}
+line-height: 38px;
+}
+.lb-campaign-end-section-holder p {
+color: {{ section.settings.endsectioncolor }};
+margin: 0px 0px 18px 0px;
+}
+.lb-campaign-end-section-holder img {
+display: block;
+margin: auto;
+width: 100%;
+max-width: 600px;
+  border-radius: 15px;
+}
+@media only screen and (max-width: 600px) {
+.lb-campaign-end-section-holder h2 {
+font-size: 24px;
+line-height: 30px;
+}
+}
+</style>
+{% schema %}
+{
+  "name": "Black Friday Landingpage",
+  "settings": [
+    {
+      "type": "header",
+      "content": {
+        "de": "Laufschrift Banner",
+        "en": "Laufschrift Banner"
+      },
+      "info": "Definiere das Styling der Laufschrift Banner"
+    },
+   {
+      "type": "text",
+     "id": "bannertext",
+     "default": "BLACK WEEK | BIS ZU 50%",
+     "label": "Bannertext"
+    },
+    {
+      "type": "color",
+     "id": "bannerbg",
+     "default": "#61F4B4",
+     "label": "Background"
+    },
+   {
+      "type": "image_picker",
+     "id": "bannerbgimage",
+     "label": "Badge Background Color"
+    },
+    {
+      "type": "color",
+     "id": "bannerfontcolor",
+     "default": "#000000",
+     "label": "Schriftfarbe"
+    },
+    {
+      "type": "font_picker",
+      "id": "bannerfont",
+      "default": "sans-serif",
+      "label": "Schriftart"
+    },
+    {
+      "type": "text",
+      "id": "customfont",
+      "label": "Schriftart"
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "info": "Der Header Deiner Landingpage",
+      "content": {
+        "de": "Intro Banner",
+        "en": "Intro Banner"
+      }
+    },
+    {
+      "type": "text",
+     "id": "introdate",
+     "default": "Vom 17.11 bis zum 27.11",
+     "label": "Firsttext"
+    },
+    {
+      "type": "text",
+     "id": "introheadline",
+     "default": "Black Week",
+     "label": "Headline"
+    },
+   {
+      "type": "image_picker",
+     "id": "headlinelogo",
+     "label": "Headlinelogo"
+    },
+    {
+      "type": "text",
+     "id": "introparagraph",
+     "default": "Spare bis zu 60% auf ausgewählte Artikel beim größten Sale des Jahres",
+     "label": "Paragraph"
+    },
+    {
+      "type": "select",
+      "id": "plannable-date-day",
+      "label": "Tag",
+      "options": [
+        {"value": "01", "label": "1"},
+        {"value": "02", "label": "2"},
+        {"value": "03", "label": "3"},
+        {"value": "04", "label": "4"},
+        {"value": "05", "label": "5"},
+        {"value": "06", "label": "6"},
+        {"value": "07", "label": "7"},
+        {"value": "08", "label": "8"},
+        {"value": "09", "label": "9"},
+        {"value": "10", "label": "10"},
+        {"value": "11", "label": "11"},
+        {"value": "12", "label": "12"},
+        {"value": "13", "label": "13"},
+        {"value": "14", "label": "14"},
+        {"value": "15", "label": "15"},
+        {"value": "16", "label": "16"},
+        {"value": "17", "label": "17"},
+        {"value": "18", "label": "18"},
+        {"value": "19", "label": "19"},
+        {"value": "20", "label": "20"},
+        {"value": "21", "label": "21"},
+        {"value": "22", "label": "22"},
+        {"value": "23", "label": "23"},
+        {"value": "24", "label": "24"},
+        {"value": "25", "label": "25"},
+        {"value": "26", "label": "26"},
+        {"value": "27", "label": "27"},
+        {"value": "28", "label": "28"},
+        {"value": "29", "label": "29"},
+        {"value": "30", "label": "30"},
+        {"value": "31", "label": "31"}
+      ],
+      "default": "01"
+    },  
+    {
+      "type": "select",
+      "id": "plannable-date-month",
+      "label": "Monat",
+      "options": [
+        {"value": "01", "label": "Januar"},
+        {"value": "02", "label": "Februar"},
+        {"value": "03", "label": "März"},
+        {"value": "04", "label": "April"},
+        {"value": "05", "label": "Mai"},
+        {"value": "06", "label": "Juni"},
+        {"value": "07", "label": "Juli"},
+        {"value": "08", "label": "August"},
+        {"value": "09", "label": "September"},
+        {"value": "10", "label": "Oktober"},
+        {"value": "11", "label": "November"},
+        {"value": "12", "label": "Dezember"}
+      ],
+      "default": "01"
+    },  
+    {
+      "type": "select",
+      "id": "plannable-date-year",
+      "label": "Jahr",
+      "options": [
+        {"value": "2024", "label": "2024"},
+        {"value": "2025", "label": "2025"},
+        {"value": "2026", "label": "2026"},
+        {"value": "2027", "label": "2027"},
+        {"value": "2028", "label": "2028"},
+        {"value": "2029", "label": "2029"},
+        {"value": "2030", "label": "2030"}
+      ],
+      "default": "2024"
+    },  
+    {
+      "type": "select",
+      "id": "plannable-date-time",
+      "label": "Uhrzeit",
+      "options": [
+        {"value": "01:00:00", "label": "1 Uhr"},
+        {"value": "02:00:00", "label": "2 Uhr"},
+        {"value": "03:00:00", "label": "3 Uhr"},
+        {"value": "04:00:00", "label": "4 Uhr"},
+        {"value": "05:00:00", "label": "5 Uhr"},
+        {"value": "06:00:00", "label": "6 Uhr"},
+        {"value": "07:00:00", "label": "7 Uhr"},
+        {"value": "08:00:00", "label": "8 Uhr"},
+        {"value": "09:00:00", "label": "9 Uhr"},
+        {"value": "10:00:00", "label": "10 Uhr"},
+        {"value": "11:00:00", "label": "11 Uhr"},
+        {"value": "12:00:00", "label": "12 Uhr (Mittag)"},
+        {"value": "13:00:00", "label": "13 Uhr"},
+        {"value": "14:00:00", "label": "14 Uhr"},
+        {"value": "15:00:00", "label": "15 Uhr"},
+        {"value": "16:00:00", "label": "16 Uhr"},
+        {"value": "17:00:00", "label": "17 Uhr"},
+        {"value": "18:00:00", "label": "18 Uhr"},
+        {"value": "19:00:00", "label": "19 Uhr"},
+        {"value": "20:00:00", "label": "20 Uhr"},
+        {"value": "21:00:00", "label": "21 Uhr"},
+        {"value": "22:00:00", "label": "22 Uhr"},
+        {"value": "23:00:00", "label": "23 Uhr"},
+        {"value": "23:59:59", "label": "Mitternacht (24 Uhr)"}
+      ],
+      "default": "23:59:59"
+    },
+    {
+      "type": "color",
+     "id": "introbackground",
+     "default": "#f2f2f2",
+     "label": "Background"
+    },
+   {
+      "type": "image_picker",
+     "id": "bannerbackgroundimage",
+     "label": "Hintergrundbild"
+    },
+   {
+      "type": "color",
+     "id": "introtextcolor",
+     "default": "#f2f2f2",
+     "label": "Schriftfarbe"
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": {
+        "de": "Kategorie",
+        "en": "Kategorie"
+      },
+      "info": "wkjef kwjbfjkwe kjbw. kjbwkfjb wkefj "
+    },
+   {
+      "type": "color",
+     "id": "collectionbackground",
+     "default": "#f2f2f2",
+     "label": "Collection Background"
+    },
+   {
+      "type": "image_picker",
+     "id": "collectionbackgroundimage",
+     "label": "Hintergrundbild"
+    },
+   {
+      "type": "color",
+     "id": "collectiontextcolor",
+     "default": "#f2f2f2",
+     "label": "Font Color"
+    },
+   {
+      "type": "text",
+     "id": "filtertext",
+     "default": "Entdecke unsere Black Friday Deals",
+     "label": "Filtertext"
+    },
+   {
+      "type": "color",
+     "id": "filtercolor",
+     "default": "#f2f2f2",
+     "label": "Filterfarbe"
+    },
+    {
+      "type": "color",
+     "id": "filterborder",
+     "default": "#f2f2f2",
+     "label": "Filterradnfarbe"
+    },
+   {
+      "type": "color",
+     "id": "filtercoloractive",
+     "default": "#ffffff",
+     "label": "Filter Schriftfarbe Aktiv"
+    },
+   {
+      "type": "color",
+     "id": "filterborderactive",
+     "default": "#f2f2f2",
+     "label": "Filter Hintergrund Aktiv"
+    },
+   {
+      "type": "image_picker",
+     "id": "filterbackgroundimageactive",
+     "label": "Filter Hintergrundbild Aktiv"
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": {
+        "de": "Kategorie Produkt Item",
+        "en": "Kategorie Produkt Item"
+      }
+    },
+   {
+      "type": "color",
+     "id": "collectionproductitembackground",
+     "default": "#f2f2f2",
+     "label": "Collection Product Item Background"
+    },
+   {
+      "type": "text",
+     "id": "productitemborderradius",
+     "default": "#f2f2f2",
+     "label": "Abgerundete Ecken"
+    },
+    {
+      "type": "color",
+     "id": "productitemcolor",
+     "default": "#f2f2f2",
+     "label": "Titel Color"
+    },
+   {
+      "type": "color",
+     "id": "productitempricecolor",
+     "default": "#f2f2f2",
+     "label": "Price Color"
+    },
+   {
+      "type": "color",
+     "id": "productitempricesalecolor",
+     "default": "#00fec6",
+     "label": "Sales Price Color"
+    },
+   {
+      "type": "color",
+     "id": "product-item-save-bg-color",
+     "default": "#000000",
+     "label": "Saving Background"
+    },
+   {
+      "type": "color",
+     "id": "product-item-save-font-color",
+     "default": "#ffffff",
+     "label": "Saving Fontcolor"
+    },
+   {
+      "type": "liquid",
+     "id": "product-item-customcode",
+     "label": "Custom Code",
+     "info": "Reviews Code"
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": {
+        "de": "Badge",
+        "en": "Kategorie Produkt Item"
+      }
+    },
+   {
+      "type": "color",
+     "id": "productitembadgecolor",
+     "default": "#000000",
+     "label": "Badge Color"
+    },
+   {
+      "type": "color",
+     "id": "productitembadgebg",
+     "default": "#00fec6",
+     "label": "Badge Background"
+    },
+   {
+      "type": "image_picker",
+     "id": "badgebackgroundimage",
+     "label": "Hintergrundbild"
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "content": "."
+    },
+    {
+      "type": "header",
+      "info": "Schließe die Salepage mit einem persönlichen Bereich ab.",
+      "content": {
+        "de": "Endsection",
+        "en": "Endsection"
+      }
+    },
+   {
+      "type": "text",
+     "id": "endsectionheadline",
+     "default": "Viel Spaß mit Deinen Produkten!",
+     "label": "Headline"
+    },
+   {
+      "type": "textarea",
+     "id": "endsectionparagraph",
+     "default": "Dein Team von Lionsbranding",
+     "label": "Paragraph"
+   },
+   {
+      "type": "image_picker",
+     "id": "endsectionimage",
+     "label": "Bild"
+    },
+    {
+      "type": "color",
+     "id": "endsectionbackgroundcolor",
+     "default": "#f2f2f2",
+     "label": "Hindergrundfarbe"
+    },
+   {
+      "type": "color",
+     "id": "endsectioncolor",
+     "default": "#000000",
+     "label": "Schriftfarbe"
+    },
+   {
+      "type": "image_picker",
+     "id": "endsectionbackgroundimage",
+     "label": "Hintergrundbild"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Kategorie",
+      "type": "categories",
+      "settings": [
+        {
+          "type": "text",
+          "id": "rabatttext",
+          "default": "40$",
+          "label": "Rabatttext"
+        },
+    {
+      "type": "collection",
+      "label": "Wähle die Produktkategorie aus",
+      "id": "selected_collection"
+    }
+      ]
+    },
+   {
+      "name": "Filter",
+      "type": "filter",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tagfiltername",
+          "label": "Filter Name"
+        },
+        {
+          "type": "text",
+          "id": "tagfilter",
+          "label": "Filter Tag"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "HTML",
+      "name": "Lb Campaign Buckets",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,102 @@
+<!--
+{% if product.tags contains 'etui' %}
+  <div class="lb-collection-product-item-div lb-old-variants" style="margin-top: 9px;">
+    <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+    <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+{% endif %}
+
+<style>
+.lb-old-variants {  
+
+}
+</style>
+-->
+
+
+
+
+{% if product.metafields.custom.variantenname_frontend_ != blank %}
+{% if product.variants.size > 1 %}
+  <div class="lb-collection-variants">
+    <span style="font-weight: bold;"><!--{{ product.options }}-->{{ product.metafields.custom.variantenname_frontend_ }}: </span>{% if product.variants.size  == 16 %}8{% else %}{{ product.variants.size }}{% endif %} Varianten
+  </div>
+{% endif %}
+{% endif %}
+
+<style>
+  .lb-collection-variants {
+    display: inline-block;
+    border: 0px solid grey;
+    padding: 3px 9px;
+    border-radius: 50px;
+    background: #fbf8f7;
+    text-align: center;
+    font-size: 12px;
+    margin: 0px 0px 4px 0px;
+    color: #6f6f6f;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .lb-collection-variants {
+      font-size: 10px;
+    }
+  }
+</style>
+
+
+
+
+
+
+
+
+<!--
+{% if product.title == 'Rasierständer Set' or product.title == 'Rasierständer (Klein) Set' %}
+<div class="lb-variant-images">
+  <img src="https://stoertebekker.com/cdn/shop/files/STOERTE_0220_b-variant.webp?v=1720014017&width=84">
+  <img src="https://stoertebekker.com/cdn/shop/files/STOERTE_0219_b-variant.webp?v=1720013999&width=84">
+  <img src="https://stoertebekker.com/cdn/shop/files/STOERTE_0218_b-variant.webp?v=1719991389&width=84">
+</div>
+{% endif %}
+
+{% if product.title == 'Rasierpinsel Set' or product.title == 'Rasierständer Set' or product.title == 'Rasierseife &
+Seifendose Set' or product.title contains 'Rasierseife & Seifendose Set' %}
+<div class="lb-variant-images">
+  <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0011_f_variant_100x.png">
+  <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeAloeVera_variant_100x.png">
+  <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/RasierseifeCoconut_variant_100x.png">
+  <div>+5</div>
+</div>
+{% endif %}
+
+
+<style>
+  .lb-variant-images {
+    padding: 0px;
+    border-radius: 50px;
+    text-align: center;
+    margin: auto;
+    display: block!important;
+  }
+
+  .lb-variant-images img {
+    width: 30px;
+    display: inline-block;
+    margin: 1px;
+    border-radius: 50px;
+  }
+
+  .lb-variant-images div {
+    background: #dfded6;
+    height: 30px;
+    width: 30px;
+    margin: 1px;
+    font-size: 11px;
+    display: inline-block;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 50px;
+  }
+</style>
+-->

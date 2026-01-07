@@ -1,0 +1,25 @@
+<div class="collection_looks">
+  {% if index == 4 and collection.metafields.custom.collection_look %}
+ <img src="{{ collection.metafields.custom.collection_look | img_url: 'master' }}"/> 
+  {% endif %}
+    {% if index == 8 and  collection.metafields.custom.collection_look_2 %}
+<img src="{{ collection.metafields.custom.collection_look_2 | img_url: 'master' }}"/>
+  {% endif %}
+    {% if index == 12  and collection.metafields.custom.collection_look_3  %}
+<img src="{{ collection.metafields.custom.collection_look_3 | img_url: 'master' }}"/>
+  {% endif %}
+</div>
+
+
+{% comment %}
+this code need to add in collection page 
+     {% if forloop.index == 4 %}
+      {% render "collection-looks", index: 4 %}
+     {% endif %}
+     {% if forloop.index == 8 %}
+      {% render "collection-looks", index: 8 %}
+     {% endif %}
+     {% if forloop.index == 12 %}
+      {% render "collection-looks", index: 12 %}
+     {% endif %}
+{% endcomment %}

@@ -1,0 +1,148 @@
+<div class="lb-seo-footer-section">
+  <div class="lb-seo-footer-section-holder">
+{% for link in linklists.seo-footer.links %}
+  <div class="lb-seo-footer-section-holder-div">
+    <p>{{ link.title }}</p>
+    {% for child_link in link.links %}
+      <div><a href="{{ child_link.url }}">{{ child_link.title }}</a></div>
+    {% endfor %}
+  </div>
+{% endfor %}
+
+  </div>  
+</div>
+
+
+
+
+
+
+<style>
+
+  .lb-seo-footer-section {
+    padding: 18px 0px; 
+    display: block;
+    margin-bottom: -72px;
+  }
+
+  .lb-seo-footer-section-holder {
+    max-width: 1180px;
+    padding: 18px;
+    margin: auto;
+  }
+
+  .lb-seo-footer-section-holder-div {
+    display: block;
+    margin-bottom: 18px;
+    overflow: hidden;
+  }
+
+
+
+  .lb-seo-footer-section-holder p {
+    color: #3c3c3b;
+    font-family: "BebasNeue-Regular" !important;
+    font-size: 20px!important;
+    margin-bottom: 9px;
+  }
+
+  .lb-seo-footer-section-holder-div div {
+    width: 33.333%;
+    display: block;
+    float: left;
+  }
+  
+  .lb-seo-footer-section-holder a {
+    color: #3c3c3b;
+    text-decoration: none!Important;
+    font-size: 16px!important;
+    line-height: 26px;
+    display: inline-block;
+    font-family: "Open Sans";
+  }
+
+@media only screen and (max-width: 600px) {
+
+  .lb-footer__menu-link {
+       font-size: 14px!important;   
+  }
+  
+  .lb-seo-footer-section-holder-div div {
+    width: 50%;
+  }
+
+  .lb-seo-footer-section-holder-div a {
+          font-size: 14px!important;
+  }
+  
+  .lb-footer-column {
+     width: 50%!important;   
+  }
+
+  #trust {
+    width: 100%!important;
+  }
+  
+  
+}
+
+
+  
+
+@media only screen and (max-width: 0px) {
+  .lb-seo-footer-section-holder-div div {
+    width: 100%;
+    display: block;
+    float: none;
+  }
+
+
+  
+  
+}
+  
+</style>
+
+
+
+{% schema %}
+{
+  "name": {
+    "en": "Lb SEO Footer"
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Einstellungen"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop-image",
+      "label": "Desktop Bild",
+      "info": "Wähle den Hintergrund der Section"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile-image",
+      "label": "Mobile Bild",
+      "info": "Wähle den Hintergrund der Section"
+    },
+    {
+      "type": "text",
+      "id": "link-url",
+      "label": "Link URL", 
+      "info": "Wähle den Hintergrund der Section"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lb SEO Footer",
+      "blocks": [
+
+      ]
+    }
+  ]
+}
+
+
+{% endschema %}

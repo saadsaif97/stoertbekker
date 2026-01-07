@@ -1,0 +1,98 @@
+
+{% if customer.email contains '@lionsbranding.cfom' or customer.email contains '@stoertebekker.cfom' or customer.email contains 'helpingbrands.def' %}
+
+
+{% assign overall_current_date_time = 'now' | date: "%Y.%m.%d-%H:%M:%S" %}
+{% assign overall_set_full_time = settings.plannable-date-year | append: '.' | append: settings.plannable-date-month | append: '.' | append: settings.plannable-date-day | append: '-' | append: settings.plannable-date-time %}
+
+<!--overall_current_date_time >= overall_set_full_time or -->
+
+{% if product.tags contains "1blackdays10" or product.tags contains "1blackdays20" or product.tags contains "1blackdays30" %} 
+  <div class="lb-countdown-new-price">
+    {% if product.tags contains "blackdays10" %} 
+      {% assign reduced_price = product.selected_or_first_available_variant.price | times: 0.90 %}
+    {% elsif product.tags contains "blackdays20" %}
+      {% assign reduced_price = product.selected_or_first_available_variant.price | times: 0.80 %}
+    {% elsif product.tags contains "blackdays30" %}
+      {% assign reduced_price = product.selected_or_first_available_variant.price | times: 0.70 %}
+    {% endif %} 
+     
+    <span>{{ product.selected_or_first_available_variant.price | money }}</span>
+    
+    {% assign reduced_price_money = reduced_price | money %}
+      {% if reduced_price_money contains ',00' %}
+        {{ reduced_price | money }}
+      {% assign save_reduced_price = product.selected_or_first_available_variant.price | minus: reduced_price %}
+      {% else %}
+        {% assign adjusted_price = reduced_price | plus: 1 %}
+      {{ adjusted_price | money }}
+      {% assign save_reduced_price = product.selected_or_first_available_variant.price | minus: adjusted_price %}
+    {% endif %}
+
+    <div>Du sparst {{ save_reduced_price | money }}</div>
+  </div>
+
+<style>
+.if-codeprice-hide, .lb-item-pricing {
+  display: none!important;
+}
+</style>
+
+{% else %}
+
+  <div class="lb-countdown-new-price">
+            {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+              <span>{{ product.selected_or_first_available_variant.compare_at_price | money }}</span>
+              {{ product.selected_or_first_available_variant.price | money }}
+              <div>Du sparst {{ product.selected_or_first_available_variant.compare_at_price | minus: product.selected_or_first_available_variant.price | money }}</div>
+            {% else %}
+              {{ product.selected_or_first_available_variant.price | money }}
+            {% endif %}
+  </div>
+  <style>
+    .if-codeprice-hide {
+  display: none!important;
+}
+</style>
+
+{% endif %}
+
+<style>
+.lb-countdown-new-price {
+  width: 100%!important;
+  {% if canonical_url contains '/men-days'%}
+  color: white;
+  display: block;
+  {% else %}
+  display: block;
+  color: black;
+  {% endif %}
+  margin: 9px 0px 0px 0px;
+  text-align: center;
+  font-size: 15px!important;
+}
+.lb-countdown-new-price span {
+  color: #da2d2d; 
+  margin-right: 5px;
+  text-decoration: line-through;
+}
+.lb-countdown-new-price div {
+    padding: 3px 9px;
+    border-radius: 6px;
+    color: black;
+    display: inline-block;
+    font-size: 10px;
+    font-family: "Open Sans";
+    background: #D8AC63;
+    position: relative;
+    top: -2px;
+}
+@media only screen and (max-width: 600px) {
+.lb-countdown-new-price div {
+    margin: 9px 0px 0px 0px;
+}
+}
+</style>
+ 
+
+{% endif %}

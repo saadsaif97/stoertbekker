@@ -1,0 +1,119 @@
+<script>
+  $(document).ready(function() {
+            $('.lb-barber-week, .lb-barber-week-close').click(function() {
+                $('.lb-barber-week-overlay, .lb-barber-week-overlay-inner').toggleClass('lb-barber-week-overlay-show');
+            });
+        });
+</script>
+
+{% assign pointsohne = product.price | remove: ,99 %}
+
+{% assign points_standard = pointsohne | times: 2 %}
+{% assign points_special = pointsohne | times: 4 %}
+
+<div class="lb-barber-week">
+  <div class="lb-barber-week-div">
+    {% if product.price == 9999 %}
+        Sammle:<span><s>198</s></span><span>396</span> Münzen</div>
+      {% else %}
+    Sammle:<span><s>{{ points_standard }}</s></span><span>{{ points_special }}</span> Münzen</div>
+      {% endif %}
+  <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/barberweek.png?v=1722058031">
+
+</div>
+
+<style>
+  .lb-barber-week {
+    cursor: pointer;
+    background: black;
+    border-radius: 9px;
+    overflow: hidden;
+    color: white;
+    display: none;
+    margin: 9px 0px;
+  }
+
+  .lb-barber-week-div {
+    padding: 9px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  
+  .lb-barber-week span {
+
+    margin: 0px 5px;
+
+    display: inline-block;
+  }
+
+
+  .lb-barber-week-div s {
+    color: #eeebdf;
+    font-size: 14px;
+    line-height: 14px;
+    display: inline-block;
+    text-decoration: line-through !important;
+  }
+
+ 
+</style>
+
+
+
+<div class="lb-barber-week-overlay-inner">
+  <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Bildschirmfoto_2024-07-27_um_09.16.00.png?v=1722064583">
+  <div class="lb-barber-week-close">x</div> 
+</div>
+<div class="lb-barber-week-overlay"></div>
+
+<style>
+  .lb-barber-week-overlay-show {
+    display: block !important;
+  }
+
+  .lb-barber-week-overlay {
+    background: black;
+    z-index: 2147483645;
+    opacity: 0.8;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 100%;
+    display: none;
+  }
+
+  .lb-barber-week-overlay-inner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    max-width: 500px;
+    transform: translate(-50%, -50%);
+    z-index: 2147483647;
+    padding: 0px;
+    display: none;
+  }
+
+  .lb-barber-week-overlay-inner img {
+    border-radius: 15px;
+  }
+
+  .lb-barber-week-close {
+    padding: 6px;
+    background: white;
+    border-radius: 50px;
+    color: black;
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    width: 42px;
+    line-height: 42px;
+    text-align: center;
+    padding: 0px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+</style>

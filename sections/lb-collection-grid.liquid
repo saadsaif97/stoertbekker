@@ -1,0 +1,391 @@
+<section class="lb-category-boxes">
+  <h2>{{ section.settings.heading }}</h2>
+  <p class="lb-category-boxes-p">{{ section.settings.subheading }}</p>
+  <div class="lb-category-boxes-container">
+    {% for block in section.blocks %}
+      <a href="{{ block.settings.link }}" class="lb-category-boxes-item" style="background-color: {{ block.settings.block_background_color }}; background-image: {% if block.settings.block_background_image != blank %}url({{ block.settings.block_background_image | img_url: '500x' }}){% endif %};">
+        {% if block.settings.image != blank %}
+        <img src="{{ block.settings.image | img_url: '500x' }}">
+        {% endif %}
+        <div>
+        <h3 style="color: {{ block.settings.block_title_color }};">{{ block.settings.title }}</h3>
+        {% if block.settings.description != blank %}
+          <p style="color: {{ block.settings.block_description_color }};">{{ block.settings.description }}</p>
+        {% endif %}
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+  {% if section.settings.show_button %}
+  <a href="{{ section.settings.button_link }}" class="lb-shop-all-button">
+    {{ section.settings.button_text }}
+  </a>
+  {% endif %}
+</section>
+
+<style>
+  .lb-category-boxes {
+    font-family: {{ section.settings.font-family.family }}, {{ section.settings.font-family.fallback_families }};
+        font-style: {{ section.settings.font-family.style }};
+    background-color: {{ section.settings.background_color }};
+    background-image: {% if section.settings.background_image != blank %}url({{ section.settings.background_image | img_url: 'original' }}){% endif %};
+    text-align: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: {{ section.settings.padding_top }}px 9px {{ section.settings.padding_bottom }}px 9px;
+  }
+  .lb-category-boxes h2 {
+      margin: 0px auto 9px auto;
+      font-size: 42px;
+      line-height: 46px;
+      font-weight: 400;
+      color: {{ section.settings.heading_color }};
+       font-family: "BetterTimesAlt";
+        font-style: {{ section.settings.font-family.style }};
+  }  
+  .lb-category-boxes-p {
+      margin: 0px auto 9px auto;
+      font-size: 16px;
+      line-height: 22px;
+  }  
+  .lb-category-boxes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1500px;
+    margin: auto;
+  }
+  .lb-category-boxes-item {
+    width: calc((100% / {{ section.settings.desktop_columns }}) - 1%);
+    padding: {{ section.settings.item_padding }}px;
+    box-sizing: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0.5%;
+    border-radius: {{ section.settings.block_border_radius }}px;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    display: flex;
+    flex-direction: {% case section.settings.image_position %}{% when 'top' %}column{% when 'bottom' %}column-reverse{% else %}row{% endcase %};
+    align-items: center;
+    min-height: 90px;
+     font-family: {{ section.settings.item-font-family.family }}, {{ section.settings.item-font-family.fallback_families }};
+        font-style: {{ section.settings.item-font-family.style }};
+  }
+  .lb-category-boxes-item img {
+    width: 122px;
+        height: 122px;
+    object-fit: cover;
+    {% if section.settings.image_position == 'top' or section.settings.image_position == 'bottom' %}
+    margin: 5px 0;
+    {% else %}
+      margin-right: 5px;
+    {% endif %}
+    border-radius: {{ section.settings.image_border_radius }}px;
+  }
+  .lb-category-boxes-item div {
+    width: 100%;
+  }
+  .lb-category-boxes-item h3 {
+    font-size: 20px;
+    line-height: 28px;
+    margin: 0px;
+    font-weight: bold;
+font-family: BebasNeue-Regular;
+        font-style: {{ section.settings.item-font-family.style }};
+  }
+  .lb-category-boxes-item p {
+    font-size: 12px;
+    line-height: 16px;
+    margin: 0px;
+  }
+  .lb-shop-all-button {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    color: {{ section.settings.button_font_color }};
+    border: {{ section.settings.button_border_weight }}px solid {{ section.settings.button_border_color }};
+    background-color: {{ section.settings.button_background_color }};
+  }
+  @media only screen and (max-width: 900px) {
+    .lb-category-boxes-item {
+      width: calc((100% / 4) - 2%);
+      margin: 1%;
+      min-height: 70px;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .lb-category-boxes-item {
+      width: calc((100% / {{ section.settings.mobile_columns }}) - 2%);
+      margin: 1%;
+      min-height: 70px;
+    }
+    .lb-category-boxes-item img {
+      width: 72px;
+      height: 72px;
+    }
+    .lb-category-boxes-item h3 {
+      font-size: 18px;
+      line-height: 24px;
+    }
+    .lb-category-boxes-item p {
+      font-size: 10px;
+      line-height: 14px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "lb collection grid",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section Heading",
+      "default": "Entdecke unsere Produkte"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Section Subheadline",
+      "default": "Hochwertig selektiert"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Text Color",
+      "default": "#000000"
+    },
+    {
+      "type": "checkbox",
+      "id": "headline_underline",
+      "label": "Headline Underline",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section Background Color",
+      "default": "#f8f8f8"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Section Background Image"
+    },
+       {
+  "type": "font_picker",
+  "id": "font-family",
+  "label": "Font Family",
+  "default": "helvetica_n4"
+},
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Section Padding Top",
+      "default": 32,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Section Padding Bottom",
+      "default": 42,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Item Settings"
+    },
+    {
+      "type": "range",
+      "id": "desktop_columns",
+      "label": "Desktop Items per Row",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "mobile_columns",
+      "label": "Mobile Items per Row",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "block_border_radius",
+      "label": "Item Border Radius",
+      "default": 10,
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image Border Radius",
+      "default": 10,
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "item_padding",
+      "label": "Item Padding",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "default": 9,
+      "unit": "px"
+    },
+     {
+  "type": "font_picker",
+  "id": "item-font-family",
+  "label": "Item font family",
+  "default": "helvetica_n4"
+},
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image Position",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "top", "label": "Top" },
+        { "value": "bottom", "label": "Bottom" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Shop All Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_button",
+      "label": "Show Button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop All"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "button_font_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Button Border Color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "button_border_weight",
+      "label": "Border Width",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 1,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "Button Background Color",
+      "default": "#000000"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "Collection",
+      "name": "Collection",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Titel",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "default": "Beschreibung",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "color",
+          "id": "block_background_color",
+          "label": "Block Background Color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "image_picker",
+          "id": "block_background_image",
+          "label": "Block Background Image"
+        },
+        {
+          "type": "color",
+          "id": "block_title_color",
+          "label": "Block Title Text Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "block_description_color",
+          "label": "Block Description Text Color",
+          "default": "#000000"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "lb collection grid"
+    }
+  ]
+}
+{% endschema %}

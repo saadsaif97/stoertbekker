@@ -1,0 +1,27 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "section-header.json",
+  "context": {
+    "market": "schweiz"
+  },
+  "sections": {
+    "lb_header_countdown_bEPKMe": {
+      "settings": {
+        "lb-countdown-text": "Oster Sale | Bis zu -30% Rabatt",
+        "lb-countdown-link-url": "/de-ch/pages/osterdeals-2025"
+      },
+      "blocks": {}
+    }
+  },
+  "order": [
+    "lb_header_countdown_bEPKMe"
+  ]
+}

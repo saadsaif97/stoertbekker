@@ -1,0 +1,884 @@
+  
+
+<div class="lb-header-paddingtop"></div>
+
+{% include 'lb-slide-info' %}
+<!--
+<div class="lb-fixed-info">
+	<div class="lb-fixed-info-holder">   
+		{% if section.settings.fullsize_benefit_html == empty %}	
+			<p class="lb-fixed-info-item">{% if section.settings.first_benefit_img != blank %}<img src="{{ section.settings.first_benefit_img | img_url: '50x' }}">{% endif %}{{ section.settings.first_benefit }}</p>
+			<p class="lb-fixed-info-item">{% if section.settings.second_benefit_img != blank %}<img src="{{ section.settings.second_benefit_img | img_url: '50x' }}">{% endif %}{{ section.settings.second_benefit }}</p>
+			<p class="lb-fixed-info-item">{% if section.settings.third_benefit_img != blank %}<img src="{{ section.settings.third_benefit_img | img_url: '50x' }}">{% endif %}{{ section.settings.third_benefit }}</p>  
+        {% else %}
+            <div class="lb-fixed-info-item-html">{{ section.settings.fullsize_benefit_html }}</div>
+        {% endif %}
+	</div>
+</div>
+-->
+
+<header class="lb-header">
+
+  {% assign menu = linklists[section.settings.main_linklist] %}
+  
+  <div class="lb-header-nav">
+
+
+
+<!--
+{% assign overall_current_date_time = 'now' | date: "%Y.%m.%d-%H:%M:%S" %}
+{% assign overall_set_full_time = settings.plannable-date-year | append: '.' | append: settings.plannable-date-month | append: '.' | append: settings.plannable-date-day | append: '-' | append: settings.plannable-date-time %}
+overall_current_date_time >= overall_set_full_time or
+  -->
+ 
+  <!--
+<a href="https://stoertebekker.com/pages/black-days" class="lb-header-nav-main-item-link" style="float: left; display: inline-flex;">BLACK WEEK <span style="background: #D8AC63!important; color: black; padding: 2px 6px; border-radius: 6px; margin-left: 4px; position: relative; top: -1.5px;">%</span></a>
+  -->
+ 
+
+{% if customer.email contains '@lionsbranding.com' or customer.email contains '@stoertebekker.com' or customer.email contains 'helpingbrands.def' %}
+{% endif %}
+
+
+
+    {% for link in menu.links %}
+    
+    {% assign child_links = link.links %}
+    {% unless link.title contains 'Neuheiten' or link.title contains 'New' %}
+      {% unless link.title == 'Sale' and canonical_url contains '-ch' %}
+      <ul class="lb-header-nav-main-item {% if child_links != blank %}lb-header-nav-main-inner-item-sub{% endif %}" >
+        <li class="lb-header-nav-main-inner-item">
+          <a {% if child_links == blank or link.title contains 'Rasur' or link.title contains 'Bart' or link.title contains 'Körper' %}href="{{ link.url }}"{% endif %} class="lb-header-nav-main-item-link {% if child_links != blank %}lb-header-nav-main-item-link-dropdown{% endif %}" {% if link.title contains 'Geschen' %}style="color: #851111;"{% endif %}>
+              {% if child_links != blank %}{% include 'lb-icon-arrow-down.liquid' %}{% endif %} 
+          {{ link.title }}  {% if link.title contains 'Sale' %}<div style="position: relative; margin-left: 5px; top: -1px; color: black; padding: 2px 6px; border-radius: 10px; background: #D8AC63; line-height: 14px;  font-size: 16px;">%</div>{%endif%} 
+              
+          </a> 
+
+          <ul>
+            {% for child_link in child_links %}
+              <a href="{{ child_link.url }}" class="lb-header-nav-sub-item">
+                {% for block in section.blocks %}
+                  {% assign subimagetitle = block.settings.subimgtitle %}	
+                {% if child_link.title == subimagetitle %}<img src="{{ block.settings.subimgurl | img_url: '200x' }}" loading="lazy">{%endif%}
+                {% endfor %}
+                {{ child_link.title }}</a>
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+         {% endunless %}
+      {% endunless %}
+    {% endfor %}
+
+  </div>
+
+
+
+	<div class="lb-header-burger-menu">
+     {% include 'lb-icon-burger.liquid' %}
+     <span class="lb-header-burger-menu-after">Menü</span>
+    </div>
+
+
+    <a href="{{ routes.root_url }}" class="lb-header-logo">
+      {% if routes.root_url contains '-ch' %}
+      <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/ch-logo.png?v=1723543061" loading="lazy">
+        {% else %}
+      <img src="{{ section.settings.logo | img_url: '350x' }}" loading="lazy">
+        {% endif %}
+    </a>
+  
+    <div class="lb-header-icons">
+
+        <form action="{% if routes.root_url != '/' %}{{ shop.url }}{{ routes.root_url }}{% endif %}/search" method="get" class="desktop-search-form" role="search">
+          <input type="text" name="q" class="desktop-search-form-input" placeholder="{% if canonical_url contains '.com/en' %}What are you looking for?...{% else %}Wonach suchst Du?...{% endif %}" aria-label="Search" value="" required>
+          <button type="submit" class="desktop-search-form-button">
+            <svg width="400px" height="400px" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>search copy</title>
+    <g id="search-copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(-28.6391, -27.8641)" fill-rule="nonzero" stroke="#000000" stroke-width="30">
+            <path d="M192.257726,319.785647 C221.559556,367.483555 261.676783,391.332508 312.609406,391.332508 C389.008341,391.332508 450.941915,329.398935 450.941915,253 C450.941915,176.601065 389.008341,114.667492 312.609406,114.667492 C236.210471,114.667492 174.276898,176.601065 174.276898,253 L52.6801549,268.044108 C33.5546091,270.806205 24.6515739,278.668051 25.9710495,291.629644 C27.2905251,304.591237 36.0214207,310.336595 52.1637362,308.865719 L150.103857,297.117569" id="Oval" transform="translate(238.3926, 253) rotate(-127) translate(-238.3926, -253)"></path>
+        </g>
+    </g>
+</svg>
+          </button>
+        </form>
+
+<style>
+
+  
+.desktop-search-form {
+  width: 250px;
+  display: inline-block;
+  position: relative;
+position: relative;
+    top: -5px;
+  margin-right: 9px;
+}
+
+
+.desktop-search-form-input {
+   width: 100%;
+  display: block;
+  border-radius: 50px;
+  background: white;
+  border: 1px solid #d9d9d9;
+  padding: 0px 18px;
+  line-height: 32px;
+}
+
+.desktop-search-form-input:focus {
+  border: 1px solid #d9d9d9;
+outline: none;
+  box-shadow: none;
+}
+
+.desktop-search-form-button {
+  position: absolute;
+  right: 12px;
+  top: 6px; 
+  background: none;
+  border: none;
+    font-size: 16px;
+}
+
+.desktop-search-form-button svg {
+  width: 20px;
+  height: 20px;
+}
+  
+
+@media only screen and (min-width: 812px) {
+
+  .lb-header-search-icon {
+    display: none!important;
+  }
+}
+  
+@media only screen and (max-width: 812px) {
+  
+  .desktop-search-form {
+    display: none!important;
+  }
+}
+  
+
+   
+</style>
+
+     
+
+
+      {% if section.settings.account_enabled %} 
+        <a href="{% if routes.root_url != '/' %}{{ shop.url }}{{ routes.root_url }}{% endif %}/account" class="lb-header-account {% if customer %}lb-header-account-active{% endif %}">
+         {% include 'lb-icon-customer.liquid' %}
+          <span class="lb-header-account-before">Account</span>
+        </a>
+      {% endif %}
+
+      {% if section.settings.search %}
+        <label class="lb-header-search-icon  {% if canonical_url == 'https://stoertebekker.com/' %}lbsearcomenone{% endif %}" for="lb-header-search-bar-field">
+            {% include 'lb-icon-search.liquid' %}
+            <span class="lb-header-search-icon-after">Suche</span>
+        </label>
+      {% endif %}
+
+      
+
+      <a class="lb-header-cart lb-cart-drawer-opener">
+        {% include 'lb-icon-cart.liquid' %}
+        {% if cart.item_count > 0 %}<div class="lb-header-cart-counter">{{ cart.item_count }}</div>{% endif %}
+        {% if cart.item_count > 0 %}<div class="lb-header-cart-active"></div>{%endif%}
+        <span class="lb-header-cart-after">Warenkorb</span>
+      </a>
+
+    </div>
+  
+</header>
+
+
+
+<!-- -------------- Mobile Navigation -------------- -->
+
+<div class="lb-mobile-nav"> 
+  
+     <div class="lb-mobile-nav-inner-header">
+      {% if section.settings.account_enabled %}
+        <a href="{% if routes.root_url != '/' %}{{ shop.url }}{{ routes.root_url }}{% endif %}/account" class="lb-mobile-nav-inner-header-account {% if customer %}lb-header-account-active{% endif %}">{% include 'lb-icon-customer.liquid' %}</a>
+      {% endif %}
+      <div class="lb-mobile-nav-inner-header-closer lb-cart-drawer-closer-upper">{% include 'lb-icon-close.liquid' %}</div>
+    </div>
+
+ 
+  <style>
+
+  .lb-mobile-nav-active {
+  -ms-overflow-style: none;  /* Internet Explorer and Edge */
+  scrollbar-width: none;  /* Firefox */
+  overflow: -moz-scrollbars-none;  /* Older Firefox */
+}
+
+.lb-mobile-nav-active::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, and newer versions of Opera */
+}
+    
+
+.lb-new-nav-design-item-ul {
+margin: 9px;
+}
+
+    .lb-mobile-nav-inner-header-closer, .lb-header-burger-menu {
+        cursor: pointer;
+    }
+    
+.lb-new-nav-design-item-link {
+  display: flex!important;
+  cursor: pointer;
+  align-items: center;
+  border-radius:9px!important;
+  line-height: 72px!important; 
+  font-size: 20px!important;
+  padding: 9px!important;
+  color: #3c3c3b!important;
+  background: #f2f2f2!important;
+  font-family: 'Bebas Neue'!important;
+}
+
+.lb-new-nav-design-item-link img {
+  width: 72px;
+  margin-right: 18px;
+}
+
+.lb-mobile-nav-sub-item-link-newdesign {
+  background: white!important;
+  padding: 9px 18px!important;
+  color: #3c3c3b!important;
+  cursor: pointer;
+  font-family: 'Bebas Neue'!important;
+  font-size: 20px!important;
+  line-height: 52px!important;
+}
+
+.lb-mobile-nav-sub-item-link-newdesign svg {
+  height: 30px;
+  width: 40px;
+}
+
+    .lb-mobile-nav-sub-item-newdesign {
+        background: white!important;
+      padding: 0px!important;
+    }
+
+    .lb-mobile-nav-sub-item-newdesign img {
+       max-width: 40px!important;
+    }
+    
+.lb-mobile-nav {
+    -ms-overflow-style: none!important;
+    scrollbar-width: none!important;
+  overflow: auto!important;
+}
+
+  
+    </style> 
+
+
+
+             
+
+  <div style="padding-bottom: 20px;">
+
+
+{% comment %}
+{% assign overall_current_date_time = 'now' | date: "%Y.%m.%d-%H:%M:%S" %}
+{% assign overall_set_full_time = settings.plannable-date-year | append: '.' | append: settings.plannable-date-month | append: '.' | append: settings.plannable-date-day | append: '-' | append: settings.plannable-date-time %}
+overall_current_date_time >= overall_set_full_time or customer.email 
+{% endcomment %}
+
+
+<!--
+ <div style="margin: 9px;">
+                  <a href="https://stoertebekker.com/pages/black-days" class="lb-mobile-nav-main-item-link lb-new-nav-design-item-link" style="background: black!important; color: white!important;">
+                  <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/sale_5074ffea-eabf-4fe8-bf9f-f8b58d7c69ec.png?v=1763831017" loading="lazy" style="border-radius: 15px;">
+                  BLACK WEEK
+            </a>
+    </div>
+  -->
+
+
+
+   
+
+<!--
+   <div style="margin: 9px 9px -100px 9px; z-index: 9; position: relative;">
+                <a href="https://stoertebekker.com/pages/geschenksets" class="lb-mobile-nav-main-item-link lb-new-nav-design-item-link" style="background: #284a39!important; color: white!important;">
+                  <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Frame_6c41a427-53eb-4add-9639-785adfbacfc0.png?v=1765182956" loading="lazy" style="border-radius: 15px;">
+                  <div style="line-height: 20px;">
+                  GESCHENKE
+                  <p style="font-size: 12px; text-transform: capitalize; font-family: 'Open Sans';">Perfekte Geschenk-Sets für Männer</p>
+                  </div>
+            </a>
+    </div>
+  -->
+
+
+
+    
+
+
+
+
+    {% for link in menu.links %} 
+      {% assign child_links = link.links %}
+      {% if child_links != blank %}
+        <ul class="lb-new-nav-design-item-ul">
+          <li class="lb-mobile-nav-main-item lb-new-nav-design-item">
+            <a class="lb-mobile-nav-main-item-link lb-new-nav-design-item-link">
+
+
+              {% if link.title contains 'Rasur' or link.title == 'Shave' %}
+                <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Artboard_Copy_11_36e02851-cbed-444e-82d9-6695014bf74a.png?v=1697061075" loading="lazy">
+                <div class="as-st-0016-container"><p class="as-st-0016-title">{{ link.title }}</p><p class="as-st-0016-text">{% if canonical_url contains '.com/en' %}All you need for shaving. {% else %}Alles was Du für Deine Rasur brauchst. {% endif %}</p></div>
+              {%  elsif link.title == 'Bart' or link.title == 'Beard' %}
+                <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Artboard_Copy_10_624b58f0-3c4a-4fd1-b079-1bf87bdaa485.png?v=1696438594" loading="lazy">
+                <div class="as-st-0016-container"><p class="as-st-0016-title">{{ link.title }}</p><p class="as-st-0016-text">{% if canonical_url contains '.com/en' %}Groom your beard and shape it.{% else %}Pflege Deinen Bart und bring ihn in Form.{% endif %}</p></div>
+             
+                 {% elsif link.title == 'Körper & Haar' or link.title == 'Body & Hair' %}
+                <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Artboard_Copy_5_2f5c8aa0-6825-4c77-9609-9d85dbf7a402.png?v=1696437447" loading="lazy">
+                <div class="as-st-0016-container"><p class="as-st-0016-title">{{ link.title }}</p><p class="as-st-0016-text">{% if canonical_url contains '.com/en' %}Our products for clean hair & body.Click to apply{% else %}Unsere Produkte für gereinigtes Haar & Körper.{% endif %}</p></div>
+             
+                {% elsif link.title contains 'uns' %}
+                  <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Artboard_Copy_6_00e7e934-6b7f-49b0-83d5-68f72dd9bfb6.png?v=1696438595" loading="lazy">
+                  {{ link.title }}
+              {% else %}    
+                    {{ link.title }}
+               {% endif %}
+              
+              <div class="lb-mobile-nav-main-item-arrow">{% include 'lb-icon-arrow-down-2.liquid' %}</div>
+            </a>
+            <ul class="lb-mobile-nav-sub-item lb-mobile-nav-sub-item-newdesign">
+              <li>
+                {% for sub_link in child_links %}
+                  <a href="{{ sub_link.url }}" class="lb-mobile-nav-sub-item-link lb-mobile-nav-sub-item-link-newdesign">
+                    {% for block in section.blocks %}
+                  		{% assign mobilesubimagetitle = block.settings.subimgtitle %}	
+                  	
+                    {% if sub_link.title contains 'Bartöl' or sub_link.title contains 'Bartbalm' or sub_link.title contains 'Bartkamm' or sub_link.title contains 'Bartbürste' or sub_link.title contains 'Rasierseife' or sub_link.title contains 'Rasiermesser' %}
+                    	{% if sub_link.title == mobilesubimagetitle %}<img src="{{ block.settings.subimgurl | img_url: '200x' }}" loading="lazy" style="position: relative; top: -12px;">{%endif%}
+                    {%else%}
+                    	{% if sub_link.title == mobilesubimagetitle %}<img src="{{ block.settings.subimgurl | img_url: '200x' }}" loading="lazy" {% if sub_link.title contains 'Bartstyling' %}style="position: relative; top: -9px;"{% endif%}>{%endif%}
+                    {%endif%}
+                    
+                    
+                	{% endfor %}
+                    {{ sub_link.title }}</a>
+                {% endfor %}
+              </li> 
+            </ul>
+          </li>
+        </ul>
+      {% else %}
+        {% unless link.title == 'Sale' and canonical_url contains '-ch' %} 
+        <ul class="lb-new-nav-design-item-ul"
+          <li class="lb-new-nav-design-item">
+            <a href="{{ link.url }}" class="lb-mobile-nav-main-item-link lb-new-nav-design-item-link" {% if link.title == 'Sale' %}style="background: linear-gradient(to right, #0b150a 0%, #545524 100%)!important;"{% endif %}>
+              {% if link.title == '🎁 10€' or link.title == 'Gutschein'%} 
+                <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Artboard_Copy_8_97e0f564-2e4e-4845-aeef-cce322147ea6.png?v=1696438592" loading="lazy">
+                {% if link.title == '🎁 10€' %}
+                  10€ Geschenk
+                {% elsif link.title == 'Hilfe' %}
+                  Hilfe & Kontakt
+                {% elsif link.title == 'Sale' %} 
+                 Summer Sale
+                {% endif %}
+              {% elsif link.title == 'Hilfe' %}
+                <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Artboard_Copy_264_4390f4a3-4906-4b5c-b821-21464727aac3.png?v=1697198401" loading="lazy">
+                {{ link.title }}
+              {% elsif link.title == 'Körper & Haar' or link.title == 'Body & Hair' %}
+                <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Artboard_Copy_5_2f5c8aa0-6825-4c77-9609-9d85dbf7a402.png?v=1696437447" loading="lazy">
+                <div class="as-st-0016-container"><p class="as-st-0016-title">{{ link.title }}</p><p class="as-st-0016-text">{% if canonical_url contains '.com/en' %}Our products for clean hair & body.{% else %}Unsere Produkte für gereinigtes Haar & Körper.{% endif %}</p></div>
+              {% elsif link.title == 'Sets' %}
+                <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Artboard_e13349e4-7a6d-4cf0-b0db-8bf54efbf047.png?v=1696439458" loading="lazy">
+                <div class="as-st-0016-container"><p class="as-st-0016-title">{{ link.title }}</p><p class="as-st-0016-text">{% if canonical_url contains '.com/en' %}Everything for your daily grooming routine.{% else %}Alles für deine tägliche Pflegeroutine.{% endif %}</p></div>
+                       {% elsif link.title == 'Neuheiten' or link.title == 'New' %}
+                <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/neu_af3e3097-dd00-4e1d-8aac-11ae05072a36.png?v=1721236409" loading="lazy">
+                <div class="as-st-0016-container"><p class="as-st-0016-title">{{ link.title }}</p><p class="as-st-0016-text">{% if canonical_url contains '.com/en' %}Discover our new products.{% else %}Entdecke unsere neuen Produkte.{% endif %}</p></div>
+                {% elsif link.title == 'Pomade' %}
+                <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/pomade.webp?v=1716879500" loading="lazy">
+                <div class="as-st-0016-container"><p class="as-st-0016-title">{{ link.title }}</p><p class="as-st-0016-text">Coming soon...</p></div>
+              {% elsif link.title == 'Sale' %}
+                <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Frame_8dbf0720-74b6-4aa9-b644-f978587916f2.png?v=1756018015" loading="lazy" style="border-radius: 11px; overflow: hidden;">
+                <span style="color: #e3bb59!important;">Summer Sale</span>
+                {% elsif link.title == 'Adventskalender' %}
+                <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0241_a.png?v=1753885981" loading="lazy">
+                Adventskalender
+                   {% elsif link.title == 'Geschenke' %}
+                <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/gift-icon_copy_4_1.png?v=1765149165" loading="lazy">
+                <div class="as-st-0016-container"><p class="as-st-0016-title">  Geschenke</p>
+<p class="as-st-0016-text">Perfekte Geschenk-Sets für Männer</p></div>
+                 {% elsif link.title == 'Oster Sale' %}
+                <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Artboard_Copy_334.png?v=1744498788" loading="lazy">
+                <div class="as-st-0016-container"><p class="as-st-0016-title">  Oster Sale</p>
+<p class="as-st-0016-text">Spare bis zu -30% </p></div>
+              {% else %}
+                {{ link.title }}
+              {% endif %}
+            </a>
+        </ul>
+          {% endunless %}
+      {% endif %}
+    {% endfor %}
+
+    </div>
+                  
+
+
+    
+  
+         {% comment %}
+
+  	<div class="lb-mobile-nav-inner-nav">
+    {% for link in menu.links %}
+      {% assign child_links = link.links %}
+      {% if child_links != blank %}
+        <ul>
+          <li class="lb-mobile-nav-main-item">
+            <a class="lb-mobile-nav-main-item-link">{{ link.title }}
+              <div class="lb-mobile-nav-main-item-arrow">{% include 'lb-icon-arrow-down.liquid' %}</div>
+            </a>
+            <ul class="lb-mobile-nav-sub-item">
+              <li>
+                {% for sub_link in child_links %}
+                  <a href="{{ sub_link.url }}" class="lb-mobile-nav-sub-item-link">
+                    {% for block in section.blocks %}
+                  		{% assign mobilesubimagetitle = block.settings.subimgtitle %}	
+                  	
+                    {% if sub_link.title contains 'Bartöl' or sub_link.title contains 'Bartbalm' or sub_link.title contains 'Bartkamm' or sub_link.title contains 'Bartbürste' or sub_link.title contains 'Rasierseife' or sub_link.title contains 'Rasiermesser' %}
+                    	{% if sub_link.title == mobilesubimagetitle %}<img src="{{ block.settings.subimgurl | img_url: '200x' }}" loading="lazy" style="position: relative; top: -12px;">{%endif%}
+                    {%else%}
+                    	{% if sub_link.title == mobilesubimagetitle %}<img src="{{ block.settings.subimgurl | img_url: '200x' }}" loading="lazy">{%endif%}
+                    {%endif%}
+                    
+                    
+                	{% endfor %}
+                    {{ sub_link.title }}</a>
+                {% endfor %}
+              </li> 
+            </ul>
+          </li>
+        </ul>
+      {% else %}
+        <ul>
+          <li>
+            <a href="{{ link.url }}" class="lb-mobile-nav-main-item-link">{{ link.title }}</a>
+        </ul>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+{% endcomment %}
+
+
+  
+<div class="lb-nav-higlight">
+<a href="{% if routes.root_url != '/' %}{{ shop.url }}{{ routes.root_url }}{% endif %}/products/gentleman-essential-set" >
+  <div class="as-st-0016-overlay"></div>
+  <div class="as-st-0016-ges-header"
+    style="background-image: url(https://cdn.shopify.com/s/files/1/0317/7116/4804/files/MobileMenuDrawerHighlightBild.png?v=1715951924);">
+    <p class="as-st-0016-ges-header-text">Gentleman Essential Set</p>
+  </div>
+  <div class="as-st-0016-ges-content">
+    <p class="as-st-0016-ges-content-header">{% if canonical_url contains '.com/en' %}Our Highlight:{% else %}Unser Highlight:{% endif %}</p>
+    <p class="as-st-0016-ges-content-info">{% if canonical_url contains '.com/en' %}The perfect start for a shave with style.{% else %}Der perfekte Einstieg für eine Rasur mit Stil.{% endif %}</p>
+    <button class="as-st-0016-ges-content-button">{% if canonical_url contains '.com/en' %}Discover now{% else %}Jetzt entdecken{% endif %}</button>
+  </div>
+</a>
+</div>
+
+  
+</div>
+
+<!-- -------------- Header Search -------------- -->
+ 
+<form action="{% if routes.root_url != '/' %}{{ shop.url }}{{ routes.root_url }}{% endif %}/search" method="get" class="lb-header-search-bar">
+  <input placeholder="{{section.settings.search_placeholder}}" autocomplete="off" required type="text" name="q" class="lb-header-search-bar-field" id="lb-header-search-bar-field" value="{{search.terms  | escape}}" id="result-q" /> 
+  <button type="submit" class="lb-header-search-bar-submit">{% include 'lb-icon-search.liquid' %}</button>
+  <div class="lb-header-search-bar-recommendations">
+    <p>{% if canonical_url contains '.com/en' %}Maybe something already there?{% else %}Vielleicht schon etwas dabei?{% endif %}</p>
+ 	{% for block in section.blocks %}
+    	{% if block.settings.search_recommendations_text == blank %}{% else %}
+        	<a href="{{ block.settings.search_recommendations_url }}">{{ block.settings.search_recommendations_text }}</a>
+    		<style>.lb-header-search-bar-recommendations p {display: block!Important;}</style>
+    	{%endif %}
+    {% endfor %}
+  </div>
+</form>
+
+<!-- -------------- Overlays -------------- -->
+
+<div class="lb-cart-drawer-overlay-upper lb-cart-drawer-closer-upper"></div>
+<div class="lb-cart-drawer-overlay-under lb-cart-drawer-closer-under"></div>
+
+
+
+<!------------ Lb Header Sections Settings ------------>  
+
+<style>
+  
+  {{ section.settings.header_font_family | font_face }}
+  
+  .lb-header {
+    background: {{ section.settings.header_bg }};
+    top: {{ section.settings.benefitsheight}}px;
+  }
+  
+  .lb-mobile-nav {
+    background: {{ section.settings.header_bg }}!important;
+  }
+
+  .lb-header-cart svg path, .lb-header-search-icon svg path, .lb-header-account svg path, .lb-mobile-nav-inner-header-account svg path, .lb-header-burger-menu svg line, .lb-mobile-nav-inner-header-closer svg line, .lb-mobile-nav-main-item-arrow svg polyline, .lb-header-nav-main-item-link svg polyline {
+  	stroke: {{ section.settings.header_icon_color_pick }};
+  }
+  
+   .lb-header-nav-main-item-link  {
+  	font-size: {{ section.settings.header_font_size }}px;
+    color: {{ section.settings.header_font_color }};
+    font-family: {{ section.settings.header_font_family.family }};
+  }
+
+  .lb-header-nav-main-inner-item ul {
+    background: {{ section.settings.header_sub_bg }};
+  }
+  
+  .lb-header-nav-sub-item {
+    color: {{ section.settings.header_font_color_submenu }};
+    font-size: {{ section.settings.header_font_size }}px;
+    font-family: {{ section.settings.header_font_family.family }};
+  }
+  
+  .lb-mobile-nav-main-item-link {
+  	font-size: {{ section.settings.header_font_size }}px;
+    color: {{ section.settings.header_font_color }};
+    font-family: {{ section.settings.header_font_family.family }};
+  }
+  
+  .lb-mobile-nav-sub-item-link {
+  	font-size: {{ section.settings.header_font_size }}px;
+    color: {{ section.settings.header_font_color }};
+    font-family: {{ section.settings.header_font_family.family }};
+  }
+        
+  .lb-header-search-bar-active {
+	top: calc({{ section.settings.benefitsheight }}px + 60px);
+  }
+  
+  .lb-header-paddingtop {
+	height: calc({{ section.settings.benefitsheight }}px + 60px);
+  }
+  
+  .lb-fixed-info {
+   	height: {{ section.settings.benefitsheight}}px;
+    background: {{ section.settings.benefitsback}}; 
+    color: {{ section.settings.benefits_text_color}};
+  }
+  
+  .lb-header-logo img {
+	width: {{ section.settings.header_logosize }}px;
+  }
+  
+  .lb-header-cart-active {
+  	background-color: {{ section.settings.warenkorb_bg }};
+  }
+
+  .lb-header-cart-counter {
+	background: {{ section.settings.warenkorb_active_color }};
+	color: {{ section.settings.warenkorb_color }};
+  }
+  
+
+  
+  @media only screen and (max-width: {{ section.settings.menu_break_point }}px) {
+    
+    .lb-header-account {
+    	display: none!important;
+    }
+    
+    .lb-header-burger-menu {
+		display: block!important;
+	}
+
+	.lb-header-nav {
+		display: none!important;
+	}
+  
+  }
+  
+</style>
+  
+
+<!------------ Lb Accounting Theme Settings ------------> 
+  
+<style>
+
+  .lb-accounting-btn {
+	background: {{ settings.theme_btn_bg_color }};
+	color: {{ settings.theme_btn_text_color }};
+  }
+  
+</style>
+
+
+{% schema %}
+{
+  "name":{
+    "en":"Navigation",
+    "de":"Navigation"
+  },
+  "settings":[
+
+    {
+      "type":"header",
+      "content":{
+        "de":"USP Banner",
+        "en":"USP banner"
+      },
+      "info": "Überzeuge deine Kunden mit einem USP Banner über der Navigation."
+    },
+    {
+      "id":"benefitsheight",
+      "type":"range",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 30,
+      "label": "USP Banner höhe in px"
+    },
+	{
+      "id":"benefitsback",
+      "type":"color",
+      "default":"#F2F2F2",
+      "label": "Hintergrundfarbe"
+    },
+    {
+      "id":"benefits_text_color",
+      "type":"color",
+      "default":"#000",
+      "label": "Textfarbe"
+    },
+    {
+      "id":"first_benefit_img",
+      "type":"image_picker",
+      "label": "Benefit Icon"
+    },
+	{
+      "id":"first_benefit",
+      "type":"text",
+      "label": "USP 1"
+    },
+    {
+      "id":"second_benefit_img",
+      "type":"image_picker",
+      "label": "Benefit Icon"
+    },
+    {
+      "id":"second_benefit",
+      "type":"text",
+      "label": "USP 2"
+    },
+    {
+      "id":"third_benefit_img",
+      "type":"image_picker",
+      "label": "Benefit Icon"
+    },
+    {
+      "id":"third_benefit",
+      "type":"text",
+      "label": "USP 3"
+    },
+    {
+      "type": "paragraph",
+      "content": "Oder ersetze den Part mit HTML"
+    },
+    {
+      "id":"fullsize_benefit_html",
+      "type":"liquid",
+      "label": "HTML"
+    },
+    {
+      "type":"header",
+      "content": "Navigation",
+	  "info": "Definiere das Styling Deiner Navigation."
+    },
+    {
+      "type":"image_picker",
+      "id":"logo",
+      "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "header_logosize",
+      "min": 20,
+      "max": 250,
+      "step": 5,
+      "unit": "px",
+      "label": "Logogröße",
+      "default": 100
+    },
+    {
+      "type": "paragraph",
+      "content": "Wähle die passenden Farben:"
+    },
+    {
+      "id":"header_bg",
+      "type":"color",
+      "default":"#ffffff",
+      "label": "Hauptmenü: Hintergrundfarbe"
+    },
+    {
+      "id":"header_font_color",
+      "type":"color",
+      "default":"#000000",
+      "label": "Hauptmenü: Textfarbe"
+    },
+    {
+      "id":"header_sub_bg",
+      "type":"color",
+      "default":"#ffffff",
+      "label": "Submenü Hintergrundfarbe"
+    },
+    {
+      "id":"header_font_color_submenu",
+      "type":"color",
+      "default":"#000000",
+      "label": "Submenü Textfarbe"
+    },
+    {
+      "id":"header_icon_color_pick",
+      "type":"color",
+      "default":"#000000",
+      "label": "Iconfarbe"
+    },
+    {
+      "id":"header_font_family",
+      "type":"font_picker",
+      "default": "helvetica_n4",
+      "label": "Schriftfamilie"
+    },
+    {
+      "type": "range",
+      "id": "header_font_size",
+      "min": 8,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Schriftgröße",
+      "default": 14
+    },
+    {
+      "type":"header",
+      "content": "Menü",
+      "info": "Lege fest welches deiner Menüs in der Navigation genutzt werden soll und ab wann das mobile Menü angezeigt wird."
+    },
+    {
+      "type":"link_list",
+      "id":"main_linklist",
+      "label": "Menü",
+      "default":"main-menu"
+    },
+    {
+      "id":"menu_break_point",
+      "type":"number",
+      "label": "Mobile Menü anzeigen",
+      "info": "Ab welcher Screenbreite in Pixel soll das mobile Menü angezeigt werden?",
+      "default": 600
+    },
+    {
+      "type":"header",
+      "content": "Suchfunktion",
+      "info": "Passe deine Suchfunktion in der Navigation an."
+    },
+    {
+      "id":"search",
+      "type":"checkbox",
+      "default":true,
+      "label": "Suchfunktion einblenden"
+    },
+    {
+      "id":"search_placeholder",
+      "type":"text",
+      "default": "Produkte finden...",
+      "label": "Platzhalter Text",
+	  "info": "Info: Vorschläge können auf der linken Seite hinzugefügt werden."
+    },
+    {
+      "type":"header",
+      "content": "Account",
+      "info": "Passe dein Account Icon in der Navigation an."
+    },
+    {
+      "id":"account_enabled",
+      "type":"checkbox",
+      "default":true,
+      "label": "Aktiviert"
+    },
+    {
+      "type": "header",
+      "content": "Warenkorb Icon",
+      "info": "Passe die Farben deines Warenkorb Icons an."
+    },
+    {
+      "id":"warenkorb_bg",
+      "type":"color",
+      "default":"#F0ECE6",
+      "label": "Icon: Aktiv Hintergrundfarbe"
+    },
+    {
+      "id":"warenkorb_active_color",
+      "default":"#000",
+      "type":"color",
+      "label": "Zähler: Hintergrundfarbe"
+    },
+    {
+      "id":"warenkorb_color",
+      "default":"#fff",
+      "type":"color",
+      "label": "Zähler: Textfarbe"
+    }
+  ],
+    "blocks": [
+      {
+        "type": "footer_column_menu",
+        "name": "Navigationslinkbild",
+        "settings": [
+          {
+            "type":"text",
+            "id":"subimgtitle",
+            "label": "Linktitel"
+          },
+          {
+            "type":"image_picker",
+            "id":"subimgurl",
+            "label": "Linkbild"
+          }
+        ]
+      },
+      {
+        "type": "search_recommendations",
+        "name": "Suchvorschläge",
+        "settings": [
+          {
+            "type":"text",
+            "id":"search_recommendations_text",
+            "label": "Surchvorschlagtext"
+          },
+          {
+            "type":"text",
+            "id":"search_recommendations_url",
+            "label": "Surchvorschlag url"
+          }
+        ]
+      }
+    ]
+}
+{% endschema %}

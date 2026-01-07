@@ -1,0 +1,109 @@
+<script>
+    window.dataLayer = window.dataLayer || [];
+      !function() {
+          {% if customer %}
+              var object = {
+                  "visitorType": "Logged In",
+                  "visitorId": "{{ customer.id | remove: "'" }}",
+                  "CustomerId": "{{ customer.id | remove: "'" }}",
+                  "CustomerOrdersCount": "{{ customer.orders_count }}",
+                  "CustomerTotalSpent": "{{ customer.total_spent | divided_by: 100 }}",
+              };
+        
+              {% if customer.id %}
+                  object['CustomerId'] = "{{ customer.id }}",
+                  object['sha_customerId'] = "{{ customer.id | strip | downcase | sha256}}",
+              {% endif %}
+            
+              {% if customer.first_name %}
+                  object['CustomerFirstName'] = "{{ customer.first_name }}",
+                  object['sha_fn'] = "{{ customer.first_name | strip | downcase | sha256}}",
+              {% endif %}
+              
+              {% if customer.last_name %}
+                  object['CustomerLastName'] = "{{ customer.last_name }}",
+                  object['sha_ln'] = "{{ customer.last_name | strip | downcase | sha256}}",
+              {% endif %}
+              
+              {% if customer.email %}
+                  object['CustomerEmail'] = "{{ customer.email }}",
+                  object['sha_email'] = "{{ customer.email | strip | sha256}}",
+              {% endif %}
+              
+              {% if customer.default_address.phone %}
+                  object['CustomerPhone'] = "{{ customer.default_address.phone }}",
+                  object['sha_ph'] = "{{ customer.default_address.phone | strip | remove: "+" | sha256}}",
+              {% endif %}
+              
+              {% if customer.default_address.city %}
+                  object['CustomerCity'] = "{{ customer.default_address.city }}",
+                  object['sha_ct'] = "{{ customer.default_address.city | strip | downcase | sha256}}",
+              {% endif %}
+              
+              {% if customer.default_address.zip %}
+                  object['CustomerZip'] = "{{ customer.default_address.zip }}",
+                  object['sha_zp'] = "{{ customer.default_address.zip | strip | downcase | sha256}}",
+              {% endif %}
+              
+              {% if customer.default_address.country_code %}
+                  object['CustomerCountryCode'] = "{{ customer.default_address.country_code }}",
+                  object['sha_country'] = "{{ customer.default_address.country_code | strip | downcase | sha256}}",
+              {% endif %}
+              
+              window.dataLayer.push(object);
+  
+          {% else %}
+              window.dataLayer.push({
+                  "visitorType": "Guest",
+              });
+          {% endif %}
+      }(0)
+    //Event ID Generator
+    window.temp_track_store = window.temp_track_store || {};
+    window.temp_track_store.event_id = window.temp_track_store.event_id || {};
+    window.temp_track_store.generateEventId = function (event) {
+      var length = 15
+      var result = "";
+      var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+      var charactersLength = characters.length;
+      for ( var i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+      return event+"_"+result+"_"+new Date().getTime();
+    }
+  
+    var generateEventId = window.temp_track_store.generateEventId;
+  
+    //Page View
+    window.temp_track_store.event_id["gtm.js"] = generateEventId("gtm.js");
+    //Dom Ready
+    window.temp_track_store.event_id["gtm.dom"] = generateEventId("gtm.dom");
+    //Window Loaded
+    window.temp_track_store.event_id["gtm.load"] = generateEventId("gtm.load");
+
+    //Login Event
+    {% if customer %}
+        var _login = sessionStorage.getItem('login_event');
+        var event_id = generateEventId('login');
+        window.temp_track_store.event_id['login'] = event_id;
+        if (_login != "false") {
+            window.dataLayer.push({
+                event: 'login',
+                event_id: event_id,
+            })
+        }
+        sessionStorage.setItem('login_event',false);
+    {% else %}
+        if (sessionStorage.getItem('login_event') !== null) sessionStorage.removeItem('login_event');
+    {% endif %}
+  </script>
+
+<!-- Google Tag Manager --> <script> !function(){"use strict";function l(e){for(var t=e,r=0,n=document.cookie.split(";");r<n.length;r++){var o=n[r].split("=");if(o[0].trim()===t)return o[1]}}function s(e){return localStorage.getItem(e)}function u(e){return window[e]}function A(e,t){e=document.querySelector(e);return t?null==e?void 0:e.getAttribute(t):null==e?void 0:e.textContent}var e=window,t=document,r="script",n="dataLayer",o="https://data.stoertebekker.com",a="",i="TmXxidurpogq",c="3=aWQ9R1RNLVA5NDRQQzk%3D&sort=asc",g="cookie",v=["_y","_shopify_y"],E="",d=!1;try{var d=!!g&&(m=navigator.userAgent,!!(m=new RegExp("Version/([0-9._]+)(.*Mobile)?.*Safari.*").exec(m)))&&16.4<=parseFloat(m[1]),f="stapeUserId"===g,I=d&&!f?function(e,t,r){void 0===t&&(t="");var n={cookie:l,localStorage:s,jsVariable:u,cssSelector:A},t=Array.isArray(t)?t:[t];if(e&&n[e])for(var o=n[e],a=0,i=t;a<i.length;a++){var c=i[a],c=r?o(c,r):o(c);if(c)return c}else console.warn("invalid uid source",e)}(g,v,E):void 0;d=d&&(!!I||f)}catch(e){console.error(e)}var m=e,g=(m[n]=m[n]||[],m[n].push({"gtm.start":(new Date).getTime(),event:"gtm.js"}),t.getElementsByTagName(r)[0]),v=I?"&bi="+encodeURIComponent(I):"",E=t.createElement(r),f=(d&&(i=8<i.length?i.replace(/([a-z]{8}$)/,"kp$1"):"kp"+i),!d&&a?a:o);E.async=!0,E.src=f+"/"+i+".js?"+c+v,null!=(e=g.parentNode)&&e.insertBefore(E,g)}(); </script> <!-- End Google Tag Manager --> 
+  <script>
+    function gtag(){dataLayer.push(arguments);}
+  </script>
+    <script src="https://data.stoertebekker.com/plugins/ua/ec.js" async></script>
+  <script src="https://data.stoertebekker.com/plugins/ua/linkid.js" async></script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/core.js" async></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/sha256.js" async></script>

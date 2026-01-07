@@ -1,0 +1,101 @@
+<div class="main_wrap-trust_sec">
+<div class="trust_sec">
+  {% for block in section.blocks %}
+      <div class="trust_inner">
+        <img src="{{ block.settings.trst_img | img_url : 'master' }}">
+        <div class="trust_content">
+          <p class="trust_heading">{{ block.settings.trst_heading }}</p>
+          <p class="desc_trust">{{ block.settings.trst_desc }}</p>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+</div>
+{% schema %}
+  {
+    "name": "Trust section",
+    "settings": [
+      
+    ],
+    "blocks": [
+    {
+      "type": "text",
+      "name": "Trust section",
+      "settings": [
+        {
+          "id": "trst_img",
+          "type": "image_picker",
+          "label": "Trust Icon"
+        },
+        {
+          "id": "trst_heading",
+          "type": "text",
+          "label": "Trust Heading"
+        },
+        {
+          "id": "trst_desc",
+          "type": "textarea",
+          "label": "Trust description"
+        }
+      ]
+    }
+    ]
+  }
+{% endschema %}
+
+<style>
+  .order-summary__sections {
+    height: auto;
+}
+  .trust_inner {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 25px;
+}
+.trust_inner img {
+    margin-right: 20px;
+    margin-top: 10px;
+}
+.trust_inner .trust_heading {
+ font-weight: 600;
+ color: #000;
+ font-size: 14px;
+ margin-bottom: 5px;
+}
+.trust_inner .desc_trust {
+    color: #615F5A;
+    font-size: 13px;
+    font-weight: 400;
+}
+  .trust_sec {
+    border-top: 1px solid rgba(167,165,157,0.34);
+    padding-top: 20px;
+}
+  .step__footer .trust_sec {
+    display: none;
+}
+  @media screen and (max-width:999px){
+    .step__footer {
+    flex-direction: column!important;
+}
+
+      .step__footer .trust_sec {
+          display: block;
+        border:0px;
+            padding: 20px 0;
+      }
+      .sidebar__content .main_wrap-trust_sec {
+          display: none;
+      }
+    .trust_inner .trust_heading {
+       font-size: 13px;
+      }
+    .trust_inner .desc_trust {
+        font-size: 12px;
+    }
+    .trust_inner img {
+    margin-right: 15px;
+    }
+  }
+  
+</style>

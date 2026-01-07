@@ -1,0 +1,58 @@
+<style>
+
+.section--payment-method fieldset {
+  display : flex;
+  flex-direction : column;
+}
+
+.section--payment-method fieldset .radio-wrapper[data-select-gateway*="47744319620"] {
+  order : 1;
+}
+
+.section--payment-method fieldset .radio-wrapper[data-subfields-for-gateway*="47744319620"] {
+  order : 2;
+}
+
+.section--payment-method fieldset .radio-wrapper[data-select-gateway*="PaymentExperienceConfiguration_214237316"] {
+  order : 3;
+}
+
+.section--payment-method fieldset .radio-wrapper[data-subfields-for-gateway*="PaymentExperienceConfiguration_214237316"] {
+  order : 4;
+}
+
+.section--payment-method fieldset .radio-wrapper[data-select-gateway*="47749103748"] {
+  order : 5;
+}
+
+.section--payment-method fieldset .radio-wrapper[data-subfields-for-gateway*="47749103748"] {
+  order : 6;
+}
+
+.section--payment-method fieldset .radio-wrapper[data-select-gateway*="47744090244"] {
+  order : 7;
+  border-top : 1px solid rgb(217, 217, 217);
+}
+
+.section--payment-method fieldset .radio-wrapper[data-subfields-for-gateway*="47744090244"] {
+  order : 8;
+}
+
+.section--payment-method fieldset .radio-wrapper[data-select-gateway*="PaymentExperienceConfiguration_214270084"] {
+  order : 9;
+}
+
+.section--payment-method fieldset .radio-wrapper[data-subfields-for-gateway*="PaymentExperienceConfiguration_214270084"] {
+  order : 10;
+}
+  
+</style>
+
+<script>
+  
+    if(Shopify.Checkout.step === 'payment_method') {
+    let payPalInput = document.querySelector('.radio-wrapper[data-gateway-name="paypal"] input.input-radio');
+    payPalInput.click();
+  }
+  
+</script>

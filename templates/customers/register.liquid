@@ -1,0 +1,21 @@
+{% form 'create_customer' %}
+	<div class="lb-accounting">
+  		<div class="lb-accounting-holder">
+			<h1 class="lb-accounting-headline">Konto erstellen</h1>
+
+            {{ form.errors | default_errors }}
+
+			<input type="text" value="" placeholder="Vorname…" required name="customer[first_name]" id="first_name" class="lb-accounting-input" size="30" />
+			<input type="text" value="" placeholder="Nachname…" required name="customer[last_name]" id="last_name" class="lb-accounting-input" size="30" />
+			<input type="email" value="" placeholder="Email…" required name="customer[email]" id="email" class="lb-accounting-input" size="30" />
+			<input type="password" value="" placeholder="Passwort…" required name="customer[password]" id="password" class="lb-accounting-input" size="30" />
+        
+			<div class="lb-accounting-terms">		
+				<input type="checkbox" id="data-protection-cb" placeholder="Datenschutz" name="customer[accepts_marketing]" checked="checked"/>
+				<label for="data-protection-cb" class="">Ich stimme den <a href="/policies/privacy-policy">Datenschutzbedingungen</a> zu</label>
+			</div>
+			<input class="lb-accounting-btn" type="submit" value="Konto erstellen" />
+			<a class="lb-accounting-link" href="{% if routes.root_url != '/' %}{{ shop.url }}{{ routes.root_url }}{% endif %}/account/login">Du hast bereits ein Konto? <u>Anmelden</u></a>
+        </div>
+	</div>  
+{% endform %}

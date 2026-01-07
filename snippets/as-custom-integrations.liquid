@@ -1,0 +1,548 @@
+{% comment %} Basic Functions {% endcomment %}
+<script>
+  /**
+   * Waits for the specified element(s) to be present in the DOM and then executes a callback function.
+   *
+   * @param {string} selector - The CSS selector for the element(s) to wait for.
+   * @param {Function} callback - The callback function to execute when the element(s) are found.
+   * @param {boolean} [waitOnce=false] - Optional. Specifies whether to wait for the element(s) only once. Default is false.
+   */
+  function tsDev_waitForElement(selector, callback, waitOnce = false) {
+    if (typeof selector !== 'string') {
+      console.error('1. Argument: selector must be a string.');
+      return;
+    }
+
+    if (typeof callback !== 'function') {
+      console.error('2. Argument: callback must be a function.');
+      return;
+    }
+
+    if (typeof waitOnce !== 'boolean') {
+      console.error('3. Argument: waitOnce must be a boolean.');
+      return;
+    }
+
+    const observedElements = new Set();
+
+    const queryMethodType = waitOnce ? 'querySelector' : 'querySelectorAll';
+
+    const handleMutations = (mutationsList, observer) => {
+      const elements = waitOnce ? [document[queryMethodType](selector)] : document[queryMethodType](selector);
+      elements.forEach((element) => {
+        if (element && !observedElements.has(element)) {
+          observedElements.add(element);
+          callback(element);
+          if (waitOnce) {
+            observer.disconnect();
+            return;
+          }
+        }
+      });
+    };
+
+    const elements = waitOnce ? [document[queryMethodType](selector)] : document[queryMethodType](selector);
+    elements.forEach((element) => {
+      if (element && !observedElements.has(element)) {
+        observedElements.add(element);
+        callback(element);
+        if (waitOnce) {
+          return;
+        }
+      }
+    });
+
+    const observer = new MutationObserver(handleMutations);
+    observer.observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+      attributes: false,
+    });
+  }
+</script>
+{% comment %} Basic Functions {% endcomment %}
+
+
+
+
+
+
+
+
+<!--
+{% comment %} AS ST-0026 START {% endcomment %}
+{% style %}
+  .lb-header-cart-after,
+  .lb-header-burger-menu-after,
+  .lb-header-search-icon-after,
+  .lb-header-account-before {
+    display: none;
+  }
+  @media (min-width: 813px) {
+    .lb-header-cart svg {
+      top: 4px;
+    }
+    .lb-header-account svg {
+      position: relative;
+      top: 4px;
+    }
+  }
+{% endstyle %}
+{% comment %} AS ST-0026 END {% endcomment %}
+-->
+
+<!--
+{% comment %} AS ST-0013 START {% endcomment %}
+{% if template contains 'collection' %}
+  {% style %}
+    @media (max-width: 812px) {
+      .lb-cart-drawer-overlay-under,
+      .lb-cart-drawer-overlay-upper,
+      .lb-header-search-bar-active,
+      .lb-home-search-section.hidden {
+        display: none !important;
+      }
+      div.lb-home-search-section {
+        display: block !important;
+      }
+    }
+    @media only screen and (max-width: 600px) {
+      .lbsearcomenone {
+        display: none !important;
+      }
+    }
+
+    @media (max-width: 812px) {
+      .lb-home-search-section {
+        padding: 12px 9px;
+      }
+
+      .lb-home-search-section-holder {
+        max-width: 800px;
+        margin: auto;
+        position: relative;
+      }
+
+      .lb-home-search-input {
+        width: 100%;
+        display: block;
+        border-radius: 50px;
+        background: #f2f2f2;
+        border: none;
+        padding: 0px 18px;
+        line-height: 46px;
+        color: black;
+      }
+
+      .lb-home-search-input:placeholder .lb-home-search-input:focus {
+        color: black;
+      }
+
+      .lb-home-search-button {
+        position: absolute;
+        right: 18px;
+        top: 10px;
+        background: none;
+        border: none;
+        font-size: 16px;
+      }
+
+      .lb-home-search-button svg {
+        width: 24px;
+        height: 24px;
+        color: red;
+      }
+    }
+
+    @media only screen and (max-width: 600px) {
+      .lb-imageonly-homebanner-mobile {
+        display: block !important;
+      }
+
+      .lb-imageonly-homebanner-desktop {
+        display: none !important;
+      }
+    }
+    @media (min-width: 813px) {
+      div.as-st-0013 {
+        display: none !important;
+      }
+    }
+  {% endstyle %}
+  <script>
+    if (window.location.href.includes('/collections/') && window.innerWidth < 813) {
+      tsDev_waitForElement(
+        '.lb-header-search-icon',
+        (element) => {
+          try {
+            as_st_0013_addSearchBar();
+          } catch (error) {
+            console.error('Error adding search bar:', error);
+          }
+        },
+        true
+      );
+    }
+
+    window.addEventListener('resize', () => {
+      if (window.location.href.includes('/collections/') && window.innerWidth < 813) {
+        const asSt0013 = document.querySelector('.as-st-0013');
+        if (!asSt0013) {
+          try {
+            as_st_0013_addSearchBar();
+          } catch (error) {
+            console.error('Error adding search bar:', error);
+          }
+        }
+      }
+    });
+
+    function as_st_0013_addSearchBar() {
+      const form = document.createElement('form');
+      form.setAttribute('action', '/search');
+      form.setAttribute('method', 'get');
+      form.classList.add('search-form');
+
+      const formInput = document.createElement('input');
+      formInput.classList.add('lb-home-search-input');
+      formInput.setAttribute('placeholder', 'Wonach suchst Du?');
+      formInput.name = 'q';
+
+      const formWrapper = document.createElement('div');
+      formWrapper.classList.add('lb-home-search-section-holder');
+
+      const searchWrapper = document.createElement('div');
+      searchWrapper.classList.add('lb-home-search-section');
+      searchWrapper.classList.add('as-st-0013');
+      searchWrapper.id = 'search-section';
+
+      const searchButton = document.createElement('button');
+      searchButton.setAttribute('type', 'submit');
+      searchButton.classList.add('lb-home-search-button');
+      searchButton.innerHTML =
+        '<svg width="400px" height="400px" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"> <title>search copy</title> <g id="search-copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Group" transform="translate(-28.6391, -27.8641)" fill-rule="nonzero" stroke="#000000" stroke-width="30"><path d="M192.257726,319.785647 C221.559556,367.483555 261.676783,391.332508 312.609406,391.332508 C389.008341,391.332508 450.941915,329.398935 450.941915,253 C450.941915,176.601065 389.008341,114.667492 312.609406,114.667492 C236.210471,114.667492 174.276898,176.601065 174.276898,253 L52.6801549,268.044108 C33.5546091,270.806205 24.6515739,278.668051 25.9710495,291.629644 C27.2905251,304.591237 36.0214207,310.336595 52.1637362,308.865719 L150.103857,297.117569" id="Oval" transform="translate(238.3926, 253) rotate(-127) translate(-238.3926, -253)"></path></g></g></svg>';
+
+      searchWrapper.appendChild(formWrapper);
+      formWrapper.appendChild(form);
+      form.appendChild(formInput);
+      form.appendChild(searchButton);
+
+      const oldSearchIcon = document.querySelector('.lb-header-search-icon');
+      oldSearchIcon.style.display = 'none';
+      tsDev_waitForElement(
+        '[data-pf-type=Body] [data-pf-type=Layout]',
+        (bodyWrapper) => {
+          bodyWrapper.before(searchWrapper);
+        },
+        true
+      );
+    }
+  </script>
+{% endif %}
+{% comment %} AS ST-0013 END {% endcomment %}
+-->
+
+
+<!--
+{% comment %} AS ST-0035 START {% endcomment %}
+{% if template contains 'product' %}
+  {% style %}
+    .__pf.__pf_nRWeSajE .pf-47_ {
+      font-size: 10px;
+    }
+
+    .sc-ilfuhL .bpQaoh .pf-43_ {
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+
+    .sc-ilfuhL.bpQaoh.pf-56_,
+    .sc-dkYRCH.hYpqjU.pf-62_,
+    .sc-jHkVzv.dyVEVs.pf-3593_,
+    .sc-jHkVzv.dyVEVs.pf-645_,
+    .sc-jHkVzv.dyVEVs.pf-1321_ {
+      display: none;
+    }
+
+    [data-pf-type='Block'] > .lb-atc-benefits {
+      display: none !important;
+    }
+    div:has(> button.lb-cart-drawer-opener) {
+      max-height: none !important;
+    }
+    
+    .pf-image-1.lb-cta-payment,
+    img.sc-ilfuhL.fjsXRa.pf-1332_.pf-image-1 {
+      filter: grayscale(1);
+      padding-top: 16px;
+      padding-bottom: 16px;
+      border-top: 1px solid #e5e5e5;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    .sc-ilfuhL.bpQaoh.pf-43_ {
+      display: flex;
+      flex-direction: row;
+    }
+    [data-product-type='compare_at_price']:empty + div + div + p.sc-fmBCVi.laenLa.pf-47_.pf-text-1 {
+      width: auto;
+    }
+    p.sc-fmBCVi.laenLa.pf-47_.pf-text-1 {
+      width: 100%;
+    }
+
+    span.sc-iqVWFU.cmroxB.pf-49_ {
+      font-size: 10px;
+    }
+
+    .__pf.__pf_jAW44nqz .pf-59_,
+    .__pf.__pf_jAW44nqz .pf-56_,
+    .__pf.__pf_jAW44nqz .pf-1318_ {
+      max-height: fit-content !important;
+    }
+    p.sc-dFtzxp.kOHCjr.pf-4205_,
+    .__pf.__pf_nRWeSajE .pf-3612_ {
+      margin-top: 10px;
+    }
+
+    [data-pf-type='Custom.HTML'],
+    .__pf.__pf_jAW44nqz .pf-59_ {
+      overflow: visible;
+    }
+  {% endstyle %}
+  <script>
+    if (window.location.href.includes('/products/')) {
+      tsDev_waitForElement(
+        '.customPDPDeliveryTime',
+        (deliveryTimeElement) => {
+          try {
+            as_st_0035_modifyBenefits(deliveryTimeElement);
+          } catch (error) {
+            console.error('Error ST-0035:', error);
+          }
+        },
+        true
+      );
+    }
+
+    /*
+    function as_st_0035_modifyBenefits(aufLagderElement) {
+      const versandElements = document.querySelectorAll('.lb-pricing-new p span');
+      let versandElement = null;
+      versandElements.forEach((element) => {
+        if (element.textContent.includes('Versand')) {
+          versandElement = element;
+        }
+      });
+      const priceElement = document.querySelector('[data-product-type=price]');
+      if (versandElement && priceElement) {
+        const regex = /[\d,]+/;
+        const match = priceElement.textContent.match(regex);
+
+        if (match) {
+          const priceNumber = parseFloat(match[0].replace(',', '.'));
+          if (priceNumber > 49) {
+            versandElement.textContent = 'inkl. KOSTENLOSER Versand & Retouren';
+          } else {
+            versandElement.textContent = 'inkl. KOSTENLOSER Versand & Retouren ab 49€';
+          }
+        } else {
+          console.log('Kein Preis gefunden');
+        }
+      }
+      const outerDiv = document.createElement('div');
+      outerDiv.style.display = 'flex';
+      outerDiv.style.flexDirection = 'column';
+      outerDiv.style.paddingBottom = '12px';
+
+      function createInnerDiv(imgPath, textContent) {
+        const innerDiv = document.createElement('div');
+        innerDiv.style.marginTop = '12px';
+        innerDiv.style.display = 'flex';
+        innerDiv.style.flexDirection = 'row';
+        innerDiv.style.alignItems = 'center';
+        innerDiv.style.fontSize = 'small';
+
+        const img = document.createElement('img');
+        img.src = imgPath;
+        img.style.width = '24px';
+
+        const span = document.createElement('span');
+        span.textContent = textContent;
+        span.style.marginLeft = '8px';
+
+        innerDiv.appendChild(img);
+        innerDiv.appendChild(span);
+
+        return innerDiv;
+      }
+      */
+      
+      // Data for inner divs
+      const data = [
+        {
+          imgPath: 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/st_0035_2.png?v=1721378617',
+          textContent: '300.000+ glückliche Kunden',
+        },
+        {
+          imgPath: 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/st_0035.png?v=1721378617',
+          textContent: '100 Tage sorgenfrei testen',
+        },
+      ];
+
+      // Append inner divs to outer div
+      data.forEach((item) => {
+        const innerDiv = createInnerDiv(item.imgPath, item.textContent);
+        outerDiv.appendChild(innerDiv);
+      });
+
+      aufLagderElement.insertAdjacentElement('afterend', outerDiv);
+    }
+  </script>
+{% endif %}
+{% comment %} AS ST-0035 END {% endcomment %}
+-->
+
+
+
+<!--
+<script>
+
+  
+/* abscale ab-st-0009 */
+console.log('abscale ole ole');
+if (window.location.pathname.includes('/products/')) {
+  console.log('if funktioniert');
+  asDev_waitForJQuery();
+
+  async function asDev_waitForJQuery() {
+    await new Promise((resolve) => {
+      let intervalId;
+      const checkJQuery = () => {
+        if (typeof window.jQuery !== 'undefined') {
+          clearInterval(intervalId);
+          resolve();
+        }
+      };
+      checkJQuery();
+      intervalId = setInterval(checkJQuery, 100);
+      setTimeout(() => {
+        clearInterval(intervalId);
+        resolve();
+      }, 5000);
+    });
+    const $ = window.jQuery;
+
+    var as_st_0009_styles = $(`
+    <style>
+        .as-st-0009-div {
+            margin-top: 15px;
+            background: #F2F2F2;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            width: auto;
+        }
+        .as-st-0009-img {
+            box-shadow: 0px 4px 4px 0px #0000001A;
+            border-radius: 5px;
+            height: 84px;
+            width: 84px;
+            margin-right: 10px;
+        }
+        .as-st-0009-text {
+            font-family: "Open Sans";
+            font-size: 12px;
+            font-style: italic;
+            font-weight: 400;
+            line-height: 16px;
+            letter-spacing: 0em;
+            text-align: left;
+        }
+        .as-st-0009-who {
+            font-family: "Open Sans";
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 16px;
+            letter-spacing: 0em;
+            text-align: left;
+            padding-top: 10px;
+        }
+        [data-section-id="pf-357f"], [data-section-id="pf-c3e8"] {
+            padding-bottom: 0 !important;
+        }
+        [data-section-id="pf-488a"] {
+            margin-top: 0 !important;
+        }
+        @media (min-width: 768px) {
+            [data-section-id="pf-357f"], [data-section-id="pf-c3e8"] {
+                padding-bottom: 36px !important;
+            }
+            [data-section-id="pf-488a"] {
+                margin-top: 36px !important;
+            }
+        }
+    </style>
+    `);
+
+    $('.lb-new-send.lb-cart-drawer-opener').on('click', function (event) {
+      const isTrusted = event.originalEvent?.isTrusted ?? event.isTrusted;
+
+      if (!isTrusted) {
+        console.log('test2');
+        window['ablyft'] = window['ablyft'] || [];
+        window['ablyft'].push({
+          eventType: 'custom',
+          eventName: 'st-0009-click-to-add-custom',
+          eventValue: 0 // Optional
+        });
+      }
+    });
+
+
+    const header = $('.bekannt-aus.pf-lg-hide');
+    const header_parent = header.parent();
+    const img_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/AlexTorreto.png?v=1715950958';
+
+    if (header.length && header_parent.length) {
+      const div_main = $('<div>');
+      const img = $('<img>').attr('src', img_url);
+
+      {% if canonical_url contains '.com/en' %}
+      const p_text = $('<p>').text('I was skeptical at first, but now Im convinced. Great products and great cooperation with the Störtebekker team!');
+      const p_who = $('<p>').html('<span style="font-style: normal;"><span style="font-weight: 800;">Alex</span> - Torreto Barbershop</span>');
+      {% else %}
+      const p_text = $('<p>').text('Anfangs war ich skeptisch, aber mittlerweile bin ich überzeugt. Geile Produkte und geile Zusammenarbeit mit dem Team von Störtebekker!');
+      const p_who = $('<p>').html('<span style="font-style: normal;"><span style="font-weight: 800;">Alex</span> - Torreto Barbershop</span>');
+      {% endif %}
+        
+      div_main.addClass('as-st-0009-div');
+      img.addClass('as-st-0009-img');
+      p_text.addClass('as-st-0009-text');
+      p_who.addClass('as-st-0009-who');
+
+      if ($(window).width() >= 768) {
+        div_main.insertAfter(header);
+        as_st_0009_styles.insertAfter(header);
+      } else {
+        div_main.insertAfter(header_parent);
+        as_st_0009_styles.insertAfter(header_parent);
+      }
+      div_main.append(img);
+      div_main.append(p_text);
+      p_text.append(p_who)
+
+      $(window).resize(function () {
+        if ($(window).width() >= 768) {
+          div_main.insertAfter(header);
+        } else {
+          div_main.insertAfter(header_parent);
+        }
+      });
+    }
+  }
+}
+  
+</script>
+-->

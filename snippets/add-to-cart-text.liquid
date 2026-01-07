@@ -1,0 +1,5 @@
+{%- if product.selected_or_first_available_variant.metafields.custom.varianten_vorbestellung -%}
+  {{ 'products.product.pre_order_now' | t }}
+  {%- else -%}
+  {{ 'products.product.add_to_cart' | t }}
+{%- endif -%}

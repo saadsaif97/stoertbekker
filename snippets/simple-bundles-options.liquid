@@ -1,0 +1,255 @@
+<div id="{{ div_id }}" class="lb-new-set-selector">
+  {% for variant_option in variant.metafields.simple_bundles.variant_options.value %}
+    {% assign option_name_param = variant_option.optionName | downcase | replace: " ", "-" | strip %}
+    <label for="{{ option_name_param }}">{{ variant_option.optionName }}</label>
+    {% # SB Edits: START %}
+    <select id="{{ option_name_param }}" name="properties[{{ variant_option.optionName }}]" required data-loop="{{  forloop.index0 }}" {% if forloop.index0 > 2 %}class="disabled-form-sb"{% endif %}>
+      {% assign option_values = variant_option.optionValues | split: "," %}
+      {% assign option_inventories = variant_option.optionInventories | split: "," %}
+      {% if forloop.index0 < 3 %}
+        <option selected value="">Bitte Auswahl treffen</option>
+      {% endif %}
+      {% # SB Edits: END %}
+      {% for option_value in option_values %}
+        {% assign value = option_value | strip %}
+        {% if option_inventories[forloop.index0] %}
+          {% assign option_inventory = option_inventories[forloop.index0] | plus: 0 %}
+          <option value="{{ value }}" data-inventory="{{ option_inventory }}" {% if option_inventory < 1 %}disabled{% endif %}>{{ value }}</option>
+        {%  else  %}
+          <option value="{{ value }}">{{ value }}</option><!--{% if value == 'Aloe Vera' %}disabled{% endif %}-->
+        {% endif  %}
+      {% endfor %}
+    </select>
+  {% endfor %}
+</div>
+
+<style>
+
+  .lb-new-set-selector {
+    margin: -18px 0px;
+  }
+
+  .lb-new-set-selector label {
+    font-size: 14px;
+  }
+  
+  .lb-new-set-selector select {
+    border: none;
+    padding: 3px 9px 3px 3px;
+    border-radius: 6px;
+  }
+
+  /* SB Edits */
+  .disabled-form-sb /*
+    pointer-events: none;*/
+    color: light-dark(graytext, rgb(170, 170, 170));
+    border-color: rgba(118, 118, 118, 0.3);
+    opacity: 0.7;
+  }
+</style>
+
+
+<script>
+  (function() {
+    // function to update the hidden input value
+    function updateHiddenInputValue() {
+        var selects = document.querySelectorAll('#{{ div_id }} select');
+        var values = [];
+        
+        selects.forEach(function(select) {
+            var selectedOption = select.options[select.selectedIndex];
+            if (selectedOption) {
+                values.push(selectedOption.value);
+            }
+        });
+        
+        if (values.length === 0) {
+          return;
+        }
+        var hiddenInputValue = values.join(' <> ');
+        var hiddenInput = document.querySelector('#{{ div_id }} input[name="properties[_bundle_selection]"]');
+        if (!hiddenInput) {
+            hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = 'properties[_bundle_selection]';
+            document.getElementById('{{ div_id }}').appendChild(hiddenInput);
+        }
+        hiddenInput.value = hiddenInputValue;
+    }
+    // call the function initially to update the hidden input value
+    window.addEventListener('pageshow', updateHiddenInputValue);
+    // listen for changes on each select element and update the hidden input value
+    var selects = document.querySelectorAll('#{{ div_id }} select');
+    selects.forEach(function(select) {
+        select.addEventListener('change', updateHiddenInputValue);
+    });
+  })();
+</script>
+
+<style>
+    #simple-bundles-io-options label {
+        position: relative;
+        z-index: 2;
+    }
+
+    .sb-selectorError {
+        position: absolute;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+        padding: 0.7rem 2rem;
+        font-size: 14px;
+        font-weight: normal;
+        bottom: 0;
+        right: 0;
+        color: rgb(255, 106, 0);
+        border-radius: 4px;
+        background-color: #fff;
+    }
+
+    .sb-selectorError:before {
+        content: url("data:image/svg+xml,%3Csvg viewBox='0 0 784 850' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_d_1554_26)'%3E%3Cpath d='M273 208C258.2 198.9 239.6 198.6 224.5 207.1C209.4 215.6 200 231.6 200 249V601C200 618.4 209.4 634.4 224.5 642.9C239.6 651.4 258.2 651 273 642L561 466C575.3 457.3 584 441.8 584 425C584 408.2 575.3 392.8 561 384L273 208Z' fill='white'/%3E%3Cpath d='M262.524 225.037L262.548 225.051L262.571 225.066L550.518 401.033C550.526 401.038 550.533 401.043 550.541 401.047C558.977 406.249 564 415.23 564 425C564 434.844 558.919 443.855 550.605 448.914L550.588 448.924L550.571 448.934L262.608 624.912C262.603 624.915 262.598 624.918 262.593 624.921C253.906 630.196 243.037 630.384 234.311 625.472C225.488 620.505 220 611.157 220 601V249C220 238.843 225.488 229.495 234.311 224.528C243.117 219.571 253.951 219.765 262.524 225.037Z' /%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_d_1554_26' x='0' y='0.942383' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeColorMatrix in='SourceAlpha' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0' result='hardAlpha'/%3E%3CfeOffset/%3E%3CfeGaussianBlur stdDeviation='100'/%3E%3CfeComposite in2='hardAlpha' operator='out'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0'/%3E%3CfeBlend mode='normal' in2='BackgroundImageFix' result='effect1_dropShadow_1554_26'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='effect1_dropShadow_1554_26' result='shape'/%3E%3C/filter%3E%3C/defs%3E%3C/svg%3E");
+        position: absolute;
+        width: 30px;
+        z-index: -1 !important;
+        bottom: -27px;
+        rotate: 90deg;
+        color: rgba(0, 0, 0, 0.1);
+    }
+
+  .sb-disabled{
+    opacity: 50% !important;
+    cursor: not-allowed !important;
+    pointer-events: auto !important;
+  }
+</style>
+
+<script>
+    class SimpleBundlesChecker {
+        constructor(options) {
+            this.buttonSelector = options?.button_selector || 'form[action*="/cart/add"] [type="submit"]';
+            this.buttonInnercontainer = options?.button_inner_selector || 'span';
+            this.buttonOutOfStockMessage = options?.button_out_of_stock_message || 'Bestimmte Auswahl nicht vorrätig';
+            this.buttonChooseMessage = options?.button_choose_all_message || 'Optionen Wählen';
+            this.showtoolTip = options?.show_tooltip === true ? true : false;
+            this.toolTipMessage = options?.tooltip_message || 'Diese Auswahl ist erforderlich';
+            this.init();
+        }
+
+        async init() {
+            this.simpleBundlesContainer = document.querySelector('#simple-bundles-options, #simple-bundles-io-options');
+            if (!this.simpleBundlesContainer) return;
+            document.body.classList.add('bundleProduct');
+            this.selects = this.simpleBundlesContainer.querySelectorAll('select');
+            this.button = await this.getButton();
+            this.buttonChild = this.button.querySelector(this.buttonInnercontainer);
+            this.originalButtonText = this.button.innerHTML;
+            this.setDefaultOptions();
+            this.checkOutOfStock();
+            if (this.hasOutOfStock) return;
+            this.validateSelects();
+            this.setEventListeners();
+        }
+
+        setDefaultOptions() {
+            this.selects.forEach(selector => {
+                if (!selector) return;
+                const firstOption = selector.querySelector('option:first-child');
+                if (!firstOption) return;
+                selector.value = firstOption.value;
+            });
+        }
+
+        getButton() {
+            return new Promise((resolve) => {
+                const interval = setInterval(() => {
+                    const button = document.querySelector(this.buttonSelector);
+                    if (!button) return;
+                    clearInterval(interval);
+                    resolve(button);
+                }, 300);
+                setTimeout(() => { clearInterval(interval) }, 15000);
+            });
+        }
+
+        getOriginal(span) {
+            if (originalMessage || !span) return;
+            originalMessage = span.innerHTML;
+        }
+
+        setEventListeners() {
+            document.addEventListener('change', (e) => {
+                if (!e.target.matches('#simple-bundles-options select, #simple-bundles-io-options select')) return;
+                this.removeErrorMessages();
+                this.validateSelects();
+            })
+        }
+
+        validateSelects() {
+            const allValid = Array.from(this.selects).every(select => select.value);
+            if (allValid) {
+                this.enableButtons();
+                return;
+            }
+            this.disabledButtons();
+            if (!this.showtoolTip) return;
+            this.displayTooltip();
+        }
+
+        enableButtons() {
+            this.button.classList.remove('sb-disabled');
+            this.button.disabled = false;
+            this.button.innerHTML = this.originalButtonText;
+        }
+
+        disabledButtons(outOfStock) {
+            this.button.classList.add('sb-disabled');
+            this.button.disabled = true;
+            this.button.innerHTML = outOfStock ? this.buttonOutOfStockMessage : this.buttonChooseMessage
+        }
+
+        displayTooltip() {
+            const invalidSelects = Array.from(this.selects).filter(select => !select.value);
+            const firstInvalidSelect = invalidSelects[0];
+            if (!firstInvalidSelect) return;
+            const errormessage = document.createElement('div');
+            const label = document.querySelector(`label[for="${firstInvalidSelect.id}"]`);
+            if (!label) return;
+            errormessage.textContent = this.toolTipMessage;
+            errormessage.classList.add('sb-selectorError');
+            label.appendChild(errormessage);
+        }
+
+        removeErrorMessages() {
+            const errorMessages = this.simpleBundlesContainer.querySelectorAll('.sb-selectorError');
+            errorMessages.forEach(errorMessage => errorMessage.remove());
+        }
+
+        checkOutOfStock() {
+            this.selects.forEach(select => {
+                const options = select.querySelectorAll('option');
+                const allInvalid = Array.from(options).every(option => option.disabled);
+                if (!allInvalid) return;
+                options[0].innerHTML = 'Out of stock options';
+                select.classList.add('disabled');
+                select.disabled = true;
+                this.disabledButtons(true);
+                this.hasOutOfStock = true;
+            })
+        }
+        
+        static wait(selector, callBack) {
+            const interval = setInterval(() => {
+                const element = document.querySelector(selector)
+                if (element) {
+                    setTimeout(callBack, 500);
+                    clearInterval(interval)
+                }
+            }, 300);
+            setTimeout(() => { clearInterval(interval) }, 10000);
+        }
+    }
+
+    //init
+    SimpleBundlesChecker.wait('#simple-bundles-options select, #simple-bundles-io-options select', () => {
+        new SimpleBundlesChecker(window.simple_bundles_options);
+    })
+</script>

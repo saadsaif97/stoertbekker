@@ -1,0 +1,116 @@
+<div class="lb-feature-collection-section">
+<h2>
+{% if canonical_url contains '.com/en' %}
+  THE BEST MEN'S CARE FOR YOU
+  <!--
+For a unique shave
+  -->
+{% else %}
+DIE BESTE MÄNNERPFLEGE FÜR DICH
+  <!--
+Für eine einzigartige Rasur
+  -->
+  {% endif %}
+</h2>
+
+  
+  <p>
+{% if canonical_url contains '.com/en' %}
+Your style! Your type!
+{% else %}
+Genau Dein Style! Genau Dein Typ!
+  {% endif %}
+</p>
+
+  <!--
+   {% for block in section.blocks %}
+      <a href="{{ block.settings.url }}">
+        {{ block.settings.heading }}
+      </a>
+    {% endfor %}
+-->
+  
+</div>
+ 
+<style>
+.lb-feature-collection-section {
+  padding: 52px 18px 0px 18px;
+  text-align: center;
+}
+.lb-feature-collection-section h2 {
+  font-family: BebasNeue-Regular;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  color: #212426;
+  margin: 0px 0px 5px 0px;
+}
+.lb-feature-collection-section p {
+  text-align: center;
+  font-size: 16px;
+  colro: #212426:
+  line-height: 22px;
+  margin: 0px 0px 0px 0px;
+}
+.lb-feature-collection-section a {
+  color: #212426;
+  text-decoration: underline;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0px 9px;
+}
+</style>
+
+{% schema %}
+{
+  "name": "lb featured collection",
+  "settings": [
+    {
+      "type": "liquid",
+      "id": "customhtml",
+      "label": "Badge URL"
+    }
+  ],
+
+  "blocks": [
+  {
+    "name": "Block",
+    "type": "block",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Anzeigebild"
+      },
+      {
+        "type": "text",
+        "id": "heading",
+        "default": "Linkname",
+        "label": "Linkname"
+      },
+      {
+        "type": "url",
+        "id": "url",
+        "label": "Link url"
+      }
+    ]
+  }
+],
+  "presets": [
+    {
+      "category": "HTML",
+      "name": "lb featured collection",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}
+
+
+
+
+
+
+
+
+

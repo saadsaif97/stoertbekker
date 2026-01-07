@@ -1,0 +1,434 @@
+<!--
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<div class="lb-home-search-section lb-home-search-section-predictive">
+  <div class="lb-home-search-section-holder">
+    <form action="/search" method="get" role="search" onsubmit="event.preventDefault();">
+      <input type="text" id="search-input" name="q" class="lb-home-search-input" placeholder="{{ section.settings.searchtext }}" value="{{ search.terms | escape }}" required oninput="showSuggestions(this.value)">
+      <button type="button" id="clear-button" class="lb-home-search-button" onclick="clearSearch()">
+      <?xml version="1.0" encoding="UTF-8"?>
+      <svg width="323px" height="323px" viewBox="0 0 323 323" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="arrow-down-copy-6" transform="translate(-39, -39)" stroke="#000000" stroke-width="30">
+                  <g id="Group" transform="translate(50, 50)">
+                      <line x1="1" y1="-4.63670768e-13" x2="300.509804" y2="300.509772" id="Path-104"></line>
+                      <line x1="301" y1="0" x2="0" y2="300" id="Path-104"></line>
+                  </g>
+              </g>
+          </g>
+      </svg>  
+      </button>
+      <button type="submit" class="lb-home-search-button">
+        {% if section.settings.searchicon != blank %}
+          <img src="{{ section.settings.searchicon | img_url: '52px' }}">
+        {% else %}
+          <svg class="modal__toggle-open icon icon-search" aria-hidden="true" focusable="false" role="presentation">
+            <use href="#icon-search"></use>
+          </svg>
+        {% endif %}
+      </button>
+      <div id="suggestions-container"></div>
+    </form>
+  </div>
+</div>
+-->
+
+<script>
+  async function showSuggestions(query) {
+    if (query.length < 1) {
+      document.getElementById('suggestions-container').innerHTML = '';
+      return;
+    }
+
+    const response = await fetch(`/search/suggest.json?q=${query}&resources[type]=product`);
+    const suggestions = await response.json();
+
+    let suggestionsHtml = '';
+    suggestions.resources.results.products.forEach(product => {
+      suggestionsHtml += `<div class="suggestion-item">
+                            <a href="${product.url}">
+                              <img src="${product.image}" alt="${product.title}" />
+                              <div>${product.title}</div>
+                            </a>
+                          </div>`;
+    });
+
+    document.getElementById('suggestions-container').innerHTML = suggestionsHtml;
+  }
+
+  function clearSearch() {
+    document.getElementById('search-input').value = '';
+    document.getElementById('suggestions-container').innerHTML = '';
+  }
+</script>
+
+<style>
+
+  .scroll
+
+  .lb-home-search-section-predictive {
+  display: none;
+}
+
+  .search-container {
+    position: relative;
+    width: 300px;
+  }
+
+  #search-input {
+    width: 100%;
+    padding: 0px 18px;
+    border: 1px solid #ccc;
+    display: inline-block;
+  }
+
+  #clear-button {
+    width: 36px;
+    height: 53px;
+    padding: 0px;
+    border:  none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    position: absolute;
+    right: 50px;
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #clear-button svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  #clear-button svg g {
+   stroke: {{ section.settings.cleariconcolor }};
+  }
+
+  #suggestions-container {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 0px solid #ccc;
+    z-index: 1000;
+    max-height: 500px;
+    overflow: scroll; 
+    border-radius: 6px;
+    box-shadow: 0px 0px 72px rgba(0,0,0,0.1);
+        /* Scrollbar unsichtbar machen */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE & Edge */
+  }
+
+#suggestions-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+  .suggestion-item {
+    padding: 10px;
+  }
+
+  .suggestion-item a {
+    display: flex;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 18px;
+    font-family: 'Bebas Neue';
+  }
+
+  .suggestion-item img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+
+  .suggestion-item div {
+    flex: 1;
+  }
+
+  .lb-home-search-section {
+    padding: 9px 9px;
+    background: {{ section.settings.searchsectionbackground }};
+  }  
+  
+  .lb-home-search-section-holder {
+    max-width: {{ section.settings.searchmaxwidth }}px;
+    margin: auto;
+    position: relative;
+  }  
+  
+  .lb-home-search-input {
+    width: 100%;
+    display: block;
+    border-radius: {{ section.settings.searchborderradius }}px;
+    background: {{ section.settings.searchbackground }};
+    color: {{ section.settings.fontcolor }}!important;
+    padding: 0px 18px;
+    line-height: 50px;
+    font-size: {{ section.settings.fontsize }}px;
+    {% if section.settings.searchcustomfontfamily == blank %}
+    font-family: {{ lb-home-search-font.family }}, {{ lb-home-search-font.fallback_families }} !important;
+    {% else %}
+    font-family: 'Lb-home-search-customfont'!important;
+    {% endif %}
+    border: 1px solid {{ section.settings.bordercolor }} !important;
+  }
+  
+  .lb-home-search-input::placeholder {
+    color: {{ section.settings.fontcolor }}!important;
+  }
+    
+  .lb-home-search-input:focus {
+    border: 1px solid {{ section.settings.bordercolor }} !important;
+    outline: none!important;
+    box-shadow: none!important;
+  }
+  
+  .lb-home-search-button {
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    background: {{ section.settings.searchiconbackground }};
+    border: none;
+    text-align: center;
+    line-height: 50px;
+    height: 50px;
+    width: 50px;
+    border-radius: {{ section.settings.searchborderradius }}px;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    cursor: pointer!important;
+  }
+  
+  .lb-home-search-button svg {
+    width: 20px;
+    height: 20px;
+    stroke: {{ section.settings.searchiconcolor }};
+  }
+
+  .lb-home-search-button img {
+    width: 20px;
+    height: 20px;
+  }
+   
+  @media only screen and (min-width: {{ section.settings.searchmaxwidthdisplay }}px) { 
+    .lb-home-search-section {
+      display: none!important;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": {
+    "en": "Lb Home Search",
+    "de": "Lb Home Suche"
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": {
+        "en": "Section Settings",
+        "de": "Abschnittseinstellungen"
+      },
+      "info": {
+        "en": "Customize the design of the search for your online shop.",
+        "de": "Passe das Design der Suche für deinen Onlineshop an."
+      }
+    },
+    {
+      "type": "range",
+      "id": "searchmaxwidthdisplay",
+      "label": {
+        "en": "Maximum Display Width",
+        "de": "Maximale Anzeigebreite"
+      },
+      "info": {
+        "en": "Limit the visibility of the search field.",
+        "de": "Begrenze die Sichtbarkeit des Suchfeldes."
+      },
+      "min": 360,
+      "max": 1800,
+      "step": 20,
+      "unit": "px",
+      "default": 1800
+    },
+    {
+      "type": "range",
+      "id": "searchmaxwidth",
+      "label": {
+        "en": "Maximum Search Field Width",
+        "de": "Maximale Suchfeldbreite"
+      },
+      "info": {
+        "en": "Limit the maximum width of the search field.",
+        "de": "Begrenze die maximale Breite des Suchfeldes."
+      },
+      "min": 360,
+      "max": 1180,
+      "step": 20,
+      "unit": "px",
+      "default": 800
+    },
+    {
+      "type": "color",
+      "id": "searchsectionbackground",
+      "default": "#f2f2f2",
+      "label": {
+        "en": "Section Background",
+        "de": "Abschnitt Hintergrund"
+      }
+    },
+    {
+      "type": "color",
+      "id": "searchbackground",
+      "default": "#ffffff",
+      "label": {
+        "en": "Search Field Background",
+        "de": "Suchfeld Hintergrund"
+      }
+    },
+    {
+      "type": "color",
+      "id": "searchiconcolor",
+      "label": {
+        "en": "Button Icon Color",
+        "de": "Schaltflächen-Icon-Farbe"
+      },
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "cleariconcolor",
+      "label": {
+        "en": "Clear Icon Color",
+        "de": "Löschen Icon Farbe"
+      },
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "searchiconbackground",
+      "label": {
+        "en": "Button Background Color",
+        "de": "Schaltflächen-Hintergrundfarbe"
+      },
+      "default": "#ffffff"
+    },
+    {
+      "type": "image_picker",
+      "id": "searchicon",
+      "label": {
+        "en": "Magnifying Glass Icon",
+        "de": "Lupe Icon"
+      },
+      "info": {
+        "en": "Upload your custom icon.",
+        "de": "Lade ein eigenes Icon hoch."
+      }
+    },
+    {
+      "type": "color",
+      "id": "bordercolor",
+      "label": {
+        "en": "Border Color",
+        "de": "Randfarbe"
+      },
+      "default": "#f2f2f2"
+    },
+    {
+      "type": "range",
+      "id": "searchborderradius",
+      "label": {
+        "en": "Search Field Border Radius",
+        "de": "Suchfeld Abrundung"
+      },
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": ".",
+      "info": "."
+    },
+    {
+      "type": "header",
+      "content": {
+        "en": "Text and Font Settings",
+        "de": "Text- und Schrifteinstellungen"
+      },
+      "info": {
+        "en": "Personalize the text, font, color, and size.",
+        "de": "Personalisiere den Text, die Schriftart, Farbe und Größe."
+      }
+    },
+    {
+      "type": "text",
+      "id": "searchtext",
+      "label": {
+        "en": "Placeholder for Search Field",
+        "de": "Platzhalter für das Suchfeld"
+      },
+      "default": "Wonach suchst Du?..."
+    },
+    {
+      "type": "color",
+      "id": "fontcolor",
+      "label": {
+        "en": "Font Color",
+        "de": "Schriftfarbe"
+      },
+      "default": "#626262"
+    },
+    {
+      "type": "font_picker",
+      "id": "searchfontfamily",
+      "label": {
+        "en": "Font Family",
+        "de": "Schriftart"
+      },
+      "default": "helvetica_n4"
+    },
+    {
+      "type": "text",
+      "id": "searchcustomfontfamily",
+      "label": {
+        "en": "Custom Font Family",
+        "de": "Eigene Schriftart"
+      },
+      "info": {
+        "en": "Upload your font in Shopify content and paste the file URL here.",
+        "de": "Lade Deine Schriftart in den Shopify-Inhalten hoch und füge hier die Datei-URL ein."
+      }
+    },
+    {
+      "type": "range",
+      "id": "fontsize",
+      "label": {
+        "en": "Font Size",
+        "de": "Schriftgröße"
+      },
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lb Home Search"
+    }
+  ]
+}
+{% endschema %}

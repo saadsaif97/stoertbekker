@@ -1,0 +1,148 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "order": [
+    "lb_collection_header_wA3rqd",
+    "lb_category_tag_navigation_YhHEpp",
+    "lb_collection_kategorie_filter_qe4A3G"
+  ],
+  "sections": {
+    "lb_category_tag_navigation_YhHEpp": {
+      "block_order": [
+        "block_mUKjYK",
+        "block_yzkbVL",
+        "block_iQXfzW",
+        "block_7tb8iY",
+        "block_7FCa9z",
+        "block_fH4jK7",
+        "block_ranUcn",
+        "block_dhDhRG",
+        "block_MUhAch",
+        "block_GFH4zQ",
+        "block_xw66Wb",
+        "block_i69ncc"
+      ],
+      "blocks": {
+        "block_7FCa9z": {
+          "settings": {
+            "heading": "Rasiermesser",
+            "url": ""
+          },
+          "type": "block"
+        },
+        "block_7tb8iY": {
+          "settings": {
+            "heading": "Rasierhobel",
+            "url": ""
+          },
+          "type": "block"
+        },
+        "block_GFH4zQ": {
+          "settings": {
+            "heading": "Körper & Haar",
+            "url": ""
+          },
+          "type": "block"
+        },
+        "block_MUhAch": {
+          "settings": {
+            "heading": "Bart",
+            "url": ""
+          },
+          "type": "block"
+        },
+        "block_dhDhRG": {
+          "settings": {
+            "heading": "Zubehör",
+            "url": ""
+          },
+          "type": "block"
+        },
+        "block_fH4jK7": {
+          "settings": {
+            "heading": "Rasierseife",
+            "url": ""
+          },
+          "type": "block"
+        },
+        "block_i69ncc": {
+          "settings": {
+            "heading": "Kleidung",
+            "url": ""
+          },
+          "type": "block"
+        },
+        "block_iQXfzW": {
+          "settings": {
+            "heading": "Neuheiten",
+            "url": ""
+          },
+          "type": "block"
+        },
+        "block_mUKjYK": {
+          "settings": {
+            "heading": "Alle Produkte",
+            "url": ""
+          },
+          "type": "block"
+        },
+        "block_ranUcn": {
+          "settings": {
+            "heading": "Rasierklingen",
+            "url": ""
+          },
+          "type": "block"
+        },
+        "block_xw66Wb": {
+          "settings": {
+            "heading": "Gutscheine",
+            "url": "gutscheine"
+          },
+          "type": "block"
+        },
+        "block_yzkbVL": {
+          "settings": {
+            "heading": "Sets",
+            "url": ""
+          },
+          "type": "block"
+        }
+      },
+      "disabled": true,
+      "settings": {
+        "abgerundete_ecken": 6,
+        "active-backgroundcolor": "#3d3d3d",
+        "active-font-color": "#ffffff",
+        "active-link-border-color": "#3d3d3d",
+        "background-color": "#ffffff",
+        "categoryimagenavigationfontfamily": "sans-serif",
+        "lb-category-image-navigation-customfont": "",
+        "link-backgroundcolor": "#efece0",
+        "link-border-color": "#efece0",
+        "max-show": "2400",
+        "schriftfarbe": "#000000"
+      },
+      "type": "lb-category-tag-navigation"
+    },
+    "lb_collection_header_wA3rqd": {
+      "settings": {
+        "customhtml": ""
+      },
+      "type": "lb-collection-header"
+    },
+    "lb_collection_kategorie_filter_qe4A3G": {
+      "disabled": true,
+      "settings": {
+        "customhtml": ""
+      },
+      "type": "lb-collection-kategorie-filter"
+    }
+  }
+}

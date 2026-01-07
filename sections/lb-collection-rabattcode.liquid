@@ -1,0 +1,268 @@
+<div class="lb-copy-code-box-section">
+  <div class="lb-copy-code-box">
+    <div class="lb-copy-code-box-text">{{ section.settings.section_text }}</div>
+    <div class="lb-copy-code-box-button"><span class="lb-copy-code-box-button-code">{{ section.settings.button_code_text }}</span><span class="lb-copy-code-box-button-state">{{ section.settings.button_copy_text }}</span>
+    <svg class="lb-copy-code-box-button-svg-copy" width="313px" height="375px" viewBox="0 0 313 375" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+       <g class="lb-copy-code-box-button-svg-copy-g" id="benefit-4-copy-44" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          <g id="Group-2" transform="translate(44, 13)" stroke="#000000" stroke-width="31">
+              <path d="M268,15.5 C276.1462,15.5 283.5212,18.8019 288.85965,24.14035 C294.1981,29.4787999 297.5,36.8537999 297.5,45 L297.5,259 C297.5,267.1462 294.1981,274.5212 288.85965,279.85965 C283.5212,285.1981 276.1462,288.5 268,288.5 L206.5,288.5 L206.5,330 C206.5,338.1462 203.1981,345.5212 197.85965,350.85965 C192.5212,356.1981 185.1462,359.5 177,359.5 L45,359.5 C36.8537999,359.5 29.4787999,356.1981 24.14035,350.85965 C18.8019,345.5212 15.5,338.1462 15.5,330 L15.5,116 C15.5,107.8538 18.8019,100.4788 24.14035,95.14035 C29.4787999,89.8019 36.8537999,86.5 45,86.5 L106.5,86.5 L106.5,45 C106.5,36.8537999 109.8019,29.4787999 115.14035,24.14035 C120.4788,18.8019 127.8538,15.5 136,15.5 Z" id="Combined-Shape"></path>
+              <rect id="Rectangle-Copy" x="15.5" y="86.5" width="191" height="273" rx="45"></rect>
+          </g>
+      </g>
+    </svg>
+    <svg class="lb-copy-code-box-button-svg-check" width="375px" height="259px" viewBox="0 0 375 259" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g class="lb-copy-code-box-button-svg-check-g" id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="check-white-copy-4" transform="translate(-12, -71)" fill="#000000" fill-rule="nonzero">
+                <path d="M266.060691,76.4180665 L381.250938,191.608314 C388.280376,198.637751 388.280376,210.034721 381.250938,217.064158 L380.967629,217.347468 C373.938191,224.376905 362.541222,224.376905 355.511784,217.347468 L253.013344,114.849134 L43.8244301,324.03987 C36.7949929,331.069307 25.3980232,331.069307 18.368586,324.03987 L18.0852761,323.75656 C11.0558388,316.727123 11.0558388,305.330153 18.0852761,298.300716 L239.909162,76.47683 C243.124875,73.2611172 247.254594,71.5164764 251.462071,71.2429078 C256.669884,70.7016741 262.06934,72.4267152 266.060691,76.4180665 Z" id="Combined-Shape" transform="translate(199.6681, 200.229) rotate(-180) translate(-199.6681, -200.229)"></path>
+            </g>
+        </g>
+    </svg>
+    </div>
+  </div>
+</div>
+<style>
+.lb-copy-code-box-section {
+  padding: {{ section.settings.section_abstaende_top_bottom }}px 2%;
+  background: {{ section.settings.section_bg_color }};
+  text-align: center;
+}
+.lb-copy-code-box {
+  padding: 9px 18px;
+  background: {{ section.settings.box_bg_color }};
+  border-radius: {{ section.settings.box_border_radius }}px;
+  margin: auto;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: {{ section.settings.text_color }};
+  border: 1px solid {{ section.settings.box_border_color }};
+}
+.lb-copy-code-box-text {
+  font-size: 16px;
+  line-height: 16px;
+}
+@media only screen and (max-width: 600px) {
+.lb-copy-code-box-text {
+  font-size: 14px;
+  line-height: 14px;
+}
+}
+.lb-copy-code-box-button {
+  background: {{ section.settings.lb-copy-button-background-normal }};
+  padding: 5px 12px;
+  display: flex;
+  align-items: center;
+  margin-left: 9px;
+  color: {{ section.settings.lb-copy-button-text-normal }};
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: bold;
+}
+.lb-copy-code-box-button-active {
+  background: {{ section.settings.lb-copy-button-background-copied }};
+  color: {{ section.settings.lb-copy-button-text-copied }};
+}
+.lb-copy-code-box-button-code {
+
+}
+.lb-copy-code-box-button-code-active {
+  display: none;
+}
+.lb-copy-code-box-button-state {
+  display: none;
+}
+.lb-copy-code-box-button-state-active {
+  display: inline-block;
+}
+.lb-copy-code-box-button-svg-copy {
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+}
+.lb-copy-code-box-button-svg-copy-active {
+  display: none;
+}
+.lb-copy-code-box-button-svg-copy-g g {
+  stroke: {{ section.settings.lb-copy-button-icon-normal }};
+}
+.lb-copy-code-box-button-svg-check {
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
+  display: none;
+}
+.lb-copy-code-box-button-svg-check-active {
+  display: block;
+}
+.lb-copy-code-box-button-svg-check path {
+  fill: {{ section.settings.lb-copy-button-icon-copied }};
+}
+@media only screen and (max-width: 600px) {
+.lb-copy-code-box {
+  width: 100%;
+}
+}
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('.lb-copy-code-box-button').click(function() {
+        var code = $('.lb-copy-code-box-button-code').text();
+        navigator.clipboard.writeText(code).then(function() {
+            $('.lb-copy-code-box-button-code').addClass('lb-copy-code-box-button-code-active');
+            $('.lb-copy-code-box-button-state').addClass('lb-copy-code-box-button-state-active');
+            $('.lb-copy-code-box-button').addClass('lb-copy-code-box-button-active');
+            $('.lb-copy-code-box-button-svg-copy').addClass('lb-copy-code-box-button-svg-copy-active');
+            $('.lb-copy-code-box-button-svg-check').addClass('lb-copy-code-box-button-svg-check-active');
+            setTimeout(function() {
+                $('.lb-copy-code-box-button-code').removeClass('lb-copy-code-box-button-code-active');
+                $('.lb-copy-code-box-button-state').removeClass('lb-copy-code-box-button-state-active');
+                $('.lb-copy-code-box-button').removeClass('lb-copy-code-box-button-active');
+                $('.lb-copy-code-box-button-svg-copy').removeClass('lb-copy-code-box-button-svg-copy-active');
+                $('.lb-copy-code-box-button-svg-check').removeClass('lb-copy-code-box-button-svg-check-active');
+            }, 500);
+        });
+    });
+});
+</script>
+{% schema %}
+{
+  "name": "Lb category code copy",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Hintergrundfarbe",
+      "default": "#f4f0ed"
+    },
+    {
+      "type": "range",
+      "id": "section_abstaende_top_bottom",
+      "label": "Section Abstand oben und unten",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": ".",
+      "info": "."
+    },
+    {
+      "type": "header",
+      "content": "Box Settings"
+    },
+    {
+      "type": "text",
+      "id": "section_text",
+      "label": "Text",
+      "default": "20% sparen mit dem Code"
+    },
+    {
+      "type": "color",
+      "id": "box_bg_color",
+      "label": "Box Hintergrundfarbe",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "box_border_color",
+      "label": "Box Border Farbe",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Schriftfarbe",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "box_border_radius",
+      "label": "Box Abrundung",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": ".",
+      "info": "."
+    },
+    {
+      "type": "header",
+      "content": "Button Code Settings"
+    },
+    {
+      "type": "text",
+      "id": "button_code_text",
+      "label": "Button Code Text",
+      "default": "CODE30"
+    },
+    {
+      "type": "color",
+      "id": "lb-copy-button-background-normal",
+      "label": "Button Hintergrundfarbe Normal",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "lb-copy-button-text-normal",
+      "label": "Button Schriftfarbe Normal",
+      "default": "#ffffff"
+    }, 
+    {
+      "type": "color",
+      "id": "lb-copy-button-icon-normal",
+      "label": "Button Icon Farbe Normal",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": ".",
+      "info": "."
+    },
+    {
+      "type": "header",
+      "content": "Copied Settings"
+    },
+    {
+      "type": "text",
+      "id": "button_copy_text",
+      "label": "Button Kopied Text",
+      "default": "kopiert"
+    },
+    {
+      "type": "color",
+      "id": "lb-copy-button-background-copied",
+      "label": "Button Hintergrundfarbe Kopied",
+      "default": "#9DE49D"
+    },
+    {
+      "type": "color",
+      "id": "lb-copy-button-text-copied",
+      "label": "Button Schriftfarbe Kopied",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "lb-copy-button-icon-copied",
+      "label": "Button Icon Farbe Kopied",
+      "default": "#000000"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lb category code copy"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,245 @@
+
+{% assign overall_current_date_time = 'now' | date: "%Y.%m.%d-%H:%M:%S" %}
+{% assign overall_set_full_time = settings.plannable-date-year | append: '.' | append: settings.plannable-date-month | append: '.' | append: settings.plannable-date-day | append: '-' | append: settings.plannable-date-time %}
+ 
+<!-- overall_current_date_time >= overall_set_full_time or -->
+
+
+{% if product.tags contains "1blackdays10" or product.tags contains "1blackdays20" or product.tags contains "1blackdays30" %} 
+<style>
+{% if customer.email contains 'lionsbranding' or customer.email contains '@stoertebekker.com' or customer.email contains 'helpingbrands.de' %}
+  {% endif %}
+.old-price-box {
+  display: none!important;
+}
+.lb-pdp-countdown {
+  display: block!important;
+}
+label.media-swatch[data-value="6er Bundle"], label.media-swatch[data-value="6x 100g"], label.media-swatch[data-value="6x 120g"] {
+  display: none!important;
+}
+{% if product.title contains 'Hamburg' and product.title contains 'Schwarz' %} 
+div[group="Lederetui Schwarz"] {
+  display: none!important;
+}
+{% endif %}
+</style>
+
+
+  <div class="lb-pdp-countdown">
+    <div class="lb-pdp-countdown-headline">
+      <span>
+        {% if product.tags contains "blackdays10" %}-10%{% endif %}
+        {% if product.tags contains "blackdays20" %}-20%{% endif %}
+        {% if product.tags contains "blackdays30" %}-30%{% endif %}
+      </span>
+      <p style="font-family: BebasNeue-Regular; display: inline-block; font-size: 24px; color: white; line-height: 24px; position: relative; bottom: -3px;">BLACK WEEK</p>
+    </div>
+    <div id="countdown-pdp" class="lb-pdp-countdown-timer">
+      noch
+      <div class="lb-countdown-holder-item lb-countdown-holder-item-days">
+        <span id="days-pdp" class="lb-countdown-holder-item-number">00</span><span class="lb-countdown-holder-item-text">d</span>
+      </div>
+      <div class="lb-countdown-holder-item lb-countdown-holder-item-hours">
+        <span id="hours-pdp" class="lb-countdown-holder-item-number">00</span><span class="lb-countdown-holder-item-text">h</span>
+      </div>
+      <div class="lb-countdown-holder-item lb-countdown-holder-item-minutes">
+        <span id="minutes-pdp" class="lb-countdown-holder-item-number">00</span><span class="lb-countdown-holder-item-text">m</span>
+      </div>
+      <div class="lb-countdown-holder-item lb-countdown-holder-item-seconds">
+        <span id="seconds-pdp" class="lb-countdown-holder-item-number">00</span><span class="lb-countdown-holder-item-text">s</span>
+      </div>
+    </div>
+
+    {% render 'lb-countdown-new-price' %}
+
+  </div> 
+
+
+
+
+<style>
+
+
+
+
+
+.lb-countdown-new-price {
+  margin: 9px 0px 0px 0px;
+  font-size: 18px;
+  color: white;
+}
+.lb-countdown-new-price span {
+  color: #d8ac63;
+  text-decoration: line-through;
+  margin-right: 4px;
+
+}
+.lb-countdown-new-price div {
+  border-radius: 6px;
+  color: black;
+  padding: 2px 9px;
+  display: inline-block;
+  font-size: 10px;
+  font-family: "Open Sans";
+  background: #d8ac63; /*#2c709d;*/
+  position: relative;
+  top: -3px;
+  margin-left: 4px;
+}
+
+  /* Countdown ----------- */
+
+  .lb-pdp-countdown {
+    background: url(https://stoertebekker.com/cdn/shop/files/Bildschirmfoto_2024-11-08_um_17.45.14_1200x.png?v=1731080751);
+    background-size: cover;
+    background-position: center center;
+    /*
+  background-color: #0b150a; 
+  background: linear-gradient(to right, #0b150a 0%, #545524 100%);
+  */
+    color: black;
+    display: none;
+    background-size: cover;
+    margin-bottom: 18px;
+    padding: 5px 9px 9px 9px !important;
+    border-radius: 9px !important;
+  }
+  .lb-pdp-countdown-headline {
+    margin-bottom: 5px;
+    display: block;
+  }
+  .lb-pdp-countdown-headline span {
+    border-radius: 6px;
+    font-weight: bold;
+    padding: 3px 9px;
+    margin-right: 9px;
+    font-size: 14px;
+    display: inline-block;
+background: #E9CB7F;
+background: linear-gradient(90deg,rgba(233, 203, 127, 1) 0%, rgba(167, 131, 71, 1) 100%);
+    color: black;
+  }
+  .lb-pdp-countdown-price {
+    display: inline-block;
+    margin-right: 9px;
+    font-size: 20px;
+    line-height: 26px;
+  }
+  .lb-pdp-countdown-price span {
+    text-decoration: line-through;
+    margin-right: 5px;
+    font-size: 22px;
+        color: white; 
+  }
+  .lb-pdp-countdown-timer {
+    display: inline-block;
+    color: white;
+  }
+  .lb-countdown-holder-item-number {
+    font-weight: 600!important;
+  }
+  .lb-pdp-countdown-timer div {
+    display: inline-block;
+  }
+  .lb-pdp-countdown-timer-hidden {
+    display: none !important;
+  }
+</style>
+
+
+{% endif %}
+ 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const endDate = new Date("2025-12-01T23:59:59").getTime(); // Enddatum korrekt initialisieren
+
+    const countdownPdp = setInterval(function() {
+        const currentDatePdp = new Date().getTime();
+        const timeLeftPdp = endDate - currentDatePdp;
+
+        if (timeLeftPdp <= 0) {
+            clearInterval(countdownPdp);
+            const countdownElement = document.getElementById("countdown-pdp");
+            if (countdownElement) {
+                countdownElement.innerHTML = "Countdown abgelaufen!";
+            }
+        } else {
+            const daysPdp = Math.floor(timeLeftPdp / (1000 * 60 * 60 * 24));
+            const hoursPdp = Math.floor((timeLeftPdp % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutesPdp = Math.floor((timeLeftPdp % (1000 * 60 * 60)) / (1000 * 60));
+            const secondsPdp = Math.floor((timeLeftPdp % (1000 * 60)) / 1000);
+
+            // Prüfen, ob die Elemente vorhanden sind, bevor sie aktualisiert werden
+            if (document.getElementById("days-pdp")) {
+                document.getElementById("days-pdp").textContent = String(daysPdp).padStart(2, '0');
+            }
+            if (document.getElementById("hours-pdp")) {
+                document.getElementById("hours-pdp").textContent = String(hoursPdp).padStart(2, '0');
+            }
+            if (document.getElementById("minutes-pdp")) {
+                document.getElementById("minutes-pdp").textContent = String(minutesPdp).padStart(2, '0');
+            }
+            if (document.getElementById("seconds-pdp")) {
+                document.getElementById("seconds-pdp").textContent = String(secondsPdp).padStart(2, '0');
+            }
+
+            // Ausblenden der Elemente bei Null
+            if (daysPdp === 0) {
+                $('.lb-countdown-holder-item-days').addClass('lb-pdp-countdown-timer-hidden');
+            }
+            if (daysPdp === 0 && hoursPdp === 0) {
+                $('.lb-countdown-holder-item-hours').addClass('lb-pdp-countdown-timer-hidden');
+            }
+            if (hoursPdp === 0 && $('.lb-countdown-holder-item-hours').hasClass('lb-pdp-countdown-timer-hidden')) {
+                $('.lb-countdown-holder-item-minutes').addClass('lb-pdp-countdown-timer-hidden');
+            }
+            if (minutesPdp === 0 && $('.lb-countdown-holder-item-minutes').hasClass('lb-pdp-countdown-timer-hidden')) {
+                $('.lb-countdown-holder-item-seconds').addClass('lb-pdp-countdown-timer-hidden');
+            }
+        }
+    }, 1000);
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const variantSelector = document.querySelector("[name='id']");
+    const target = document.querySelector(".lb-countdown-new-price");
+
+    if (!variantSelector || !target) return; // safety check
+
+    variantSelector.addEventListener("change", async (event) => {
+      const variantId = event.target.value;
+      if (!variantId) return;
+
+      try {
+        const res = await fetch(
+          `${window.location.pathname}?variant=${variantId}&sections=lb-countdown-new-price`
+        );
+
+        if (!res.ok) throw new Error(`Failed to fetch section: ${res.status}`);
+
+        const data = await res.json();
+        const html = data["lb-countdown-new-price"];
+        if (!html) return;
+
+        // Create temporary container to parse section HTML
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = html;
+
+        const newContent = tempDiv.querySelector(".lb-countdown-new-price");
+        if (newContent) {
+          target.innerHTML = newContent.innerHTML;
+        }
+      } catch (error) {
+        console.error("Error updating countdown price:", error);
+      }
+    });
+  });
+</script>
+
+
+{% if  customer.email contains '@lionsbranding.com' or customer.email contains 'helpingbrands.de' or customer.email contains 'stoertebekker.com' %}
+
+{% endif %}
+

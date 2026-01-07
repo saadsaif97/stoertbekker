@@ -1,0 +1,105 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "lb-header": {
+      "type": "lb-section-header",
+      "disabled": true,
+      "settings": {
+        "benefitsheight": 30,
+        "benefitsback": "#F2F2F2",
+        "benefits_text_color": "#000",
+        "first_benefit": "",
+        "second_benefit": "",
+        "third_benefit": "",
+        "fullsize_benefit_html": "",
+        "header_logosize": 100,
+        "header_bg": "#ffffff",
+        "header_font_color": "#000000",
+        "header_sub_bg": "#ffffff",
+        "header_font_color_submenu": "#000000",
+        "header_icon_color_pick": "#000000",
+        "header_font_family": "helvetica_n4",
+        "header_font_size": 14,
+        "main_linklist": "main-menu",
+        "menu_break_point": 600,
+        "search": true,
+        "search_placeholder": "Produkte finden...",
+        "account_enabled": true,
+        "warenkorb_bg": "#F0ECE6",
+        "warenkorb_active_color": "#000",
+        "warenkorb_color": "#fff"
+      }
+    },
+    "ostern_preoptin_iaLqX6": {
+      "type": "ostern-preoptin",
+      "blocks": {
+        "block_eRqXGD": {
+          "type": "block",
+          "settings": {
+            "headline": "Voranmeldung startet jetzt!",
+            "subheadline": "Melden Sie sich jetzt an, um exklusive Angebote zu erhalten."
+          }
+        },
+        "block_UCTfDN": {
+          "type": "block",
+          "settings": {
+            "headline": "Sparen Sie bis zu 50%",
+            "subheadline": "Unglaubliche Rabatte auf unsere Bestseller."
+          }
+        },
+        "block_YyqLQa": {
+          "type": "block",
+          "settings": {
+            "headline": "Kostenloser Versand",
+            "subheadline": "Kostenloser Versand für Bestellungen über 50€."
+          }
+        },
+        "block_NVAdCt": {
+          "type": "block",
+          "settings": {
+            "headline": "Bonuspunkte",
+            "subheadline": "Verdienen Sie Bonuspunkte für jede Bestellung."
+          }
+        }
+      },
+      "block_order": [
+        "block_eRqXGD",
+        "block_UCTfDN",
+        "block_YyqLQa",
+        "block_NVAdCt"
+      ],
+      "settings": {
+        "bannertext": "BLACK WEEK | BIS ZU 50%",
+        "bannerbg": "#61F4B4",
+        "bannerfontcolor": "#000000",
+        "bannerfont": "sans-serif",
+        "customfont": "sans-serif",
+        "introbackground": "#000000",
+        "introtextcolor": "#FFFFFF",
+        "primaryfont": "sans-serif",
+        "secondaryfont": "sans-serif",
+        "date": "ab dem 17.11.",
+        "headline": "Black Week",
+        "subheadline": "Sichere Dir bis zu 50% Rabatt und weitere exklusive Vorteile beim größten Sale des Jahres. Melde Dich jetzt an und wir sagen Dir Bescheid, sobald es losgeht!",
+        "countdowndate": "2024-04-01",
+        "countdowntime": "23:59:59",
+        "countdownnumberbackground": "#ffffff",
+        "countdownnumbercolor": "#000000",
+        "countdowndaycolor": "#000000",
+        "embedform": ""
+      }
+    }
+  },
+  "order": [
+    "lb-header",
+    "ostern_preoptin_iaLqX6"
+  ]
+}

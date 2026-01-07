@@ -1,0 +1,11 @@
+<div id="comment-{{ comment.id }}" class="comment section border-bottom row">
+  <div class="half column secound-column">{{ comment.content }}</div>
+  <div class="half column first-column author-details">
+    <div class="article-meta">
+      <div class="author">{{ comment.author }}</div>
+      <div>
+        {{ comment.created_at | date: "%d. %m. %y" }}
+      </div>
+    </div>
+  </div>  
+</div> <!-- /.comment -->

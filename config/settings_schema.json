@@ -1,0 +1,270 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Lionstheme",
+    "theme_author": "Lionsbranding",
+    "theme_version": "1.0",
+    "theme_documentation_url": "http:\/\/lionsbranding.com\/",
+    "theme_support_url": "http:\/\/lionsbranding.com\/"
+  },
+  {
+    "name": "Settings",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Favicon & Apple Touch Icon",
+        "info": "Lege fest welches Icon im Browser tab (Favicon) und auf mobilen Endgeräten (Apple touch) angezeigt wird."
+      },
+      {
+        "label": "Favicon",
+        "id": "favicon",
+        "type": "image_picker",
+        "info": "32px x 32px"
+      },
+      {
+        "label": "Apple Touch",
+        "id": "apple_touch",
+        "type": "image_picker",
+        "info": "256px x 256px"
+      },
+      {
+        "type": "header",
+        "content": "Theme Button Farbe",
+        "info": "Theme Button Farbe"
+      },
+      {
+        "label": "Hintergrundfarbe",
+        "id": "theme_btn_bg_color",
+        "type": "color",
+        "default": "#000000"
+      },
+      {
+        "label": "Textfarbe",
+        "id": "theme_btn_text_color",
+        "type": "color",
+        "default": "#ffffff"
+      }
+    ]
+  },
+  {
+    "name": "Sale automtic discount",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Dynamic buttons"
+      },
+      
+    {
+      "type": "text",
+      "id": "plannable-homebanner-link",
+      "label": "Plannable Verlinkung"
+    },
+    {
+      "type": "select",
+      "id": "plannable-date-day",
+      "label": "Tag",
+      "options": [
+        {"value": "01", "label": "1"},
+        {"value": "02", "label": "2"},
+        {"value": "03", "label": "3"},
+        {"value": "04", "label": "4"},
+        {"value": "05", "label": "5"},
+        {"value": "06", "label": "6"},
+        {"value": "07", "label": "7"},
+        {"value": "08", "label": "8"},
+        {"value": "09", "label": "9"},
+        {"value": "10", "label": "10"},
+        {"value": "11", "label": "11"},
+        {"value": "12", "label": "12"},
+        {"value": "13", "label": "13"},
+        {"value": "14", "label": "14"},
+        {"value": "15", "label": "15"},
+        {"value": "16", "label": "16"},
+        {"value": "17", "label": "17"},
+        {"value": "18", "label": "18"},
+        {"value": "19", "label": "19"},
+        {"value": "20", "label": "20"},
+        {"value": "21", "label": "21"},
+        {"value": "22", "label": "22"},
+        {"value": "23", "label": "23"},
+        {"value": "24", "label": "24"},
+        {"value": "25", "label": "25"},
+        {"value": "26", "label": "26"},
+        {"value": "27", "label": "27"},
+        {"value": "28", "label": "28"},
+        {"value": "29", "label": "29"},
+        {"value": "30", "label": "30"},
+        {"value": "31", "label": "31"}
+      ],
+      "default": "01"
+    },  
+    {
+      "type": "select",
+      "id": "plannable-date-month",
+      "label": "Monat",
+      "options": [
+        {"value": "01", "label": "Januar"},
+        {"value": "02", "label": "Februar"},
+        {"value": "03", "label": "März"},
+        {"value": "04", "label": "April"},
+        {"value": "05", "label": "Mai"},
+        {"value": "06", "label": "Juni"},
+        {"value": "07", "label": "Juli"},
+        {"value": "08", "label": "August"},
+        {"value": "09", "label": "September"},
+        {"value": "10", "label": "Oktober"},
+        {"value": "11", "label": "November"},
+        {"value": "12", "label": "Dezember"}
+      ],
+      "default": "01"
+    },  
+    {
+      "type": "select",
+      "id": "plannable-date-year",
+      "label": "Jahr",
+      "options": [
+        {"value": "2020", "label": "2020"},
+        {"value": "2021", "label": "2021"},
+        {"value": "2022", "label": "2022"},
+        {"value": "2023", "label": "2023"},
+        {"value": "2024", "label": "2024"},
+        {"value": "2025", "label": "2025"},
+        {"value": "2026", "label": "2026"},
+        {"value": "2027", "label": "2027"},
+        {"value": "2028", "label": "2028"},
+        {"value": "2029", "label": "2029"},
+        {"value": "2030", "label": "2030"}
+      ],
+      "default": "2024"
+    },  
+    {
+      "type": "select",
+      "id": "plannable-date-time",
+      "label": "Uhrzeit",
+      "options": [
+        {"value": "01:00:00", "label": "1 Uhr"},
+        {"value": "02:00:00", "label": "2 Uhr"},
+        {"value": "03:00:00", "label": "3 Uhr"},
+        {"value": "04:00:00", "label": "4 Uhr"},
+        {"value": "05:00:00", "label": "5 Uhr"},
+        {"value": "06:00:00", "label": "6 Uhr"},
+        {"value": "07:00:00", "label": "7 Uhr"},
+        {"value": "08:00:00", "label": "8 Uhr"},
+        {"value": "09:00:00", "label": "9 Uhr"},
+        {"value": "10:00:00", "label": "10 Uhr"},
+        {"value": "11:00:00", "label": "11 Uhr"},
+        {"value": "12:00:00", "label": "12 Uhr (Mittag)"},
+        {"value": "13:00:00", "label": "13 Uhr"},
+        {"value": "14:00:00", "label": "14 Uhr"},
+        {"value": "15:00:00", "label": "15 Uhr"},
+        {"value": "16:00:00", "label": "16 Uhr"},
+        {"value": "17:00:00", "label": "17 Uhr"},
+        {"value": "18:00:00", "label": "18 Uhr"},
+        {"value": "19:00:00", "label": "19 Uhr"},
+        {"value": "20:00:00", "label": "20 Uhr"},
+        {"value": "21:00:00", "label": "21 Uhr"},
+        {"value": "22:00:00", "label": "22 Uhr"},
+        {"value": "23:00:00", "label": "23 Uhr"},
+        {"value": "23:59:59", "label": "Mitternacht (24 Uhr)"}
+      ],
+      "default": "23:59:59"
+    }
+    ]
+  }, 
+  {
+    "name": "PDP",
+    "settings": [
+      {
+        "type": "color",
+        "id": "benefits_on_images_color",
+        "label": "Background color of benefits",
+        "default": "#ABAAA0",
+        "info": "you only see the changes, if the metafield 'benefits on product images' is filled."
+      },
+      {
+        "type": "checkbox",
+        "id": "showCartLayerPopup",
+        "label": "Show cart layer popup",
+        "default": false
+      }
+    ]
+  },
+  {
+    "name": "Checkout Features",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Dynamic buttons"
+      },
+      {
+        "type": "checkbox",
+        "id": "change_expres_button_order",
+        "label": "Change order of dynamic payment buttons",
+        "default": true,
+        "info": "This checkbox must be active to use the checkboxes below"
+      },
+      {
+        "type": "checkbox",
+        "id": "paypal_expres_button_order",
+        "label": "Paypal",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "amazon_expres_button_order",
+        "label": "Amazon pay",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "google_expres_button_order",
+        "label": "Google pay",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "shopify_expres_button_order",
+        "label": "Shop pay",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Restyling of shipping methods"
+      },
+      {
+        "type": "checkbox",
+        "id": "activate_delivery_badges",
+        "label": "Enable delivery badges",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Checkout Custom",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "tick",
+        "label": "Tick Enable\/Disable on Input Fields",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "timer",
+        "label": "Timer Enable\/Disable on Input Fields",
+        "default": true
+      }
+    ]
+  },
+  {
+    "name": "Miscellaneous",
+    "settings": [
+      {
+        "type": "text",
+        "id": "aroma_trigger_option_names",
+        "label": "Aroma trigger option names",
+        "info": "Comma separated list of option names that should trigger the 'Wähle Deinen Duft' option label"
+      }
+    ]
+  }
+]

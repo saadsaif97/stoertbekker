@@ -1,0 +1,90 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "lb_collection_header_wA3rqd": {
+      "type": "lb-collection-header",
+      "disabled": true,
+      "settings": {
+        "customhtml": ""
+      }
+    },
+    "lb_campaign_blackfriday_preoptin_RzYPBR": {
+      "type": "lb-campaign-blackfriday-preoptin",
+      "blocks": {
+        "block_EtV6Ur": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify://shop_images/3_b17e474e-e1b8-4721-a211-c127cc7032b8.png",
+            "headline": "Early Access",
+            "subheadline": "Shoppe schon 24h vor allen anderen unsere Black Deals"
+          }
+        },
+        "block_6AMmKN": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify://shop_images/Icon.png",
+            "headline": "Geheimes Geschenk",
+            "subheadline": "Zu jeder Bestellung gibt es ein GRATIS Überraschungsprodukt"
+          }
+        },
+        "block_LzaFet": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify://shop_images/5_ac790c47-9190-4be7-9401-fc10e036a36f.png",
+            "headline": "Gratis Einkauf",
+            "subheadline": "Gewinne 1 von 10 GRATIS Einkäufen und erhalte Dein Geld zurück."
+          }
+        },
+        "block_BzeVP8": {
+          "type": "block",
+          "settings": {
+            "icon": "shopify://shop_images/Icon_e6999b74-b173-4b33-b77b-bb702e87c5ed.png",
+            "headline": "70% mehr Shampoo",
+            "subheadline": "sichere dir als einer der ersten unsere neuen 100g Shampoos"
+          }
+        }
+      },
+      "block_order": [
+        "block_EtV6Ur",
+        "block_6AMmKN",
+        "block_LzaFet",
+        "block_BzeVP8"
+      ],
+      "settings": {
+        "bannertext": "BLACK DAYS | BIS ZU 50%",
+        "bannerbg": "#000000",
+        "bannerbgimage": "shopify://shop_images/Bildschirmfoto_2024-11-08_um_17.43.13.png",
+        "bannerfontcolor": "#000000",
+        "bannerfont": "sans-serif",
+        "customfont": "https://cdn.shopify.com/s/files/1/0317/7116/4804/files/BEBAS.ttf?v=1684935277",
+        "introbackground": "#000000",
+        "introbackgroundimage": "shopify://shop_images/Bildschirmfoto_2024-11-08_um_17.45.14.png",
+        "introtextcolor": "#ffffff",
+        "primaryfont": "sans-serif",
+        "secondaryfont": "sans-serif",
+        "date": "Exklusiver Zugang am 21.11.",
+        "headline": "",
+        "headlinelogo": "shopify://shop_images/logo_e016a550-2146-4737-b4cb-6f7575da5a4a.png",
+        "subheadline": "Sichere Dir vor allen anderen bis zu 50% Rabatt auf unsere Produkte und weitere exklusive Vorteile.",
+        "countdowndate": "2024-11-21",
+        "countdowntime": "23:59:59",
+        "countdownnumberbackground": "#ceb77f",
+        "countdownnumbercolor": "#000000",
+        "countdowndaycolor": "#ffffff",
+        "embedform": "<div class=\"klaviyo-form-XkVeW8\"></div>\n  \n<span style=\"color: white; font-size: 14px; margin: 9px 0px 0px 0px; display: block;\">\nTrage Dich ein und erhalte Dein Passwort per E-Mail zum Start.\n</span>"
+      }
+    }
+  },
+  "order": [
+    "lb_collection_header_wA3rqd",
+    "lb_campaign_blackfriday_preoptin_RzYPBR"
+  ]
+}

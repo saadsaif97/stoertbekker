@@ -1,0 +1,106 @@
+{% schema %}
+{
+  "name": "Awards mit Klicktext",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Award Bild 1"
+    },
+    {
+      "type": "textarea",
+      "id": "text_1",
+      "label": "Text zu Bild 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Award Bild 2"
+    },
+    {
+      "type": "textarea",
+      "id": "text_2",
+      "label": "Text zu Bild 2"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Awards mit Klicktext"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="awards-wrapper">
+  <h2 class="awards-heading">Unsere Awards</h2>
+  <div class="awards-grid">
+    <div class="award-item" onclick="toggleAwardText(this)">
+      <div class="award-text hidden">
+        {{ section.settings.text_1 }}
+      </div>
+      {% if section.settings.image_1 %}
+        <img src="{{ section.settings.image_1 | img_url: 'medium' }}" alt="Award 1">
+      {% endif %}
+    </div>
+    <div class="award-item" onclick="toggleAwardText(this)">
+      <div class="award-text hidden">
+        {{ section.settings.text_2 }}
+      </div>
+      {% if section.settings.image_2 %}
+        <img src="{{ section.settings.image_2 | img_url: 'medium' }}" alt="Award 2">
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+
+<style>
+.awards-wrapper {
+  background-color: white;
+  margin-top: -42px;
+  padding: 0px 20px 40px 20px;
+  text-align: center;
+}
+.awards-heading {
+  font-size: 42px;
+  font-weight: normal;
+  margin-bottom: 30px;
+  color: #2c1f1f;
+       font-family: "BetterTimesAlt";
+}
+.awards-grid {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.award-item {
+  cursor: pointer;
+  max-width: 150px;
+  padding: 18px;
+  border-radius: 9px;
+   border: 1px solid #faf9f7;
+}
+/*
+.award-item:hover {
+  background: white;
+  border: 1px solid black;
+}
+*/
+.award-item:hover .award-text {
+  display: block;
+}
+  
+.award-item img {
+  max-width: 100%;
+  height: auto;
+}
+.award-text {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: #333;
+  display: block;
+}
+
+</style>
+

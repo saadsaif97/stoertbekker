@@ -1,0 +1,78 @@
+{%- if template contains 'product' -%}
+
+  {% comment %} Extending the product schema {% endcomment %}
+  {%- assign days_product_price_valid_until = 10 | times: 86400 -%}
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Product",
+    "offers":
+      {
+        "@type": "Offer",
+        "name": {{ product.selected_or_first_available_variant.title | json }},
+        "availability": "https://schema.org/InStock",
+        "price": {{ product.selected_or_first_available_variant.price | money_without_currency | remove: '.' | replace: ',', '.' | json }},
+        "priceCurrency": {{ shop.currency | json }},
+        "priceValidUntil": "{{ 'now' | date: '%s' | plus: days_product_price_valid_until | date: '%Y-%m-%d' }}",
+        {%- if product.selected_or_first_available_variant.sku != blank -%}
+          "sku": "{{ product.selected_or_first_available_variant.sku }}",
+        {%- endif -%}
+        "url": "{{ shop.url }}{{ product.selected_or_first_available_variant.url }}"
+      },
+    {%- if is_barcode_available and is_valid_gtin_length %}
+      "{{ gtin_option }}": {{ product.selected_or_first_available_variant.barcode | json }},
+      "productId": {{ product.selected_or_first_available_variant.barcode | json }},
+    {%- elsif is_barcode_available %}
+      "mpn": {{ product.selected_or_first_available_variant.barcode | json }},
+      "productId": {{ product.selected_or_first_available_variant.barcode | json }},
+    {%- endif %}
+    "brand": {
+      "name": {{ product.vendor | json }}
+    },
+    "name": {{ product.title | json }},
+    "description": {{ product.description | strip_html | json }},
+    "category": {{ product.type | json }},
+    "url": "{{ shop.url }}{{ product.url }}",
+    "sku": "{{ product.selected_or_first_available_variant.sku }}",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https:{{ product.featured_image | img_url: '1024x' }}",
+      "image": "https:{{ product.featured_image | img_url: '1024x' }}",
+      "name": {{ product.featured_image.alt | json }},
+      "width": "1024",
+      "height": "1024"
+    }
+  }
+  </script>
+  
+  {% comment %} Getting schema from reviews.io {% endcomment %}
+  <script src="https://widget.reviews.co.uk/rich-snippet/dist.js"></script>
+  <script>
+  richSnippet({
+      store: 'strtebekker-shaving-accessories',
+      sku: '{{product.selected_or_first_available_variant.sku}}'
+  });
+  </script>
+
+  {% comment %} Breadcrumbs Schema {% endcomment %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "{{ shop.url }}"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{ product.title }}",
+        "item": "{{ shop.url }}/products/{{ product.handle }}"
+      }
+    ]
+  }
+  </script>
+{%- endif -%}

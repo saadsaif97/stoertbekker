@@ -1,0 +1,841 @@
+<!doctype html>
+<html >
+  <head>    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0"
+    >
+    <meta name="referrer" content="origin">
+    
+    <!-- Anti-flicker snippet (recommended) -->
+    <style>
+      .async-hide { opacity: 0 !important}
+    </style>
+    <!-- Adtribute.io Start -->
+<script>
+  
+  var adbq = window.adbq || [];
+  var adbs = window.adbs || {};
+
+  adbs.accountId = 'cLtoCq';
+  adbs.domain = 'stoertebekker.com';
+
+  adbs.currentPage = new URL( window.location.href );
+  adbs.env = adbs.currentPage.searchParams.get( 'adb_debug' ) === 'true' ? 'dev' : 'prod';
+  adbs.version = adbs.currentPage.searchParams.get( 'adb_version' );
+  adbs.hasSessionStorageAccess = () => {
+    const test = 'sessionStorageWriteable';
+    try {
+      sessionStorage.setItem( 'test', test );
+      sessionStorage.removeItem( 'test' );
+
+      return true;
+    } catch ( e ) {
+      return false;
+    }
+  };
+  adbs.hasLocalStorageAccess = () => {
+    const test = 'localStorageWriteable';
+    try {
+      localStorage.setItem( 'test', test );
+      localStorage.removeItem( 'test' );
+
+      return true;
+    } catch ( e ) {
+      return false;
+    }
+  };
+  adbs.encodeInput = ( input ) => btoa( encodeURIComponent( JSON.stringify( input ) ) );
+  adbs.decodeInput = ( input ) => JSON.parse( decodeURIComponent( atob(  input ) ) );
+  adbs.isValidUrl = ( url ) => {
+    try {
+      new URL( url );
+
+      return true;
+    } catch ( e ) {
+      return false;
+    }
+
+  };
+  adbs.retry = 200;
+  adbs.load = ( a, d, e, v ) => {
+    const el = document.createElement( 'script' );
+    el.type = 'text/javascript';
+    el.async = true;
+    el.onerror = () => {
+      setTimeout( () => {
+
+        adbs.load( adbs.accountId, adbs.domain, adbs.env, adbs.version );
+
+        adbs.retry = adbs.retry * 1.5;
+
+      }, adbs.retry);
+
+    };
+    el.src = 'https://bundle.' + d + '/client?env=' + e + '&account_id=' + a + ( v ? '&version=' + v : '' );
+    const s = document.getElementsByTagName( 'script' )[0];
+    s.parentNode.insertBefore( el, s );
+
+  }
+  
+  {% if customer %}
+
+    adbq.push({
+      method: 'set',
+      user_attributes: {
+        $_shopify_customer_id: '{{customer.id}}',
+        $_email: '{{customer.email}}'
+      }
+    });
+
+  {% endif %}
+  
+  {% if checkout %}
+  
+    adbq.push({
+      method: 'set',
+      user_attributes: {
+        $_shopify_checkout_id: '{{checkout.id}}',
+        $_email: {% if checkout.email %}'{{checkout.email}}'{% else %}undefined{% endif %}
+      }
+    });
+   
+  {% endif %}
+  
+  {% if cart %}
+
+    if ( {{cart.item_count}} > 0 ) {
+      function trackShopifyCartId ( cartId ) {
+        if ( cartId ) {
+          adbq.push({
+            method: 'track',
+            event_name: 'Identify',
+            event_type: 'standard',
+            user_attributes: {
+              $_shopify_cart_id: cartId
+            }
+          });
+        }
+      };
+
+      function setShopifyCartId ( cartId ) {
+        if ( cartId ) {
+          adbq.push({
+            method: 'set',
+            user_attributes: {
+              $_shopify_cart_id: cartId
+            }
+          });
+        }
+      };
+
+      function fetchShopifyCartId () {
+        fetch( '/cart.json' ).then( response => response.json() ).then( json => {
+          setShopifyCartId( json.token );
+          trackShopifyCartId( json.token );
+
+          if ( adbs.hasSessionStorageAccess() && json.token ) {
+            sessionStorage.setItem( 'adb_shopify_cart_id', json.token );
+
+          }
+
+        });
+
+      };
+
+      if ( adbs.hasSessionStorageAccess() ) {
+        if ( sessionStorage.getItem( 'adb_shopify_cart_id' ) ) {
+          setShopifyCartId( sessionStorage.getItem( 'adb_shopify_cart_id') );
+
+        } else {
+          fetchShopifyCartId();
+
+        }  
+      } else {
+        fetchShopifyCartId();
+
+      }
+    }
+
+  {% endif %}
+  
+  {% if product %}
+
+   adbq.push({
+     method: 'track',
+     event_name: 'Viewed a product',
+     event_type: 'ecommerce',
+     ecommerce_attributes: [{
+       product_id: '{{product.id}}',
+       product_name: '{{product.title}}'
+     }]
+   });
+
+  {% endif %}
+  
+  adbq.push( {
+    method: 'track',
+    event_name: 'Viewed a page',
+    event_type: 'standard',
+    event_timestamp: new Date().getTime(),
+    page_url: adbs.currentPage.href,
+    referrer_url: document.referrer,
+    page_title: document.title
+  } );
+
+  if ( adbs.hasLocalStorageAccess() ) {
+    if ( localStorage.getItem( 'adbq' ) ) {
+      const storedQueue = JSON.parse( localStorage.getItem( 'adbq' ) );
+      storedQueue.map( event => adbq.push( event ) );
+    }
+
+    localStorage.setItem( 'adbq', JSON.stringify( adbq ) );
+
+  } else {
+    const storedQueue = adbs.currentPage.searchParams.get( 'adbq' );
+    if ( storedQueue ) {
+      adbs.decodeInput( storedQueue ).map( event => adbq.push( event ) );
+      adbs.currentPage.searchParams.delete( 'adbq' );
+      window.history.replaceState({}, document.title, adbs.currentPage.href );
+
+    }
+
+    document.querySelectorAll('a').forEach( link => {
+      let currentLink = link.getAttribute('href')
+      if ( adbs.isValidUrl( currentLink ) ) {
+        currentLink = new URL( link.getAttribute('href') );
+        currentLink.searchParams.set( 'adbq', adbs.encodeInput( adbq ) );
+        link.setAttribute( 'href', currentLink.href );
+      }
+    });
+
+  }
+
+  adbs.load( adbs.accountId, adbs.domain, adbs.env, adbs.version );
+</script>
+<!-- Adtribute.io End -->
+    <script>
+      (function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+      h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+      (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+      })(window,document.documentElement,'async-hide','dataLayer',4000,
+      {'GTM-P944PC9':true});
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>{{ page_title }}</title>
+
+    {{ content_for_header }}
+
+    {{ checkout_stylesheets }}
+    {{ checkout_scripts }}
+
+    <script type="text/javascript">
+      window._tfa = window._tfa || [];
+      window._tfa.push({notify: 'event', name: 'page_view', id: 1536913});
+      !function (t, f, a, x) {
+             if (!document.getElementById(x)) {
+                t.async = 1;t.src = a;t.id=x;f.parentNode.insertBefore(t, f);
+             }
+      }(document.createElement('script'),
+      document.getElementsByTagName('script')[0],
+      '//cdn.taboola.com/libtrc/unip/1536913/tfa.js',
+      'tb_tfa_script');
+    </script>
+
+    <script data-obct type="text/javascript">
+      /** DO NOT MODIFY THIS CODE**/
+      !function(_window, _document) {
+        var OB_ADV_ID = '009a52feef37ffaa27fe9d5ea0568871ca';
+        if (_window.obApi) {
+          var toArray = function(object) {
+            return Object.prototype.toString.call(object) === '[object Array]' ? object : [object];
+          };
+          _window.obApi.marketerId = toArray(_window.obApi.marketerId).concat(toArray(OB_ADV_ID));
+          return;
+        }
+        var api = _window.obApi = function() {
+          api.dispatch ? api.dispatch.apply(api, arguments) : api.queue.push(arguments);
+        };
+        api.version = '1.1';
+        api.loaded = true;
+        api.marketerId = OB_ADV_ID;
+        api.queue = [];
+        var tag = _document.createElement('script');
+        tag.async = true;
+        tag.src = '//amplify.outbrain.com/cp/obtp.js';
+        tag.type = 'text/javascript';
+        var script = _document.getElementsByTagName('script')[0];
+        script.parentNode.insertBefore(tag, script);
+      }(window, document);
+
+      obApi('track', 'PAGE_VIEW');
+    </script>
+
+    {% render 'weglot_hreftags' %}
+    {% render 'weglot_switcher' %}
+  
+              <script>
+                window.lsData = {};
+                window.lsData.customer = {% if customer %}{first_name: "{{ customer.first_name }}",last_name: "{{ customer.last_name }}",email: "{{ customer.email }}",customer_id: "{{ customer.id }}",id: "{{ customer.id }}",phone: "{{ customer.phone }}"};{% else %}null;{% endif %}
+                window.lsData.currency = '{{ cart.currency.iso_code }}';
+                window.lsData.collection_title = '{{ collection.title }}';
+                window.lsData.collection = {% if collection %}{{ collection.products | json }}{% else %}null{% endif %};
+                window.lsData.product = {% if product %}{{ product | json }}{% else %}null{% endif %};
+                window.lsData.cart = {% if cart %}{{ cart | json }}{% else %}null{% endif %};
+                window.lsData.checkout = {% if checkout %}
+                  {
+                    currency: "{{ checkout.currency }}",
+                    email: "{{checkout.email}}",
+                    item_count: {{checkout.item_count}},
+                    shipping_address: {{checkout.shipping_address | json}},
+                    total_price: {{checkout.total_price}},
+                    line_items: [
+                      {% for line_item in checkout.line_items %}
+                        {
+                          item_id: "{{ line_item.product_id | json }}",
+                          item_sku: {{ line_item.sku | json }},
+                          item_name: {{ line_item.product.title | json }},
+                          item_brand: {{ line_item.vendor | json }},
+                          item_category: {{ line_item.product.type | json }},
+                          item_variant: {{ line_item.variant.title | json }},
+                          price: "{{ line_item.final_price | times: 0.01 | json }}",
+                          quantity: "{{ line_item.quantity | json }}"
+                        },
+                      {% endfor %}
+                    ],
+                  }
+                {% else %}null{% endif %};
+                window.lsData.order = {% if order %}{{ order | json }}{% else %}null{% endif %};
+              </script>
+              <script async src='https://sp.stape.io/widget/script?shop={{shop.domain}}&shop_id={{shop.id}}'></script>
+            </head>
+            
+  
+  <body>
+
+    {{ skip_to_content_link }}
+
+    <header class="banner" data-header role="banner">
+      <div class="wrap">
+        {{ content_for_logo }}
+      </div>
+    </header>
+
+    {{ order_summary_toggle }}
+    <div class="content" data-content>
+      <div class="wrap">
+        <div class="main">
+          <header class="main__header" role="banner">
+            {{ content_for_logo }}
+            {% render 'ed-checkout-progress-bar' %}
+            {% section 'checkout_timer' %}
+            {{ alternative_payment_methods }}
+
+            {% if settings.change_expres_button_order %}
+              {% render 'ed-order_express_payment_buttons' %}
+            {% endif %}
+          </header>
+          <main class="main__content" role="main">
+            {{ content_for_layout }}
+          </main>
+          <footer class="main__footer" role="contentinfo">
+            {{ content_for_footer }}
+          </footer>
+        </div>
+        <aside class="sidebar" role="complementary">
+          <div class="sidebar__header">
+            {{ content_for_logo }}
+          </div>
+          <div class="sidebar__content">
+            {{ content_for_order_summary }}
+            {% section 'trust_section' %}
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    {{ tracking_code }}
+
+    <!-- ADM SHOPIFY CODE SEPARATOR -->
+    {% unless first_time_accessed -%}
+      <script type="application/javascript">
+        window.admSendFBPurchase = false;
+      </script>
+    {%- endunless %}
+    <script id="js-app-admq-data" type="application/json">
+      {
+          "sid": "{{ shop.id }}",
+          "oid": "{{ checkout.order_id }}",
+          "cid": "{{ customer.id }}",
+          "on": "{{ checkout.order_name }}",
+          "cim": "{{ cart.item_count }}",
+          "et": "shopify",
+          "en": "",
+          "spt": "{{ product.type | url_encode }}",
+          "sptt": "{{ page_title | url_encode }}",
+          "sppt": "{{ product.title | url_encode }}",
+          "spos": "{{ product.options.size }}",
+          "scr": "{{ cart.currency.iso_code | url_encode }}",
+          "scpp": "{{ product.price | money_without_currency | url_encode }}",
+          "sctp": "{{ cart.total_price | money_without_currency | url_encode }}",
+          "sss": "{{ search.terms | url_encode }}",
+          "spi": "{{ product.id | url_encode }}",
+          "sci": "{{ collection.id | url_encode }}",
+          "scc": "[{% for item in collection.products limit:50 %} { \"id\": \"{{ item.id }}\", \"variantID\": \"{{ item.variant.id }}\", \"price\": \"{{ item.price | money_without_currency | url_encode }}\", \"quantity\": \"{{ item.quantity }}\" } {% unless forloop.last %},{% endunless %} {% endfor %}]",
+          "sca": "[{% for item in cart.items limit:50 %} { \"id\": \"{{ item.product.id }}\", \"variantID\": \"{{ item.variant.id }}\", \"price\": \"{{ item.price | money_without_currency | url_encode }}\", \"quantity\": \"{{ item.quantity }}\" } {% unless forloop.last %},{% endunless %} {% endfor %}]"
+      }
+    </script>
+    <script
+      id="js-app-admq-script"
+      async
+      type="application/javascript"
+      src="https://shopify.admetrics.events/conversion-v1.min.js"
+      data-endpoint="https://shopify.admetrics.events/receive"
+      data-cn=""
+      data-cv=""
+      data-cv2=""
+      data-pa-vendor=""
+      data-pa-mpid=""
+      data-ss-mpid=""
+    ></script>
+    <!-- ADM SHOPIFY CODE SEPARATOR -->
+    
+    <script type="text/javascript">
+    (function ($) {
+      $(document).on("page:load page:change", function () {
+        if (Shopify.Checkout.step == 'contact_information') {
+
+          $('div[data-address-field="address1"]').after(`
+              <div data-address-field="house-number" data-autocomplete-field-container="false" class="field field--required">
+                <div class="field__input-wrapper"><label class="field__label field__label--visible" for="checkout_shipping_address_house-number">Hausnummer</label>
+                    <input value placeholder="Hausnummer" autocorrect="off" role="combobox"
+                    aria-autocomplete="list" aria-expanded="false" aria-required="true"
+                    class="field__input" size="30" type="text" id="checkout_shipping_address_house-number" aria-haspopup="false">
+                </div>
+              </div>
+            `);
+          $('#checkout_shipping_address_address1').after(`
+            <input placeholder="Straße" autocomplete="shipping address-line1" autocorrect="off"
+            role="combobox" aria-autocomplete="list" aria-expanded="false" aria-required="true"
+            data-backup="address1" data-trekkie-id="shipping_address1_google_autocomplete_field"
+            data-autocomplete-trigger="true" data-autocomplete-title="Vorschläge"
+            data-autocomplete-single-item="1 Option verfügbar"
+            data-autocomplete-multi-item=" Optionen verfügbar"
+            data-autocomplete-item-selection=" von "
+            data-autocomplete-close="Vorschläge schließen" class="field__input" size="30" type="text"
+            value=""
+            id="checkout_shipping_address_address1_street" aria-haspopup="false">
+          `);
+          $('input[type="text"]').change(function () {
+            this.value = $.trim(this.value);
+          });
+
+          $('#checkout_shipping_address_country').change(function (e) {
+            setTimeout(function () {
+              $('#checkout_shipping_address_address1_street').remove();
+              $('[data-address-field="house-number"]').remove();
+              $('div[data-address-field="address1"]').after(`
+                  <div data-address-field="house-number" data-autocomplete-field-container="false" class="field field--required">
+                    <div class="field__input-wrapper"><label class="field__label field__label--visible" for="checkout_shipping_address_house-number">Hausnummer</label>
+                        <input value placeholder="Hausnummer" autocorrect="off" role="combobox"
+                        aria-autocomplete="list" aria-expanded="false" aria-required="true"
+                        class="field__input" size="30" type="text" id="checkout_shipping_address_house-number" aria-haspopup="false">
+                    </div>
+                  </div>
+                `);
+              $('#checkout_shipping_address_address1').after(`
+                <input placeholder="Straße" autocomplete="shipping address-line1" autocorrect="off"
+                role="combobox" aria-autocomplete="list" aria-expanded="false" aria-required="true"
+                data-backup="address1" data-trekkie-id="shipping_address1_google_autocomplete_field"
+                data-autocomplete-trigger="true" data-autocomplete-title="Vorschläge"
+                data-autocomplete-single-item="1 Option verfügbar"
+                data-autocomplete-multi-item=" Optionen verfügbar"
+                data-autocomplete-item-selection=" von "
+                data-autocomplete-close="Vorschläge schließen" class="field__input" size="30" type="text"
+                value=""
+                id="checkout_shipping_address_address1_street" aria-haspopup="false">
+              `);
+
+              var adresslbl = $('label[for="checkout_shipping_address_address1"]');
+              if (adresslbl.html() == 'Straße und Hausnummer') {
+                $(adresslbl).html("Straße");
+              }
+            }, 1);
+            /*e.stopPropagation();
+            var house_number_field = $('#checkout_shipping_address_house-number');
+            var adresslbl = $('label[for="checkout_shipping_address_address1"]');
+  
+              $('div[data-address-field="country"]').insertAfter('div[data-address-field="last_name"]');
+              if($(this).val() == 'Austria'){
+                house_number_field.attr('placeholder','Hausnr./Stiege/Tür');
+                house_number_label.text('Hausnr./Stiege/Tür');
+              } else {
+                house_number_field.attr('placeholder','Hausnummer');
+                house_number_label.text("Hausnummer");
+              }*/
+          });
+
+          $('#continue_button').click(function (e) {
+            //setTimeout(function(e){
+            var houseNr = $('#checkout_shipping_address_house-number').val();
+            var addressField = $('#checkout_shipping_address_address1');
+            var addressVal = $('#checkout_shipping_address_address1').val();
+            var address1_container = $('div[data-address-field="address1"]');
+            var houseNr_container = $('div[data-address-field="house-number"]');
+
+            document.querySelectorAll('.field__message--error').forEach(el => el.remove());
+            var addressVal = $('#checkout_shipping_address_address1_street').val();
+            if (addressVal == '') {
+              e.preventDefault();
+              e.stopPropagation();
+              address1_container.find('.field__input-wrapper').after('<p class="field__message field__message--error" id="error-for-address1">Bitte Straße überprüfen</p>');
+              address1_container.addClass('field--error');
+            } else if (addressVal.includes('Postfiliale')) {
+              e.preventDefault();
+              e.stopPropagation();
+              address1_container.find('.field__input-wrapper').after('<p class="field__message field__message--error" id="error-for-address1">>Wollten Sie das Packet an eine Postfiliale schicken? Wählen Sie oben Postfiliale aus.</p>');
+              address1_container.addClass('field--error');
+            } else {
+              addressField.val(addressVal + ' ' + houseNr);
+            }
+
+            if (!$.isNumeric(houseNr[0])) {
+              e.preventDefault();
+              e.stopPropagation();
+              houseNr_container.find('.field__input-wrapper').after('<p class="field__message field__message--error" id="error-for-house-number">Bitte Hausnummer überprüfen.</p>');
+              houseNr_container.addClass('field--error');
+            } else if (($.isNumeric(houseNr) && houseNr.length >= 6 && houseNr.length <= 10)) {
+              e.preventDefault();
+              e.stopPropagation();
+              houseNr_container.find('.field__input-wrapper').after('<p class="field__message field__message--error" id="error-for-house-number">Eingegebene Hausnummer ist falsch.</p>');
+              houseNr_container.addClass('field--error');
+            }
+
+          });
+        }
+        var adresslbl = $('label[for="checkout_shipping_address_address1"]');
+        if (adresslbl.html() == 'Straße und Hausnummer') {
+          $(adresslbl).html("Straße");
+        }
+      });
+
+      window.onload = function () {
+        //console.log('Hausnummer Race Check #2')
+
+        var button = document.getElementById('continue_button');
+        var input = document.getElementById('checkout_shipping_address_house-number');
+        var street = document.getElementById('checkout_shipping_address_address1');
+
+        button.addEventListener('click', function (e) {
+          //setTimeout(function(e){
+          function validateStr(str) {
+            var regex = new RegExp("[0-9]+");
+            if (regex.test(str) == true) {
+              return true
+            } else {
+              return false;
+            }
+          }
+
+          function validateStreet(str) {
+            var regex = new RegExp("[A-Z]+"); // Check for uppercase first
+            if (regex.test(str) == true) {
+              regex = new RegExp("[0-9]+"); // Now we check for numbers
+              if (regex.test(str) == true) {
+                regex = new RegExp("[a-z]+"); // checking now for lowercase
+                if (regex.test(str) == true) {
+                  return true;
+                } else return false;
+              } else return false;
+            } else return true;
+          }
+
+          var hasNumber = validateStr(input.value);
+          var hasNumberAndStreet = validateStreet(street.value);
+
+          var inputDiv = document.querySelector('.field[data-address-field="house-number"]');
+          var divWrapper = document.querySelector('.field[data-address-field="house-number"] .field__input-wrapper');
+
+          if (hasNumber == false && hasNumberAndStreet == false) {
+            e.preventDefault();
+            e.stopPropagation();
+            inputDiv.classList.add('field--error');
+            divWrapper.insertAdjacentHTML('afterend', '<p class="field__message field__message--error" id="error-for-address1">Bitte gib deine Hausnummer ein.</p>');
+            return false;
+          }
+
+        });
+      }
+    })(Checkout.$);
+    </script>
+    
+    <script>
+      var trst_sec = $('.main_wrap-trust_sec');
+      var trst_html = $(trst_sec).html();
+      $('#continue_button').after(trst_html);
+
+      $(document).on("page:load page:change", function () {
+        if (Shopify.Checkout.step == 'contact_information') {
+          var order_total = "{{ checkout.total_price }}";
+
+          if(Number(order_total) < 5000 ){
+            var subTotal = "{{ checkout.total_price | plus: 390 | money_without_currency }}";    
+            $(".total-line--shipping .order-summary__small-text").text("3,90 €");
+            $(".total-line__price .payment-due__price ").text(subTotal+" €");
+          } else {
+            $(".total-line--shipping .order-summary__small-text").text("Gratis für dich");
+            $("#continue_button .btn__content").text("Weiter zum kostenlosen Versand");
+          }
+        }
+      });
+    </script>
+    
+    <style>
+      #checkout_shipping_address_address1 {
+        display: none;
+      }
+
+      div[data-address-field="address1"] {
+        width: 70%;
+      }
+
+      div[data-address-field="house-number"] {
+        width: 30%;
+      }
+    </style>
+
+    {% if settings.tick == true %}
+    <script>
+      var $;
+      if (window.jQuery) {
+        $ = window.jQuery;
+      } else if (window.Checkout && window.Checkout.$) {
+        $ = window.Checkout.$;
+      }
+    
+      const getCookie = (name) => {
+        return document.cookie.split('; ').reduce((r, v) => {
+          const parts = v.split('=')
+          let code = parts[0] === name
+            ? decodeURIComponent(parts[1])
+            : r
+          return code
+        }, '')
+      }
+    
+      function getFields() {
+        return [
+          {
+            name: "first_name",
+            checks: ["notEmpty"]
+          },
+          {
+            name: "last_name",
+            checks: ["notEmpty"]
+          },
+          {
+            name: "address1",
+            checks: ["notEmpty", "houseNo"]
+          },
+          {
+            name: "zip",
+            checks: ["notEmpty"]
+          }, {
+            name: "city",
+            checks: ["notEmpty"]
+          }
+        ];
+      }
+    
+      var svgInvalid = '<svg class="validation error" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>';
+      var svgValid = '<svg class="validation success" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
+    
+      function applyOnLeaveField(name, checks) {
+        var groupDiv = $("div[data-address-field='" + name + "']");
+        var valid = true;
+        if (groupDiv.length) {
+          var input = groupDiv.find("input");
+    
+          input.blur(function() {
+            validateField(name, checks);
+          });
+        }
+      }
+    
+      function validateField(name, checks) {
+        var groupDiv = $("div[data-address-field='" + name + "']");
+        var valid = true;
+        if (groupDiv.length) {
+          var input = groupDiv.find("input").val().toString();
+          input = input.trim();
+          for (var check of checks) {
+            if (! valid) 
+              continue;
+            
+    
+    
+            if (check == 'notEmpty') {
+              if (input == "") {
+                valid = false;
+              }
+            } else if (check == 'houseNo') {
+              var address1Matches = input.matchAll(/^[ \-a-zÖÜÄüößäàáÀÁéÈÉA-Z0-9.']+\s+(\d+(\s?\w$)?)/gm);
+    
+              var matched = false;
+              for (var match of address1Matches) {
+                matched = true;
+              }
+              valid = matched;
+            }
+          }
+          var inputWrapper = groupDiv.find(".field__input-wrapper");
+          if (! valid) {
+            groupDiv.addClass("field--error");
+            inputWrapper.find(".validation").remove();
+            inputWrapper.append(svgInvalid);
+          } else {
+            groupDiv.removeClass("field--error");
+            inputWrapper.find(".validation").remove();
+            inputWrapper.append(svgValid);
+          }
+        }
+        return valid
+      }
+    
+      function initFormValidation() {
+        var fields = getFields();
+        for (var field of fields) {
+          var fieldName = field.name;
+          var checks = field.checks;
+          applyOnLeaveField(fieldName, checks);
+        }
+        $(".step form").submit(function(event) {
+          var success = true;
+          for (var field of fields) {
+            var fieldName = field.name;
+            var checks = field.checks;
+            applyOnLeaveField(fieldName, checks);
+            var valid = validateField(fieldName, checks);
+            if (! valid) {
+              success = false;
+            }
+          }
+          if (! success) {
+            event.preventDefault();
+            return false;
+          }
+          return true;
+        })
+      }
+    
+      if (typeof $ !== "undefined" && $ !== undefined && $ !== null) {
+        $(document).on("page:load page:change", function(e) {
+          var step = Shopify.Checkout.step;
+    
+          if (step == 'contact_information') {
+            initFormValidation();
+          }
+        });
+      }
+    </script>
+  
+    <style data-shopify>
+      .field__input-wrapper .validation {
+        position: absolute;
+        right: 0.8em;
+        top: 0.9em;
+        width: 20px;
+      }
+    
+      .field__input-wrapper .validation.success {
+        color: #4BB543;
+      }
+    
+      .field__input-wrapper .validation.error {
+        color: #ff6d6d;
+      }
+    
+      .field__additional-info{
+        color: red;
+      }
+    
+      .field__additional-info > svg {
+        display: none;
+      }
+    </style>
+    {% endif %}
+
+    {% if settings.timer == true %}
+    <script>
+      var pSettings = {
+          /*ConversionPirate.com*/
+          progressBg: '#00bbe8',
+          progressBg2: '#d9f3f7',
+      
+          highDemandText: "Fast fertig - Wir haben Ihren Warenkorb für die nächsten 10 Minuten gespeichert",
+          discountText: "Enter your discount code here",
+      }
+      
+      function crC(e, t, s) {
+          if (s) {
+              var n = new Date;
+              n.setTime(n.getTime() + 60 * s * 1e3);
+              var i = "; expires=" + n.toUTCString()
+          } else i = "";
+          document.cookie = e + "=" + t + i + "; path=/"
+      }
+      
+      function rdC(e) {
+          for (var t = e + "=", s = document.cookie.split(";"), n = 0; n < s.length; n++) {
+              for (var i = s[n];
+                  " " == i.charAt(0);) i = i.substring(1, i.length);
+              if (0 == i.indexOf(t)) return i.substring(t.length, i.length)
+          }
+          return null
+      }
+      
+      function eSC(e) {
+          crC(e, "", -1)
+      }
+      
+      function stTM(e, t, s) {
+          var n, i, d;
+      
+          function a() {
+              n = t - ((Date.now() - e) / 1e3 | 0), d = n % 60 | 0, i = (i = n / 60 | 0) < 10 ? "0" + i : i, d = d < 10 ? "0" + d : d, s.textContent = i + ":" + d, n <= 0 && (clearInterval(c), document.getElementById("ct836").innerHTML = "We Saved Your Order! Continue Your Checkout.", e = Date.now() + 1e3)
+          }
+          a();
+          var c = setInterval(a, 1e3)
+      }
+      var wnd = window.location.href,
+          chsg = '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#fff"><path d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/></svg>';
+      wnd.indexOf("checkout") > -1 && (window.onload = function() {
+          if (wnd.indexOf("checkout") > -1 && (dsXt = document.getElementById("checkout_reduction_code"), document.body.insertAdjacentHTML("afterbegin", ''), -1 === wnd.indexOf("thank_you"))) {
+              document.getElementsByClassName("main__content")[0].insertAdjacentHTML("afterbegin", '<div><div id="ct836" style="display:block;background:#fff5d2;padding:10px 20px;border:1px solid #fac444;font-size:14px;color:#2c2c2c;font-weight:bold;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px; margin:5px 0px 20px 0px">Ihre Bestellung ist reserviert für <span id="time"></span> minutes!</div></div>');
+              var e = 600,
+                  t = Date.now(),
+                  s = rdC("pRtC");
+              s ? t < s ? e = (s - t) / 1e3 : (eSC("pRtC"), crC("pRtC", Date.now() + 1e3 * e, e + 1)) : crC("pRtC", Date.now() + 1e3 * e, e + 1), display = document.querySelector("#time"), stTM(t, e, display), document.getElementsByClassName("main__content")[0].insertAdjacentHTML("afterbegin", '<div style="width:100%;display:table"><div style="font-weight:bold;padding-left:5px">' + pSettings.highDemandText + "</div></div>"), document.getElementsByClassName("step__footer")[0].insertAdjacentHTML("afterend", ''), document.getElementsByClassName("order-summary__sections")[0].insertAdjacentHTML("beforeend", '')
+          }
+          b1j = document.getElementById("sp1"), b2j = document.getElementById("sp2"), b3j = document.getElementById("sp3"), c1j = document.getElementById("spn1"), c2j = document.getElementById("spn2"), c3j = document.getElementById("spn3"), wnd.indexOf("previous_step=contact_information") > -1 && (b1j.className = "s8 s8c", b2j.className = "s8 s8c", c1j.insertAdjacentHTML("afterbegin", chsg)), wnd.indexOf("previous_step=shipping_method") > -1 && (b1j.className = "s8 s8c", b2j.className = "s8 s8c", b3j.className = "s8 s8c", c1j.insertAdjacentHTML("afterbegin", chsg), c2j.insertAdjacentHTML("afterbegin", chsg)), wnd.indexOf("thank_you") > -1 && (b1j.className = "s8 s8c", b2j.className = "s8 s8c", b3j.className = "s8 s8c", c1j.insertAdjacentHTML("afterbegin", chsg), c2j.insertAdjacentHTML("afterbegin", chsg), c3j.insertAdjacentHTML("afterbegin", chsg))
+      });
+      var b7 = document.createElement("style");
+      b7.type = "text/css";
+      b7.innerHTML = '.main ul.breadcrumb{display:none!important}.content.prH7{padding:8px 0}.ar64{width:100%}.ar64 .s8{font-size:14px;text-align:center;color:#fff;cursor:default;margin:0 3px;padding:9px 10px 9px 30px;float:left;position:relative;background-color:' + pSettings.progressBg2 + ';-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;transition:all 2s ease;width:20%}.ar64 .s8:after,.ar64 .s8:before{content:" ";position:absolute;top:0;right:-17px;width:0;height:0;border-top:19px solid transparent;border-bottom:17px solid transparent;border-left:17px solid ' + pSettings.progressBg2 + ';z-index:2;transition:border-color .2s ease}.ar64 .s8:before{right:auto;left:0;border-left:17px solid #fff;z-index:0}.ar64 .s8:first-child:before{border:none}.ar64 .s8:first-child{margin-left:0;border-top-left-radius:4px;border-bottom-left-radius:4px}.ar64 .s8 span{position:relative}.ar64 .s8.s8c{color:#fff;background-color:' + pSettings.progressBg + '}.ar64 .s8.s8c:after{border-left:17px solid ' + pSettings.progressBg + '}.ar64 .s8 svg{position:absolute;left:-17px;top:2px}.ar64 .s8:first-child svg{left:-16px}.wyustit:before{border-top:1px solid #dfdfdf;content:"";margin:0 auto;position:absolute;top:50%;left:0;right:0;bottom:0;width:100%;z-index:-1}.wyuscs{display:table-row;padding-bottom:20px}.wyuscs1,.wyuscs2{display:table-cell;vertical-align:middle}.wyuscs1{width:20%;font-size:15px}.wyuscs2{width:80%}.wyuscs2 span{font-size:14px;font-weight:700;color:#666}.wyuscs2 p{font-size:12px;color:#777}@media(min-width:450px){.ar64 .s8{min-width:29%}.ar64 .s8 svg{position:relative!important;top:2px!important;left:-10px!important}}@media(max-width:750px){.ar64 .s8{font-size:11px}.ar64 .s8:first-child{padding-left:20px}}';
+      document.body.appendChild(b7);
+    </script>
+    {% endif %}
+  {% comment %}START ADCELL APP | DONT REMOVE THIS!{% endcomment %}{% comment %}REMOVED{% endcomment %}{% comment %}DONT REMOVE THIS | END ADCELL APP{% endcomment %}
+
+</body>
+</html>
+
+{% render 'ed-checkout-payment-order' %}
+
+
+{% if settings.activate_delivery_badges %}
+  {% render 'ed-delivery-badges' %}
+{% endif %}

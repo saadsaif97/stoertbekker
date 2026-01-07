@@ -1,0 +1,242 @@
+<footer class="lb-footer">
+    <div class="lb-footer-holder">
+      
+      <div class="lb-footer-upper">
+        {% for block in section.blocks %}
+        
+          {% assign headline = block.settings.column_headline %}
+          {% assign menu = linklists[block.settings.column_menu] %}
+          {% assign html = block.settings.column_html %}
+          {% assign img = block.settings.column_image %}
+          {% assign text = block.settings.column_text %}
+        
+          <div class="lb-footer-column" {% if headline contains 'Bewertungen'  %}id="trust"{% endif %}>
+            <h3>{{headline}}</h3>
+
+            <div>
+              {% unless html == blank %}
+                {{html}}
+              {% endunless %}
+  
+              {% unless menu == empty %}
+                <ul class="lb-footer__menu">
+                  {% for link in menu.links %}
+                    <li>
+                      <a href="{{link.url}}" class="lb-footer__menu-link">
+                        
+        {% if link.title contains 'Sets' %}<img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/gift_fd0d4dd6-7be1-4333-b598-df0221d8fd5d.png?v=1643125071" style="width: 18px; margin-right: 9px; float: left;" loading="lazy">{% endif %}
+        {% if link.title contains 'Rasierhobel' %}<img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/safetyRazor.png?v=1643106862" style="width: 18px; margin-right: 9px; float: left;" loading="lazy">{% endif %}
+        {% if link.title contains 'Rasiermesser' %}<img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/messer_70aa2a3f-fa06-4f8f-b991-b5a542ddcd36.png?v=1643113319" style="width: 18px; margin-right: 9px; float: left;" loading="lazy">{% endif %}
+        {% if link.title contains 'Rasierseife & Pinsel' %}<img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/soap_767ef74a-9d85-4341-aa89-0a19c2ab3223.png?v=1643098265" style="width: 18px; margin-right: 9px; float: left;" loading="lazy">{% endif %}
+        {% if link.title contains 'Rasierzubehör' %}<img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/blade_40fbaa37-ee1f-4c21-9ed1-00c734fcd144.png?v=1643279784" style="width: 18px; margin-right: 9px; float: left;" loading="lazy">{% endif %}
+
+         {% if link.title contains 'Bürsten & Kämme' %}<img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/bartbuerste_53c970ac-30f9-4196-b62e-f79507256600.png?v=1643280434" style="width: 18px; margin-right: 9px; float: left;" loading="lazy">{% endif %}
+         {% if link.title contains 'Bartbalm' %}<img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/balm.png?v=1643280688" style="width: 18px; margin-right: 9px; float: left;" loading="lazy">{% endif %}
+		{% if link.title contains 'Bartöl' %}<img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/oil.png?v=1643107954" style="width: 18px; margin-right: 9px; float: left;" loading="lazy">{% endif %}
+      	 {% if link.title contains 'Kleidung' %}<img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/sweatshirt_1.png?v=1642781015" style="width: 18px; margin-right: 9px; float: left;" loading="lazy">{% endif %}
+      	 {% if link.title contains 'Gutscheine' %}<img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Gutschein_10367292-8a07-410c-a766-62aacb33dbcf.png?v=1643117313" style="width: 18px; margin-right: 9px; float: left;" loading="lazy">{% endif %}
+         
+                        
+                        {{link.title}}
+                      </a>
+                    </li>
+                  {% endfor %}
+                </ul>
+              {% endunless %}
+  
+              {% if img != blank %}
+                <div class="lb-footer__image">
+                  <img src="{{ img | img_url: '500x500' }}" loading="lazy">
+                </div>
+              {% endif %}
+  
+              {% unless text == blank %}
+                <div>
+                  <p>{{text}}</p>
+                </div>
+              {% endunless %}   
+            </div>
+            
+          </div>
+        {% endfor %}
+      </div>
+      
+      <div class="lb-footer-lower">
+        <p>Shopdesign by <b><a class="lb-credit" target="blank" href="http://lionsbranding.com/">Lionsbranding | Customer Journey Branding</a></b></p>
+        <p> ©Copyright {{ 'now' | date: "%Y" }} by {{ shop.name }}. All Rights Reserved.</p>
+      </div>
+      
+    </div>
+</footer>
+
+<!--
+{{ localization.country.iso_code }}
+{{ localization.language.iso_code }}
+-->
+
+
+
+<!------------ Lb Footer Sections Settings ------------>  
+
+<style>
+
+  .lb-footer__menu-link {
+    display: inline-block!important;
+  }
+  
+  {{ section.settings.footer_header_font_family | font_face }}
+  {{ section.settings.footer_body_font_family | font_face }}
+  
+   .lb-footer {
+     background: {{ section.settings.footer_bg }}; 
+     color: {{ section.settings.footer_color }};
+   }
+  
+  .lb-footer-column h3 {
+  	font-family: {{ section.settings.footer_header_font_family.family }}; 
+    font-size: {{ section.settings.footer_header_font_family_size }}px;
+  }
+ 
+  .lb-footer-column div {
+  	font-family: {{ section.settings.footer_body_font_family.family }}; 
+    font-size: {{ section.settings.footer_body_font_family_size }}px;
+  }
+  
+  .lb-footer-lower {
+  	font-family:{{ section.settings.footer_body_font_family.family }};
+  }
+  
+  .lb-credit {
+  	color: {{ section.settings.footer_color }};
+  }
+  
+</style>
+ 
+
+{% schema %}
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Einstellungen"
+      },
+      {
+        "type": "color",
+        "id": "footer_bg",
+        "label": "Hintergrundfarbe",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "footer_color",
+        "label": "Textfarbe",
+        "default": "#000"
+      },
+      {
+        "id":"footer_header_font_family",
+        "type":"font_picker",
+        "default": "helvetica_n4",
+        "label": "Schriftfamilie Überschriften"
+      },
+      {
+        "id":"footer_header_font_family_size",
+        "type":"range",
+        "default": 18,
+        "min": 12,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "label": "Schriftfamilie Überschriften"
+      },
+      {
+        "id":"footer_body_font_family",
+        "type":"font_picker",
+        "default": "helvetica_n4",
+        "label": "Schriftfamilie Text"
+      },
+      {
+        "id":"footer_body_font_family_size",
+        "type":"range",
+        "default": 16,
+        "min": 12,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "label": "Schriftfamilie Text"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "footer_column_menu",
+        "name": "Spalte mit Menü",
+        "settings": [
+          {
+            "type":"text",
+            "id":"column_headline",
+            "label": "Headline"
+          },
+          {
+            "type":"link_list",
+            "id":"column_menu",
+            "label": "Menü"
+          }
+        ]
+      },
+      {
+        "type": "footer_column_text",
+        "name": "Spalte mit Text",
+        "settings": [
+          {
+            "type":"text",
+            "id":"column_headline",
+            "label": "Headline"
+          },
+          {
+            "id": "column_text",
+            "type": "textarea",
+            "label": "Text"
+          }
+        ]
+      },
+      {
+        "type": "footer_column_picture",
+        "name": "Spalte mit Bild",
+        "settings": [
+          {
+            "type":"text",
+            "id":"column_headline",
+            "label": "Headline"
+          },
+          {
+            "id": "column_image",
+            "type": "image_picker",
+            "label": "Bild"
+          }
+        ]
+      },
+      {
+        "type": "footer_column_html",
+        "name": "Footer",
+        "settings": [
+          {
+            "type":"text",
+            "id":"column_headline",
+            "label": "Headline"
+          },
+          {
+            "id": "column_html",
+            "type": "html",
+            "label": "HTML"
+          }
+        ]
+      }
+    ],
+  "presets": [
+    {
+      "name": "Footer",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}

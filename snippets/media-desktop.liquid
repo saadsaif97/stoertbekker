@@ -1,0 +1,365 @@
+
+
+
+{%- assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' -%}
+<div id="image-gallery-desktop" class="lb-image-list-box mod-desktop lb-biz-old">
+
+    {%- assign product_media = product.selected_or_first_available_variant.metafields.custom.variant_image_gallery.value | default: product.media -%}
+
+  <ul class="image-list mediaDesktopThumbs">
+    {%- assign counter = 0 -%}
+    {% for media in product_media %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% if variant_images contains media.src %}
+            {%- assign matching_image = variant_images | where: 'src', media.src -%}
+            <li
+              class="image-list-item-1 galleryThumb{% if counter > 0 %} mediaishidden{% endif %}" 
+              related-variant="{{ matching_image[0].variants.first.id }}"
+            >
+              <img src="{{ media | img_url: '150x' }}" loading="lazy" alt="{{ media.alt }}">
+            </li>
+            {%- assign counter = counter | plus: 1 -%}
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+{% assign counter = 0 %}
+    {% for media in product_media %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% unless variant_images contains media.src %}
+            {% assign counter = counter | plus: 1 %}
+            <li class="image-list-item-1 galleryThumb"><img src="{{ media | img_url: '150x' }}" loading="lazy" alt="{{ media.alt }}" class="lb-test-{{ counter }}"></li>
+          {% endunless %}
+        {% when 'video' %}
+          <li class="image-list-item-1 galleryThumb">{{ media | video_tag: autoplay: true, loop: true }}</li>
+      {% endcase %}
+    {% endfor %}
+  </ul>
+
+  <div class="image-preview mediaDesktopImages">
+    {% for media in product_media %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% if variant_images contains media.src %}
+            {%- assign matching_image = variant_images | where: 'src', media.src -%}
+            <div class="image-preview-item-1 galleryItem"
+              related-variant-main="{{ matching_image[0].variants.first.id }}">
+              <img src="{{ media | img_url: '1000x' }}" loading="lazy" alt="{{ media.alt }}" >
+            </div>
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+{% assign counter1 = 0 %}
+    {% for media in product_media %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% unless variant_images contains media.src %}
+          {% assign counter1 = counter1 | plus: 1 %}
+            <div class="image-preview-item-1 galleryItem"><img src="{{ media | img_url: '1000x' }}" loading="lazy" alt="{{ media.alt }}" class="lb-test-{{ counter1 }}"></div>
+          {% endunless %}
+        {% when 'video' %}
+          <div class="image-preview-item-1 galleryItem">{{ media | video_tag: autoplay: true, loop: true }}</div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+<div id="image-gallery-desktop" class="lb-image-list-box mod-desktop lb-biz-metafields">
+
+  {%- assign product_media_new = product.metafields.custom.a_b_test_name_gallery.value -%}
+
+  <ul class="image-list mediaDesktopThumbs">
+    {%- assign counter = 0 -%}
+    {% for media in product_media_new %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% if variant_images contains media.src %}
+            {%- assign matching_image = variant_images | where: 'src', media.src -%}
+            <li
+              class="image-list-item-1 galleryThumb{% if counter > 0 %} mediaishidden{% endif %} " 
+              related-variant="{{ matching_image[0].variants.first.id }}"
+            >
+              <img src="{{ media | img_url: '150x' }}" loading="lazy" alt="{{ media.alt }}">
+            </li>
+            {%- assign counter = counter | plus: 1 -%}
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+    {% for media in product_media %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% if variant_images contains media.src %}
+            {%- assign matching_image = variant_images | where: 'src', media.src -%}
+            {% unless media.alt contains 'old' %}
+            <li
+              class="image-list-item-1 galleryThumb{% if counter > 0 %} mediaishidden{% endif %} " 
+              related-variant="{{ matching_image[0].variants.first.id }}"
+            >
+              <img src="{{ media | img_url: '150x' }}" loading="lazy" alt="{{ media.alt }}">
+            </li>
+            {% endunless %}
+            {%- assign counter = counter | plus: 1 -%}
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+{% assign counter = 0 %} 
+    {% for media in product_media_new %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% unless variant_images contains media.src %}
+            {% assign counter = counter | plus: 1 %}
+            <li class="image-list-item-1 galleryThumb"><img src="{{ media | img_url: '150x' }}" loading="lazy" alt="{{ media.alt }}" class="lb-test-{{ counter }}"></li>
+          {% endunless %}
+        {% when 'video' %}
+          <li class="image-list-item-1 galleryThumb">{{ media | video_tag: autoplay: true, loop: true }}</li>
+      {% endcase %}
+    {% endfor %}
+
+  </ul>
+
+  <div class="image-preview mediaDesktopImages">
+    {% for media in product_media_new %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% if variant_images contains media.src %}
+            {%- assign matching_image = variant_images | where: 'src', media.src -%}
+            <div class="image-preview-item-1 galleryItem"
+              related-variant-main="{{ matching_image[0].variants.first.id }}">
+              <img src="{{ media | img_url: '1000x' }}" loading="lazy" alt="{{ media.alt }}" >
+            </div>
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+        {% for media in product_media %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% if variant_images contains media.src %}
+            {%- assign matching_image = variant_images | where: 'src', media.src -%}
+            <div class="image-preview-item-1 galleryItem"
+              related-variant-main="{{ matching_image[0].variants.first.id }}">
+              <img src="{{ media | img_url: '1000x' }}" loading="lazy" alt="{{ media.alt }}" >
+            </div>
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+{% assign counter1 = 0 %}
+    {% for media in product_media_new %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% unless variant_images contains media.src %}
+          {% assign counter1 = counter1 | plus: 1 %}
+            <div class="image-preview-item-1 galleryItem"><img src="{{ media | img_url: '1000x' }}" loading="lazy" alt="{{ media.alt }}" class="lb-test-{{ counter1 }}"></div>
+          {% endunless %}
+        {% when 'video' %}
+          <div class="image-preview-item-1 galleryItem">{{ media | video_tag: autoplay: true, loop: true }}</div>
+      {% endcase %}
+    {% endfor %}
+    {% for media in product_media %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% unless variant_images contains media.src %}
+          {% assign counter1 = counter1 | plus: 1 %}
+            <div class="image-preview-item-1 galleryItem"><img src="{{ media | img_url: '1000x' }}" loading="lazy" alt="{{ media.alt }}" class="lb-test-{{ counter1 }}"></div>
+          {% endunless %}
+        {% when 'video' %}
+          <div class="image-preview-item-1 galleryItem">{{ media | video_tag: autoplay: true, loop: true }}</div>
+      {% endcase %}
+    {% endfor %}
+  </div>
+
+</div>
+
+  <style>
+    .lb-biz-metafields {
+    display: none;
+  }
+  </style>
+
+
+
+
+<script>
+(function () {
+  // --- Gemeinsame Helfer ---
+
+  function initScopedGallery(root) {
+    if (!root) return;
+
+    const thumbs = root.querySelectorAll('.mediaDesktopThumbs .galleryThumb');
+    const items  = root.querySelectorAll('.mediaDesktopImages .galleryItem');
+
+    if (!thumbs.length || !items.length) return;
+
+    function show(index) {
+      items.forEach((el, i) => {
+        el.style.opacity = (i === index) ? 1 : 0;
+        el.style.pointerEvents = (i === index) ? 'auto' : 'none';
+      });
+    }
+
+    thumbs.forEach((thumb, i) => {
+      thumb.addEventListener('mouseover', () => show(i));
+      thumb.addEventListener('click',    () => show(i));
+    });
+
+    // Initial: erstes Element sichtbar
+    show(0);
+  }
+
+  async function refreshScopedGallery(variantID, containerSelector) {
+    try {
+      const sectionUrl = `/products/{{ product.handle }}?variant=${variantID}&section_id=media-desktop`;
+      const res  = await fetch(sectionUrl, { credentials: 'same-origin' });
+      const html = await res.text();
+
+      const doc   = new DOMParser().parseFromString(html, 'text/html');
+      const fresh = doc.querySelector(containerSelector);
+      const curr  = document.querySelector(containerSelector);
+
+      if (fresh && curr && doc.querySelector("[data-variant-image-gallery='true']")) {
+        curr.innerHTML = fresh.innerHTML;
+        initScopedGallery(curr);
+      }
+    } catch (err) {
+      console.error('Gallery refresh failed for', containerSelector, err);
+    }
+  }
+
+  // --- Gallerie A: .lb-biz-old ---
+  function initOldGallery() {
+    // robust: funktioniert egal ob #image-gallery-desktop direkt oder verschachtelt in .lb-biz-old steht
+    const root = document.querySelector('.lb-biz-old#image-gallery-desktop, .lb-biz-old #image-gallery-desktop');
+    if (root) initScopedGallery(root);
+
+    document.addEventListener('variant:change', (e) => {
+      if (window.innerWidth < 768) return;
+      const id = e?.detail?.variant?.id;
+      if (!id) return;
+      // nur OLD ersetzen
+      refreshScopedGallery(id, '.lb-biz-old#image-gallery-desktop');
+    });
+  }
+
+  // --- Gallerie B: .lb-biz-metafields ---
+  function initMetafieldsGallery() {
+    const root = document.querySelector('.lb-biz-metafields#image-gallery-desktop, .lb-biz-metafields #image-gallery-desktop');
+    if (root) initScopedGallery(root);
+
+    document.addEventListener('variant:change', (e) => {
+      if (window.innerWidth < 768) return;
+      const id = e?.detail?.variant?.id;
+      if (!id) return;
+      // nur METAFIELDS ersetzen
+      refreshScopedGallery(id, '.lb-biz-metafields#image-gallery-desktop');
+    });
+  }
+
+  // --- Boot ---
+  document.addEventListener('DOMContentLoaded', () => {
+    initOldGallery();
+    initMetafieldsGallery();
+  });
+})();
+</script>
+
+
+
+
+
+
+
+
+<style>
+  .lb-image-list-box {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    aspect-ratio: 16 / 13;
+  }
+
+  .image-list {
+    width: 20%;
+    float: left;
+    height: 100%;
+    overflow: scroll;
+    margin-right: 2%;
+  }
+  
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .image-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+    .image-list {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .image-list li {
+    list-style-type: none;
+    padding: 2px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .image-list li img {
+    width: 100%;
+  }
+
+  .image-list li:hover,
+  .image-list li.active {
+    border: 1px solid black;
+  }
+
+  .image-preview {
+    width: 78%;
+    left: 22%;
+    background: #f2f2f2;
+    display: block;
+    position: relative;
+  }
+
+  .image-preview video {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .image-preview img {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+	  background: #f6f6f6;
+  }
+  
+  .image-preview-item-1:first-of-type img  {
+    z-index: 2;
+  }
+  
+  {% comment %} @media (max-width: 1199px) {
+    .lb-image-list-box.mod-desktop {
+      display: none;
+    }
+  } {% endcomment %}
+</style>

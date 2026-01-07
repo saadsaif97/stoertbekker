@@ -1,0 +1,47 @@
+<div class="cstm_logo_wrap">
+  <div class="inr_img">
+        <img class="logo_img" src="{{ section.settings.logo_image | img_url : 'master' }}">
+  </div>
+  <div class="inr_img">
+         <img class="review_img" src="{{ section.settings.review_image | img_url : 'master' }}">
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Logo section",
+    "settings": [
+              {
+          "id": "logo_image",
+          "type": "image_picker",
+          "label": "Logo Image"
+        },
+        {
+          "id": "review_image",
+          "type": "image_picker",
+          "label": "Review Image"
+        }
+    ]
+  }
+{% endschema %}
+
+<style>
+  .cstm_logo_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+  .cstm_logo_wrap .inr_img {
+    width: 50%;
+}
+
+.cstm_logo_wrap .inr_img .review_img {
+    margin-left: 10px;
+}
+  @media screen and (max-width:999px){
+.for_desk {
+    display: none;
+}
+  }
+  
+</style>

@@ -1,0 +1,177 @@
+<style>
+/* ############################## Anpassbare Inhalte ############################## */
+:root{
+  --ws-color-primary: #66634e;
+  --ws-section-background: #efece0;
+  --ws-section-spacing: 15px 0;
+  
+}
+
+/* Für das Überschreiben bestehender Theme Styles muss in einigen Fällen !important genutzt werden */
+
+/* Buttons */
+.ws-blog__button{
+  color: white !important;
+  background: #3c3c3b !important;
+  padding: 14px 25px;
+  text-decoration: none;
+  display: block !important;
+  border-radius: 10px !important;
+}
+
+/* Heading */
+.ws-blog__title{
+  color: #3c3c3b;
+  font-family: Bebas Neue !important;
+  font-weight: bold;
+  font-size: 1.75rem;
+  margin-bottom: .5rem;
+  text-align: left;   
+}
+  /*Bild CTA Anpassung */
+.ws-blog-text-image__img {
+  align-self: stretch;
+}
+
+img.ws-blog-text-image__img-tag {
+   object-fit: cover !important;
+  object-position: 50% !important;
+}
+  
+/* ############################## Anpassbare Inhalte END ################################# */
+
+
+/* blog-text-image Element */
+.ws-blog-text-image .ws-blog-text-image__wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  background: var(--ws-section-background);
+  align-items: center;
+  margin: var(--ws-section-spacing);
+}
+
+.ws-blog-text-image  .ws-blog-text-image__text{
+  flex: 1 0 300px;
+  text-align: center;
+  padding: 15px;
+  
+}
+
+div.ws-blog-text-image__wrapper {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    background: #EFECE0 !important;
+}
+
+div.ws-blog-text-image__text {
+  background: #efece0 !important;
+}
+  
+.ws-blog-text-image  .ws-blog-text-image__img{
+  flex: 1 1 250px;
+}
+
+.ws-blog-text-image  .ws-blog-text-image__img-tag{
+    max-width: 100%;
+}
+
+.ws-blog-text-image .ws-blog-text-image__bullet {
+  max-width: 80%;
+ /* margin: 15px auto 20px auto; */
+  padding-left: 0 !important;
+}
+
+.ws-blog-text-image .ws-blog-text-image__bullet li {
+  display: flex;
+  list-style-type: none;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left !important;
+  margin-bottom: 5px;
+  padding-left: 0 !important;
+  max-width: 80%;
+  
+}
+
+.ws-blog-text-image .ws-blog-text-image__bullet li svg{
+  transform: scale(.7);
+}
+
+.ws-blog-text-image .ws-blog-text-image__bullet .ws-blog-text-bullet-icon-container{
+  display: flex;
+}
+
+@media (max-width: 768px){
+  .ws-blog-text-image  .ws-blog__title{
+    text-align: left;
+  }
+  .ws-blog-text-image .ws-blog-text-image__bullet {
+    max-width: 100%;
+    margin: 0 0 0 -12px;
+    padding-left: 0;
+  }
+  .ws-blog-text-image .ws-blog-text-image__cta a{
+    width: 100%;
+    margin-top: 15px;
+  }
+  .ws-blog-text-image  .ws-blog-text-image__text{
+    flex: 1 1 100%;
+  }
+  .ws-blog-text-image  .ws-blog-text-image__img{
+    flex: 1 1 100%;
+  }
+}
+</style>
+
+<script>
+  (() => {
+    window.addEventListener('DOMContentLoaded', (event) => {
+      var wsBlogTextImage = document.querySelectorAll('.ws-blog-text-image');
+      if (wsBlogTextImage){
+        wsBlogTextImage.forEach((singleTextImage) => {
+          var elDataset = singleTextImage.dataset;
+          var singleTextImageHtml = `
+            <div class="ws-blog-text-image__wrapper">
+              <div class="ws-blog-text-image__img">
+                <img class="ws-blog-text-image__img-tag" src="${elDataset.wsImage}" alt="${elDataset.wsImageAlt}">
+              </div>
+              <div class="ws-blog-text-image__text">
+                <div class="ws-blog__title">${elDataset.wsTitle}</div>
+                <ul class="ws-blog-text-image__bullet">
+                  <li>
+                    <div class="ws-blog-text-bullet-icon-container">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="40" width="40"><path d="M18.9 35.7 7.7 24.5l2.15-2.15 9.05 9.05 19.2-19.2 2.15 2.15Z"/></svg>
+                    </div>
+                    <div>
+                      ${elDataset.wsBulletFirst}
+                    </div>                    
+                  </li>
+                  <li>
+                    <div class="ws-blog-text-bullet-icon-container">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="40" width="40"><path d="M18.9 35.7 7.7 24.5l2.15-2.15 9.05 9.05 19.2-19.2 2.15 2.15Z"/></svg>
+                    </div>
+                    <div>
+                      ${elDataset.wsBulletSecond}
+                    </div>
+                  </li>
+                  <li>
+                    <div class="ws-blog-text-bullet-icon-container">
+                      <svg xmlns="http://www.w3.org/2000/svg" height="40" width="40"><path d="M18.9 35.7 7.7 24.5l2.15-2.15 9.05 9.05 19.2-19.2 2.15 2.15Z"/></svg>
+                    </div>
+                    <div>
+                      ${elDataset.wsBulletThird}
+                    </div>
+                  </li>
+                </ul>
+                <div class="ws-blog-text-image__cta">
+                  <a href="${elDataset.wsButtonLink}" class="ws-blog__button">${elDataset.wsButtonText}</a>
+                </div>
+              </div>
+            </div>`
+          singleTextImage.insertAdjacentHTML('afterbegin', singleTextImageHtml);
+        })
+      }
+    });
+  })();
+</script>

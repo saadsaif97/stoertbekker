@@ -1,0 +1,64 @@
+<div id="image-gallery-mobile">
+  {%- assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' -%}
+  {%- assign product_media = product.selected_or_first_available_variant.metafields.custom.variant_image_gallery.value | default: product.media -%}
+
+  {% assign counter2 = 0 %}
+  <swiper-container style="--swiper-navigation-color: black; --swiper-pagination-color: black" class="mySwiper media-mobile"
+    thumbs-swiper=".mySwiper2" space-between="10" navigation="false" pagination="true" pagination-clickable="true">
+
+    {%- assign forloop_index = 0 -%}
+    {% for media in product_media %}
+      {% case media.media_type %}
+        {% when 'image' %}
+          {% if variant_images contains media.src %}
+            {%- assign matching_image = variant_images | where: 'src', media.src -%}
+            <swiper-slide>
+              <img slide-index="{{ forloop_index }}" related-variant-id="{{ matching_image[0].variants.first.id }}" src="{{ media | img_url: '900x' }}"/>
+            </swiper-slide>
+            {%- assign forloop_index = forloop_index | plus: 1 -%}
+          {% endif %}
+      {% endcase %}
+    {% endfor %}
+
+    {% for media in product_media %}
+          {% assign counter2 = counter2 | plus: 1 %}
+      {% case media.media_type %}      
+        {% when 'image' %}
+          {% unless variant_images contains media.src %}
+            {%- assign matching_image = variant_images | where: 'src', media.src -%}
+            <swiper-slide class="lb-m-test-{{ counter2 }}">
+              <img src="{{ media | img_url: '900x' }}"/>
+            </swiper-slide>
+          {% endunless %}
+        {% when 'video' %}
+          <swiper-slide>
+            {{ media | video_tag: autoplay: true, loop: true, preload: auto, muted: true, playsinline: true }}
+          </swiper-slide>
+      {% endcase %}
+    {% endfor %}
+  </swiper-container>
+
+  <swiper-container class="mySwiper2" space-between="0" slides-per-view="6" free-mode="true" watch-slides-progress="true">
+    {% unless product.selected_or_first_available_variant.featured_image == blank %}
+    <swiper-slide variant-image>
+      <img class="variant-image" src="{{ product.selected_or_first_available_variant.featured_image | img_url: '150x' }}"
+        loading="lazy" alt="{{ media.alt }}">
+    </swiper-slide>
+    {% endunless %}
+
+    {% for media in product_media %}
+    {% case media.media_type %}
+    {% when 'image' %}
+    {% unless media.src contains 'variant' %}
+    <swiper-slide>
+      <img src="{{ media | img_url: '150x' }}" />
+    </swiper-slide>
+    {% endunless %}
+    {% when 'video' %}
+    <swiper-slide>
+      {{ media | video_tag: autoplay: true, loop: true }}
+    </swiper-slide>
+    {% endcase %}
+    {% endfor %}
+  </swiper-container>
+</div>

@@ -1,0 +1,1383 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "Header",
+  "type": "header",
+  "sections": {
+    "lb_header_countdown_bEPKMe": {
+      "type": "lb-header-countdown",
+      "disabled": true,
+      "settings": {
+        "fixed-countdownbar": "design1",
+        "countdownbar-height": 45,
+        "plannable-date-day-start": "23",
+        "plannable-date-month-start": "11",
+        "plannable-date-year-start": "2025",
+        "plannable-date-time-start": "23:59:59",
+        "plannable-date-day": "01",
+        "plannable-date-month": "12",
+        "plannable-date-year": "2025",
+        "plannable-date-time": "23:59:59",
+        "lb-countdown-background-color": "#000000",
+        "lb-primary-font": "open_sans_n4",
+        "lb-custom-font": "https://cdn.shopify.com/s/files/1/0317/7116/4804/files/BebasNeue-Regular.woff2?v=1692870786",
+        "lb-countdown-text-color": "#ffffff",
+        "lb-countdown-time-background-color": "#d8ac63",
+        "lb-countdown-time-text-color": "#000000",
+        "lb-countdown-text": "BLACK WEEK | BIS ZU -30% RABATT + Gratis PRODUKTE",
+        "lb-countdown-linked": true,
+        "lb-countdown-link-url": "https://stoertebekker.com/pages/black-days",
+        "cta": false,
+        "lb-countdown-button-text": "JETZT SICHERN",
+        "lb-countdown-button-background-color": "#cdbc82",
+        "lb-countdown-button-text-color": "#000000"
+      }
+    },
+    "lb_set_content_BE3xnT": {
+      "type": "lb-set-content",
+      "blocks": {
+        "block_ykKYCa": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/Sandalwood_565beb4b-13d8-4d89-bc4f-65226af521d2.png",
+            "opener-title": "Sandalwood",
+            "content-image": "shopify://shop_images/Bartoel-S.png",
+            "content-siegel-size": 90,
+            "content-title": "Sandalwood",
+            "content-paragraph": "<p>Warm-holziger Duft mit Noten von Tonka & Bergamotte<br/><br/>Kopf: Bergamotte, Thymian, Pinie<br/>Herz: Rose, Jasmin, Tonka Bohne<br/>Basis: Sandelholz, Guajakholz, Moos</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/bartol-sandelholz",
+            "highlight": true
+          }
+        },
+        "block_ibNAYH": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0180_a_2.png",
+            "opener-title": "Tortuga",
+            "content-image": "shopify://shop_images/Bartoel-T.png",
+            "content-siegel-size": 90,
+            "content-title": "Tortuga",
+            "content-paragraph": "<p>Klar-frischer Duft mit würziger Tiefe – Minze, Eukalyptus & Patchouli in perfekter Balance<br/><br/>Kopf: Orange, Minze<br/>Herz: Iris, Lavendel, Eukalyptus<br/>Basis: Sandelholz, Patchouli, Tonka Bohne</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/bartol-tortuga",
+            "highlight": true
+          }
+        },
+        "block_AxhNaa": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/Crusoe.png",
+            "opener-title": "Crusoe",
+            "content-image": "shopify://shop_images/Bartoel-C.png",
+            "content-siegel-size": 90,
+            "content-title": "Crusoe",
+            "content-paragraph": "<p>Weich-süßlicher Duft mit Vanille und ausgleichend-holziger Note<br/><br/>Kopf: würzig, leicht-frisch, Bergamotte<br/>Herz: blumig, Rose, balsamisch, Weihrauch<br/>Basis: Sandelholz, Leder, Vanille und Tonka</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/bartol",
+            "highlight": true
+          }
+        }
+      },
+      "block_order": [
+        "block_ykKYCa",
+        "block_ibNAYH",
+        "block_AxhNaa"
+      ],
+      "name": "lb set content - Bartöl",
+      "settings": {
+        "show-all-in-theme": false,
+        "show-all-in-themess": [
+          "bartol",
+          "bartol-sandelholz",
+          "bartol-tortuga",
+          "bartpflege-set"
+        ],
+        "headline": "Unsere Duftnoten",
+        "headlinefont": "work_sans_n4",
+        "holder-max-width": 900,
+        "padding-top": 32,
+        "padding-bottom": 72,
+        "padding-left-right": 18,
+        "section-bg": "#232323",
+        "section-headline-font-color": "#ffffff",
+        "theme-design": "2",
+        "item-max-width-check": true,
+        "item-max-width": 150,
+        "item-icon-alignment": "top",
+        "item-icon-size": 75,
+        "opener-holder-margin-top": 0,
+        "item-padding": 9,
+        "item-border-radius": 9,
+        "item-image-border-radius": 15,
+        "item-fontcolor": "#ffffff",
+        "item-background": "#232323",
+        "item-border-color": "#232323",
+        "active-item-fontcolor": "#ffffff",
+        "active-item-background": "#232323",
+        "active-item-border-color": "#ffffff",
+        "banner-height": 400,
+        "banner-height-mobile": 400,
+        "banner-max-width": 400,
+        "item-content-alignment": "center",
+        "item-content-backgroundcolor": "#232323",
+        "item-content-headline-color": "#ffffff",
+        "item-content-paragraph-color": "#ffffff",
+        "item-content-link-border-color": "#ffffff",
+        "item-content-link-font-color": "#ffffff",
+        "item-content-link-background-color": "#232323",
+        "item-content-link-border-radius": 6
+      }
+    },
+    "lb_set_content_3YKr9m": {
+      "type": "lb-set-content",
+      "blocks": {
+        "block_EYHJ7K": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0274_a_a8d8c2f5-2cad-4114-b9a9-a3574202ab14.webp",
+            "opener-title": "Tortuga",
+            "content-image": "shopify://shop_images/Kopie_von_Duefte_3.png",
+            "content-siegel-size": 90,
+            "content-title": "Tortuga",
+            "content-paragraph": "<p>Klar-frischer Duft mit würziger Tiefe – Minze, Eukalyptus & Patchouli in perfekter Balance<br/><br/>Kopf: Orange, Minze<br/>Herz: Iris, Lavendel, Eukalyptus<br/>Basis: Sandelholz, Patchouli, Tonka Bohne</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/bartbalm-tortuga",
+            "highlight": true
+          }
+        },
+        "block_3fRYJA": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE2_0222_a_ef0c4863-f3f6-4962-bbb7-7af83cf5f045.webp",
+            "opener-title": "Crusoe",
+            "content-image": "shopify://shop_images/Kopie_von_Duefte_4.png",
+            "content-siegel-size": 90,
+            "content-title": "Crusoe",
+            "content-paragraph": "<p>Weich-süßlicher Duft mit Vanille und ausgleichend-holziger Note<br/><br/>Kopf: würzig, leicht-frisch, Bergamotte<br/>Herz: blumig, Rose, balsamisch, Weihrauch<br/>Basis: Sandelholz, Leder, Vanille und Tonka</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/bartbalm",
+            "highlight": true
+          }
+        }
+      },
+      "block_order": [
+        "block_EYHJ7K",
+        "block_3fRYJA"
+      ],
+      "name": "lb set content - Bartbalm",
+      "settings": {
+        "show-all-in-theme": false,
+        "show-all-in-themess": [
+          "bartbalm",
+          "bartbalm-tortuga"
+        ],
+        "headline": "Unsere Duftnoten",
+        "headlinefont": "work_sans_n4",
+        "holder-max-width": 900,
+        "padding-top": 32,
+        "padding-bottom": 72,
+        "padding-left-right": 18,
+        "section-bg": "#232323",
+        "section-headline-font-color": "#ffffff",
+        "theme-design": "2",
+        "item-max-width-check": true,
+        "item-max-width": 150,
+        "item-icon-alignment": "top",
+        "item-icon-size": 75,
+        "opener-holder-margin-top": 0,
+        "item-padding": 9,
+        "item-border-radius": 9,
+        "item-image-border-radius": 15,
+        "item-fontcolor": "#ffffff",
+        "item-background": "#232323",
+        "item-border-color": "#232323",
+        "active-item-fontcolor": "#ffffff",
+        "active-item-background": "#232323",
+        "active-item-border-color": "#ffffff",
+        "banner-height": 400,
+        "banner-height-mobile": 400,
+        "banner-max-width": 400,
+        "item-content-alignment": "center",
+        "item-content-backgroundcolor": "#232323",
+        "item-content-headline-color": "#ffffff",
+        "item-content-paragraph-color": "#ffffff",
+        "item-content-link-border-color": "#ffffff",
+        "item-content-link-font-color": "#ffffff",
+        "item-content-link-background-color": "#232323",
+        "item-content-link-border-radius": 6
+      }
+    },
+    "lb_set_content_nYQpTc": {
+      "type": "lb-set-content",
+      "blocks": {
+        "block_xCMRzW": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0254_d_aa7dec47-f9a7-4f0e-bb76-02af78611f7a.webp",
+            "opener-title": "Sandalwood",
+            "content-image": "shopify://shop_images/WB-Sandalwood_828ee666-b65d-4d9b-8f9b-8ec20a501c47.png",
+            "content-siegel-size": 90,
+            "content-title": "Sandalwood",
+            "content-paragraph": "<p>Warm-holziger Duft mit Noten von Tonka & Bergamotte<br/><br/>Kopf: Bergamotte, Thymian, Pinie<br/>Herz: Rose, Jasmin, Tonka Bohne<br/>Basis: Sandelholz, Guajakholz, Moos</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "https://stoertebekker.com/products/pomade-wasserbasiert?variant=48527910699273",
+            "highlight": true
+          }
+        },
+        "block_GiGVzh": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0252_d.png",
+            "opener-title": "Tortuga",
+            "content-image": "shopify://shop_images/WB-Tortuga_10346447-882c-45cd-9080-58741e74a102.png",
+            "content-siegel-size": 90,
+            "content-title": "Tortuga",
+            "content-paragraph": "<p>Klar-frischer Duft mit würziger Tiefe – Minze, Eukalyptus & Patchouli in perfekter Balance<br/><br/>Kopf: Orange, Minze<br/>Herz: Iris, Lavendel, Eukalyptus<br/>Basis: Sandelholz, Patchouli, Tonka Bohne</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "https://stoertebekker.com/products/pomade-wasserbasiert?variant=48527910797577",
+            "highlight": true
+          }
+        },
+        "block_qQDWPQ": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0253_d_8ddb5917-a480-4202-bdc5-373e07580cb5.webp",
+            "opener-title": "Fresh Apple",
+            "content-image": "shopify://shop_images/WB-Apple_b8ee9a1f-482e-4f4a-8fd3-ada7a68cfc65.png",
+            "content-siegel-size": 90,
+            "content-title": "Fresh Apple",
+            "content-paragraph": "<p>Lebendig-frischer Duft mit saftigem grünen Apfel & einem Hauch von Zitrusakzent</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "https://stoertebekker.com/products/pomade-wasserbasiert?variant=48527910732041",
+            "highlight": true
+          }
+        }
+      },
+      "block_order": [
+        "block_xCMRzW",
+        "block_GiGVzh",
+        "block_qQDWPQ"
+      ],
+      "name": "lb set content - Pomade WB",
+      "settings": {
+        "show-all-in-theme": false,
+        "show-all-in-themess": [
+          "pomade-wasserbasiert",
+          "pomade-wasserbasiert-torreto-series-probierset",
+          "pomade-wasserbasiert-torreto-series-set"
+        ],
+        "headline": "Unsere Duftnoten",
+        "headlinefont": "work_sans_n4",
+        "holder-max-width": 900,
+        "padding-top": 32,
+        "padding-bottom": 32,
+        "padding-left-right": 18,
+        "section-bg": "#232323",
+        "section-headline-font-color": "#ffffff",
+        "theme-design": "2",
+        "item-max-width-check": true,
+        "item-max-width": 150,
+        "item-icon-alignment": "top",
+        "item-icon-size": 75,
+        "opener-holder-margin-top": 0,
+        "item-padding": 9,
+        "item-border-radius": 9,
+        "item-image-border-radius": 15,
+        "item-fontcolor": "#ffffff",
+        "item-background": "#232323",
+        "item-border-color": "#232323",
+        "active-item-fontcolor": "#ffffff",
+        "active-item-background": "#232323",
+        "active-item-border-color": "#ffffff",
+        "banner-height": 400,
+        "banner-height-mobile": 400,
+        "banner-max-width": 400,
+        "item-content-alignment": "center",
+        "item-content-backgroundcolor": "#232323",
+        "item-content-headline-color": "#ffffff",
+        "item-content-paragraph-color": "#ffffff",
+        "item-content-link-border-color": "#ffffff",
+        "item-content-link-font-color": "#ffffff",
+        "item-content-link-background-color": "#232323",
+        "item-content-link-border-radius": 6
+      }
+    },
+    "lb_set_content_DjgGqr": {
+      "type": "lb-set-content",
+      "blocks": {
+        "block_WXLE4n": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/sandal-ob.webp",
+            "opener-title": "Sandalwood",
+            "content-image": "shopify://shop_images/OB-Sandalwood.png",
+            "content-siegel-size": 90,
+            "content-title": "Sandalwood",
+            "content-paragraph": "<p>Warm-holziger Duft mit Noten von Tonka & Bergamotte<br/><br/>Kopf: Bergamotte, Thymian, Pinie<br/>Herz: Rose, Jasmin, Tonka Bohne<br/>Basis: Sandelholz, Guajakholz, Moos</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "https://stoertebekker.com/products/pomade-oelbasiert?variant=48553994354953",
+            "highlight": true
+          }
+        },
+        "block_NFftw7": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/tortuga-ob.webp",
+            "opener-title": "Tortuga",
+            "content-image": "shopify://shop_images/OB-Tortuga.png",
+            "content-siegel-size": 90,
+            "content-title": "Tortuga",
+            "content-paragraph": "<p>Klar-frischer Duft mit würziger Tiefe – Minze, Eukalyptus & Patchouli in perfekter Balance<br/><br/>Kopf: Orange, Minze<br/>Herz: Iris, Lavendel, Eukalyptus<br/>Basis: Sandelholz, Patchouli, Tonka Bohne</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "https://stoertebekker.com/products/pomade-oelbasiert?variant=48553994453257",
+            "highlight": true
+          }
+        },
+        "block_CgfepY": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/apple-ob.webp",
+            "opener-title": "Fresh Apple",
+            "content-image": "shopify://shop_images/Neu-OB-Apple.png",
+            "content-siegel-size": 90,
+            "content-title": "Fresh Apple",
+            "content-paragraph": "<p>Lebendig-frischer Duft mit saftigem grünen Apfel & einem Hauch von Zitrusakzent</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "https://stoertebekker.com/products/pomade-oelbasiert?variant=48553994387721",
+            "highlight": true
+          }
+        },
+        "block_FE4mXW": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/Crusoe-ob.webp",
+            "opener-title": "Crusoe",
+            "content-image": "shopify://shop_images/Cruso-OB.png",
+            "content-siegel-size": 90,
+            "content-title": "Crusoe",
+            "content-paragraph": "<p>Weich-süßlicher Duft mit Vanille und ausgleichend-holziger Note<br/><br/>Kopf: würzig, leicht-frisch, Bergamotte<br/>Herz: blumig, Rose, balsamisch, Weihrauch<br/>Basis: Sandelholz, Leder, Vanille und Tonka</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "https://stoertebekker.com/products/pomade-oelbasiert?variant=48553994420489",
+            "highlight": false
+          }
+        }
+      },
+      "block_order": [
+        "block_WXLE4n",
+        "block_NFftw7",
+        "block_CgfepY",
+        "block_FE4mXW"
+      ],
+      "name": "lb set content - Pomade OB",
+      "settings": {
+        "show-all-in-theme": false,
+        "show-all-in-themess": [
+          "torretos-signature-bundle",
+          "pomade-oelbasiert",
+          "pomade-olbasiert-probierset",
+          "pomade-oelbasiert-set"
+        ],
+        "headline": "Unsere Duftnoten",
+        "headlinefont": "work_sans_n4",
+        "holder-max-width": 900,
+        "padding-top": 32,
+        "padding-bottom": 32,
+        "padding-left-right": 18,
+        "section-bg": "#232323",
+        "section-headline-font-color": "#ffffff",
+        "theme-design": "2",
+        "item-max-width-check": true,
+        "item-max-width": 150,
+        "item-icon-alignment": "top",
+        "item-icon-size": 75,
+        "opener-holder-margin-top": 0,
+        "item-padding": 9,
+        "item-border-radius": 9,
+        "item-image-border-radius": 15,
+        "item-fontcolor": "#ffffff",
+        "item-background": "#232323",
+        "item-border-color": "#232323",
+        "active-item-fontcolor": "#ffffff",
+        "active-item-background": "#232323",
+        "active-item-border-color": "#ffffff",
+        "banner-height": 400,
+        "banner-height-mobile": 400,
+        "banner-max-width": 400,
+        "item-content-alignment": "center",
+        "item-content-backgroundcolor": "#232323",
+        "item-content-headline-color": "#ffffff",
+        "item-content-paragraph-color": "#ffffff",
+        "item-content-link-border-color": "#ffffff",
+        "item-content-link-font-color": "#ffffff",
+        "item-content-link-background-color": "#232323",
+        "item-content-link-border-radius": 6
+      }
+    },
+    "lb_set_content_7ca8rQ": {
+      "type": "lb-set-content",
+      "blocks": {
+        "block_7tbJNk": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0167_a-variant_800x_1_2ae92915-1b18-4860-b07f-232ae2d81b44.webp",
+            "opener-title": "Sandalwood",
+            "content-image": "shopify://shop_images/neu_sandal.png",
+            "content-siegel-size": 90,
+            "content-title": "Sandalwood",
+            "content-paragraph": "<p>Warm-holziger Duft mit Noten von Tonka & Bergamotte<br/><br/>Kopf: Bergamotte, Thymian, Pinie<br/>Herz: Rose, Jasmin, Tonka Bohne<br/>Basis: Sandelholz, Guajakholz, Moos</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/festes-shampoo-sandelholz",
+            "highlight": true
+          }
+        },
+        "block_L7CcgV": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0192_a_variant_0d00534b-f8ae-4a72-960b-4e9f4feec6b7.webp",
+            "opener-title": "Aloe Vera",
+            "content-image": "shopify://shop_images/neu_aloe.png",
+            "content-siegel-size": 90,
+            "content-title": "Aloe Vera",
+            "content-paragraph": "<p>Frisch-aquatischer Duft mit grünen Aloe-Noten, fruchtiger Leichtigkeit & warmer Tiefe<br/><br/>Kopf: Apfel, Melone, Cassis<br/>Herz: Aloe Vera, Seerose, Jasmin<br/>Basis: Veilchen, Sandelholz, Amber</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/festes-shampoo-aloe-vera",
+            "highlight": true
+          }
+        },
+        "block_qcGb9m": {
+          "type": "block",
+          "disabled": true,
+          "settings": {
+            "opener-title": "Cruso",
+            "content-image": "shopify://shop_images/ChatGPT-Image-edit-3.jpg",
+            "content-siegel-size": 90,
+            "content-title": "Crusoe",
+            "content-paragraph": "<p>Weich-süßlicher Duft mit Vanille und ausgleichend-holziger Note<br/><br/>Kopf: würzig, leicht-frisch, Bergamotte<br/>Herz: blumig, Rose, balsamisch, Weihrauch<br/>Basis: Sandelholz, Leder, Vanille und Tonka</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "",
+            "highlight": false
+          }
+        },
+        "block_j38eGm": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0262_a.png",
+            "opener-title": "Tortuga",
+            "content-image": "shopify://shop_images/neu_tortuga.png",
+            "content-siegel-size": 90,
+            "content-title": "Tortuga",
+            "content-paragraph": "<p>Klar-frischer Duft mit würziger Tiefe – Minze, Eukalyptus & Patchouli in perfekter Balance<br/><br/>Kopf: Orange, Minze<br/>Herz: Iris, Lavendel, Eukalyptus<br/>Basis: Sandelholz, Patchouli, Tonka Bohne</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/festes-shampoo-tortuga",
+            "highlight": true
+          }
+        },
+        "block_qAfbwA": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0310_a-variant_8ce0fbb6-608a-4990-a540-7a45e80d4b50.webp",
+            "opener-title": "Crusoe",
+            "content-image": "shopify://shop_images/Kopie_von_Duefte_1.png",
+            "content-siegel-size": 90,
+            "content-title": "Crusoe",
+            "content-paragraph": "<p>Weich-süßlicher Duft mit Vanille und ausgleichend-holziger Note<br/><br/>Kopf: würzig, leicht-frisch, Bergamotte<br/>Herz: blumig, Rose, balsamisch, Weihrauch<br/>Basis: Sandelholz, Leder, Vanille und Tonka</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/festes-shampoo-crusoe",
+            "highlight": true
+          }
+        },
+        "block_y694wT": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0207_a-variant_1_3da930cf-6c8f-4cf3-98ef-9fc9b8fccccb.webp",
+            "opener-title": "Sea Breeze",
+            "content-image": "shopify://shop_images/neu_seabreeze.png",
+            "content-siegel-size": 90,
+            "content-title": "Sea Breeze",
+            "content-paragraph": "<p>Frischer Meeresbrisenduft mit süßem Moschus, Thymian & Zitrusnoten<br/><br/>Kopf: Zitrone, Limette<br/>Herz: Thymian, Rose, Jasmin,<br/>Basis: Holzig, Süßer Moschus, Tonka</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/festes-shampoo-sea-breeze",
+            "highlight": true
+          }
+        },
+        "block_h44zaM": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0261_a.png",
+            "opener-title": "Lavendel",
+            "content-image": "shopify://shop_images/neu_lavendel.png",
+            "content-siegel-size": 90,
+            "content-title": "Lavendel",
+            "content-paragraph": "<p>Aromatisch-frischer Duft mit belebendem Lavendel, spritziger Zitrone & sanft-würziger Tiefe<br/><br/>Kopf: Lavendel, Zitrone<br/>Herz: Rosmarin, Geranie<br/>Basis: Patchouli, Moschus, Tonka</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/festes-shampoo-lavendel",
+            "highlight": true
+          }
+        },
+        "block_qijTbj": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0260_a.png",
+            "opener-title": "Citrus",
+            "content-image": "shopify://shop_images/neu_citrus.png",
+            "content-siegel-size": 90,
+            "content-title": "Citrus",
+            "content-paragraph": "<p>Zitrischer Duft – spritzig, belebend und erfrischend wie frisch gepresste Zitrusfrüchte.<br/><br/>Reines Citrus-Öl</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/festes-shampoo-citrus",
+            "highlight": true
+          }
+        },
+        "block_iqJ3kA": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0194_a_variant_7640101c-f3ea-4dee-8310-de50acec8504.webp",
+            "opener-title": "Fresh Mint",
+            "content-image": "shopify://shop_images/neu_freshmint.png",
+            "content-siegel-size": 90,
+            "content-title": "Fresh Mint",
+            "content-paragraph": "<p>Belebend-frischer Duft mit kühler Minze, spritziger Zitrone & holzig-würziger Basis<br/><br/>Kopf: Zitrone, Grüne Blätter<br/>Herz: Pfefferminze, grüne Minze<br/>Basis: Nelke, Zedernholz</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/festes-shampoo-fresh-mint",
+            "highlight": true
+          }
+        },
+        "block_hVpP7K": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/stoerte-0193-a-65a54a1f4bae7_variant_0fd5aebd-5927-4ea8-804c-369bede61d43.webp",
+            "opener-title": "Kokos",
+            "content-image": "shopify://shop_images/neu_coco.png",
+            "content-siegel-size": 90,
+            "content-title": "Kokos",
+            "content-paragraph": "<p>Sinnlich-cremiger Duft mit exotischer Kokosnuss, zarten Blüten & warmer Vanille-Note<br/><br/>Kopf: Pfirsich, Aprikose, Lilie<br/>Herz: Kokosnuss, Mimose, Vanilleblume<br/>Basis: Mandel, Vanilla, Tonka Bohne</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/festes-shampoo-kokos",
+            "highlight": true
+          }
+        },
+        "block_AbAfYi": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0195_a-variant_46dfcae4-35c9-4ba8-8f27-a916a5602d2c.webp",
+            "opener-title": "Bergamotte",
+            "content-image": "shopify://shop_images/neu_easter.png",
+            "content-siegel-size": 90,
+            "content-title": "Bergamotte (Osteredition)",
+            "content-paragraph": "<p>Zitrisch-frischer Duft mit spritziger Bergamotte, leichter Würze & elegant-herber Tiefe<br/><br/>Kopf: Granny Smith Apfel, Sizilianische Zeder, Bluebells<br/>Herz: Jasmin, Weiße Rose, Bambus<br/>Basis: Zedernholz, Amber, Moschus</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/festes-shampoo-osteredition",
+            "highlight": true
+          }
+        },
+        "block_4UzXYg": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0178_a-variant_Kopie_1000x_73e5446f-f1b9-4513-b135-684ade37d468.webp",
+            "opener-title": "Zimt-Orange",
+            "content-image": "shopify://shop_images/neu_xmas.png",
+            "content-siegel-size": 90,
+            "content-title": "Zimt-Orange (Weihnachtsedition)",
+            "content-paragraph": "<p>Festlich-würziger Duft mit spritziger Orange, feinem Zimt und warmer Holz-Tonka-Note – wie ein winterlicher Wohlfühlmoment unter der Dusche<br/><br/>Kopf: Orange, Kalabrische Bergamotte, Minze<br/>Herz: Lavendel, Zimt, Nelke<br/>Basis: Sandelholz, Tonka</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/festes-shampoo-weihnachtsedition",
+            "highlight": true
+          }
+        },
+        "block_F6ATdL": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0285_a-variant_1000x_c872c666-d5fd-41da-a35e-3d09b1725701.webp",
+            "opener-title": "Active Carbon",
+            "content-image": "shopify://shop_images/neu_activecarbon.png",
+            "content-siegel-size": 90,
+            "content-title": "Active Carbon",
+            "content-paragraph": "<p>Belebend-frischer Duft mit spritzigen Zitrusnoten, kühler Minze und würzigem Pfeffer – abgerundet von holzig-herber Tiefe für ein energiegeladenes Duschgefühl<br/><br/>Kopf: Bergamotte, Zitrone, Orange<br/>Herz: Schwarzer Pfeffer, Sternanis, Minze<br/>Basis: Patchouli, Kiefer, Zedernholz, Moschus, Amber</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/festes-shampoo-active-carbon-100g",
+            "highlight": true
+          }
+        },
+        "block_hxpCBN": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/antischuppen-neu-variant_1000x_02c2c62c-acc8-49f7-b93c-3f66db99ccc4.webp",
+            "opener-title": "Anti-Schuppen",
+            "content-image": "shopify://shop_images/antischuppen_f58bb4a0-9ff8-4b0b-b46d-3590b408e3e9.png",
+            "content-siegel-size": 90,
+            "content-title": "Anti-Schuppen",
+            "content-paragraph": "<p>Fruchtig-sanfter Duft mit spritziger Orange und saftiger Melone, floralen Herznoten und einer warm-cremigen Basis – für ein rundum gepflegtes, frisches Haargefühl.<br/><br/>Kopf: Orange, Apfel, Melone<br/>Herz: Jasmin, Iris, Feige<br/>Basis: Amber, Sandelholz, Tonkabohne</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/festes-shampoo-anti-schuppen-100g",
+            "highlight": true
+          }
+        }
+      },
+      "block_order": [
+        "block_7tbJNk",
+        "block_L7CcgV",
+        "block_qcGb9m",
+        "block_j38eGm",
+        "block_qAfbwA",
+        "block_y694wT",
+        "block_h44zaM",
+        "block_qijTbj",
+        "block_iqJ3kA",
+        "block_hVpP7K",
+        "block_AbAfYi",
+        "block_4UzXYg",
+        "block_F6ATdL",
+        "block_hxpCBN"
+      ],
+      "name": "lb set content - Shampoos",
+      "settings": {
+        "show-all-in-theme": false,
+        "show-all-in-themess": [
+          "festes-shampoo-active-carbon-100g",
+          "festes-shampoo-aloe-vera",
+          "festes-shampoo-anti-schuppen-100g",
+          "festes-shampoo-citrus",
+          "festes-shampoo-fresh-mint",
+          "festes-shampoo-kokos",
+          "festes-shampoo-lavendel",
+          "festes-shampoo-osteredition",
+          "festes-shampoo-sandelholz",
+          "festes-shampoo-sea-breeze",
+          "festes-shampoo-tortuga",
+          "festes-shampoo-weihnachtsedition",
+          "dusch-routine-set",
+          "dusch-routine-set-3x-festes-shampoo-nach-wahl",
+          "duschset-bundle",
+          "festes-shampoo-seifendose-set",
+          "festes-shampoo-bestseller-probierset",
+          "festes-shampoo-probierset",
+          "duschset",
+          "festes-shampoo-crusoe"
+        ],
+        "headline": "Unsere Duftnoten",
+        "headlinefont": "work_sans_n4",
+        "holder-max-width": 900,
+        "padding-top": 32,
+        "padding-bottom": 34,
+        "padding-left-right": 18,
+        "section-bg": "#232323",
+        "section-headline-font-color": "#ffffff",
+        "theme-design": "2",
+        "item-max-width-check": true,
+        "item-max-width": 150,
+        "item-icon-alignment": "top",
+        "item-icon-size": 75,
+        "opener-holder-margin-top": 0,
+        "item-padding": 9,
+        "item-border-radius": 9,
+        "item-image-border-radius": 15,
+        "item-fontcolor": "#ffffff",
+        "item-background": "#232323",
+        "item-border-color": "#232323",
+        "active-item-fontcolor": "#ffffff",
+        "active-item-background": "#232323",
+        "active-item-border-color": "#ffffff",
+        "banner-height": 400,
+        "banner-height-mobile": 400,
+        "banner-max-width": 400,
+        "item-content-alignment": "center",
+        "item-content-backgroundcolor": "#232323",
+        "item-content-headline-color": "#ffffff",
+        "item-content-paragraph-color": "#ffffff",
+        "item-content-link-border-color": "#ffffff",
+        "item-content-link-font-color": "#ffffff",
+        "item-content-link-background-color": "#232323",
+        "item-content-link-border-radius": 6
+      }
+    },
+    "lb_set_content_Vzrax3": {
+      "type": "lb-set-content",
+      "blocks": {
+        "block_qXJ663": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0286_a-variant_1_2.webp",
+            "opener-title": "Sandalwood",
+            "content-image": "shopify://shop_images/Sandal.png",
+            "content-siegel-size": 90,
+            "content-title": "Sandalwood",
+            "content-paragraph": "<p>Warm-holziger Duft mit Noten von Tonka & Bergamotte<br/><br/>Kopf: Bergamotte, Thymian, Pinie<br/>Herz: Rose, Jasmin, Tonka Bohne<br/>Basis: Sandelholz, Guajakholz, Moos</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/body-bar-sandalwood",
+            "highlight": true
+          }
+        },
+        "block_ar6gjf": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0287_a_variant_1.webp",
+            "opener-title": "Tortuga",
+            "content-image": "shopify://shop_images/Tortuga_cba7ee62-f476-4085-a13c-2e614ee1aea2.png",
+            "content-siegel-size": 90,
+            "content-title": "Tortuga",
+            "content-paragraph": "<p>Klar-frischer Duft mit würziger Tiefe – Minze, Eukalyptus & Patchouli in perfekter Balance<br/><br/>Kopf: Orange, Minze<br/>Herz: Iris, Lavendel, Eukalyptus<br/>Basis: Sandelholz, Patchouli, Tonka Bohne</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/body-bar-tortuga-120g",
+            "highlight": true
+          }
+        },
+        "block_jUJ7VC": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0288_a_variant_1.webp",
+            "opener-title": "Sea Breeze",
+            "content-image": "shopify://shop_images/Sea.png",
+            "content-siegel-size": 90,
+            "content-title": "Sea Breeze",
+            "content-paragraph": "<p>Frischer Meeresbrisenduft mit süßem Moschus, Thymian & Zitrusnoten<br/><br/>Kopf: Zitrone, Limette<br/>Herz: Thymian, Rose, Jasmin,<br/>Basis: Holzig, Süßer Moschus, Tonka</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/body-bar-sea-breeze-120g",
+            "highlight": true
+          }
+        }
+      },
+      "block_order": [
+        "block_qXJ663",
+        "block_ar6gjf",
+        "block_jUJ7VC"
+      ],
+      "name": "lb set content - Body Bars",
+      "settings": {
+        "show-all-in-theme": false,
+        "show-all-in-themess": [
+          "body-bar-sandalwood",
+          "body-bar-sea-breeze-120g",
+          "body-bar-tortuga-120g",
+          "body-bar-duschset"
+        ],
+        "headline": "Unsere Duftnoten",
+        "headlinefont": "work_sans_n4",
+        "holder-max-width": 900,
+        "padding-top": 32,
+        "padding-bottom": 34,
+        "padding-left-right": 18,
+        "section-bg": "#232323",
+        "section-headline-font-color": "#ffffff",
+        "theme-design": "2",
+        "item-max-width-check": true,
+        "item-max-width": 150,
+        "item-icon-alignment": "top",
+        "item-icon-size": 75,
+        "opener-holder-margin-top": 0,
+        "item-padding": 9,
+        "item-border-radius": 9,
+        "item-image-border-radius": 15,
+        "item-fontcolor": "#ffffff",
+        "item-background": "#232323",
+        "item-border-color": "#232323",
+        "active-item-fontcolor": "#ffffff",
+        "active-item-background": "#232323",
+        "active-item-border-color": "#ffffff",
+        "banner-height": 400,
+        "banner-height-mobile": 400,
+        "banner-max-width": 400,
+        "item-content-alignment": "center",
+        "item-content-backgroundcolor": "#232323",
+        "item-content-headline-color": "#ffffff",
+        "item-content-paragraph-color": "#ffffff",
+        "item-content-link-border-color": "#ffffff",
+        "item-content-link-font-color": "#ffffff",
+        "item-content-link-background-color": "#232323",
+        "item-content-link-border-radius": 6
+      }
+    },
+    "lb_set_content_JPDQCJ": {
+      "type": "lb-set-content",
+      "blocks": {
+        "block_mqL9qF": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0242_a2copia_3a3c33fd-8ca6-4b2c-82f1-41799694a6c4.webp",
+            "opener-title": "Sandalwood",
+            "content-image": "shopify://shop_images/Deo-Sandal.png",
+            "content-siegel-size": 90,
+            "content-title": "Sandalwood",
+            "content-paragraph": "<p>Warm-holziger Duft mit Noten von Tonka & Bergamotte<br/><br/>Kopf: Bergamotte, Thymian, Pinie<br/>Herz: Rose, Jasmin, Tonka Bohne<br/>Basis: Sandelholz, Guajakholz, Moos</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/deostick-sandelholz",
+            "highlight": true
+          }
+        },
+        "block_JT3dWr": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/deo-tortuga-1_ff7543e7-1c68-4742-a9a6-841bb96cda1b.png",
+            "opener-title": "Tortuga",
+            "content-image": "shopify://shop_images/Deo-Tortuga.png",
+            "content-siegel-size": 90,
+            "content-title": "Tortuga",
+            "content-paragraph": "<p>Klar-frischer Duft mit würziger Tiefe – Minze, Eukalyptus & Patchouli in perfekter Balance<br/><br/>Kopf: Orange, Minze<br/>Herz: Iris, Lavendel, Eukalyptus<br/>Basis: Sandelholz, Patchouli, Tonka Bohne</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/deostick-tortuga",
+            "highlight": true
+          }
+        },
+        "block_ddk9Mk": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/deo-seabreeze-1_cf691c50-8a5d-4165-a7dc-9615e71d5a06.png",
+            "opener-title": "Sea Breeze",
+            "content-image": "shopify://shop_images/Deo-SeaBreeze.png",
+            "content-siegel-size": 90,
+            "content-title": "Sea Breeze",
+            "content-paragraph": "<p>Frischer Meeresbrisenduft mit süßem Moschus, Thymian & Zitrusnoten<br/><br/>Kopf: Zitrone, Limette<br/>Herz: Thymian, Rose, Jasmin,<br/>Basis: Holzig, Süßer Moschus, Tonka</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/deostick-sea-breeze",
+            "highlight": true
+          }
+        },
+        "block_JtMjFz": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/deo-crusoe-1_1.png",
+            "opener-title": "Crusoe",
+            "content-image": "shopify://shop_images/Deo-Crusoe.png",
+            "content-siegel-size": 90,
+            "content-title": "Crusoe",
+            "content-paragraph": "<p>Weich-süßlicher Duft mit Vanille und ausgleichend-holziger Note<br/><br/>Kopf: würzig, leicht-frisch, Bergamotte<br/>Herz: blumig, Rose, balsamisch, Weihrauch<br/>Basis: Sandelholz, Leder, Vanille und Tonka</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/deostick-crusoe",
+            "highlight": true
+          }
+        },
+        "block_hHzRdx": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/deo-aloevera-1_8a94f45c-dff3-433d-8d63-2e6528a6cc6d.png",
+            "opener-title": "Aloe Vera",
+            "content-image": "shopify://shop_images/Deo-AloeVera.png",
+            "content-siegel-size": 90,
+            "content-title": "Aloe Vera",
+            "content-paragraph": "<p>Frisch-aquatischer Duft mit grünen Aloe-Noten, fruchtiger Leichtigkeit & warmer Tiefe<br/><br/>Kopf: Apfel, Melone, Cassis<br/>Herz: Aloe Vera, Seerose, Jasmin<br/>Basis: Veilchen, Sandelholz, Amber</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/deostick-aloe-vera",
+            "highlight": true
+          }
+        }
+      },
+      "block_order": [
+        "block_mqL9qF",
+        "block_JT3dWr",
+        "block_ddk9Mk",
+        "block_JtMjFz",
+        "block_hHzRdx"
+      ],
+      "name": "lb set content - Deosticks",
+      "settings": {
+        "show-all-in-theme": false,
+        "show-all-in-themess": [
+          "deostick-aloe-vera",
+          "deostick-crusoe",
+          "deostick-sandelholz",
+          "deostick-sea-breeze",
+          "deostick-tortuga",
+          "men-essentials-set"
+        ],
+        "headline": "Unsere Duftnoten",
+        "headlinefont": "work_sans_n4",
+        "holder-max-width": 900,
+        "padding-top": 32,
+        "padding-bottom": 34,
+        "padding-left-right": 18,
+        "section-bg": "#232323",
+        "section-headline-font-color": "#ffffff",
+        "theme-design": "2",
+        "item-max-width-check": true,
+        "item-max-width": 150,
+        "item-icon-alignment": "top",
+        "item-icon-size": 75,
+        "opener-holder-margin-top": 0,
+        "item-padding": 9,
+        "item-border-radius": 9,
+        "item-image-border-radius": 15,
+        "item-fontcolor": "#ffffff",
+        "item-background": "#232323",
+        "item-border-color": "#232323",
+        "active-item-fontcolor": "#ffffff",
+        "active-item-background": "#232323",
+        "active-item-border-color": "#ffffff",
+        "banner-height": 400,
+        "banner-height-mobile": 400,
+        "banner-max-width": 400,
+        "item-content-alignment": "center",
+        "item-content-backgroundcolor": "#232323",
+        "item-content-headline-color": "#ffffff",
+        "item-content-paragraph-color": "#ffffff",
+        "item-content-link-border-color": "#ffffff",
+        "item-content-link-font-color": "#ffffff",
+        "item-content-link-background-color": "#232323",
+        "item-content-link-border-radius": 6
+      }
+    },
+    "lb_set_content_dxAWXU": {
+      "type": "lb-set-content",
+      "blocks": {
+        "block_minHFB": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0011_f_variant_fe3ac210-21f1-450f-b980-a1dde9edfbda.png",
+            "opener-title": "Sandalwood",
+            "content-image": "shopify://shop_images/Seife-Sandal.png",
+            "content-siegel-size": 90,
+            "content-title": "Sandalwood",
+            "content-paragraph": "<p>Warm-holziger Duft mit Noten von Tonka & Bergamotte<br/><br/>Kopf: Bergamotte, Thymian, Pinie<br/>Herz: Rose, Jasmin, Tonka Bohne<br/>Basis: Sandelholz, Guajakholz, Moos</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/sandelholz-rasierseife",
+            "highlight": true
+          }
+        },
+        "block_cQz9cF": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/RasierseifeAloeVera_variant_363eef23-657c-4e3b-befa-d5187291478c.png",
+            "opener-title": "Aloe Vera",
+            "content-image": "shopify://shop_images/Seife-Aloe.png",
+            "content-siegel-size": 90,
+            "content-title": "Aloe Vera",
+            "content-paragraph": "<p>Frisch-aquatischer Duft mit grünen Aloe-Noten, fruchtiger Leichtigkeit & warmer Tiefe<br/><br/>Kopf: Apfel, Melone, Cassis<br/>Herz: Aloe Vera, Seerose, Jasmin<br/>Basis: Veilchen, Sandelholz, Amber</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/rasierseife-aloe-vera",
+            "highlight": true
+          }
+        },
+        "block_RGLbkW": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0150_a-variant_8108e4de-6cad-4f86-a431-6069acb6e75c.png",
+            "opener-title": "Tortuga",
+            "content-image": "shopify://shop_images/Seife-Tortuga.png",
+            "content-siegel-size": 90,
+            "content-title": "Tortuga",
+            "content-paragraph": "<p>Klar-frischer Duft mit würziger Tiefe – Minze, Eukalyptus & Patchouli in perfekter Balance<br/><br/>Kopf: Orange, Minze<br/>Herz: Iris, Lavendel, Eukalyptus<br/>Basis: Sandelholz, Patchouli, Tonka Bohne</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/rasierseife-tortuga",
+            "highlight": true
+          }
+        },
+        "block_DifLT4": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0263_a-variant_0803c6f8-c30c-4ad5-8228-10bb2447940a.webp",
+            "opener-title": "Sea Breeze",
+            "content-image": "shopify://shop_images/Seife-Sea.png",
+            "content-siegel-size": 90,
+            "content-title": "Sea Breeze",
+            "content-paragraph": "<p>Frischer Meeresbrisenduft mit süßem Moschus, Thymian & Zitrusnoten<br/><br/>Kopf: Zitrone, Limette<br/>Herz: Thymian, Rose, Jasmin,<br/>Basis: Holzig, Süßer Moschus, Tonka</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/rasierseife-sea-breeze",
+            "highlight": true
+          }
+        },
+        "block_gyhLrf": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0206_a2-variant_ea5cee89-b796-4203-b5d2-e4f5d0d200e6.webp",
+            "opener-title": "Lavendel",
+            "content-image": "shopify://shop_images/Seife-Lavendel.png",
+            "content-siegel-size": 90,
+            "content-title": "Lavendel",
+            "content-paragraph": "<p>Aromatisch-frischer Duft mit belebendem Lavendel, spritziger Zitrone & sanft-würziger Tiefe<br/><br/>Kopf: Lavendel, Zitrone<br/>Herz: Rosmarin, Geranie<br/>Basis: Patchouli, Moschus, Tonka</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/rasierseife-lavendel",
+            "highlight": true
+          }
+        },
+        "block_7MKhAn": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/RasierseifeFreshMint_variant_b1fecb6b-47b5-4e46-9883-841d70036f98.png",
+            "opener-title": "Fresh Mint",
+            "content-image": "shopify://shop_images/Seife-Mint.png",
+            "content-siegel-size": 90,
+            "content-title": "Fresh Mint",
+            "content-paragraph": "<p>Belebend-frischer Duft mit kühler Minze, spritziger Zitrone & holzig-würziger Basis<br/><br/>Kopf: Zitrone, Grüne Blätter<br/>Herz: Pfefferminze, grüne Minze<br/>Basis: Nelke, Zedernholz</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/rasierseife-fresh-mint",
+            "highlight": true
+          }
+        },
+        "block_GVmWGY": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/RasierseifeCoconut_variant_1de02204-c35c-40e4-8afd-a271da51b9e2.png",
+            "opener-title": "Kokos",
+            "content-image": "shopify://shop_images/Seife-Kokos.png",
+            "content-siegel-size": 90,
+            "content-title": "Kokos",
+            "content-paragraph": "<p>Sinnlich-cremiger Duft mit exotischer Kokosnuss, zarten Blüten & warmer Vanille-Note<br/><br/>Kopf: Pfirsich, Aprikose, Lilie<br/>Herz: Kokosnuss, Mimose, Vanilleblume<br/>Basis: Mandel, Vanilla, Tonka Bohne</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/rasierseife-kokos",
+            "highlight": true
+          }
+        },
+        "block_MpjgzM": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0205_a2-variant_b6185b1b-8856-4363-b227-efbff05d7fec.webp",
+            "opener-title": "Bergamotte",
+            "content-image": "shopify://shop_images/Seife-Bergamotte.png",
+            "content-siegel-size": 90,
+            "content-title": "Bergamotte",
+            "content-paragraph": "<p>Zitrisch-frischer Duft mit spritziger Bergamotte, leichter Würze & elegant-herber Tiefe<br/><br/>Kopf: Granny Smith Apfel, Sizilianische Zeder, Bluebells<br/>Herz: Jasmin, Weiße Rose, Bambus<br/>Basis: Zedernholz, Amber, Moschus</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/rasierseife-bergamotte",
+            "highlight": true
+          }
+        },
+        "block_f3JbpR": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0166_a-variant_bf585e0d-2f11-4709-947c-f11df4c64309.png",
+            "opener-title": "Crusoe",
+            "content-image": "shopify://shop_images/Seife-Crusoe.png",
+            "content-siegel-size": 90,
+            "content-title": "Crusoe",
+            "content-paragraph": "<p>Weich-süßlicher Duft mit Vanille und ausgleichend-holziger Note<br/><br/>Kopf: würzig, leicht-frisch, Bergamotte<br/>Herz: blumig, Rose, balsamisch, Weihrauch<br/>Basis: Sandelholz, Leder, Vanille und Tonka</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "shopify://products/rasierseife-crusoe",
+            "highlight": true
+          }
+        }
+      },
+      "block_order": [
+        "block_minHFB",
+        "block_cQz9cF",
+        "block_RGLbkW",
+        "block_DifLT4",
+        "block_gyhLrf",
+        "block_7MKhAn",
+        "block_GVmWGY",
+        "block_MpjgzM",
+        "block_f3JbpR"
+      ],
+      "name": "lb set content - Rasierseifen",
+      "settings": {
+        "show-all-in-theme": false,
+        "show-all-in-themess": [
+          "rasierpinsel-set",
+          "seifendose-set",
+          "rasierseife-probierset",
+          "rasierseife-aloe-vera",
+          "rasierseife-bergamotte",
+          "rasierseife-crusoe",
+          "rasierseife-fresh-mint",
+          "rasierseife-kokos",
+          "rasierseife-lavendel",
+          "sandelholz-rasierseife",
+          "rasierseife-sea-breeze",
+          "rasierseife-tortuga"
+        ],
+        "headline": "Unsere Duftnoten",
+        "headlinefont": "work_sans_n4",
+        "holder-max-width": 900,
+        "padding-top": 32,
+        "padding-bottom": 72,
+        "padding-left-right": 18,
+        "section-bg": "#232323",
+        "section-headline-font-color": "#ffffff",
+        "theme-design": "2",
+        "item-max-width-check": true,
+        "item-max-width": 150,
+        "item-icon-alignment": "top",
+        "item-icon-size": 75,
+        "opener-holder-margin-top": 0,
+        "item-padding": 9,
+        "item-border-radius": 9,
+        "item-image-border-radius": 15,
+        "item-fontcolor": "#ffffff",
+        "item-background": "#232323",
+        "item-border-color": "#232323",
+        "active-item-fontcolor": "#ffffff",
+        "active-item-background": "#232323",
+        "active-item-border-color": "#ffffff",
+        "banner-height": 400,
+        "banner-height-mobile": 400,
+        "banner-max-width": 400,
+        "item-content-alignment": "center",
+        "item-content-backgroundcolor": "#232323",
+        "item-content-headline-color": "#ffffff",
+        "item-content-paragraph-color": "#ffffff",
+        "item-content-link-border-color": "#ffffff",
+        "item-content-link-font-color": "#ffffff",
+        "item-content-link-background-color": "#232323",
+        "item-content-link-border-radius": 6
+      }
+    },
+    "lb_set_content_KTkDjT": {
+      "type": "lb-set-content",
+      "blocks": {
+        "block_LadzLh": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0273_c_150x_63e97c65-1c16-4765-ae18-06f39491406c.avif",
+            "opener-title": "Rasierhobel",
+            "content-image": "shopify://shop_images/Bildschirmfoto_2025-07-02_um_15.54.15.png",
+            "content-siegel-size": 90,
+            "content-title": "Rasierhobel Oslo",
+            "content-paragraph": "<p>✓ Perfekte Rasur durch den ergonomischen, rutschfesten Griff<br/>✓ Kein Plastikmüll durch leicht austauschbare Klingen aus Stahl<br/><br/>Für eine glatte Rasur, ohne Hautirritationen. Die Klingen können ausgetauscht und recycelt werden, wodurch Du die Umwelt schonst und langfristig Kosten sparst.</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "",
+            "highlight": false
+          }
+        },
+        "block_g9eHbd": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0034_a2_600x_b7afe2db-1567-40bc-b467-def4d853f396.webp",
+            "opener-title": "Rasierklingen",
+            "content-image": "shopify://shop_images/klingen_75e66b2e-9241-427a-a71d-6a04d0868031.webp",
+            "content-siegel-size": 90,
+            "content-title": "Rasierklingen",
+            "content-paragraph": "<p>✓ Passend für Rasierhobel und Rasiermesser<br/>✓ Aus schwedischem Stahl für extra Robustheit und Schärfe<br/><br/>Mit unseren Rasierklingen ist Dir ein angenehmes & effizientes Rasur-Ergebnis garantiert. Sie sind deutlich nachhaltiger und kostensparender im Vergleich zu Systemrasierer-Klingen.</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "",
+            "highlight": false
+          }
+        },
+        "block_jpRTKW": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/Frame_2.png",
+            "opener-title": "Rasierständer",
+            "content-image": "shopify://shop_images/Bildschirmfoto_2025-07-02_um_15.35.27.png",
+            "content-siegel-size": 90,
+            "content-title": "Rasierständer",
+            "content-paragraph": "<p>✓ Hygienische Aufbewahrung und massiver Stand durch rutschfesten Boden und genügend Gewicht<br/>✓ Mattes Design passend zum Rasierhobel für den perfekten Look in deinem Badezimmer<br/><br/>Durch den Rasierständer ist der Rasierhobel 'Oslo' stets griffbereit, trocken und geschützt, sodass du jede Rasur bedenkenlos beginnen kannst.</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "",
+            "highlight": false
+          }
+        }
+      },
+      "block_order": [
+        "block_LadzLh",
+        "block_g9eHbd",
+        "block_jpRTKW"
+      ],
+      "name": "lb set content",
+      "settings": {
+        "show-all-in-theme": false,
+        "show-all-in-themess": [
+          "rasierstaender-set-oslo"
+        ],
+        "headline": "",
+        "headlinefont": "work_sans_n4",
+        "holder-max-width": 900,
+        "padding-top": 18,
+        "padding-bottom": 18,
+        "padding-left-right": 18,
+        "section-bg": "#ffffff",
+        "section-headline-font-color": "#232323",
+        "theme-design": "1",
+        "item-max-width-check": true,
+        "item-max-width": 150,
+        "item-icon-alignment": "center-seperate",
+        "item-icon-size": 80,
+        "opener-holder-margin-top": -50,
+        "item-padding": 9,
+        "item-border-radius": 15,
+        "item-image-border-radius": 100,
+        "item-fontcolor": "#ffffff",
+        "item-background": "#232323",
+        "item-border-color": "#232323",
+        "active-item-fontcolor": "#d9ad5f",
+        "active-item-background": "#232323",
+        "active-item-border-color": "#d9ad5f",
+        "banner-height": 400,
+        "banner-height-mobile": 200,
+        "banner-max-width": 400,
+        "item-content-alignment": "left",
+        "item-content-backgroundcolor": "#232323",
+        "item-content-headline-color": "#ffffff",
+        "item-content-paragraph-color": "#ffffff",
+        "item-content-link-border-color": "#232323",
+        "item-content-link-font-color": "#ffffff",
+        "item-content-link-background-color": "#ffffff",
+        "item-content-link-border-radius": 6
+      }
+    },
+    "lb_set_content_by66LF": {
+      "type": "lb-set-content",
+      "blocks": {
+        "block_3J3Dci": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/rostock.png",
+            "opener-title": "Rasierhobel",
+            "content-image": "shopify://shop_images/Bildschirmfoto_2025-07-14_um_09.15.53.png",
+            "content-siegel-size": 90,
+            "content-title": "Rasierhobel Rostock",
+            "content-paragraph": "<p>✓ Extra Gewicht für maximale Kontrolle, der Rasierhobel ‘Rostock’ liegt perfekt in der Hand<br/>✓ Wechselbare Klingen aus schwedischem Stahl, für eine super effiziente Rasur<br/><br/>Vermeide unnötigen Plastikmüll durch austauschbare und recycelbare Klingen aus schwedischem Stahl. Unser Premium Rasierhobel kommt inklusive hochwertiger (Geschenk-)Verpackung.</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "",
+            "highlight": false
+          }
+        },
+        "block_bx89z9": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0034_a2_600x_b7afe2db-1567-40bc-b467-def4d853f396.webp",
+            "opener-title": "Rasierklingen",
+            "content-image": "shopify://shop_images/klingen_75e66b2e-9241-427a-a71d-6a04d0868031.webp",
+            "content-siegel-size": 90,
+            "content-title": "Rasierklingen",
+            "content-paragraph": "<p>✓ Passend für Rasierhobel und Rasiermesser<br/>✓ Aus schwedischem Stahl für extra Robustheit und Schärfe<br/><br/>Mit unseren Rasierklingen ist Dir ein angenehmes & effizientes Rasur-Ergebnis garantiert. Sie sind deutlich nachhaltiger und kostensparender im Vergleich zu Systemrasierer-Klingen.</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "",
+            "highlight": false
+          }
+        }
+      },
+      "block_order": [
+        "block_3J3Dci",
+        "block_bx89z9"
+      ],
+      "name": "lb set content",
+      "settings": {
+        "show-all-in-theme": false,
+        "show-all-in-themess": [
+          "premium-rasierhobel-rostock"
+        ],
+        "headline": "",
+        "headlinefont": "work_sans_n4",
+        "holder-max-width": 900,
+        "padding-top": 72,
+        "padding-bottom": 72,
+        "padding-left-right": 18,
+        "section-bg": "#ffffff",
+        "section-headline-font-color": "#232323",
+        "theme-design": "1",
+        "item-max-width-check": true,
+        "item-max-width": 150,
+        "item-icon-alignment": "center-seperate",
+        "item-icon-size": 75,
+        "opener-holder-margin-top": -50,
+        "item-padding": 9,
+        "item-border-radius": 15,
+        "item-image-border-radius": 100,
+        "item-fontcolor": "#ffffff",
+        "item-background": "#232323",
+        "item-border-color": "#232323",
+        "active-item-fontcolor": "#d9ad5f",
+        "active-item-background": "#232323",
+        "active-item-border-color": "#d9ad5f",
+        "banner-height": 400,
+        "banner-height-mobile": 400,
+        "banner-max-width": 400,
+        "item-content-alignment": "left",
+        "item-content-backgroundcolor": "#232323",
+        "item-content-headline-color": "#ffffff",
+        "item-content-paragraph-color": "#ffffff",
+        "item-content-link-border-color": "#232323",
+        "item-content-link-font-color": "#232323",
+        "item-content-link-background-color": "#232323",
+        "item-content-link-border-radius": 6
+      }
+    },
+    "lb_set_content_tGk83W": {
+      "type": "lb-set-content",
+      "blocks": {
+        "block_77BqTT": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/riga_4b51e7f6-27b3-4c97-b3f7-52bf43ffee84.png",
+            "opener-title": "Rasierhobel",
+            "content-image": "shopify://shop_images/Bildschirmfoto_2025-07-14_um_09.23.09.png",
+            "content-siegel-size": 90,
+            "content-title": "Rasierhobel Riga",
+            "content-paragraph": "<p>✓ Mit dem integrierten Magnet im Griff nimmst du Klingen sicher, hygienisch und ohne Verletzungsgefahr auf<br/>✓ Wechselbare Klingen aus schwedischem Stahl, für eine super effiziente Rasur<br/><br/>Mit dem Rasierhobel ‘Riga’ bringst du Eleganz und Präzision ins Bad – Er kommt mit edler Geschenk-Verpackung und sorgt langfristig für weniger Plastikmüll und einen perfekt gepflegten Bart.</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "",
+            "highlight": false
+          }
+        },
+        "block_nHQbLF": {
+          "type": "block",
+          "settings": {
+            "opener-image": "shopify://shop_images/STOERTE_0034_a2_600x_b7afe2db-1567-40bc-b467-def4d853f396.webp",
+            "opener-title": "Rasierklingen",
+            "content-image": "shopify://shop_images/klingen_75e66b2e-9241-427a-a71d-6a04d0868031.webp",
+            "content-siegel-size": 90,
+            "content-title": "Rasierklingen",
+            "content-paragraph": "<p>✓ Passend für Rasierhobel und Rasiermesser<br/>✓ Aus schwedischem Stahl für extra Robustheit und Schärfe<br/><br/>Mit unseren Rasierklingen ist Dir ein angenehmes & effizientes Rasur-Ergebnis garantiert. Sie sind deutlich nachhaltiger und kostensparender im Vergleich zu Systemrasierer-Klingen.</p>",
+            "content-link-text": "Zum Produkt",
+            "content-link-url": "",
+            "highlight": false
+          }
+        }
+      },
+      "block_order": [
+        "block_77BqTT",
+        "block_nHQbLF"
+      ],
+      "name": "lb set content",
+      "settings": {
+        "show-all-in-theme": false,
+        "show-all-in-themess": [
+          "premium-rasierhobel-riga"
+        ],
+        "headline": "",
+        "headlinefont": "work_sans_n4",
+        "holder-max-width": 900,
+        "padding-top": 72,
+        "padding-bottom": 72,
+        "padding-left-right": 18,
+        "section-bg": "#ffffff",
+        "section-headline-font-color": "#232323",
+        "theme-design": "1",
+        "item-max-width-check": true,
+        "item-max-width": 150,
+        "item-icon-alignment": "center-seperate",
+        "item-icon-size": 75,
+        "opener-holder-margin-top": -50,
+        "item-padding": 9,
+        "item-border-radius": 15,
+        "item-image-border-radius": 100,
+        "item-fontcolor": "#ffffff",
+        "item-background": "#232323",
+        "item-border-color": "#232323",
+        "active-item-fontcolor": "#d9ad5f",
+        "active-item-background": "#232323",
+        "active-item-border-color": "#d9ad5f",
+        "banner-height": 400,
+        "banner-height-mobile": 400,
+        "banner-max-width": 400,
+        "item-content-alignment": "left",
+        "item-content-backgroundcolor": "#232323",
+        "item-content-headline-color": "#ffffff",
+        "item-content-paragraph-color": "#ffffff",
+        "item-content-link-border-color": "#232323",
+        "item-content-link-font-color": "#232323",
+        "item-content-link-background-color": "#232323",
+        "item-content-link-border-radius": 6
+      }
+    }
+  },
+  "order": [
+    "lb_header_countdown_bEPKMe",
+    "lb_set_content_BE3xnT",
+    "lb_set_content_3YKr9m",
+    "lb_set_content_nYQpTc",
+    "lb_set_content_DjgGqr",
+    "lb_set_content_7ca8rQ",
+    "lb_set_content_Vzrax3",
+    "lb_set_content_JPDQCJ",
+    "lb_set_content_dxAWXU",
+    "lb_set_content_KTkDjT",
+    "lb_set_content_by66LF",
+    "lb_set_content_tGk83W"
+  ]
+}

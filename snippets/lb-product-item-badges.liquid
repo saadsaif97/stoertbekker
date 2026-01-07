@@ -1,0 +1,113 @@
+{% assign overall_current_date_time = 'now' | date: "%Y.%m.%d-%H:%M:%S" %}
+{% assign overall_set_full_time = settings.plannable-date-year | append: '.' | append: settings.plannable-date-month | append: '.' | append: settings.plannable-date-day | append: '-' | append: settings.plannable-date-time %}
+
+<!-- overall_current_date_time >= overall_set_full_time or -->
+
+{% if product.tags contains 'blackdays10' %}
+<div class="lb-customtag">-10%</div>
+{% endif %}
+
+{% if product.tags contains 'blackdays20' %}
+<div class="lb-customtag">-20%</div>
+{% endif %}
+ 
+{% if product.tags contains 'blackdays30' %}
+<div class="lb-customtag">-30%</div>
+{% endif %}
+
+{% if customer.email contains 'lionsbranding' or customer.email contains '@stoertebekker.com' or customer.email contains 'helpingbrands.de'%}
+
+{% endif %}
+
+<style>
+  .lb-customtag {
+    display: none;
+    position: absolute;
+    padding: 5px 9px;
+    border-radius: 5px;
+    top: 9px;
+    font-family: "Bebas Neue";
+    font-size: 16px;
+    right: 9px;
+    background: #D8AC63;
+    color: black;
+    z-index: 9;
+  }
+</style>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="lb-badge-section ">
+
+  {% if product.tags contains 'NEU'%}
+  <div class="lb-badge">
+    {% if canonical_url contains '.com/en' %}
+    NEW
+    {% else %}
+    NEU
+    {% endif %}
+
+  </div>
+  {% endif %}
+
+
+
+  {% if product.tags contains 'bestseller' %}
+  <div class="lb-badge">
+    BESTSELLER
+  </div>
+  {% endif %}
+
+
+
+</div>
+
+
+
+<style>
+  .lb-badge-section {
+    height: 20px;
+    z-index: 99;
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    margin-bottom: 9px;
+    text-align: right;
+  }
+
+  .lb-badge {
+    padding: 3px 9px;
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+    font-family: BebasNeue-Regular;
+    font-size: 16px;
+    background: #232323;
+  }
+
+
+  .lb-badge-gold {
+    padding: 3px 9px;
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+    font-family: BebasNeue-Regular;
+    font-size: 16px;
+    background: #D8AB63;
+  }
+</style>
+
+
+

@@ -1,0 +1,30 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "lb_collection_header_wA3rqd": {
+      "type": "lb-collection-header",
+      "disabled": true,
+      "settings": {
+        "customhtml": ""
+      }
+    },
+    "lb_custom_html_ixFVzj": {
+      "type": "lb-custom-html",
+      "settings": {
+        "customhtml": "<div style=\"background-color: rgb(60, 60, 58);\npadding: 32px 18px;\">\n<div style=\"max-width: 600px; margin: auto;\">\n<div class=\"klaviyo-form-VLZaKS\"></div>\n</div> \n</div>"
+      }
+    }
+  },
+  "order": [
+    "lb_collection_header_wA3rqd",
+    "lb_custom_html_ixFVzj"
+  ]
+}

@@ -1,0 +1,299 @@
+<script src='https://www.events-shopify.mailody.de/events.js?site=stoertebekker.myshopify.com' async></script>
+<script>
+  
+      {% if template contains 'product' %}
+
+  // 		Will only show for products
+  //        This is an object to gather the data (stock level, product review) for the events viewed product + added to cart 
+       var mailodyItem = {
+         Name: {{ product.title|json }},
+         VariantName: '{{ product.selected_or_first_available_variant.title|json }}',
+         ProductId: {{ product.id|json }},
+         Categories: {{ product.collections|map:'title'|json }},
+         ImageUrls: [{% for image in product.images limit:5 %}
+         '{{ image | image_url }}',
+         {% endfor %}],
+         VideoUrls: [
+          {% assign videos = product.media | where: 'media_type', 'video' %}
+          {% for video in videos %}
+            '{{ video.sources.first.url }}',
+          {% endfor %}       
+         ],
+         Url: '{{shop.url}}/{{product.handle}}',
+         Brand: {{ product.vendor|json }},
+         Price: {{ product.price|money|json }},
+         {% assign variant = product.variants.first %} {% if variant.available %} {% if variant.inventory_management != '' %}
+          Stock: {{ variant.inventory_quantity }},
+             {% endif %}
+         {% endif %}
+         CompareAtPrice: {{ product.compare_at_price_max|money|json }},
+         {% if product.metafields.reviewscouk.total %}
+              RatingTotal: {{ product.metafields.reviewscouk.total }},
+         {% endif %} 
+         {% if product.metafields.reviewscouk.rating %}
+              RatingStars: {{ product.metafields.reviewscouk.rating }},
+         {% endif %}
+         BrowserLanguage: (window?.navigator?.userLanguage || window?.navigator?.language || 'de').split('-')[0],
+       };
+
+  //   	Add language
+      if(typeof Weglot !== 'undefined' && typeof Weglot.getCurrentLang == 'function') {
+          mailodyItem.Language = Weglot.getCurrentLang().split('-')[0];
+      } else {
+        {% if request.locale.iso_code != '' %}
+           {% assign shopify_locale = request.locale.iso_code | split: "-" %}
+           mailodyItem.Language = '{{ shopify_locale.first }}';
+        {% else %}
+          mailodyItem.Language = 'de';
+        {% endif %}
+      }
+
+  // Start viewed product 
+  	  	new MailodyEvent('Viewed Product', mailodyItem);
+  // End viewed produt 
+
+  //    Start add to cart event
+        if(document.querySelector('button[name="add"]')) {
+          document.querySelector('button[name="add"]').addEventListener('click',function (){
+            new MailodyEvent('Added to Cart', mailodyItem);
+          });
+        }
+  //    End add to cart event
+  
+  // Start exit intent tracking (jQuery dependant)
+  if(window.jQuery) {
+    $(document).on('click', '.klaviyo-form button:contains("Subscribe")', function() {
+      setTimeout(function() {
+            new MailodyEvent('identify', {
+              'WS-ProductExit-URL' : mailodyItem.Url,
+              'WS-ProductExit-Name' : mailodyItem.Name,
+              'WS-ProductExit-ImageURLs' : mailodyItem.ImageUrls,
+              'WS-ProductExit-Price' : mailodyItem.Price,
+              'WS-ProductExit-Stock' : mailodyItem.Stock ? mailodyItem.Stock : '',
+              {% if product.metafields.reviewscouk.total %}
+             	 'WS-ProductExit-ReviewsCount' : {{ product.metafields.reviewscouk.total }},
+               {% endif %} 
+               {% if product.metafields.reviewscouk.rating %}
+             	 'WS-ProductExit-ReviewScore' : {{ product.metafields.reviewscouk.rating }},
+               {% endif %}
+            });
+      }, 500);
+    });
+  }
+  
+  // End exit intent tracking
+  
+  
+
+      {% elsif template contains 'page' %}
+  
+  // 		Will only show for pages
+  
+  //    Start viewed page 
+          new MailodyEvent('Viewed Page', {
+         	 'Url': '{{shop.url}}/{{page.handle}}',
+          	'Name': {{page.title|json}}
+          });
+   //    End viewed page 
+
+
+      {% elsif template == 'collection' %}
+
+  // 		Will only show for collections
+  
+  //    Start viewed collection 
+  
+        new MailodyEvent('Viewed Collection', {
+          'Url': '{{shop.url}}/{{collection.handle}}',
+          'Name': {{collection.title|json}},
+          'Products': [
+            {% for product in collection.products limit:5 %}
+              {
+               'ProductId': '{{product.id}}',
+               'Name': {{product.title|json}},
+               'Price': '{{ product.price|money }}',
+               'Url': '{{shop.url}}/{{product.handle}}',
+               'Categories': {{ product.collections|map:'title'|json }},
+               'ImageUrls': [{% for image in product.images limit:5 %}
+                  '{{ image | image_url }}',
+                {% endfor %}],
+                VideoUrls: [
+                  {% assign videos = product.media | where: 'media_type', 'video' %}
+                  {% for video in videos %}
+                  '{{ video.sources.first.url }}',
+                  {% endfor %}       
+                ],
+                {% if product.metafields.reviewscouk.total %}
+                    'RatingTotal': '{{product.metafields.reviewscouk.total}}',
+                {% endif %}
+                {% if product.metafields.reviewscouk.rating %}
+                    'RatingStars': '{{product.metafields.reviewscouk.rating}}',
+                {% endif %}
+              },
+            {% endfor %}
+          ],
+        });
+
+      {% endif %}
+
+    //    End viewed collection 
+
+{% comment %}
+  //   	Log utm params, only runs first load
+      if (!sessionStorage.getItem("runFirstLoad")) {
+        // <![CDATA[
+        var mailodyUrl = {};
+        url = new URL(window.location.href);
+        mailodyUrl.tc = url.searchParams.get("utm_campaign");
+        mailodyUrl.ts = url.searchParams.get("utm_source");
+        mailodyUrl.tm = url.searchParams.get("utm_medium");
+        mailodyUrl.ta = url.searchParams.get("utm_content");
+        // ]]
+        window.addEventListener("klaviyoForms", function(e) { 
+          if (e.detail.type == 'submit') {
+            new MailodyEvent('identify', {
+              'utm_campaign' : mailodyUrl.tc,
+              'utm_source' : mailodyUrl.ts,
+              'utm_medium' : mailodyUrl.tm,
+              'utm_content' : mailodyUrl.ta,
+            });
+          }
+        });
+
+
+        sessionStorage.setItem("runFirstLoad", true);
+      }
+  {% endcomment %}
+</script>
+
+{% comment %}
+   <!-- Start Back in Stock    --> 
+<script src="https://a.klaviyo.com/media/js/onsite/onsite.js" defer></script>
+
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+var klaviyo = klaviyo || [];
+
+klaviyo.init({
+
+account: "JYEi5B",
+
+list: 'KHg74n',
+
+platform: "shopify"
+
+});
+
+klaviyo.enable("backinstock",{
+
+trigger: {
+
+product_page_text: "Informiere mich per E-Mail",
+
+product_page_class: "btn",
+
+product_page_text_align: "center",
+
+product_page_margin: "0px",
+
+replace_anchor: false // Ausverkauftbutton auf der Produkt Seite wird angezeigt (false) oder ersetzt (true)
+
+},
+
+modal: {
+
+headline: "{product_name}",
+
+body_content: "Als erstes informiert werden, sobald das Produkt wieder da ist",
+
+newsletter_subscribe_label: "xy Newsletter anmelden",
+
+email_field_label: "Email",
+
+button_label: "E-Mail erhalten sobald verfügbar",
+
+subscription_success_label: "Wir informieren dich, sobald das Produkt wieder verfügbar ist",
+
+footer_content: 'Wir informieren dich sobald das Produkt wieder verfügbar ist. Du wirst nicht automatisch zum Newsletter angemeldet',
+
+subscribe_checked: false,
+
+additional_styles: "@import url(' [https://fonts.googleapis.com/css?family=Helvetica+Neue](https://fonts.googleapis.com/css?family=Helvetica+Neue)');",
+
+drop_background_color: "#000",
+
+background_color: "#fff",
+
+text_color: "#222",
+
+button_text_color: "#fff",
+
+button_background_color: "#557b97",
+
+close_button_color: "#ccc",
+
+error_background_color: "#fcd6d7",
+
+error_text_color: "#C72E2F",
+
+success_background_color: "#d3efcd",
+
+success_text_color: "#1B9500"
+
+}
+
+});
+});
+
+</script>
+
+<!-- End Back in Stock --> 
+{% endcomment %}
+{% comment %}
+
+<script>
+    if(window.jQuery) {
+      $(document).on('click', '.klaviyo-form button', function() {
+          form = $(this).closest(".klaviyo-form");
+          email = form.find("input[type=email]");
+          if(email.length && email.val().includes('t-online')) {
+            setTimeout(function() {
+//               	The contains selector here should be customised to include text for the store's confirmation message you wish to overwrite
+                codeSpan = form.find("span:contains(Gehe in Dein E-Mail Postfach, bestätige Deine Anmeldung und hol Dir Deinen 10% Code.)");
+                if(codeSpan.length) {
+//                   	Modify the text here
+                  codeSpan.html("Dein Gutschein ist: Newsletter10");
+                }
+            }, 1000);
+          }
+      });
+    }
+</script>
+{% endcomment %}
+{% comment %}
+    
+<!--     End -->
+    
+<!--     Start Klaviyo form customisations -->
+    <style>
+/*       Header */
+      .klaviyo-form p > strong {
+          line-height: 5 !important;
+          letter-spacing: 0.04em !important;
+      }
+      
+/*       Text */
+        .klaviyo-form p > span {
+          line-height: 2 !important;
+          letter-spacing: 0.04em !important;
+      }
+      
+/*       Buttons */
+      .klaviyo-form button {
+        background: yellow !important;
+        color: red !important;
+        letter-spacing: 0.04em !important;
+      }
+    </style>
+<!--     End -->
+{% endcomment %}

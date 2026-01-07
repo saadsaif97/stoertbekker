@@ -1,0 +1,371 @@
+<div class="lb-slider-topbanner">
+  
+  <div class="lb-slider-topbanner-slide lb-slider-topbanner-slide-1">
+    {% if canonical_url contains '.com/en' %}
+      <div class="reviews-io-rating-bar-widget" data-widget-id="vu4ZAMLXsVQrcmUY" data-store-name="strtebekker-shaving-accessories" lang="en"></div>
+      <script src="//widget.reviews.io/modern-widgets/rating-bar.js" defer></script>
+    {% else %}
+      <div class="reviews-io-rating-bar-widget" data-widget-id="vu4ZAMLXsVQrcmUY" data-store-name="strtebekker-shaving-accessories" lang="de"></div>
+      <script src="//widget.reviews.io/modern-widgets/rating-bar.js" defer></script>
+    {% endif %}
+  </div>
+  
+  {% unless canonical_url contains '/products/' %}
+  <div class="lb-slider-topbanner-slide lb-slider-topbanner-slide-2">
+    <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/benefit-1_copy_6e2f5c81-b901-44b0-98be-b94928ec2573.png?v=1752223938"> {% if canonical_url contains '.com/en' %}Free shipping from {% else %}Kostenloser Versand ab {% endif %}
+    {% if localization.country.iso_code == 'CH' %}
+    79 CHF
+    {% else %}
+    49€
+    {% endif %}
+  </div>
+
+   <div class="lb-slider-topbanner-slide lb-slider-topbanner-slide-3">
+    <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/benefit-2_copy.png?v=1623320808"> 
+    {% if canonical_url contains '.com/en' %}100 days return{% else %}100 Tage Rückgaberecht{% endif %}
+  </div>
+   {% endunless %}
+    
+</div>
+ 
+
+<style>
+  .lb-slider-topbanner {
+    padding: 0px;
+    background: #232323;
+    position: fixed;
+    z-index: 9990!important;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 40px;
+    font-size: 10px;
+    color: white!important;
+    overflow: hidden;
+  }
+
+  .lb-slider-topbanner-slide {
+    width: 100%;
+    background: #232323;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    justify-content: center;
+    position: absolute;
+  }
+
+  .lb-slider-topbanner-slide img {
+    width: 24px;
+    filter: invert(1);
+    margin-right: 9px;
+  }
+
+  /* Start the animation for each slide */
+  .lb-slider-topbanner-slide-1 {
+    animation-delay: 0s;
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .lb-slider-topbanner-slide-2 {
+    animation-delay: 6s;
+    opacity: 0;
+  }
+
+  .lb-slider-topbanner-slide-3 {
+    animation-delay: 12s;
+    opacity: 0;
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    10% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    30% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    40% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+
+  /* Apply animation only if it's not on the products page */
+  {% unless canonical_url contains '/products/' %}
+  .lb-slider-topbanner-slide {
+    animation: slide 18s infinite;
+  }
+
+  .lb-slider-topbanner-slide-2 {
+    animation-delay: 6s;
+  }
+
+    .lb-slider-topbanner-slide-3 {
+       animation-delay: 12s;
+    }
+    
+  {% endunless %}
+   
+  .RatingBarWidget-prefix .R-TextBody--xxs {
+    color: white !important;
+  }
+
+  .reviews-io-rating-bar-widget {
+    margin-top: 0px;
+  }
+
+  .R-PlatformIcon {
+    display: none!important;
+  }
+
+  .RatingBarWidget__inner {
+    font-size: 14px!important;
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+{% if canonical_url contains 'testopfewfwe' %}
+  
+<div class="new-top-banner newbranding-bg-soft lb-fixed-info">
+  <div class="new-top-banner-reviews">
+    {% if canonical_url contains '.com/en' %}
+      <div class="reviews-io-rating-bar-widget" data-widget-id="vu4ZAMLXsVQrcmUY" data-store-name="strtebekker-shaving-accessories" lang="en"></div>
+      <script src="//widget.reviews.io/modern-widgets/rating-bar.js" defer></script>
+    {% else %}
+      <div class="reviews-io-rating-bar-widget" data-widget-id="vu4ZAMLXsVQrcmUY" data-store-name="strtebekker-shaving-accessories" lang="de"></div>
+      <script src="//widget.reviews.io/modern-widgets/rating-bar.js" defer></script>
+    {% endif %}
+  </div>
+
+  <p class="new-top-banner-p-3"></p>
+  <div class="new-top-banner-text">
+    <p class="new-top-banner-p-1"><img src="https://ucarecdn.com/1494889a-a224-4782-99f2-f3358e12907d/-/format/auto/-/preview/100x100/-/quality/lighter/"> {% if canonical_url contains '.com/en' %}Free shipping from {% else %}Kostenloser Versand ab {% endif %}
+    {% if localization.country.iso_code == 'CH' %}
+    79 CHF
+    {% else %}
+    49€
+    {% endif %}
+    </p> 
+    <p class="new-top-banner-p-2"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/benefit-2_copy.png?v=1623320808"> 
+    {% if canonical_url contains '.com/en' %}100 days return{% else %}100 Tage Rückgaberecht{% endif %}</p>
+  </div>
+</div>
+ 
+
+<style>
+ {% if canonical_url contains '/products/' %}
+      .new-top-banner-reviews {
+    top: 5px!important;
+      }
+   .new-top-banner-text {
+     display: none!important;
+   }
+{% endif %}
+</style>
+
+
+<style>
+
+  
+.lb-fixed-info {
+  background-color : rgb(60, 60, 59) !important;
+  height: 50px;
+}
+
+.lb-fixed-info p {
+  color : white !important;
+}
+
+.lb-fixed-info img {
+  filter : invert(1);
+}
+
+.new-top-banner {
+  background-color : rgb(60, 60, 59) !important;
+  color : white !important;
+}
+
+.RatingBarWidget-prefix .R-TextBody--xxs {
+  color : white !important;
+}
+
+  
+  </style>
+
+<style>
+
+.R-PlatformIcon {
+display: none!important;
+}
+
+.RatingBarWidget__inner {
+font-size: 14px!important;
+}
+
+
+
+  
+  .new-top-banner {
+    padding: 0px 18px 5px 18px;
+    background: #efece0;
+    position: fixed;
+    color: #66634E;
+    z-index: 9;
+    top: 0px; 
+left: 0px;
+    width: 100%;
+    height: 30px;
+    font-size: 10px;
+  }
+  
+
+  
+
+  .new-top-banner-reviews {
+    text-align: center;
+  	position: absolute;
+    top: 4px;
+    left: 50%;
+    font-size: 13px;
+    width: 100%;
+	transform: translate(-50%);
+  }
+  
+  .new-top-banner-text {
+  	position: absolute;
+    top: 6px;
+    width: 100%;
+    left: 0px;
+    padding: 0px 18px;
+  }
+  
+  .new-top-banner-img {
+  	width: 102px;
+    display: inline;
+    position: relative;
+    top: 5px;
+    margin-right: 6px;
+  }
+  
+  .new-top-banner-p-1 {
+  	text-align: left;
+    font-size: 13px;
+    float: left;
+        line-height: 28px;
+    margin: 0px!important;
+  }
+  
+  .new-top-banner-p-2 {
+  	text-align: right;
+    font-size: 13px;
+        line-height: 28px;
+    margin: 0px!important;
+  }
+  
+  .new-top-banner-p-3 {
+  	text-align: center;
+    font-size: 13px;
+        line-height: 28px;
+    margin-top: 5px!important;
+  }
+  
+  .new-top-banner p img  {
+  	width: 20px;
+    position: relative;
+    top: 5px;
+    display: inline-block;
+  }
+  
+  .new-top-banner b {
+  	color: black;
+    font-weight: 800;
+  }
+  
+  
+  
+  
+   @media only screen and (max-width: 900px) {
+
+     
+       .new-top-banner-reviews {
+    top: -5px;
+         font-size: 9px;
+  }
+     
+
+       .new-top-banner-text {
+    top: 15px;
+         width: 450px;
+         left: 50%;
+   
+         line-height: 0px;
+         transform: translate(-50%);
+         text-align: center;
+  }
+     
+     
+  
+       .new-top-banner-img {
+  	width: 92px;
+    display: inline;
+    position: relative;
+    top: 5px;
+    margin-right: 6px;
+  }
+     
+     
+  .new-top-banner-p-1 {
+  	text-align: right;
+    float: none;
+    display: inline-block;
+    font-size: 10px;
+            line-height: 0px;
+  }
+  
+  .new-top-banner-p-2 {
+  	text-align: left;
+    float: none;
+    display: inline-block;
+    font-size: 10px;
+            line-height: 0px;
+  }
+  
+  .new-top-banner-p-3 {
+  	display: block;
+    font-size: 11px;
+    margin-top: 0px!important;
+  }   
+   
+     
+       
+  .new-top-banner p img  {
+  	width: 16px;
+  }
+     
+     
+   }
+  
+</style>
+{% endif %}

@@ -1,0 +1,1206 @@
+<style>.direct-atc{display:none}</style><script>
+	window.__pageflyProducts = window.__pageflyProducts || {};
+	{% unless product.id == null %}window.__pageflyProducts["{{product.id}}"] = {
+		id: {{ product.id | json }},
+		handle: {{ product.handle | json }},
+		title: {{ product.title | json }},
+		type: {{ product.type | json }},
+		url: {{ product.url | within: collection | json }},
+		vendor: {{ product.vendor | json }},
+		variants: {{ product.variants | json }},
+		options: {{ product.options | json }},
+		media: {{ product.media | json }},
+		has_only_default_variant: {{ product.has_only_default_variant | json }},
+		options_with_values: {{ product.options_with_values | json }},
+		selected_variant: {{ product.selected_variant | json }},
+		selected_or_first_available_variant: {{ product.selected_or_first_available_variant | json }},
+		tags: {{ product.tags | json }},
+		template_suffix: {{ product.template_suffix | json }},
+		featured_image: {{ product.featured_image | json }},
+		featured_media: {{ product.featured_media | json }},
+		images: {{ product.images | json }},
+		quantity: {% assign quantity = '' %}{% for variant in product.variants %}{% assign quantity = quantity | append: variant.id | append: ':' | append: variant.inventory_quantity | append: ',' %}{% endfor %}{% assign quantity = quantity | split: ','%}{{quantity | json }}
+	};{% endunless %}
+	</script>{% if collection_164232495236 == null %}{%- assign collection_164232495236 = collections["frontpage"] -%}{% endif %}<script>
+	window.__pageflyCollections = window.__pageflyCollections || {};
+	window.__pageflyCollections["164232495236"] = {{collection_164232495236 | json }};
+	</script><div class="sc-fBWQee hMpFiG __pf __pf_u9kajx0C" id="__pf"><div data-pf-type="Body" class="sc-kzqdYt kOLxBk pf-1468_"><div data-pf-type="Layout" class="sc-ecPDsT dGTJHM pf-1469_"><div data-section-id="pf-1102" data-pf-type="Section" class="sc-YysaK kYyPCk pf-1470_ pf-color-scheme-1 pf-lg-hide pf-md-hide pf-sm-hide pf-hide"><div class="sc-ktPOXr dplAGv"><div class="sc-jXbVAB kNtuek pf-1471_ pf-r pf-r-eh" style="--s-xs:0px" data-pf-type="Row"><div class="pf-c" style="--c-xs:12;--c-sm:12;--c-md:12;--c-lg:12"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1472_"><div data-pf-type="Custom.HTML" class="sc-brPMkR emByB pf-1473_"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<div class="lb-home-search-section">
+  <div class="lb-home-search-section-holder">
+    <form action="/search" method="get" role="search" onsubmit="event.preventDefault();">
+      <input type="text" id="search-input" name="q" class="lb-home-search-input" placeholder="Wonach suchst Du?" value="{{ search.terms | escape }}" required oninput="showSuggestions(this.value)">
+      <button type="button" id="clear-button" class="lb-home-search-button" onclick="clearSearch()">
+      <?xml version="1.0" encoding="UTF-8"?>
+      <svg width="323px" height="323px" viewBox="0 0 323 323" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="arrow-down-copy-6" transform="translate(-39, -39)" stroke="#000000" stroke-width="30">
+                  <g id="Group" transform="translate(50, 50)">
+                      <line x1="1" y1="-4.63670768e-13" x2="300.509804" y2="300.509772" id="Path-104"></line>
+                      <line x1="301" y1="0" x2="0" y2="300" id="Path-104"></line>
+                  </g>
+              </g>
+          </g>
+      </svg>  
+      </button>
+      <button type="submit" class="lb-home-search-button">
+<svg width="400px" height="400px" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>search copy</title>
+    <g id="search-copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(-28.6391, -27.8641)" fill-rule="nonzero" stroke="#000000" stroke-width="30">
+            <path d="M192.257726,319.785647 C221.559556,367.483555 261.676783,391.332508 312.609406,391.332508 C389.008341,391.332508 450.941915,329.398935 450.941915,253 C450.941915,176.601065 389.008341,114.667492 312.609406,114.667492 C236.210471,114.667492 174.276898,176.601065 174.276898,253 L52.6801549,268.044108 C33.5546091,270.806205 24.6515739,278.668051 25.9710495,291.629644 C27.2905251,304.591237 36.0214207,310.336595 52.1637362,308.865719 L150.103857,297.117569" id="Oval" transform="translate(238.3926, 253) rotate(-127) translate(-238.3926, -253)"></path>
+        </g>
+    </g>
+</svg>
+      </button>
+      <div id="suggestions-container"></div>
+    </form>
+  </div>
+</div>
+
+<script>
+  async function showSuggestions(query) {
+    if (query.length < 1) {
+      document.getElementById('suggestions-container').innerHTML = '';
+      return;
+    }
+
+    const response = await fetch(`/search/suggest.json?q=${query}&resources[type]=product`);
+    const suggestions = await response.json();
+
+    let suggestionsHtml = '';
+    suggestions.resources.results.products.forEach(product => {
+      suggestionsHtml += `<div class="suggestion-item">
+                            <a href="${product.url}">
+                              <img src="${product.image}" alt="${product.title}" />
+                              <div>${product.title}</div>
+                            </a>
+                          </div>`;
+    });
+
+    document.getElementById('suggestions-container').innerHTML = suggestionsHtml;
+  }
+
+  function clearSearch() {
+    document.getElementById('search-input').value = '';
+    document.getElementById('suggestions-container').innerHTML = '';
+  }
+</script>
+
+<style>
+  .lbsearcomenone {
+display: none;
+}
+
+ .search-container {
+    position: relative;
+    width: 300px;
+  }
+
+  #search-input {
+    width: 100%;
+    padding: 0px 18px;
+    border: 1px solid white;
+    display: inline-block;
+    background: #f2f2f2;
+    font-family: Arial;
+    border-radius: 50px;
+  }
+
+  #clear-button {
+    width: 36px;
+    height: 53px;
+    padding: 0px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    position: absolute;
+    right: 40px;
+    top: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #clear-button svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  #clear-button svg g {
+    stroke: {
+        {
+        section.settings.cleariconcolor
+      }
+    }
+
+    ;
+  }
+
+  #suggestions-container {
+    position: absolute;
+    top: 105%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 0px solid #ccc;
+    z-index: 1000;
+    max-height: 320px;
+    overflow-y: scroll;
+    border-radius: 6px;
+    box-shadow: 0px 0px 72px rgba(0, 0, 0, 0.1);
+  }
+
+  .suggestion-item {
+    padding: 10px;
+  }
+
+  .suggestion-item a {
+    display: flex;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .suggestion-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+
+  .suggestion-item div {
+    flex: 1;
+  }
+
+  .lb-home-search-section {
+    padding: 9px 9px;
+    display: block;
+
+    background: {
+        {
+        section.settings.searchsectionbackground
+      }
+    }
+
+    ;
+  }
+
+  .lb-home-search-section-holder {
+    max-width: {
+        {
+        section.settings.searchmaxwidth
+      }
+    }
+
+    px;
+    margin: auto;
+    position: relative;
+  }
+
+  .lb-home-search-input {
+    width: 100%;
+    display: block;
+
+    border-radius: 50pxpx;
+
+    background: none;
+
+    color: {
+        {
+        section.settings.fontcolor
+      }
+    }
+
+     !important;
+    padding: 0px 18px;
+    line-height: 50px;
+
+    font-size: {
+        {
+        section.settings.fontsize
+      }
+    }
+
+    px;
+
+      {
+      % if section.settings.searchcustomfontfamily==blank %
+    }
+
+    font-family: {
+        {
+        lb-home-search-font.family
+      }
+    }
+
+    ,
+      {
+        {
+        lb-home-search-font.fallback_families
+      }
+    }
+
+     !important;
+
+      {
+      % else %
+    }
+
+    font-family: 'Lb-home-search-customfont' !important;
+
+      {
+      % endif %
+    }
+
+    border: 1px solid {
+        {
+        section.settings.bordercolor
+      }
+    }
+
+     !important;
+  }
+
+  .lb-home-search-input::placeholder {
+    color: black !important;
+  }
+
+  .lb-home-search-input:focus {
+    border: 1px solid black !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .lb-home-search-button {
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    background: none;
+    border: none;
+    text-align: center;
+    line-height: 50px;
+    height: 50px;
+    width: 45px;
+
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer !important;
+  }
+
+  .lb-home-search-button svg {
+    width: 20px;
+    height: 20px;
+
+    stroke: {
+        {
+        section.settings.searchiconcolor
+      }
+    }
+
+    ;
+  }
+
+  @media only screen and (min-width: 600px) {
+    .lb-home-search-section {
+      display: none !important;
+    }
+  }
+</style>
+
+
+
+
+
+<!--
+<div class="lb-home-search-section">
+  <div class="lb-home-search-section-holder">
+    <form action="/search" method="get" class="search-form" role="search">
+      <input type="text" name="q" class="lb-home-search-input" placeholder="Wonach suchst Du?" aria-label="Search" value="{{ search.terms | escape }}" required>
+      <button type="submit" class="lb-home-search-button">
+<svg width="400px" height="400px" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>search copy</title>
+    <g id="search-copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(-28.6391, -27.8641)" fill-rule="nonzero" stroke="#000000" stroke-width="30">
+            <path d="M192.257726,319.785647 C221.559556,367.483555 261.676783,391.332508 312.609406,391.332508 C389.008341,391.332508 450.941915,329.398935 450.941915,253 C450.941915,176.601065 389.008341,114.667492 312.609406,114.667492 C236.210471,114.667492 174.276898,176.601065 174.276898,253 L52.6801549,268.044108 C33.5546091,270.806205 24.6515739,278.668051 25.9710495,291.629644 C27.2905251,304.591237 36.0214207,310.336595 52.1637362,308.865719 L150.103857,297.117569" id="Oval" transform="translate(238.3926, 253) rotate(-127) translate(-238.3926, -253)"></path>
+        </g>
+    </g>
+</svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+
+<style>
+  @media only screen and (max-width: 600px) {
+    .lbsearcomenone {
+      display: none !important;
+    }
+
+    .lb-home-search-section {
+      display: block !important;
+    }
+  }
+
+  .lb-home-search-section {
+    padding: 12px 9px;
+    display: none;
+  }
+
+  .lb-home-search-section-holder {
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+  }
+
+  .lb-home-search-input {
+    width: 100%;
+    display: block;
+    border-radius: 50px;
+    background: #f2f2f2;
+    border: none;
+    padding: 0px 18px;
+    line-height: 46px;
+    color: black;
+  }
+
+  .lb-home-search-input:placeholder .lb-home-search-input:focus {
+    color: black;
+  }
+
+  .lb-home-search-button {
+    position: absolute;
+    right: 18px;
+    top: 10px;
+    background: none;
+    border: none;
+    font-size: 16px;
+  }
+
+  .lb-home-search-button svg {
+    width: 24px;
+    height: 24px;
+    color: red;
+  }
+
+
+  @media only screen and (max-width: 600px) {
+
+    .lb-imageonly-homebanner-mobile {
+      display: block !important;
+    }
+
+    .lb-imageonly-homebanner-desktop {
+      display: none !important;
+    }
+  }
+</style>
+--></div></div></div></div></div></div><div data-section-id="pf-5c2d" data-pf-type="Section" class="sc-YysaK kYyPCk pf-1474_ pf-color-scheme-1 pf-lg-hide pf-md-hide pf-sm-hide pf-hide"><div class="sc-ktPOXr dplAGv"><div class="sc-jXbVAB kNtuek pf-1475_ pf-r pf-r-eh" style="--s-xs:0px" data-href="products/festes-shampoo-sandelholz" data-target="_self" data-pf-type="Row"><div class="pf-c" style="--c-xs:12;--c-sm:12;--c-md:12;--c-lg:12"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1476_"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Banner_244290ba-74f2-48db-8e22-1051e86642c1.png?v=1720628170" srcSet="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Banner_244290ba-74f2-48db-8e22-1051e86642c1.png?v=1720628170 1536w, https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Banner_244290ba-74f2-48db-8e22-1051e86642c1_1500x.png?v=1720628170 1280w, https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Banner_244290ba-74f2-48db-8e22-1051e86642c1_1000x.png?v=1720628170 768w, https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Banner_244290ba-74f2-48db-8e22-1051e86642c1_500x.png?v=1720628170 320w" width="1920" height="800" alt="Banner.png__PID:2d73b03d-ebd2-4cab-b190-bd68574e55b7" title="Hol dir das Barbershopfeeling nach Hause!" data-action="url" data-href="/collections/sets" data-target="_self" data-pf-type="Image3" class="sc-sLtfs jkHPMQ pf-1477_ pf-image-1 pf-hide"/><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Stortebekker_Mobile_Banner_b3ffc808-47db-4b5c-aa9d-1850222502d0.png?v=1720340331" srcSet="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Stortebekker_Mobile_Banner_b3ffc808-47db-4b5c-aa9d-1850222502d0.png?v=1720340331 1536w, https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Stortebekker_Mobile_Banner_b3ffc808-47db-4b5c-aa9d-1850222502d0_500x.png?v=1720340331 320w" width="900" height="1200" alt="Störtebekker Mobile Banner.png__PID:f26688bd-1c39-4cf9-b836-0b7226fa04d4" title="Hol dir das Barbershopfeeling nach Hause!" data-action="url" data-href="/collections/sets" data-target="_self" data-pf-type="Image3" class="sc-sLtfs jkHPMQ pf-1478_ pf-image-1 pf-lg-hide pf-md-hide pf-sm-hide"/></div></div></div></div></div><div data-section-id="pf-96d7" data-pf-type="Section" class="sc-YysaK kYyPCk pf-1479_ pf-color-scheme-1 pf-lg-hide pf-md-hide pf-sm-hide pf-hide"><div class="sc-ktPOXr dplAGv"><div class="sc-jXbVAB kNtuek pf-1480_ pf-r pf-r-eh" style="--s-xs:0px" data-pf-type="Row"><div class="pf-c" style="--c-xs:12;--c-sm:12;--c-md:12;--c-lg:12"><div data-href="/pages/pomade-warteliste" data-target="_self" data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1481_"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/pomade_f0ce5cfe-df06-4fe9-85c9-bab3f06993e5.png?v=1717353775" srcSet="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/pomade_f0ce5cfe-df06-4fe9-85c9-bab3f06993e5.png?v=1717353775 1536w, https://cdn.shopify.com/s/files/1/0317/7116/4804/files/pomade_f0ce5cfe-df06-4fe9-85c9-bab3f06993e5_500x.png?v=1717353775 320w" width="855" height="207" alt="pomade.png__PID:89b0cdcf-cff2-4115-8af2-4e6c8c77eab9" data-action="url" data-href="https://stoertebekker.com/pages/pomade-warteliste" data-target="_self" data-pf-type="Image3" class="sc-sLtfs jkHPMQ pf-1482_ pf-image-1"/></div></div></div></div></div><div data-section-id="pf-2b2f" data-pf-type="Section" class="sc-YysaK kYyPCk pf-1483_ pf-color-scheme-1 pf-lg-hide pf-md-hide pf-sm-hide pf-hide"><div style="--cw:700px" class="sc-ktPOXr dplAGv"><div class="sc-jXbVAB kNtuek pf-1484_ pf-r pf-r-eh" style="--s-xs:0px" data-pf-type="Row"><div class="pf-c" style="--c-xs:4;--c-sm:4;--c-md:4;--c-lg:4"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1485_"><div data-pf-type="Image" class="sc-ihgokY faeooD pf-1486_ pf-image-1"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/download-1654599086996.webp?v=1654599097" width="240" height="132"/></div></div></div><div class="pf-c" style="--c-xs:4;--c-sm:4;--c-md:4;--c-lg:4"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1487_"><div data-pf-type="Image" class="sc-ihgokY faeooD pf-1488_ pf-image-1"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/download-1-1654599086995.webp?v=1654599087" width="240" height="132"/></div></div></div><div class="pf-c" style="--c-xs:4;--c-sm:4;--c-md:4;--c-lg:4"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1489_"><div data-pf-type="Image" class="sc-ihgokY faeooD pf-1490_ pf-image-1"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/download-2-1654599086996.webp?v=1654599095" width="240" height="132"/></div></div></div></div></div></div><div data-section-id="pf-7ce1" data-pf-type="Section" class="sc-YysaK kYyPCk pf-1491_ pf-color-scheme-1 pf-lg-hide pf-md-hide pf-sm-hide pf-hide"><div style="--cw:1000px" class="sc-ktPOXr dplAGv"><div class="sc-jXbVAB kNtuek pf-1492_ pf-r pf-r-eh" style="--s-xs:4.5px;--s-sm:15px" data-pf-type="Row"><div class="pf-c" style="--c-xs:12;--c-sm:4;--c-md:4;--c-lg:4"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1493_ new-branding-headline-font"><h3 data-pf-type="Heading2" class="sc-cmaqZA fXrIOS pf-1494_ pf-heading-1-h3 new-branding-headline-font moresize2 hellcolor">Finde das perfekte<br>Geschenkset</h3><a title="Hol dir das Barbershopfeeling nach Hause!" data-action="url" href="/collections/sets" target="_self" data-pf-type="Image" class="sc-ihgokY sc-jMalIJ faeooD eKAyjc pf-1496_ pf-image-1 homeboxen"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Bildschirmfoto_2021-12-02_um_12.21.26_Verschenke_einen_Gut_Mask_Copy_10.png?v=1687002153" srcSet="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Bildschirmfoto_2021-12-02_um_12.21.26_Verschenke_einen_Gut_Mask_Copy_10.png?v=1687002153 1536w" width="327" height="118" title="Hol dir das Barbershopfeeling nach Hause!"/></a></div></div><div class="pf-c" style="--c-xs:12;--c-sm:4;--c-md:4;--c-lg:4"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1497_ new-branding-headline-font"><a title="Neuheiten" data-action="url" href="/collections/neuheiten" target="_self" data-pf-type="Image" class="sc-ihgokY sc-jMalIJ faeooD eKAyjc pf-1498_ pf-image-1 homeboxen"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Bildschirmfoto_2021-12-02_um_12.21.26_Verschenke_einen_Gut_Mask_Copy_11.png?v=1687002154" srcSet="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Bildschirmfoto_2021-12-02_um_12.21.26_Verschenke_einen_Gut_Mask_Copy_11.png?v=1687002154 1536w" width="327" height="118" title="Neuheiten"/></a><p class="sc-kAkozD iOjmJ pf-1499_ pf-text-1" data-pf-type="Paragraph3">Entdecke unsere<br>neuen Produkte</p></div></div><div class="pf-c" style="--c-xs:12;--c-sm:4;--c-md:4;--c-lg:4"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1501_ new-branding-headline-font"><h3 data-pf-type="Heading2" class="sc-cmaqZA fXrIOS pf-1502_ pf-heading-1-h3 new-branding-headline-font moresize2 hellcolor">Erfahre mehr&nbsp;<br>über uns</h3><a title="Über uns" data-action="url" href="/pages/uber-uns" target="_self" data-pf-type="Image" class="sc-ihgokY sc-jMalIJ faeooD eKAyjc pf-1504_ pf-image-1 homeboxen"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Group_10_Copy.png?v=1687002154" srcSet="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/Group_10_Copy.png?v=1687002154 1536w" width="654" height="236" title="Über uns"/></a></div></div></div></div></div><div data-section-id="pf-48c8" data-pf-type="Section" class="sc-YysaK kYyPCk pf-1505_ pf-color-scheme-1 pf-lg-hide pf-md-hide pf-sm-hide pf-hide"><div style="--cw:1170px" class="sc-ktPOXr dplAGv"><div class="sc-jXbVAB kNtuek pf-1506_ pf-r pf-r-eh" style="--s-xs:15px" data-pf-type="Row"><div class="pf-c" style="--c-xs:12;--c-sm:12;--c-md:12;--c-lg:12"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1507_"><h3 data-pf-type="Heading" class="sc-ggpkNl jdwwxc pf-1508_ pf-heading-2-h3 new-branding-headline-font grey-font"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1510_">Für eine einzigartige Rasur</span></h3><p class="sc-lnPyOc exfzrW pf-1511_ pf-text-2" data-pf-type="Paragraph"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1513_">Genau Dein Style! Genau Dein Typ!</span></p></div></div></div></div></div><div data-section-id="pf-1778" data-pf-type="Section" class="sc-YysaK kYyPCk pf-1514_ pf-color-scheme-1 pf-lg-hide pf-md-hide pf-sm-hide pf-hide"><div style="--cw:1170px" class="sc-ktPOXr dplAGv"><div class="sc-jXbVAB kNtuek pf-1515_ pf-r pf-r-eh" style="--s-xs:0px" data-pf-type="Row"><div class="pf-c" style="--c-xs:12;--c-sm:12;--c-md:12;--c-lg:12"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1516_"><a href="/collections/alle-produkte" target="_self" data-pf-type="Button" class="sc-hknPuZ HlEuf pf-1517_ pf-button-1"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1519_">Alle Produkte</span></a><a href="/collections/neuheiten" target="_self" data-pf-type="Button" id="newhomecategories" class="sc-hknPuZ HlEuf pf-1520_ pf-button-1"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1522_">Neuheiten</span></a><a href="/collections/bestseller-von-stortebekker" target="_self" data-pf-type="Button" id="newhomecategories" class="sc-hknPuZ HlEuf pf-1523_ pf-button-1"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1525_">Bestseller</span></a></div></div></div></div></div><div data-section-id="pf-499e" data-pf-type="Section" class="sc-YysaK kYyPCk pf-1526_ pf-color-scheme-1"><div style="--cw:1170px" class="sc-ktPOXr dplAGv"><div class="sc-jXbVAB kNtuek pf-1527_ pf-r pf-r-eh" style="--s-xs:0px" data-pf-type="Row"><div class="pf-c" style="--c-xs:12;--c-sm:12;--c-md:12;--c-lg:12"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1528_"><a href="/collections/sets" target="_self" data-pf-type="Button" class="sc-hknPuZ HlEuf pf-1529_ pf-button-1 filter-sets"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1531_">Sets</span></a><a href="/collections/rasierhobel" target="_self" data-pf-type="Button" class="sc-hknPuZ HlEuf pf-1532_ pf-button-1 filter-rasierhobel"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1534_">Rasierhobel</span></a><a href="/collections/rasiermesser" target="_self" data-pf-type="Button" class="sc-hknPuZ HlEuf pf-1535_ pf-button-1 filter-rasiermesser"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1537_">Rasiermesser</span></a><a href="/collections/rasierseife" target="_self" data-pf-type="Button" class="sc-hknPuZ HlEuf pf-1538_ pf-button-1 filter-seife"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1540_">Seife &amp; Pinsel</span></a><a href="/collections/zubehoer" target="_self" data-pf-type="Button" class="sc-hknPuZ HlEuf pf-1541_ pf-button-1 filter-zubehor"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1543_">Zubehör</span></a><a href="/collections/bart" target="_self" data-pf-type="Button" class="sc-hknPuZ HlEuf pf-1544_ pf-button-1 filter-bartpflege"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1546_">Bart</span></a><a href="/collections/koerper-haar" target="_self" data-pf-type="Button" class="sc-hknPuZ HlEuf pf-1547_ pf-button-1 filter-koerper-haar"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1549_">Körper &amp; Haar</span></a><a href="/collections/gutscheine" target="_self" data-pf-type="Button" class="sc-hknPuZ HlEuf pf-1550_ pf-button-1 filter-gutscheine"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1552_">Gutscheine</span></a><a href="/collections/stortebekker-kleidung" target="_self" data-pf-type="Button" class="sc-hknPuZ HlEuf pf-1553_ pf-button-1 filter-kleidung"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1555_">Kleidung</span></a><div data-pf-type="Custom.HTML" class="sc-brPMkR emByB pf-1556_"><script>
+  
+  $(window).scroll(function(){
+    if ($(this).scrollTop() > 150) {
+       $('#lb-sticky-quick').addClass('lb-sticky-quick-on');
+    } else {
+       $('#lb-sticky-quick').removeClass('lb-sticky-quick-on');
+    }
+});
+</script>
+
+<style>
+
+  .lb-sticky-quick-on {
+	position: fixed!important;
+	top: 100px;
+	left: 0px; 
+	z-index: 999;
+	background: white;
+	width: 100%;
+	-ms-overflow-style: none!important; 
+  	scrollbar-width: none!important;
+  }
+  
+  .lb-sticky-quick-on::-webkit-scrollbar, .lb-sticky-quick::-webkit-scrollbar {
+  display: none;
+}
+  
+  
+</style></div></div></div></div></div></div><div data-section-id="pf-7e4b" data-pf-type="Section" class="sc-YysaK kYyPCk pf-1557_ pf-color-scheme-1 pf-lg-hide pf-md-hide pf-sm-hide pf-hide"><div class="sc-ktPOXr dplAGv"><div class="sc-jXbVAB kNtuek pf-1558_ pf-r pf-r-eh" style="--s-xs:15px" data-pf-type="Row"><div class="pf-c" style="--c-xs:12;--c-sm:12;--c-md:12;--c-lg:12"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1559_"><div class="sc-pKreJ fLvEpC pf-1560_ pf-r pf-r-ew" style="--s-xs:4.5px;--ew-xs:2;--ew-md:4" data-pf-type="ProductList">{% assign collection_164232495236 = collections["frontpage"] %}{% assign defaultProduct = product %}{% paginate collection_164232495236.products by 8 %}{% for product in collection_164232495236.products %}<div class="pf-c"><div data-product-id="{{ product.id }}" data-pf-type="ProductBox" class="sc-emIqIH gUhrmr pf-1561_">{% if product != null %}{% form "product", product, data-aca-disable-submission: "true", data-productid: product.id, class: "pf-product-form" %}<div class="sc-jXbVAB kNtuek pf-1562_ pf-r pf-r-eh" style="--s-xs:0px" data-pf-type="Row"><div class="pf-c" style="--c-xs:12;--c-sm:12;--c-md:12;--c-lg:12"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1563_"><div data-pf-type="Block" class="sc-gdyfxU kaVeqo pf-1564_"><div data-pf-type="Custom.HTML" class="sc-brPMkR emByB pf-1565_"><div class="lb-badge-section ">
+
+  {% if product.tags contains 'NEU'%}
+  <div class="lb-badge">
+    NEU
+  </div>
+  {% endif %}
+
+
+
+  {% if product.tags contains 'bestseller' %}
+  <div class="lb-badge">
+    BESTSELLER
+  </div>
+  {% endif %}
+
+  {% if product.title contains 'Rasierset' %}
+  <div class="lb-badge-orange">
+    BARBERDEAL
+  </div>
+  {% endif %}
+
+</div>
+
+
+
+<style>
+  .lb-badge-section {
+    height: 20px;
+    z-index: 99;
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    margin-bottom: 9px;
+    text-align: right;
+  }
+
+  .lb-badge {
+    padding: 3px 9px;
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+    font-family: 'Open Sans';
+    font-size: 12px;
+    background: #3C3C3B;
+  }
+
+
+  .lb-badge-orange {
+    padding: 3px 9px;
+    border-radius: 5px;
+    color: white;
+    display: inline-block;
+    font-family: 'Open Sans';
+    font-size: 12px;
+    background: #D8AB63;
+  }
+</style></div><div data-pf-type="Custom.HTML" class="sc-brPMkR emByB pf-1566_">
+
+<a href="{{ product.url }}" class="lb-item-img-holder">
+  
+  {% if product.selected_or_first_available_variant.featured_image == blank %}
+  <img class="lb-item-img" id="{{ img_id }}" src="{{ product.featured_image | img_url: '400x' }}" data-src="{{ img_url }}" alt="" loading="lazy">
+  {%else%}
+<img class="lb-item-img" id="{{ img_id }}" src="{{ product.selected_or_first_available_variant.featured_image | img_url: '400x' }}" data-src="{{ img_url }}" alt="" loading="lazy">
+  {%endif%}         
+  
+<img src="{{  product.images[3] | img_url: '400x' }}" loading="lazy" class="pdp-item-video">
+</a>
+
+
+
+<style>
+  
+  .lb-item-img-holder {
+	display: block;
+	overflow: hidden;
+	position: relative;
+	margin-bottom: 15px;
+  }
+  
+  .lb-item-img-holder:hover .pdp-item-video {
+	opacity: 1;
+  }
+
+  .lb-item-img {
+width: 100%;
+	background: #FAF9F7;
+  }
+
+
+  
+  .pdp-item-video {
+	opacity: 0;
+	transition: all 0.3s;
+	top: 0px;
+		width: 100%;
+	display: block;
+	position: absolute;
+	left: 0px;
+		background: #FAF9F7;
+  }
+  
+    @media only screen and (max-width: 600px) {
+  
+  .pdp-item-video {
+
+	display: none!important;
+  }
+	
+  }
+  
+</style></div><h3 data-product-type="title" data-product-id="{{ product.id }}" data-href="{{ product.url | within: collection }}" data-pf-type="ProductTitle" class="sc-dUYKzm sc-edLa-Dd bSqcIO hzbClI pf-1567_ pf-heading-1-h3 new-branding-headline-font moresize2 grey-font">{{ product.title }}</h3><div data-pf-type="Custom.HTML" class="sc-brPMkR emByB pf-1568_"><div class="lb-collection-subheadline">
+  {{product.metafields.custom.kategorieseite_subheadlines}}
+</div>
+
+<style>
+  .lb-collection-subheadline {
+	font-family: 'Open Sans';
+	font-size: 14px;
+	color: #808080;
+	text-align: center;
+  }
+</style>
+
+{% if product.tags contains 'etui' %}
+  <div class="lb-collection-product-item-div" style="margin-top: 9px;">
+  <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+ {% endif %}
+
+<!--
+<div style="display:block; text-align: center; margin: auto;">
+  
+    {% if product.title contains 'Rasierset - Rasierhobel' or product.title contains 'Rasierset - Rasiermesser' %}
+  
+  {% if product.title contains 'Rasierset - Rasierhobel' %}
+    <div style="overflow:hidden; color: grey; font-size: 14px;  max-width: 200px; margin: 0px auto 9px auto;white-space:normal;">
+  Hochwertiges Rasierhobel-Set inkl. Klingen, Pinsel, Schale und Seife
+  </div>
+  <div class="lb-collection-product-item-div ">
+  <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+  {% endif %}
+  
+
+  
+  
+  
+  
+    {% if product.title contains 'Rasierset - Rasiermesser' %}
+    <div style="overflow:hidden; color: grey; font-size: 14px;  max-width: 200px; margin: 0px auto 9px auto;white-space:normal;">
+  Hochwertiges Rasiermesser-Set inkl. Klingen, Pinsel, Schale und Seife
+  </div>
+  <div class="lb-collection-product-item-div ">
+  <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+  {% endif %}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  {% else %}
+  
+  
+  {% if product.title == 'Rasierhobel Silber' %}
+  <div style="overflow:hidden; color: grey; font-size: 14px;  max-width: 200px;  margin: 0px auto 9px auto;white-space:normal;">
+    Hochwertiges Rasierhobelset inkl. 10 Klingen
+  </div>
+  <div class="lb-collection-product-item-div ">
+  <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+  {% endif %}
+  
+    
+  {% if product.title == 'Rasierhobel Schwarz' %}
+  <div style="overflow:hidden; color: grey; font-size: 14px;  max-width: 200px;  margin: 0px auto 9px auto;white-space:normal;">
+    Hochwertiges Rasierhobelset inkl. 10 Klingen
+  </div>
+  <div class="lb-collection-product-item-div ">
+  <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+  {% endif %}
+  
+  
+   {% if product.title == 'Rasierhobel Rosé - Gold' %}
+  <div style="overflow:hidden; color: grey; font-size: 14px;  max-width: 200px; ; margin: 0px auto 9px auto;white-space:normal;">
+    Hochwertiges Rasierhobelset inkl. 10 Klingen
+  </div>
+  <div class="lb-collection-product-item-div ">
+  <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+  {% endif %}
+  
+
+
+  {% if product.title == 'Rasiermesser Silber' %}
+  <div style="overflow: hidden; color: grey; font-size: 14px;max-width: 200px;  margin: 0px auto 9px auto; white-space:normal;">
+    Inkl. Lederetui, 10 Klingen, Alaunstift
+  </div>
+  <div class="lb-collection-product-item-div ">
+  <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+  {% endif %}
+  
+    {% if product.title == 'Rasiermesser Schwarz' %}
+  <div style="overflow: hidden; color: grey; font-size: 14px;max-width: 200px;  margin: 0px auto 9px auto; white-space:normal;">
+    Inkl. Lederetui, 10 Klingen, Alaunstift
+  </div>
+  <div class="lb-collection-product-item-div ">
+  <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+  {% endif %}
+  
+   {% if product.title == 'Rasiermesser mit Holzgriff' %}
+  <div style="overflow: hidden; color: grey; font-size: 14px;max-width: 200px;  margin: 0px auto 9px auto; white-space:normal;">
+    Inkl. Lederetui, 10 Klingen, Alaunstift
+  </div>
+  <div class="lb-collection-product-item-div ">
+  <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+  {% endif %}
+  
+    {% if product.title == 'Rasierhobel Solingen Walnuss - Set' %}
+  <div style="overflow: hidden; color: grey; font-size: 14px;max-width: 200px;  margin: 0px auto 9px auto; white-space:normal;">
+    Hochwertiges Rasierhobel Set inkl. 10 Klingen
+  </div>
+  <div class="lb-collection-product-item-div ">
+  <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+  {% endif %}
+  
+   {% if product.title == 'Rasierhobel Solingen Stahl - Set' %}
+  <div style="overflow: hidden; color: grey; font-size: 14px;max-width: 200px;  margin: 0px auto 9px auto; white-space:normal;">
+    Hochwertiges Rasierhobel Set inkl. 10 Klingen
+  </div>
+  <div class="lb-collection-product-item-div ">
+  <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+  {% endif %}
+  
+    {% if product.title == 'Rasierhobel Etui' %}
+  <div style="overflow: hidden; color: grey; font-size: 14px;max-width: 200px;  margin: 0px auto 9px auto; white-space:normal;">
+    Aus edlem Rindsleder gefertigt - Verstaue Deinen Rasierhobel auf Reisen
+  </div>
+  <div class="lb-collection-product-item-div ">
+  <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+  {% endif %}
+  
+  {% endif %}
+  
+
+  {% if product.title == 'Rasierpinsel' %}
+  	<div style="overflow: hidden; color: grey; font-size: 14px;  max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Edler Pinsel mit veganem Dachshaarimitat
+	</div>
+	<div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+  {% endif %}  
+  {% if product.title contains 'Rasierschale' %}
+  	<div style="overflow: hidden; color: grey; font-size: 14px;  max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Hochwertige Rasierschale aus bestem Stahl
+	</div>
+	<div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+  {% endif %}  
+  {% if product.title contains 'Alaunstein' %}
+  	<div style="overflow: hidden; color: grey; font-size: 14px;  max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Stoppt Blutungen und pflegt die Haut
+	</div>
+	<div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+  {% endif %}
+  {% if product.title contains 'Rasiertasche' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px;  max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Rasiertasche aus Echtleder
+	</div>
+	<div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+  {% endif %}
+  {% if product.title contains 'Störtebekker Rasierklingen' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px;  max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Für eine gründliche und präzise Rasur
+	</div>
+	<div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+  {% endif %}
+  {% if product.title contains 'Störtebekker Klingen x5 Probierpack' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px;  max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Für eine gründliche und präzise Rasur
+	</div>
+	<div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+  {% endif %}
+    {% if product.title contains 'Rasierseife Sandelholz' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px;  max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Ergiebig und herrlicher Sandelholz Duft
+	</div>
+	<div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+  {% endif %}
+  {% if product.title contains 'Rasierseife Aloe Vera' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px;  max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Ergiebig und herrlicher Aloe Vera Duft
+	</div>
+	<div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+  {% endif %}
+  {% if product.title contains 'Rasierseife Fresh Mint' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px;  max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Ergiebig und herrlicher Fresh Mint Duft
+	</div>
+	<div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+  {% endif %}
+  {% if product.title contains 'Rasierhobel Klingenschutz' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px;  max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Schützt die Klinge - aus hochwertigem Leder gefertigt
+	</div>
+	<div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+  {% endif %}
+      {% if product.title contains 'Rasierseife Kokos' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px;  max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Ergiebig und herrlicher Kokos Duft
+	</div>
+	<div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+  {% endif %}
+    {% if product.title == 'Rasierseife - Probierset' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px;  max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Ergiebig und herrlicher Duft aus 4 Sorten
+	</div>
+	<div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+  {% endif %}
+      {% if product.title contains 'Bartbürste' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px;  max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Entwirrt Deinen Bart und beugt Juckreiz vor
+	</div>
+	<div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+  {% endif %}
+        {% if product.title contains 'Bartkamm' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px;  max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Bringt jeden Bart in Form - inkl. Lederetui
+	</div>
+	<div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+  {% endif %}
+  {% if product.title == 'Rasierpinsel Set' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px; max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Rasierpinsel, Edelstahl Schale, Sandelholzseife
+	</div>
+    <div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+{% endif %}
+{% if product.title == 'Rasieröl Fresh Mint' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px; max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Hochwertiges Öl für die Rasur
+	</div>
+    <div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+{% endif %}
+{% if product.title == 'Bartöl Crusoe' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px; max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Hochwertiges Öl für die tägliche Bartpflege
+	</div>
+    <div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+{% endif %}
+{% if product.title == 'Bartbalm Crusoe' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px; max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Pflegt & stylt den Bart
+	</div>
+    <div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+{% endif %}
+{% if product.title == 'Rasiertuch' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px; max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Angenehm für die Haut dank Frotté-Piqué-Muster
+	</div>
+    <div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+{% endif %}
+{% if product.title == 'Rasierständer' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px; max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Edle Halterung für Deinen Rasierhobel & Rasierpinsel
+	</div>
+    <div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+{% endif %}
+{% if product.title == 'Bartpflege Set' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px; max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Bringt Deinen Bart in Form
+	</div>
+    <div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+{% endif %}
+{% if product.title == 'Bartpflegeset Crusoe' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px; max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Bringt Deinen Bart in Form
+	</div>
+    <div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+{% endif %}
+{% if product.title == 'Rasurpflege Set' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px; max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Hochwertige Produkte für die Rasurvorbereitung
+	</div>
+    <div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+{% endif %}
+{% if product.title == 'Premium Rasierhobel Solingen - Stahl' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px; max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Höchste Qualität aus Solingen inkl. 10 Klingen
+	</div>
+    <div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+{% endif %}
+{% if product.title == 'Premium Rasierhobel Solingen - Walnuss' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px; max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Höchste Qualität aus Solingen inkl. 10 Klingen
+	</div>
+    <div class="lb-collection-product-item-div "><div style="height: 18px;"></div></div>
+{% endif %}
+{% if product.title contains 'Rasurpflege Set Premium - Rasierhobel Silber' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px; max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Hochwertige Produkte für die Rasur & Vorbereitung
+ </div>
+  <div class="lb-collection-product-item-div ">
+  <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+{% endif %}
+{% if product.title contains 'Rasurpflege Set Premium - Rasierhobel Schwarz' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px; max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Hochwertige Produkte für die Rasur & Vorbereitung
+	 </div>
+  <div class="lb-collection-product-item-div ">
+  <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+{% endif %}
+{% if product.title contains 'Rasurpflege Set Premium - Rasierhobel Gold' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px; max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Hochwertige Produkte für die Rasur & Vorbereitung
+	 </div>
+  <div class="lb-collection-product-item-div ">
+  <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+{% endif %}
+{% if product.title contains 'Rasurpflege Set Premium - Rasiermesser Holz' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px; max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Hochwertige Produkte für die Rasur & Vorbereitung
+ </div>
+  <div class="lb-collection-product-item-div ">
+  <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+{% endif %}
+{% if product.title contains 'All-in-one Set Rasur & Bart - Rasierhobel Silber' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px; max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Hochwertige Produkte für die Rasur & den Bart
+ </div>
+  <div class="lb-collection-product-item-div ">
+  <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+{% endif %}
+{% if product.title contains 'All-in-one Set Rasur & Bart - Rasierhobel Schwarz' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px; max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Hochwertige Produkte für die Rasur & den Bart
+	 </div>
+  <div class="lb-collection-product-item-div ">
+  <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+{% endif %}
+{% if product.title contains 'All-in-one Set Rasur & Bart - Rasierhobel Gold' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px; max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Hochwertige Produkte für die Rasur & den Bart
+	 </div>
+  <div class="lb-collection-product-item-div ">
+  <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+{% endif %}
+{% if product.title contains 'All-in-one Set Rasur & Bart - Rasiermesser Holz' %}
+    <div style="overflow: hidden; color: grey; font-size: 14px; max-width: 200px; margin: 0px auto 9px auto; white-space:normal;">
+    Hochwertige Produkte für die Rasur & den Bart
+	 </div>
+  <div class="lb-collection-product-item-div ">
+  <div style="width: 16px; height: 16px; background: #8B572A;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  <div style="width: 16px; height: 16px; background: #0D0D0D;border-radius: 50px;display: inline-block;margin: 0px 3px;"></div>
+  </div>
+
+{% endif %}
+</div>
+--></div><div data-pf-type="Custom.HTML" class="sc-brPMkR emByB pf-1569_"><div class="ruk_rating_snippet" style="margin-bottom:9px;margin-top:5px;" data-sku="{{ product.handle }};{{ product.variants | map: 'sku' | join: ';' }};{{ product.variants | map: 'id' | join: ';' }}"></div></div><div data-pf-type="Block" class="sc-gdyfxU kaVeqo pf-1570_ lb-item-pricing"><div data-product-type="compare_at_price" data-product-id="{{ product.id }}" data-pf-type="ProductPrice" class="sc-dUYKzm sc-cezzpg bSqcIO epZhEg pf-1571_ pf-text-1">{{ product.variants[0].compare_at_price | money }}</div><div data-product-type="price" data-product-id="{{ product.id }}" data-product-price="true" data-pf-type="ProductPrice" class="sc-dUYKzm sc-cezzpg bSqcIO epZhEg pf-1572_ pf-text-1">{{ product.variants[0].price | money }}</div></div><button data-product-id="{{ product.id }}" data-checkout="same" data-soldout="AUSVERKAUFT" data-adding="IN DEN WARENKORB" data-added="IN DEN WARENKORB" name="add" type="button" data-pf-type="ProductATC2" class="sc-hyBbPk fhmrVN pf-1573_ pf-button-1 lb-cart-drawer-opener direct-atc">IN DEN WARENKORB</button></div></div></div></div>{% endform %}{% endif %}</div><script>
+				window.__pageflyProducts = window.__pageflyProducts || {};
+				window.__pageflyProducts["{{product.id}}"] = {
+					id: {{product.id | json }},
+					handle: {{product.handle | json }},
+					title: {{product.title | json }},
+					type: {{product.type | json }},
+					url: {{product.url | within: collection  | json }},
+					vendor: {{product.vendor | json }},
+					variants: {{product.variants | json }},
+					options: {{product.options | json }},
+					media: {{product.media | json }},
+					has_only_default_variant: {{product.has_only_default_variant | json }},
+					options_with_values: {{product.options_with_values | json }},
+					selected_variant: {{product.selected_variant | json }},
+					selected_or_first_available_variant: {{product.selected_or_first_available_variant | json }},
+					tags: {{product.tags | json }},
+					template_suffix: {{product.template_suffix | json }},
+					featured_image: {{product.featured_image | json }},
+					featured_media: {{product.featured_media | json }},
+					images: {{product.images | json }},
+					quantity: {% assign quantity = '' %}{% for variant in product.variants %}{% assign quantity = quantity | append: variant.id | append: ':' | append: variant.inventory_quantity | append: ',' %}{% endfor %}{% assign quantity = quantity | split: ','%}{{quantity | json }}
+
+				};</script></div>{% endfor %}{% endpaginate %}{% assign product = defaultProduct %}</div></div></div></div></div></div><div data-section-id="pf-b28e" data-pf-type="Section" class="sc-YysaK kYyPCk pf-1575_ pf-color-scheme-1 new-branding-bg pf-lg-hide pf-md-hide pf-sm-hide pf-hide"><div style="--cw:1170px" class="sc-ktPOXr dplAGv"><div class="sc-jXbVAB kNtuek pf-1576_ pf-r pf-r-eh" style="--s-xs:15px" data-pf-type="Row"><div class="pf-c" style="--c-xs:12;--c-sm:6;--c-md:6;--c-lg:6"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1577_"><div data-pf-type="Image" class="sc-ihgokY faeooD pf-1578_ pf-image-1"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/stortebekker_team.webp?v=1716466397" width="1050" height="675" alt="störtebekker_team.webp__PID:93d4bb07-6451-4799-8dbf-c54e5cf3be7f"/></div></div></div><div class="pf-c" style="--c-xs:12;--c-sm:6;--c-md:6;--c-lg:6"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1579_"><h3 data-pf-type="Heading" class="sc-ggpkNl jdwwxc pf-1580_ pf-heading-3-h3 new-branding-headline-font new-brand-white-font"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1582_">Wir sind Störtebekker</span></h3><p class="sc-lnPyOc exfzrW pf-1583_ pf-text-3 new-brand-white-font" data-pf-type="Paragraph"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1585_">Mit Passion und Liebe zum Detail arbeiten wir jeden Tag an neuen Produkten und haben es uns zum Ziel gesetzt, den besten Kundenservice zu liefern</span></p><a href="/pages/uber-uns" target="_self" data-pf-type="Button" class="sc-hknPuZ HlEuf pf-1586_ pf-button-2 new-branding-headline-font"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1588_">TEAM KENNENLERNEN</span></a></div></div></div></div></div><div data-section-id="pf-49ba" data-pf-type="Section" class="sc-YysaK kYyPCk pf-1589_ pf-color-scheme-1 pf-lg-hide pf-md-hide pf-sm-hide pf-hide"><div style="--cw:1170px" class="sc-ktPOXr dplAGv"><div class="sc-jXbVAB kNtuek pf-1590_ pf-r pf-r-eh" style="--s-xs:15px" data-pf-type="Row"><div class="pf-c" style="--c-xs:12;--c-sm:12;--c-md:12;--c-lg:12"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1591_"><h3 data-pf-type="Heading" class="sc-ggpkNl jdwwxc pf-1592_ pf-heading-2-h3 new-branding-headline-font grey-font"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1594_">Deine Vorteile, wenn du bei uns bestellst</span></h3><div class="sc-jXbVAB kNtuek pf-1595_ pf-r pf-r-eh" style="--s-xs:4.5px" data-pf-type="Row"><div class="pf-c" style="--c-xs:6;--c-sm:6;--c-md:3;--c-lg:3"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1596_"><div data-pf-type="Image" class="sc-ihgokY faeooD pf-1597_ pf-image-1"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/bildschirmfoto-20220607-um-124604-1654598805007.png?v=1654598814" srcSet="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/bildschirmfoto-20220607-um-124604-1654598805007.png?v=1654598814 1536w" width="242" height="242"/></div><h3 data-pf-type="Heading" class="sc-ggpkNl jdwwxc pf-1598_ pf-heading-1-h3 new-branding-headline-font moresize grey-font"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1600_">Geld-zurück Garantie</span></h3><p class="sc-lnPyOc exfzrW pf-1601_ pf-text-2" data-pf-type="Paragraph"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1603_">Wir bieten Produkte in top Qualität an. Außerdem garantieren wir, dass Du dein Geld zurück erhältst, wenn du nicht absolut zufrieden bist.</span></p></div></div><div class="pf-c" style="--c-xs:6;--c-sm:6;--c-md:3;--c-lg:3"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1604_"><div data-pf-type="Image" class="sc-ihgokY faeooD pf-1605_ pf-image-1"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/truck_480x480-1654862275677.png?v=1654862276" srcSet="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/truck_480x480-1654862275677.png?v=1654862276 1536w" width="480" height="480"/></div><h3 data-pf-type="Heading" class="sc-ggpkNl jdwwxc pf-1606_ pf-heading-1-h3 new-branding-headline-font moresize grey-font"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1608_">Versand ab 50€ kostenlos</span></h3><p class="sc-lnPyOc exfzrW pf-1609_ pf-text-2" data-pf-type="Paragraph"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1611_">Du kannst kostenlos ab 50€ bei uns bestellen. Falls dir die Produkte nicht gefallen, kannst du sie kostenlos innerhalb von 100 Tagen wieder zurücksenden.</span></p></div></div><div class="pf-c" style="--c-xs:6;--c-sm:6;--c-md:3;--c-lg:3"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1612_"><div data-pf-type="Image" class="sc-ihgokY faeooD pf-1613_ pf-image-1"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/bildschirmfoto-20220714-um-145020-1657803028580.png?v=1657803029" srcSet="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/bildschirmfoto-20220714-um-145020-1657803028580.png?v=1657803029 1536w" width="176" height="176"/></div><h3 data-pf-type="Heading" class="sc-ggpkNl jdwwxc pf-1614_ pf-heading-1-h3 new-branding-headline-font moresize grey-font"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1616_">Persönlicher Kundenservice</span></h3><p class="sc-lnPyOc exfzrW pf-1617_ pf-text-2" data-pf-type="Paragraph"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1619_">Wir helfen Dir gerne bei jeglichen Fragen und Problemen weiter und finden für alles eine Lösung. Ruf einfach an oder schreib uns.</span></p></div></div><div class="pf-c" style="--c-xs:6;--c-sm:6;--c-md:3;--c-lg:3"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1620_"><div data-pf-type="Image" class="sc-ihgokY faeooD pf-1621_ pf-image-1"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/bildschirmfoto-20220607-um-124629-1654598805009.png?v=1654598819" srcSet="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/bildschirmfoto-20220607-um-124629-1654598805009.png?v=1654598819 1536w" width="232" height="232"/></div><h3 data-pf-type="Heading" class="sc-ggpkNl jdwwxc pf-1622_ pf-heading-1-h3 new-branding-headline-font moresize grey-font"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1624_">Sicher bezahlen</span></h3><p class="sc-lnPyOc exfzrW pf-1625_ pf-text-2" data-pf-type="Paragraph"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1627_">Bei uns kannst du mit allen Zahlungsmöglichkeiten bezahlen. Egal ob Paypal, Amazon oder Rechnungskauf. Bei uns ist alles möglich.</span></p></div></div></div></div></div></div></div></div><div data-section-id="pf-bbfe" data-pf-type="Section" class="sc-YysaK kYyPCk pf-1628_ pf-color-scheme-1 pf-lg-hide pf-md-hide pf-sm-hide pf-hide"><div class="sc-ktPOXr dplAGv"><div class="sc-jXbVAB kNtuek pf-1629_ pf-r pf-r-eh" style="--s-xs:15px" data-pf-type="Row"><div class="pf-c" style="--c-xs:12;--c-sm:12;--c-md:12;--c-lg:12"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1630_"><div data-pf-type="Custom.HTML" class="sc-brPMkR emByB pf-1631_"><div class="reviews-io-ugc-widget" widget-id="Q8yPHEcirRmx7Lg1" data-store-name="strtebekker-shaving-accessories"
+  lang="de"></div>
+<script src='//widget.reviews.io/modern-widgets/ugc.js'></script></div></div></div></div></div></div><div data-section-id="pf-d0fa" data-pf-type="Section" class="sc-YysaK kYyPCk pf-1632_ pf-color-scheme-1 pf-lg-hide pf-md-hide pf-sm-hide pf-hide"><div style="--cw:1170px" class="sc-ktPOXr dplAGv"><div class="sc-jXbVAB kNtuek pf-1633_ pf-r pf-r-eh" style="--s-xs:15px" data-pf-type="Row"><div class="pf-c" style="--c-xs:12;--c-sm:12;--c-md:12;--c-lg:12"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1634_"><h3 data-pf-type="Heading" class="sc-ggpkNl jdwwxc pf-1635_ pf-heading-2-h3 new-branding-headline-font grey-font"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1637_">Du bist nicht alleine mit Deinem Bart! 🧔🏻 Wir sind viele!</span></h3><p class="sc-lnPyOc exfzrW pf-1638_ pf-text-2" data-pf-type="Paragraph"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1640_">Mehr als 300.000 zufriedene Kunden</span></p><div data-pf-type="Image" class="sc-ihgokY faeooD pf-1641_ pf-image-1"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/bildschirmfoto-20220607-um-124553-1654598805005.png?v=1654598810" srcSet="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/bildschirmfoto-20220607-um-124553-1654598805005.png?v=1654598810 1536w" width="1458" height="598"/></div><div data-pf-type="Custom.HTML" class="sc-brPMkR emByB pf-1642_"><script src="https://widget.reviews.io/carousel-inline-iframeless/dist.js?_t=2024012908"></script>
+<link rel="stylesheet" href="https://assets.reviews.io/css/widgets/carousel-widget.css?_t=2024012908">
+<link rel="stylesheet" href="https://assets.reviews.io/iconfont/reviewsio-icons/style.css?_t=2024012908">
+<div id="reviewsio-carousel-widget"></div>
+<script>
+  new carouselInlineWidget('reviewsio-carousel-widget',{
+      /*Your REVIEWS.io account ID:*/
+      store: 'strtebekker-shaving-accessories',
+      sku: '',
+      lang: 'de',
+      carousel_type: 'default',
+      styles_carousel: 'CarouselWidget--sideHeader--withcards',
+
+      /*Widget settings:*/
+      options:{
+        general:{
+          /*What reviews should the widget display? Available options: company, product, third_party. You can choose one type or multiple separated by comma.*/
+          review_type: 'company, product, third_party',
+          /*Minimum number of reviews required for widget to be displayed*/
+          min_reviews: '1',
+          /*Maximum number of reviews to include in the carousel widget.*/
+          max_reviews: '20',
+          address_format: 'CITY, COUNTRY',
+          /*Carousel auto-scrolling speed. 3000 = 3 seconds. If you want to disable auto-scroll, set this value to false.*/
+          enable_auto_scroll: 10000,
+        },
+        header:{
+          /*Show overall rating stars*/
+          enable_overall_stars: true,
+          rating_decimal_places: 2,
+        },
+        reviews: {
+          /*Show customer name*/
+          enable_customer_name: true,
+          /*Show customer location*/
+          enable_customer_location: true,
+          /*Show "verified review" badge*/
+          enable_verified_badge: true,
+          /*Show "verified subscriber" badge*/
+          enable_subscriber_badge: true,
+          /*Show "I recommend this product" badge (Only for product reviews)*/
+          enable_recommends_badge: false,
+          /*Show photos attached to reviews*/
+          enable_photos: true,
+          /*Show videos attached to reviews*/
+          enable_videos: true,
+          /*Show when review was written*/
+          enable_review_date: true,
+          /*Hide reviews written by the same customer (This may occur when customer reviews multiple products)*/
+          disable_same_customer: true,
+          /*Minimum star rating*/
+          min_review_percent: 4,
+          /*Show 3rd party review source*/
+          third_party_source: true,
+          /*Hide reviews without comments (still shows if review has a photo)*/
+          hide_empty_reviews: true,
+          /*Show product name*/
+          enable_product_name: true,
+          /*Show only reviews which have specific tags (multiple semicolon separated tags allowed i.e tag1;tag2)*/
+          tags: "",
+          /*Show branch, only one input*/
+          branch: "",
+          enable_branch_name: false,
+        },
+        popups: {
+          /*Make review items clickable (When they are clicked, a popup appears with more information about a customer and review)*/
+          enable_review_popups:  true,
+          /*Show "was this review helpful" buttons*/
+          enable_helpful_buttons: true,
+          /*Show how many times review was upvoted as helpful*/
+          enable_helpful_count: true,
+          /*Show share buttons*/
+          enable_share_buttons: true,
+        },
+    },
+    translations: {
+      verified_customer:  "Verified Customer",
+    },
+    styles:{
+      /*Base font size is a reference size for all text elements. When base value gets changed, all TextHeading and TexBody elements get proportionally adjusted.*/
+      '--base-font-size': '16px',
+      '--base-maxwidth':'100%',
+
+      /*Logo styles:*/
+      '--reviewsio-logo-style':'var(--logo-inverted)',
+
+      /*Star styles:*/
+      '--common-star-color':'#D8AB63',
+      '--common-star-disabled-color':' rgba(0,0,0,0.25)',
+      '--medium-star-size':' 22px',
+      '--small-star-size':'19px', /*Modal*/
+      '--x-small-star-size':'16px',
+      '--x-small-star-display':'inline-flex',
+
+      /*Header styles:*/
+      '--header-order':'1',
+      '--header-width':'280px',
+      '--header-bg-start-color':'#3C3C3B',
+      '--header-bg-end-color':'#3C3C3B',
+      '--header-gradient-direction':'135deg',
+      '--header-padding':'1.5em',
+      '--header-border-width':'0px',
+      '--header-border-color':'rgba(0,0,0,0.1)',
+      '--header-border-radius':'0px',
+      '--header-shadow-size':'10px',
+      '--header-shadow-color':'rgba(0, 0, 0, 0.05)',
+
+      /*Header content styles:*/
+      '--header-star-color':'#D8AB63',
+      '--header-disabled-star-color':'inherit',
+      '--header-heading-text-color':'#ffffff',
+      '--header-heading-font-size':'32px',
+      '--header-heading-font-weight':'inherit',
+      '--header-heading-line-height':'inherit',
+      '--header-heading-text-transform':'inherit',
+      '--header-subheading-text-color':'#ffffff',
+      '--header-subheading-font-size':'inherit',
+      '--header-subheading-font-weight':'300',
+      '--header-subheading-line-height':'inherit',
+      '--header-subheading-text-transform':'inherit',
+
+      /*Review item styles:*/
+      '--item-maximum-columns':'5',/*Must be 3 or larger*/
+      '--item-background-start-color':'#ffffff',
+      '--item-background-end-color':'#ffffff',
+      '--item-gradient-direction':'135deg',
+      '--item-padding':'1.5em',
+      '--item-border-width':'0px',
+      '--item-border-color':'rgba(0,0,0,0.1)',
+      '--item-border-radius':'0px',
+      '--item-shadow-size':'10px',
+      '--item-shadow-color':'rgba(0,0,0,0.05)',
+
+      /*Heading styles:*/
+      '--heading-text-color':' #0E1311',
+      '--heading-text-font-weight':' 600',
+      '--heading-text-font-family':'Bebas Neue',
+      '--heading-text-line-height':' 1.4',
+      '--heading-text-letter-spacing':'0',
+      '--heading-text-transform':'none',
+
+      /*Body text styles:*/
+      '--body-text-color':' #0E1311',
+      '--body-text-font-weight':'400',
+      '--body-text-font-family':' inherit',
+      '--body-text-line-height':' 1.4',
+      '--body-text-letter-spacing':'0',
+      '--body-text-transform':'none',
+
+      /*Scroll button styles:*/
+      '--scroll-button-icon-color':'#0E1311',
+      '--scroll-button-icon-size':'24px',
+      '--scroll-button-bg-color':'transparent',
+
+      '--scroll-button-border-width':'0px',
+      '--scroll-button-border-color':'rgba(0,0,0,0.1)',
+
+      '--scroll-button-border-radius':'60px',
+      '--scroll-button-shadow-size':'0px',
+      '--scroll-button-shadow-color':'rgba(0,0,0,0.1)',
+      '--scroll-button-horizontal-position':'3px',
+      '--scroll-button-vertical-position':'0px',
+
+      /*Badge styles:*/
+      '--badge-icon-color':'#2995F6',
+      '--badge-icon-font-size':'15px',
+      '--badge-text-color':'#0E1311',
+      '--badge-text-font-size':'inherit',
+      '--badge-text-letter-spacing':'inherit',
+      '--badge-text-transform':'inherit',
+
+      /*Author styles:*/
+      '--author-font-size':'inherit',
+      '--author-font-weight':'inherit',
+      '--author-text-transform':'inherit',
+
+      /*Product photo or review photo styles:*/
+      '--photo-video-thumbnail-size':'60px',
+      '--photo-video-thumbnail-border-radius':'0px',
+
+      /*Popup styles:*/
+      '--popup-backdrop-color':'rgba(0,0,0,0.75)',
+      '--popup-color':'#ffffff',
+      '--popup-star-color':'inherit',
+      '--popup-disabled-star-color':'inherit',
+      '--popup-heading-text-color':'inherit',
+      '--popup-body-text-color':'inherit',
+      '--popup-badge-icon-color':'inherit',
+      '--popup-badge-icon-font-size':'19px',
+      '--popup-badge-text-color':'inherit',
+      '--popup-badge-text-font-size':'14px',
+      '--popup-border-width':'0px',
+      '--popup-border-color':'rgba(0,0,0,0.1)',
+      '--popup-border-radius':'0px',
+      '--popup-shadow-size':'0px',
+      '--popup-shadow-color':'rgba(0,0,0,0.1)',
+      '--popup-icon-color':'#0E1311',
+
+      /*Tooltip styles:*/
+      '--tooltip-bg-color':'#0E1311',
+      '--tooltip-text-color':'#ffffff',
+    },
+});
+
+</script></div><a href="/pages/erfahrungen" target="_self" data-pf-type="Button" class="sc-hknPuZ HlEuf pf-1643_ pf-button-3 new-branding-headline-font grey-font"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1645_">ALLE BEWERTUNGEN ANZEIGEN</span></a></div></div></div></div></div><div data-section-id="pf-9633" data-pf-type="Section" class="sc-YysaK kYyPCk pf-1646_ pf-color-scheme-1 pf-lg-hide pf-md-hide pf-sm-hide pf-hide"><div class="sc-ktPOXr dplAGv"><div class="sc-jXbVAB kNtuek pf-1647_ pf-r pf-r-eh" style="--s-xs:0px" data-pf-type="Row"><div class="pf-c" style="--c-xs:12;--c-sm:12;--c-md:12;--c-lg:12"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1648_"><div data-pf-type="Custom.HTML" class="sc-brPMkR emByB pf-1649_"><div class="weglot_de">
+  <div class="klaviyo-form-XXGyMd"></div>
+</div>
+
+
+<style>
+  .dHktQK.dHktQK {
+    padding-bottom: 90px !important;
+
+  }
+</style>
+
+
+
+<!--
+<div class="weglot_en">
+  <div class="klaviyo-form-XrTCcj"></div>
+</div>
+
+
+
+<style>
+  html:is([lang="en"]) .weglot_de {
+    display: none !important;
+  }
+
+  html:not([lang="en"]) .weglot_en {
+    display: none !important;
+  }
+</style>
+
+--></div></div></div></div></div></div><div data-section-id="pf-06e5" data-pf-type="Section" class="sc-YysaK kYyPCk pf-1650_ pf-color-scheme-1 pf-lg-hide pf-md-hide pf-sm-hide pf-hide"><div style="--cw:700px" class="sc-ktPOXr dplAGv"><div class="sc-jXbVAB kNtuek pf-1651_ pf-r pf-r-eh" style="--s-xs:15px" data-pf-type="Row"><div class="pf-c" style="--c-xs:12;--c-sm:12;--c-md:12;--c-lg:12"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1652_"><p class="sc-lnPyOc exfzrW pf-1653_ pf-text-2" data-pf-type="Paragraph"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1655_">Bekannt aus:</span></p><div class="sc-jXbVAB kNtuek pf-1656_ pf-r pf-r-eh" style="--s-xs:15px" data-pf-type="Row"><div class="pf-c" style="--c-xs:4;--c-sm:4;--c-md:4;--c-lg:4"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1657_"><div data-pf-type="Image" class="sc-ihgokY faeooD pf-1658_ pf-image-1"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/1-1654598804944.png?v=1654598806" srcSet="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/1-1654598804944.png?v=1654598806 1536w" width="240" height="133"/></div></div></div><div class="pf-c" style="--c-xs:4;--c-sm:4;--c-md:4;--c-lg:4"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1659_"><div data-pf-type="Image" class="sc-ihgokY faeooD pf-1660_ pf-image-1"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/2-1654598804946.png?v=1654598824" srcSet="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/2-1654598804946.png?v=1654598824 1536w" width="240" height="133"/></div></div></div><div class="pf-c" style="--c-xs:4;--c-sm:4;--c-md:4;--c-lg:4"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1661_"><div data-pf-type="Image" class="sc-ihgokY faeooD pf-1662_ pf-image-1"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/3-1654598804947.png?v=1654598827" srcSet="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/3-1654598804947.png?v=1654598827 1536w" width="240" height="133"/></div></div></div></div></div></div></div></div></div><div data-section-id="pf-aa26" data-pf-type="Section" class="sc-YysaK kYyPCk pf-1663_ pf-color-scheme-1 pf-lg-hide pf-md-hide pf-sm-hide pf-hide"><div style="--cw:1170px" class="sc-ktPOXr dplAGv"><div class="sc-jXbVAB kNtuek pf-1664_ pf-r pf-r-eh" style="--s-xs:15px" data-pf-type="Row"><div class="pf-c" style="--c-xs:12;--c-sm:12;--c-md:12;--c-lg:12"><div data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1665_"><h3 data-pf-type="Heading" class="sc-ggpkNl jdwwxc pf-1666_ pf-heading-2-h3 new-branding-headline-font grey-font"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1668_">Lerne Störtebekker kennen</span></h3><p class="sc-lnPyOc exfzrW pf-1669_ pf-text-2" data-pf-type="Paragraph"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1671_">Erfahre mehr über uns und unsere Leidenschaft. Wir sind mit Herz, Seele und Bart für Dich da.</span></p></div></div></div><div class="sc-jXbVAB kNtuek pf-1672_ pf-r pf-r-eh" style="--s-xs:15px" data-pf-type="Row"><div class="pf-c" style="--c-xs:12;--c-sm:4;--c-md:4;--c-lg:4"><div data-href="https://stoertebekker.com/blogs/blog" data-target="_self" data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1673_"><a data-action="url" href="https://stoertebekker.com/blogs/blog" target="_self" data-pf-type="Image" class="sc-ihgokY sc-jMalIJ faeooD eKAyjc pf-1674_ pf-image-1"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/screenshot_20200430_at_165836_1500x1500-1654599780548.webp?v=1654599784" width="1082" height="1082"/></a><div data-pf-type="Block" class="sc-gdyfxU kaVeqo pf-1675_"><a href="/blogs/blog" target="_self" data-pf-type="Button" class="sc-hknPuZ HlEuf pf-1676_ pf-button-3 new-branding-headline-font grey-font"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1678_">Unser Blog mit&nbsp;Rasur und Bart Tipps </span></a></div></div></div><div class="pf-c" style="--c-xs:12;--c-sm:4;--c-md:4;--c-lg:4"><div data-href="/pages/uber-uns" data-target="_self" data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1679_"><a data-action="url" href="https://stoertebekker.com/pages/uber-uns" target="_self" data-pf-type="Image" class="sc-ihgokY sc-jMalIJ faeooD eKAyjc pf-1680_ pf-image-1"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/screenshot_20200802_at_145458_1500x1500-1654599780549.webp?v=1654599787" width="692" height="692"/></a><div data-pf-type="Block" class="sc-gdyfxU kaVeqo pf-1681_"><a href="/pages/uber-uns" target="_self" data-pf-type="Button" class="sc-hknPuZ HlEuf pf-1682_ pf-button-3 new-branding-headline-font grey-font"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1684_">Lerne unser&nbsp;Team kennen</span></a></div></div></div><div class="pf-c" style="--c-xs:12;--c-sm:4;--c-md:4;--c-lg:4"><div data-href="/pages/erfahrungen" data-target="_self" data-pf-type="Column" class="sc-bDoQz cmNGeH pf-1685_"><a data-action="url" href="https://stoertebekker.com/pages/erfahrungen" target="_self" data-pf-type="Image" class="sc-ihgokY sc-jMalIJ faeooD eKAyjc pf-1686_ pf-image-1"><img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/screenshot_20200430_at_165727_1500x1500-1654599780545.webp?v=1654599781" width="1082" height="1082"/></a><div data-pf-type="Block" class="sc-gdyfxU kaVeqo pf-1687_"><a href="/pages/erfahrungen" target="_self" data-pf-type="Button" class="sc-hknPuZ HlEuf pf-1688_ pf-button-3 new-branding-headline-font grey-font"><span data-pf-type="Text" class="sc-fThTNe cAYhcc pf-1690_">Das sagen unsere Kunden</span></a></div></div></div></div></div></div></div></div></div><script>
+    !function(){
+      window.__pagefly_page_setting__ = {"pageTitle":"Home","pageType":"home","pageId":"73bbd91a-8f1d-4233-a97e-a698f693a995","lazyLoad":false,"forceByPassGoogleLightHouse":false,"imageLazyLoad":false,"nativeImageLazyLoad":true,"useThemeJQ":false,"trackingIDs":[]};
+      window.__pagefly_setting__&&(window.__pagefly_setting2__=window.__pagefly_setting__),window.__pagefly_setting__={"baseURL":"https://apps.pagefly.io","analyticsURL":"https://analytics.pagefly.io","isBackend":false,"cdnURL":"https://cdn.pagefly.io","pageflyVersion":"4.14.2","shopDomain":"stoertebekker.myshopify.com","elementData":{"pf-1573_":{"iconPos":"left","id":"efb5ffa8-d816-48d7-85ac-60abae1ade07","_type":"ProductATC2"}},"shopifyProxyPath":"/a/pf_preview"},window.__pagefly_setting2__&&(window.__pagefly_setting__=function _(d,b){let c={...d||{}};for(let a of Object.keys(b))b[a]instanceof Object&&(Array.isArray(b[a])&&c[a]?Object.assign(b[a],[...b[a],...c[a]]):Object.assign(b[a],_(c[a],b[a])));return Object.assign(c||{},b),c}(__pagefly_setting2__,__pagefly_setting__),delete window.__pagefly_setting2__),window.__pagefly_setting__.moneyFormat={{shop.money_format|json}}}();
+    </script><script src="https://cdn.pagefly.io/pagefly/4.14.2/core/helper.js" defer></script>
+{% schema %}
+{
+  "name": "PageFly Home Page",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "For full configuration, [visit PageFly Editor](https://stoertebekker.myshopify.com/admin/apps/pagefly/editor?id=73bbd91a-8f1d-4233-a97e-a698f693a995&type=home)."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

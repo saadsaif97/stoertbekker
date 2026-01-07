@@ -1,0 +1,37 @@
+<div class="custom-div">
+  <div data-move-under-id="variant-holder" >
+    <div id="shopify-section-custom-div" class="lb-high-demand">
+      {% if product.selected_or_first_available_variant.title contains 'Anti' %}
+        <div class="lb-high-demand-badge">
+          Hohe Nachfrage, schnell vergriffen!
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div> 
+<style>
+  .lb-high-demand {
+    margin: 0px 0px 7px 0px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  .lb-high-demand-badge {
+    background: #feece0;
+    color: #e97943;
+    padding: 4px 9px;
+    border-radius: 6px;
+    font-weight: bold;
+    display: block;
+    font-size: 12px;
+    margin-right: 9px;
+    flex-shrink: 0;
+  }
+  .lb-high-demand-text {
+    font-size: 12px;
+    line-height: 12px;
+  }
+</style>
+
+
+
+

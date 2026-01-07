@@ -1,0 +1,165 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "lb_collection_header_wA3rqd": {
+      "type": "lb-collection-header",
+      "disabled": true,
+      "settings": {
+        "customhtml": ""
+      }
+    },
+    "lb_oster_deals_lp_QNzzA7": {
+      "type": "lb-oster-deals-lp",
+      "blocks": {
+        "categories_zjeEdf": {
+          "type": "categories",
+          "settings": {
+            "rabatttext": "Alle Sets",
+            "selected_collection": "sets"
+          }
+        },
+        "categories_jJY6Pe": {
+          "type": "categories",
+          "settings": {
+            "rabatttext": "Körper & Haar",
+            "selected_collection": "korper-haar-sets-1"
+          }
+        },
+        "categories_gLfYaF": {
+          "type": "categories",
+          "settings": {
+            "rabatttext": "Rasier-<br>hobel",
+            "selected_collection": "rasierhobel-sets-1"
+          }
+        },
+        "categories_GkanQw": {
+          "type": "categories",
+          "settings": {
+            "rabatttext": "Rasier-<br>messer",
+            "selected_collection": "rasiermesser-sets-1"
+          }
+        },
+        "categories_VFKRpY": {
+          "type": "categories",
+          "settings": {
+            "rabatttext": "Bart-<br>pflege",
+            "selected_collection": "bartpflege-sets-1"
+          }
+        },
+        "categories_rQCa3R": {
+          "type": "categories",
+          "settings": {
+            "rabatttext": "Rasier-<br>zubehör",
+            "selected_collection": "rasierzubehor-sets-1"
+          }
+        },
+        "categories_w3yqtF": {
+          "type": "categories",
+          "disabled": true,
+          "settings": {
+            "rabatttext": "Pflege",
+            "selected_collection": "geschenke-pflegeprodukte"
+          }
+        },
+        "categories_fhCXRY": {
+          "type": "categories",
+          "disabled": true,
+          "settings": {
+            "rabatttext": "Zubehör",
+            "selected_collection": "geschenke-zubehor"
+          }
+        },
+        "filter_YDCiEH": {
+          "type": "filter",
+          "settings": {
+            "tagfiltername": "Bis 50€",
+            "tagfilter": "geschenke-50"
+          }
+        },
+        "filter_z3jhLV": {
+          "type": "filter",
+          "settings": {
+            "tagfiltername": "50€ bis 75€",
+            "tagfilter": "geschenke-50-75"
+          }
+        },
+        "filter_HHdTLH": {
+          "type": "filter",
+          "settings": {
+            "tagfiltername": "75€ Bis 100€",
+            "tagfilter": "geschenke-75-100"
+          }
+        }
+      },
+      "block_order": [
+        "categories_zjeEdf",
+        "categories_jJY6Pe",
+        "categories_gLfYaF",
+        "categories_GkanQw",
+        "categories_VFKRpY",
+        "categories_rQCa3R",
+        "categories_w3yqtF",
+        "categories_fhCXRY",
+        "filter_YDCiEH",
+        "filter_z3jhLV",
+        "filter_HHdTLH"
+      ],
+      "custom_css": [
+        "#countdown1 {display: none;}"
+      ],
+      "name": "Summer Sale LP",
+      "settings": {
+        "bannertext": "",
+        "bannerbg": "#000000",
+        "bannerfontcolor": "#ffffff",
+        "bannerfont": "system_ui_n4",
+        "customfont": "https://cdn.shopify.com/s/files/1/0317/7116/4804/files/BebasNeue-Regular_0ba96735-e582-4946-bbd6-edd171187d1a.ttf?v=1698664985",
+        "introdate": "",
+        "introheadline": "Summer Sale",
+        "headlinelogo": "shopify://shop_images/geschenke.png",
+        "introparagraph": "",
+        "plannable-date-day": "03",
+        "plannable-date-month": "11",
+        "plannable-date-year": "2025",
+        "plannable-date-time": "23:59:59",
+        "introbackground": "#000000",
+        "introtextcolor": "#f2f2f2",
+        "collectionbackground": "#000000",
+        "collectiontextcolor": "#f2f2f2",
+        "filtertext": "Entdecke unsere Geschenksets",
+        "filtercolor": "#d8ac63",
+        "filterborder": "#d8ac63",
+        "filtercoloractive": "#000000",
+        "filterborderactive": "#d8ac63",
+        "collectionproductitembackground": "#222426",
+        "productitemborderradius": "#f2f2f2",
+        "productitemcolor": "#f2f2f2",
+        "productitempricecolor": "#f2f2f2",
+        "productitempricesalecolor": "#d8ac63",
+        "product-item-save-bg-color": "#000000",
+        "product-item-save-font-color": "#ffffff",
+        "product-item-customcode": "",
+        "productitembadgecolor": "#000000",
+        "productitembadgebg": "#d8ac63",
+        "endsectionheadline": "Viel Spaß mit Deinen Produkten!",
+        "endsectionparagraph": "Dein Team von Störtebekker",
+        "endsectionimage": "shopify://shop_images/stortebekker_team.webp",
+        "endsectionbackgroundcolor": "#f2f2f2",
+        "endsectioncolor": "#ffffff",
+        "endsectionbackgroundimage": "shopify://shop_images/Bildschirmfoto_2024-11-08_um_17.45.14.png"
+      }
+    }
+  },
+  "order": [
+    "lb_collection_header_wA3rqd",
+    "lb_oster_deals_lp_QNzzA7"
+  ]
+}

@@ -1,0 +1,91 @@
+<div class="lb-accounting">
+	<div class="lb-accounting-holder">
+  		<h1 class="lb-accounting-headline">Hey {{ customer.first_name }}</h1>
+  
+    	{% if customer.orders.size != 0 %}
+    		<div class="lb-margin__bottom-1">
+      			<p class="lb-accounting-texte">
+                  {% assign order_numbers = customer.orders | map: 'order_number' | join: ' #' %}
+                  Du hast {{customer.orders.size}} Bestellungen aufgegeben, alle wichtigen Infos dazu findest Du in Deinen E-Mails. 
+              	</p>  
+              	<p class="lb-accounting-texte">
+                  Deine Bestellnummern lauten: <br>#{{order_numbers}}
+                </p>
+    		</div>
+     		<a class="lb-accounting-btn" href="{{shop.url}}">Produkte entdecken</a>
+  		{% else %}
+        	<p class="lb-accounting-texte">Du hast noch keine Bestellungen aufgegeben.</p>
+        	<a class="lb-accounting-btn" href="{{shop.url}}">Produkte entdecken</a>
+  		{% endif %}
+
+
+
+      <a href="https://stoertebekker.com/a/loop_subscriptions/customer" style="background: #efece0; margin-top: 9px; display: block; font-family: 'Bebas Neue'!important; font-size: 24px; padding: 12px 0px; color: #3c3c3b !important;">Zu Deinen Abonnements</a>
+
+
+
+  <a href="{% if routes.root_url != '/' %}{{ shop.url }}{{ routes.root_url }}{% endif %}/pages/club" class="lb-loyalty-cta">
+<img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/account-club-min.webp?v=1697120690">
+    
+
+    <span>Meine Punkte ansehen</span>
+          </a>
+
+      <style>
+
+        .lb-loyalty-cta {
+          with: 100%;
+          display: block;
+          color: black;
+          background: #efece0;
+          margin: 18px auto;
+          border-radius: 6px;
+          overflow: hidden;
+          position: relative;
+}
+
+             .lb-loyalty-cta img {
+        display: block;
+               width: 100%;
+}
+        
+                .lb-loyalty-cta span {
+        padding: 9px 18px;
+                  position: absolute;
+                  bottom: 36px;
+                  font-size: 14px;
+                  left: 50%;
+                        border-radius: 6px;
+                            background: #efece0;
+                  transform: translate(-50%);
+                  width: 200px;
+text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  
+                .lb-loyalty-cta span {
+        padding: 9px 18px;
+                  position: absolute;
+                  bottom: 18px;
+                  font-size: 14px;
+                  left: 50%;
+                        border-radius: 6px;
+                            background: #efece0;
+                  transform: translate(-50%);
+}
+}
+        
+      </style>
+
+
+
+
+      
+      
+      
+      
+			<a href="/account/logout" class="lb-accounting-link">Ausloggen</a>
+	</div>
+</div>
+

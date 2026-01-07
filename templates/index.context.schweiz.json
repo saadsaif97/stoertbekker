@@ -1,0 +1,39 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "parent": "index.json",
+  "context": {
+    "market": "schweiz"
+  },
+  "sections": {
+    "lb_plannable_homebanner_RAPPqc": {
+      "settings": {
+        "default-homebanner-link": "/de-ch/pages/osterdeals-2025",
+        "plannable-homebanner-link": "/de-ch/pages/osterdeals-2025"
+      },
+      "blocks": {}
+    },
+    "lb_plannable_homebanner_W8EM3H": {
+      "settings": {
+        "default-homebanner-link": "https://stoertebekker.com/de-ch/collections/sets",
+        "plannable-homebanner-link": "https://stoertebekker.com/de-ch/collections/sets",
+        "planned-homebanner-desktop": "shopify://shop_images/Banner_244290ba-74f2-48db-8e22-1051e86642c1.png",
+        "planned-homebanner-mobile": "shopify://shop_images/Stortebekker_Mobile_Banner_0281a801-28de-457e-a87f-9de3dc03245f.png"
+      },
+      "blocks": {}
+    },
+    "lb_custom_html_gcDcAX": {
+      "settings": {
+        "customhtml": "<div class=\"weglot_de\">\n  <div class=\"klaviyo-form-USuC73\"></div>\n</div>\n\n<style>\n  .dHktQK.dHktQK {\n    padding-bottom: 90px !important;\n\n  }\n</style>\n\n\n\n\n\n\n<!--\n<div class=\"weglot_en\">\n  <div class=\"klaviyo-form-XrTCcj\"></div>\n</div>\n\n<style>\n  html:is([lang=\"en\"]) .weglot_de {\n    display: none !important;\n  }\n\n  html:not([lang=\"en\"]) .weglot_en {\n    display: none !important;\n  }\n</style>\n\n-->"
+      },
+      "blocks": {}
+    }
+  }
+}

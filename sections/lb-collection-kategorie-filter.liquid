@@ -1,0 +1,297 @@
+{% unless localization.country.iso_code == 'CH' %}             
+
+
+
+
+
+
+{% unless canonical_url contains '.com/en' %}
+
+{% if canonical_url contains 'rasierhobel' or canonical_url contains 'sets' %}
+<a href="#quiz-ZAHLeq" class="lb-collection-quiz-opener">
+                <img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/quiz_59884d1d-a159-4b85-bec5-2537bc51b84b.png?v=1745225113">
+<p><!--Nicht sicher, -->Welcher Rasierer ist der richtige?
+<u>Jetzt herausfinden</u></p>
+</a>
+  {% endif %}
+
+<style>
+
+  .lb-collection-quiz-opener {
+  max-width: 500px;
+margin: 9px auto; display: block;
+  width: 95%;
+position: relative;
+    }
+  
+  .lb-collection-quiz-opener p {
+  font-family: BebasNeue-Regular;
+color: white;
+position: absolute;
+top: 50%;
+transform: translate(0%, -50%);
+left: 18px;
+width: 70%;
+margin-top: 0px;
+margin-bottom: 0px; 
+font-size: 18px;
+line-height: 24px;
+  }
+
+  .lb-collection-quiz-opener u {
+  font-family: OpenSans;
+color: white;
+    display: block;
+font-size: 14px;
+    font-weight: bold;
+line-height: 20px;
+    text-decoration: underline;
+  }
+  
+  .lb-collection-quiz-opener img {
+    display: block;
+    width: 100%;
+  }
+</style>                
+{% endunless %}
+
+{% endunless %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% unless canonical_url contains '/collections/sets' %}
+<style>
+  .lb-set-filter {
+    display: none !important;
+  }
+</style>
+{% else %}
+<style>
+  .lb-set-filter {
+    display: none !important;
+  }
+</style>
+
+
+<style>
+.filter-container-holder {
+  padding: 9px;
+}
+  
+  .filter-container {
+    border: 2px solid #e2e2e2;
+    padding: 6px 12px;
+    border-radius: 6px;
+    width: 100%;
+    font-family: "Open Sans";
+    font-weight: 400;
+    font-size: 16px;
+    max-width: 500px;
+    margin: auto;
+  }
+
+  .filter-item {
+    list-style: none;
+    cursor: pointer;
+    padding: 9px 0px;
+  }
+
+  .filter-item a,
+  .filter-item-a {
+    color: #636363;
+    padding: 9px 0px;
+    display: block;
+  }
+
+  .filter-submenu {
+    list-style: none;
+    padding-left: 20px;
+    display: none;
+  }
+
+  .filter-submenu li {
+    padding: 0px 0px;
+  }
+
+  .arrow {
+    float: right;
+    margin-top: 6px;
+    transition: transform 0.2s;
+    width: 20px;
+    height: 14px;
+  }
+
+  .expanded .arrow {
+    transform: rotate(180deg);
+  }
+
+  .filter-title {
+    cursor: pointer;
+    font-weight: 400;
+    color: #636363;
+    margin: 5px 0px;
+    font-size: 16px;
+    font-family: "Open Sans";
+  }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<div class="filter-container-holder">
+<div class="filter-container">
+  <div class="filter-title expandable">
+    {% if collection.title contains 'Hol dir das' %}Filtere unsere Sets{% else %}
+    <!--Gefiltert nach:--> {{ collection.title }}{%
+    endif %}
+    <span class="arrow">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" width="20" height="20">
+          <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1" fill="none" fill-rule="evenodd"/>
+        </svg>
+      </span>
+  </div>
+  <div class="filter-content" style="display:none;">
+    <ul>
+      <li class="filter-item"><a href="https://stoertebekker.com/collections/sets" {% if
+          canonical_url=='https://stoertebekker.com/collections/sets' %}style="text-decoration: underline;" {% endif
+          %}>Alle
+          Sets</a></li>
+      <li class="filter-item expandable">
+        <div class="filter-item-a" href="#" {% if canonical_url contains 'rasierhobel'
+          %}style="text-decoration: underline;" {% endif %}>Rasierhobel<span class="arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" width="20" height="20">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1" fill="none" fill-rule="evenodd"/>
+            </svg>
+          </span></div>
+        <ul class="filter-submenu">
+          <li><a href="{% if routes.root_url != '/' %}{{ shop.url }}{{ routes.root_url }}{% endif %}/collections/sets/sets-rasierhobel-alle" {% if canonical_url
+              contains '/collections/sets/sets-rasierhobel-alle'
+              %}style="text-decoration: underline;" {% endif %}>Alle</a></li>
+          <li><a href="{% if routes.root_url != '/' %}{{ shop.url }}{{ routes.root_url }}{% endif %}/collections/sets/sets-rasierhobel-schwarz" {% if canonical_url
+              contains '/collections/sets/sets-rasierhobel-schwarz'
+              %}style="text-decoration: underline;" {% endif %}>Schwarz</a></li>
+          <li><a href="{% if routes.root_url != '/' %}{{ shop.url }}{{ routes.root_url }}{% endif %}/collections/sets/sets-rasierhobel-silber" {% if canonical_url
+              contains '/collections/sets/sets-rasierhobel-silber'
+              %}style="text-decoration: underline;" {% endif %}>Silber</a></li>
+          <li><a href="{% if routes.root_url != '/' %}{{ shop.url }}{{ routes.root_url }}{% endif %}/collections/sets/sets-rasierhobel-rose-gold" {% if canonical_url
+              contains '/collections/sets/sets-rasierhobel-rose-gold'
+              %}style="text-decoration: underline;" {% endif %}>Rosé-Gold</a></li>
+        </ul>
+      </li>
+      <li class="filter-item expandable">
+        <div class="filter-item-a" href="#" {% if canonical_url contains 'rasiermesser'
+          %}style="text-decoration: underline;" {% endif %}>Rasiermesser<span class="arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" width="20" height="20">
+              <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1" fill="none" fill-rule="evenodd"/>
+            </svg>
+          </span></div>
+        <ul class="filter-submenu">
+          <li><a href="{% if routes.root_url != '/' %}{{ shop.url }}{{ routes.root_url }}{% endif %}/collections/sets/sets-rasiermesser-alle" {% if canonical_url
+              contains '/collections/sets/sets-rasiermesser-alle'
+              %}style="text-decoration: underline;" {% endif %}>Alle</a></li>
+          <li><a href="{% if routes.root_url != '/' %}{{ shop.url }}{{ routes.root_url }}{% endif %}/collections/sets/sets-rasiermesser-schwarz" {% if canonical_url
+              contains '/collections/sets/sets-rasiermesser-schwarz'
+              %}style="text-decoration: underline;" {% endif %}>Schwarz</a></li>
+          <li><a href="{% if routes.root_url != '/' %}{{ shop.url }}{{ routes.root_url }}{% endif %}/collections/sets/sets-rasiermesser-holz" {% if canonical_url
+              contains '/collections/sets/sets-rasiermesser-holz'
+              %}style="text-decoration: underline;" {% endif %}>Holz</a></li>
+        </ul>
+      </li>
+      <li class="filter-item"><a href="{% if routes.root_url != '/' %}{{ shop.url }}{{ routes.root_url }}{% endif %}/collections/sets/sets-bart" {% if canonical_url
+          contains '/collections/sets/sets-bart' %}style="text-decoration: underline;" {% endif
+          %}>Bart</a></li>
+      <li class="filter-item"><a href="{% if routes.root_url != '/' %}{{ shop.url }}{{ routes.root_url }}{% endif %}/collections/sets/sets-rasierzubehor" {% if canonical_url
+          contains '/collections/sets/sets-rasierzubehor' %}style="text-decoration: underline;" {%
+          endif %}>Rasierzubehör</a></li>
+      <li class="filter-item"><a href="{% if routes.root_url != '/' %}{{ shop.url }}{{ routes.root_url }}{% endif %}/collections/sets/sets-koerper-haar" {% if canonical_url
+          contains '/collections/sets/sets-koerper-haar' %}style="text-decoration: underline;" {%
+          endif %}>Körper & Haar</a></li>
+    </ul>
+  </div>
+</div>
+              </div>
+
+
+
+<script>
+  $(document).ready(function() {
+      $('.filter-title').click(function() {
+        $('.filter-content').slideToggle();
+        $(this).toggleClass('expanded');
+      });
+
+      $('.expandable').click(function(e) {
+        if (!$(this).hasClass('filter-title')) {
+          $(this).find('.filter-submenu').slideToggle();
+          $(this).toggleClass('expanded');
+          e.stopPropagation();
+        }
+      });
+    });
+</script>
+
+
+
+{% endunless %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+{% schema %}
+{
+  "name": "lb category filter ",
+  "settings": [
+    {
+      "type": "liquid",
+      "id": "customhtml",
+      "label": "Badge URL"
+    }
+  ],
+  "presets": [
+    {
+      "category": "HTML",
+      "name": "lb category filter ",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,231 @@
+{% render 'blog-snippets' %}
+{{ 'custom-2block.css' | asset_url | stylesheet_tag }}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+<div class="blog-banner">
+
+  <img src="{{ article.image.src | img_url: '2048x' }}" alt="{{ article.image.alt }}" />
+  
+  <div class="banner__content">
+  	{% render 'breadcrumbs' %}
+    <div class="section__title"><h1 style="color: #fff;" >{{ article.title }}</h1></div>
+           
+    <div class="date__section">
+      <div class="comments"><a href="#comments">{{ article.comments_count }}&nbsp;{{ 'blogs.comments.title' | t }}</a></div>
+       <span>{{ article.published_at | date: "%d.%m.%Y" }}</span>
+    </div>
+
+    <div class="reading_time">	
+   
+      {%- for tags in article.tags -%}
+      {% if tags contains 'time_' %}
+    	{{ tags | remove: "time_" | replace: "_", " " }}
+      {% endif %}
+      {%- endfor -%}
+
+  	</div>
+  </div>
+</div>
+
+<div class="article-content">
+   <div class="article-content">
+      <div class="index-outer-container" id="author_container">
+         <div class="author_container">
+            {%- for tags in article.tags -%}
+           {% if tags contains 'auth_male' %}
+            <div class="box_header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Autor</font></font><font style="vertical-align: inherit;">{{ article.created_at | date: "%d.%m.%Y" }}</font></div>
+            {% elsif tags contains 'auth_female' %}
+             <div class="box_header"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Autor*in</font></font><font style="vertical-align: inherit;">{{ article.created_at | date: "%d.%m.%Y" }}</font></div>
+          {% endif %}
+              {% endfor %}
+             <a href="https://stoertebekker.com/pages/martin"><div class="author_inner_container">
+                <div class="image-wrap image-author-wrap" >
+
+                  {%- for tags in article.tags -%}
+                  	{% if tags contains 'author_' %}
+                  		{{ tags | remove: "author_" | replace: "-", " " | append: ".png" | file_img_url | img_tag: 'Logo' }}
+                      {% endif %}                   
+                  {%- endfor -%}                  
+
+                </div></a>
+               {% comment %}
+               <div class="author-name"><span><font style="font-family: playfair display;">{{ article.author }}{{ article.excerpt }}</font></span></div>
+               {% endcomment %}
+            </div>
+            <button class="accordion"><font style="font-family: 'Open Sans';">{{ article.author }}</font></button>
+            <div class="author-info panel">
+               <div class="author-bio"><font style="vertical-align: inherit;">{{ article.excerpt }}</font></div>
+           </div>           
+         </div>
+          <div class="inhalt-container">
+            <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inhalte</font></font></span>
+            <ul id="article_menu" class="index-container">
+            </ul>
+            {{ article.excerpt }}
+          </div>
+        {% comment %}
+         <div class="social_buttons">
+            <div class="social-sharing">
+               {% render 'social-icons', icon_setting: settings.social_custom_icon, icon_size: 'x48' %}
+            </div>
+         </div>
+        {% endcomment %}
+      </div>
+     <div class="article-container">
+       <article class="article">
+         <div class="article__body rte">
+           {{ article.content | replace: 'fullwidth"', '" data-fullwidth="true"' }}
+         </div>
+          {% if blog.comments_enabled? %}
+          	<div class="border-top comment-feedback__section"  data-cc-animate>
+            <div class="containers">
+              <div id="comments" class="comments reading-column">
+
+                {% if article.comments.size > 0 or comment.created_at %}
+                <div class="section padless-bottom">
+                  <h2 class="comment-title" id="page_comments" >{{ article.comments_count }} {{ 'blogs.comments.title' | t }}</h2>
+
+                  {% comment %}
+                      {% if comment and comment.created_at %}
+                          {% render 'comment', comment: comment, article: article %}
+                      {% endif %}
+                  {% endcomment %}
+
+                  {% for comment in article.comments %}
+                    {% render 'comment', comment: comment, article: article %}
+                  {% endfor %}
+
+                  {% render 'pagination', paginate: paginate %}
+                </div>
+                {% endif %}
+
+                <div id="comment-form" class="comment-form section">
+                  {% form "new_comment", article %}
+                  <h2 class="comment-title">{{ 'blogs.comments.form_title' | t }}</h2>
+
+                  {% if form.posted_successfully? %}
+                    {% if blog.moderated? %}
+                      <p class="notification success">{{ 'blogs.comments.success_moderated' | t }}</p>
+                    {% else %}
+                      <p class="notification success">{{ 'blogs.comments.success' | t }}</p>
+                    {% endif %}
+                  {% endif %}
+
+                  {% if form.errors %}
+                  <div class="notification errors">
+                    {{ 'blogs.comments.error' | t }}
+                    {{ form.errors | default_errors }}
+                  </div>
+                  {% endif %}
+
+                  <div class="input-row half-design">
+                    <label for="comment_author">{{ 'blogs.comments.name' | t }}</label>
+                    <input type="text" id="comment_author" name="comment[author]" size="40" class="text" />
+                  </div>
+                  <div class="input-row half-design last">
+                    <label for="comment_email">{{ 'blogs.comments.email' | t }}</label>
+                    <input type="text" id="comment_email" name="comment[email]" size="40" class="text" />
+                  </div>
+                  <div class="input-row full-design">
+                    <label for="comment_body">{{ 'blogs.comments.message' | t }}</label>
+                    <textarea id="comment_body" name="comment[body]" cols="40" rows="5" class="text">{{form.body}}</textarea>
+                  </div>
+
+                  {% if blog.moderated? %}
+                  <p><em>{{ 'blogs.comments.moderated' | t }}</em></p>
+                  {% endif %}
+
+                  <div class="input-row">
+                    <input type="submit" value="{{ 'blogs.comments.post' | t }}" class="alt outline" id="comment-submit" />
+                  </div>
+
+                  {% endform %}
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+       </article> 
+     </div>     
+  </div>
+</div>
+
+<script>
+
+  $("#article_menu").html('');
+  var html ="";
+  var artId = '';
+  $(".article__body h2").each(function() {
+    artId = $(this).text().replace(/ /g,"");
+    artId = artId.replace(/[^\w\s]/gi, '');
+    $(this).attr("id",artId);
+    html += `<li class=${artId}><a href="#${artId}"> ${$(this).text()}</a></li>` ;
+
+  });
+
+  $("#article_menu").html(html);
+
+  //code for adding active class
+  var currScrId = '';
+  $(document).scroll(function () {
+    $('.article__body h2').each(function () {
+      if($(this).position().top - 200 <= $(document).scrollTop() && ($(this).position().top + $(this).outerHeight()) > $(document).scrollTop() - 100 ) {
+        currLiId = `#article_menu .`+$(this).attr('id');
+        $("li").removeClass("article-active");
+        $(currLiId).addClass("article-active");
+      }
+    });
+  });
+
+</script>
+
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>
+
+{% schema %}
+  {
+    "name": "Article pages",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_feat_image",
+        "label": "Show featured image",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_tags",
+        "label": "Show tags",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_author",
+        "label": "Show author",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sharing_icons",
+        "label": "Show social sharing icons",
+        "default": true
+      }
+    ]
+  }
+{% endschema %}

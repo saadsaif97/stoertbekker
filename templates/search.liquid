@@ -1,0 +1,177 @@
+<style>
+
+.lb-search-results-products {
+  text-align: center;
+  padding-bottom: 24px!important;
+}
+
+  .lb-search-results-products a {
+  padding-bottom: 24px!important;
+    
+  }
+
+
+  @media only screen and (max-width: 500px) {
+
+.lb-search-results-products-price {
+      margin-bottom: 9px;
+}
+
+  }
+  
+.lb-search-results-products h3 {
+  font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 9px;
+  height: 50px;
+  overflow: hidden;
+    text-transform: initial;
+    color: #66634e;
+    font-family: "Playfair Display";
+}
+  
+</style>
+
+
+
+<div class="lb-search">
+
+  
+	<div class="lb-search-holder"> 
+
+		{% if search.results == empty %}  
+			<h1 class="lb-search-headline">Es konnten leider keine Ergebnisse für <b>"{{search.terms | escape}}"</b> gefunden werden. <br>
+            Versuchs nochmal mit einem anderen Suchbegriff: <br>
+            </h1> 
+        {% else %}  
+			<h1 class="lb-search-headline">Ergebnisse für <b>"{{search.terms | escape}}"</b></h1>
+      	{% endif %}
+      
+        <form action="{% if routes.root_url contains '-ch' %}{{ routes.root_url }}{% endif %}/search" method="get" class="lb-search-form">
+        	<input class="lb-search-form-input" placeholder="Suchen…" type="text" name="q" value="{{search.terms  | escape}}" id="result-q" /> 
+            <button type="submit" class="lb-search-form-btn">{% include 'lb-icon-search.liquid' %}</button>
+        </form>
+
+
+
+
+      
+	{% if search.terms contains 'Pomadefefe'%}  
+      <div style="margin-bottom: 18px;">
+      <div class="klaviyo-form-TuyKFr"></div>
+      </div>
+    {% endif %}
+      
+
+
+	{% if search.results == empty %}  
+
+      <div style="text-align: center; max-width: 600px; margin: 36px auto 0px auto;">
+
+        Vielleicht schon etwas dabei?<br>
+
+        {% for link in linklists.suchvorschlaege.links %}
+      <a href="                {{link.url}}" style="color: black; text-decoration: underline; margin: 5px; display: inline-block;">                {{link.title}}</a>
+    {% endfor %}
+        
+        </div>
+  {% endif %}
+
+
+
+
+          
+
+
+
+
+
+
+
+
+  
+
+
+		{% if search.results != empty %}  
+      	<div class="lb-search-results">
+          <div class="lb-search-results-list lb-search-results-products"> 
+            <h2>Produkte</h2>
+
+                    {% paginate search.results by 500 %}
+            {% for item in search.results %}  
+
+  
+            
+
+              {% if item.object_type == 'product' %}
+                {% unless item.tags contains 'lb-search-hide' %}
+                <a href="{{item.url}}">
+                  	<img src="{% if item.selected_or_first_available_variant.image != blank %}{{ item.selected_or_first_available_variant.image | img_url: '400x400' }}{% else %}{{ item.featured_image | img_url: '400x400' }}{% endif %}" load="lazy" style="background: #faf9f7;">
+					<h3>{{ item.title }} {% if item.variants.size > 1 %}| {{ item.selected_or_first_available_variant.title }}{% endif %}</h3> 
+                    <div style="height: 44px; line-height: 22px; font-size: 14px; text-align: center; color: #808080; overflow: hidden;">
+                      <p>{{item.metafields.custom.kategorieseite_subheadlines}}</p>
+                    </div>
+                    <div style="height: 42px; text-align: center; margin-bottom: 9px;">
+<div class="ruk_rating_snippet" data-sku="{{ item.handle }};{{ item.variants | map: 'sku' | join: ';' }};{{ item.variants | map: 'id' | join: ';' }}"></div>
+  </div>
+
+  
+ {% if item.title == 'POMADE' %}
+                  	<p class="lb-search-results-products-price">{% if item.selected_or_first_available_variant.compare_at_price > item.selected_or_first_available_variant.price %}<span class="lb-search-results-products-saleprice">{{ item.selected_or_first_available_variant.compare_at_price | money }}</span>{% endif %} {{ item.selected_or_first_available_variant.price | money }} </p>
+                {% endif %}
+                  
+                </a>
+{% endunless %}
+              {% endif %}
+            {% endfor %}
+            {% endpaginate %}
+          </div>  
+
+          <div class="lb-search-results-list lb-search-results-article-pages"> 
+            <h2>Blogbeiträge</h2>
+              {% for item in search.results %}
+                {% if item.object_type == 'article' %}
+                  <a href="{{item.url}}" style="margin-bottom: 9px;">
+                    <h3>{{ item.title }}</h3>
+                    <span>{{ item.content | strip_html | truncatewords: 40 | highlight: search.terms }}</span>         
+                  </a>
+                {% endif %}
+              {% endfor %}
+          </div>
+
+          <!--
+          <div class="lb-search-results-list lb-search-results-article-pages">       
+            <h2>Seiten</h2>    
+            {% for item in search.results %}
+              {% if item.object_type == 'page' %}
+                <a href="{{item.url}}">
+                  <h3>{{ item.title }}</h3>
+                  <span>{{ item.content | strip_html | truncatewords: 40 | highlight: search.terms }}</span>         
+                </a>
+              {% endif %}
+            {% endfor %}
+          </div>
+-->
+          
+		</div>
+        {% endif %}
+        
+
+
+
+
+      {% if canonical_url contains 'versand' %}
+        <a href="https://stoertebekker.com/policies/shipping-policy" style="max-width: 500px; padding: 9px 18px;
+          border-radius:6px; background: #faf9f7; overflow: hidden; display: inline-block; color: black; font-size: 14px;">
+<img src="https://cdn.shopify.com/s/files/1/0317/7116/4804/t/9/assets/truck_480x480-1654862275677.png?v=1654862276" style="max-width: 62px; margin-right: 18px; float: left;">
+<span style="display: block; margin-bottom: 5px;"><b>Versandinformationen</b></span>
+<span style="display: block; margin-bottom: 5px;">Hier findest Du Informationen über unsere Versandkonditionen.</span>
+<span style="text-decoration: underline;">Zum Versand</span>
+        </a>
+      {% endif %}
+      
+      
+	</div>
+</div>
+
+{% include 'wiser_recentview' %}{% include 'wiser_trending' %}{% include 'wiser_topselling' %}{% include 'wiser_newarrivals' %}{% include 'wiser_featured' %}{% include 'wiser_recent_related' %}

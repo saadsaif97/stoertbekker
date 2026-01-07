@@ -1,0 +1,222 @@
+<div class="lb-article"> 
+  <img class="lb-article__image" src="{{ article.image | img_url: '' }}" alt="{{ article.title | escape }}"/>
+  <h1 class="lb-article__title">{{ article.title }}</h1>
+  <div class="lb-article__body">
+    {{ article.content }}
+  </div>    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {%- assign number_of_comments = article.comments_count -%}
+
+
+
+
+<div class="lb-article-comment-section">
+	<div class="lb-article-comment-section-holder">
+
+      		<h1>Kommentare</h1>
+
+        {% if number_of_comments > 0 %}     
+
+      
+
+
+{% for comment in article.comments %}
+<div class="comment">
+ {{ comment.content }}
+  
+  <div class="comment-meta">
+    <span>{{ comment.author }}</span>
+<time datetime="{{ comment.created_at | date: '%Y-%m-%d' }}">{{ comment.created_at | date: format: 'month_day_year' }}</time>
+  </div>
+</div>
+
+            {% endfor %}
+      
+      
+          {% else %}
+      <p class="lb-article-comment-section-empty">Noch keine Kommentare vorhanden</p>
+      
+      
+      
+      
+  
+
+
+
+{% endif %}
+        
+        
+        
+        
+           {% if new_comment %}
+          <p class="form--success">
+            {% if blog.moderated? %}
+              {{ 'blogs.comments.success_moderated' | t }}
+            {% else %}
+              {{ 'blogs.comments.success' | t }}
+            {% endif %}
+          </p>
+        {% endif %}     
+
+        
+        
+        
+{% form 'new_comment', article %}
+
+	<div class="lb-article-comment-form">
+		<h1>Hinterlasse ein Kommentar</h1>
+		{{ form.errors | default_errors }}	
+      	<input type="text" required name="comment[author]" id="CommentAuthor" class="input-full{% if form.errors contains 'author' %} input--error{% endif %}" placeholder="Dein Name…" value="{{ form.author }}" autocapitalize="words">
+		<input type="email" required name="comment[email]" id="CommentEmail" class="input-full{% if form.errors contains 'email' %} input--error{% endif %}" placeholder="Deine E-Mail…" value="{{ form.email }}" autocorrect="off" autocapitalize="off">
+		<textarea name="comment[body]" required id="CommentBody" class="input-full{% if form.errors contains 'body' %} input--error{% endif %}" placeholder="Dein Kommentar…">{{ form.body }}</textarea>
+		<!--{% if blog.moderated? %}<p>Your email address will not be published. Sie werden freigeschaltet.</p>{% endif %}-->
+		<input type="submit" class="lb-article-comment-form-btn" value="KOMMENTAR SENDEN">
+      </div>
+    
+{% endform %}
+
+
+
+  </div>
+</div>
+
+
+
+
+
+<style>
+  
+  .lb-article-comment-section {
+    padding: 72px 18px;
+    background: #f2f2f2;
+  }
+  
+  .lb-article-comment-section-holder {
+    position: relative;
+    z-index:100;
+  	max-width: 700px;
+    margin: auto;
+  }
+ 
+  .lb-article-comment-section-holder h1 {
+   	margin-bottom: 12px;
+    font-size: 16px;
+  } 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .lb-article-comment-section-empty {
+  	text-align: center;
+  }
+
+  .comment {
+  	margin-bottom: 18px;
+    font-size: 20px;
+	font-style: italic; 
+  }
+  
+  .comment-meta {
+  	font-size: 14px;
+  }
+  
+  .comment-meta span {
+  	margin-right: 9px;
+    font-variant: bold;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  .lb-article-comment-form {
+    width: 100%;
+  	margin-top: 36px;
+  }  
+  
+  .lb-article-comment-form h1 {
+  	margin-bottom: 12px;
+    font-size: 16px;
+  }
+  
+  .lb-article-comment-form input {
+    width: 47.5%;
+    margin-bottom: 18px;
+    border: none;
+    line-height: 52px;
+    font-family: arial;
+    padding: 0px 18px;
+    font-size: 14px;
+  }
+  
+  .lb-article-comment-form input:nth-child(2) {
+    margin-right: 4%;
+  }
+  
+  .lb-article-comment-form textarea {
+    width: 100%;
+     margin-bottom: 18px;
+    border: none;
+        font-family: arial;
+    padding: 9px 18px;
+    min-height: 150px;
+    max-width: 100%;
+    font-size: 14px;
+  }
+  
+  .lb-article-comment-form-btn {
+    background: #66634e;
+  	color: white;
+    font-size: 14px;
+    line-height: 52px;
+    width: 100%!important;
+   	border: none;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+  
+   
+
+   
+  
+
+@media only screen and (max-width: 600px) {
+  .lb-article-comment-form input {
+    width: 100%
+  }
+  
+  .lb-article-comment-form input:nth-child(2) {
+    margin-right: 0%;
+  }
+}
+  
+</style>

@@ -1,0 +1,333 @@
+{%- comment -%}
+----------------------------------------------------------------------------------------------------------------------
+VARIANT PICKER
+----------------------------------------------------------------------------------------------------------------------
+
+Render the variant picker option selectors.
+
+********************************************
+Supported variables
+********************************************
+
+* product: the product for which to render the selector (required)
+* update_url: if set to true, the URL is updated when the variant changes (usually used for product page)
+* hide_sold_out_variants: if set to true, the sold out or unavailable variants are hidden
+* hide_size_chart: if set to true, size chart is always hidden
+* force_dropdown_as_block: if set to true, the dropdown selectors are replaced by blocks, which is useful for quick buy where dropdown are not convenient to use
+* form_id: the ID of the form that is listening
+* block: the block itself, for theme-specific options (such as selector types)
+{%- endcomment -%}
+
+{%- assign cases_colors_list = '___' -%}
+{% comment %} {%- assign color_label_list = 'general.label.color' | t | replace: ', ', ',' | downcase | split: ',' -%} {% endcomment %}
+{% comment %} {%- assign color_label_list = 'Color,Duft,Material,Seife,Etui,Farbe' | replace: ', ', ',' | downcase | split: ',' -%} {% endcomment %}
+{%- assign color_label_list = settings.swatch_trigger_option_names | replace: ', ', ',' | downcase | split: ',' -%}
+{%- assign aroma_label_list = settings.aroma_trigger_option_names | replace: ', ', ',' | downcase | split: ',' -%}
+{%- assign selected_variant = product.selected_or_first_available_variant -%}
+{%- capture form_id -%}product_form_{{ product.id }}{%- endcapture -%}
+
+{%- for option in product.options_with_values -%}
+  {%- for value in option.values -%}
+    {%- if value contains 'Lederetui' -%}
+      {%- assign val_split = value | split: ' - ' -%}
+      {%- assign cases_colors_list = cases_colors_list | append: ',' | append: val_split[0] -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endfor -%}
+
+{%- if cases_colors_list != '___' -%}
+  {%- assign cases_colors_array = cases_colors_list | replace: '___,', '' | split: ',' | uniq -%}
+{%- endif -%}
+
+{%- unless product.has_only_default_variant and product.available == false -%}
+  <variant-picker class="variant-picker" handle="{{ product.handle }}" form="{{ form_id }}" update-url>
+    {%- for option in product.options_with_values -%}
+      {%- assign option_downcase = option.name | downcase -%}
+      {% comment %} {%- assign selector_type = block.settings.selector_mode -%} {% endcomment %}
+      {% comment %} block or dropdown {% endcomment %}
+      {%- assign selector_type = 'block' -%}
+
+      {% if color_label_list contains option_downcase %}
+        {% comment %} {%- assign selector_type = block.settings.color_mode -%} {% endcomment %}
+        {% comment %} block, block_swatch, dropdown, color, variant {% endcomment %}
+        {%- assign selector_type = 'variant' -%}
+      {%- endif -%}
+
+      {% comment %} Hardcode setting to show all the options as swatches {% endcomment %}
+      {%- assign selector_type = 'variant' -%}
+
+      {%- if cases_colors_array.size > 0 -%}
+        {% comment %} Top options row, usually it's a case color selector {% endcomment %}
+        <fieldset class="variant-picker__option case-related" option-name="Wähle Dein Etui">
+          <legend class="variant-picker__option-info">Wähle Dein Etui:</legend>
+          <div class="variant-picker__option-values mod-wide caseColorSwitchers">
+            {%- for case_color in cases_colors_array -%}
+              <div group="{{ case_color }}" class="media-swatch caseColorSwitcher{% if selected_variant.option1 contains case_color %} is-selected{% endif %}">
+                {%- if product.title contains 'Rasiermesser' -%}
+                  {%- if case_color == 'Lederetui Schwarz' -%}
+                    {%- assign case_img_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/messer-schwarz.png' -%}
+                  {%- elsif case_color == 'Lederetui Café' -%}
+                    {%- assign case_img_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/messer-cafe.png' -%}
+                  {%- endif -%}
+                {%- elsif product.title == "Bartschere 'Dagger' - 4,5 Zoll / 11,4 cm" -%}
+                  {%- if case_color == 'Lederetui Schwarz' -%}
+                    {%- assign case_img_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0155_a-variant.png' -%}
+                  {%- elsif case_color == 'Lederetui Café' -%}
+                    {%- assign case_img_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0154_a-variant.png' -%}
+                  {%- endif -%}
+                {%- elsif product.title == "Bartschere 'Cutlass' - 5,5 Zoll / 14 cm" -%}
+                  {%- if case_color == 'Lederetui Schwarz' -%}
+                    {%- assign case_img_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0153_a-variant_d713d75d-5b0f-45cb-a445-48292c546ae4.png' -%}
+                  {%- elsif case_color == 'Lederetui Café' -%}
+                    {%- assign case_img_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/STOERTE_0152_a-variant_f49340e0-f39b-4227-b2df-c18f0bb073b0.png' -%}
+                  {%- endif -%}
+                {%- else -%}
+                  {%- if case_color == 'Lederetui Schwarz' -%}
+                    {%- assign case_img_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/black-etui.png' -%}
+                  {%- elsif case_color == 'Lederetui Café' -%}
+                    {%- assign case_img_url = 'https://cdn.shopify.com/s/files/1/0317/7116/4804/files/cafe-etui.png' -%}
+                  {%- endif -%}
+                {%- endif -%}
+                <img class="media-swatch--image" src="{{ case_img_url }}" alt="{{ case_color }}">
+                <span class="media-swatch--label">{{ case_color }}</span>
+              </div>
+            {%- endfor -%}
+          </div>
+        </fieldset>
+      {%- endif -%}
+      
+      {%- assign case_matching_options_size = 0 -%}
+      {%- for value in option.values -%}
+        {%- if value contains 'Lederetui' -%}
+          {%- assign case_matching_options_size = case_matching_options_size | plus: 1 -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      <fieldset class="variant-picker__option{% if case_matching_options_size == cases_colors_array.size %} d-none{% endif %}" option-name="{{ option.name }}">
+        <legend class="variant-picker__option-info">
+          {%- if product.title contains "Störtebekker Klingen 'Platinum' x5 Probierpack" -%}
+            Stückzahl:
+          {%- elsif product.title contains "Störtebekker Rasierklingen 'Platinum' x5 Probierpack" -%}
+            Probierpack:
+          {%- elsif product.tags contains 'MainOptionFarbe' -%}
+            Wähle Deine Farbe:
+          {%- else -%}
+            {%- if product.title == 'Rasierseife Aloe Vera' -%}
+              Wähle deine Variante:
+            {%- elsif aroma_label_list contains option_downcase -%}
+              Wähle Deinen Duft:
+            {%- elsif option.name contains 'Shampoo' or option.name contains 'Variante' or option.name contains 'Menge' or option.name contains 'Anzahl' -%}
+              Wähle deine Variante:
+            {%- else -%}
+              {{ option.name }}:
+            {%- endif -%}
+          {%- endif -%}
+        </legend>
+        
+        <div data-option-selector class="variant-picker__option-values{% if product.variants.size < 4 %} mod-wide{% endif %} variantPickerMainValues is-loading">
+          {%- assign name = 'option' | append: option.position -%}
+            {%- for value in option.values -%}
+              {%- assign selected = false -%}
+
+              {%- if value == option.selected_value -%}
+                {%- assign selected = true -%}
+              {%- endif -%}
+
+              {%- case selector_type -%}
+                {%- when 'variant' -%}
+                  {%- assign variant_for_value = product.variants | where: name, value | first -%}
+                  {%- render 'swatch' with 'media', value: value, media: variant_for_value.featured_image, selected: selected, name: name, form: form_id, product: product -%}
+                {%- when 'block' -%}
+                  {%- render 'swatch' with 'block', value: value, selected: selected, name: name, form: form_id, product: product -%}
+              {%- endcase -%}
+            {%- endfor -%}
+
+            {%- if product.title contains "Störtebekker Rasierklingen 'Platinum'" -%}
+              <a href="https://stoertebekker.com/products/stortebekker-klingen-x-5-probier-pack"  class="media-swatch" data-value="5X">
+                {% comment %} <div class="lb-percentage-saving-badge">0,25€/Klinge</div> {% endcomment %}
+                <img class="media-swatch--image" src="https://cdn.shopify.com/s/files/1/0317/7116/4804/files/5.webp?v=1699424993" loading="lazy" style="width: 62px; height: 62px;">
+                <span class="media-swatch--label"></span>
+              </a>
+            {%- endif -%}
+
+        </div>
+      </fieldset>
+    {%- endfor -%}
+  </variant-picker>
+
+  {% if product.title contains "Störtebekker Klingen 'Platinum' x5 Probierpack" or product.title contains "Störtebekker Rasierklingen 'Platinum'" %}
+    <style>.variant-picker__option-values{grid-template-columns: repeat(3, 1fr) !important;}</style>
+  {% endif %}
+
+<style>
+  .media-swatch {
+    position: relative;
+  }  
+  .lb-percentage-saving-badge {
+    position: absolute;
+    top: -10px;
+    background: rgb(216, 171, 99);
+    color: black!important;
+    width: 90px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Open Sans;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 13.62px;
+    border-radius: 4px;
+  }
+  .media-swatch {
+    position: relative;
+  }
+    
+  .lb-percentage-saving-badge {
+  position: absolute;
+    top: -10px;
+    background: rgb(216, 171, 99);
+    color: #fff;
+    width: 90px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Open Sans;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 13.62px;
+    border-radius: 4px;
+  }
+
+  </style>
+
+  
+
+  
+
+  <style>
+    /* START ID - 07.03.24 - Swatch selectors on PDP */
+    .variant-picker {
+      display: grid;
+      gap: 12px;
+    }
+
+    .variant-picker__option {
+      border: none;
+    }
+
+    .variant-picker__option-info {
+      font-size: 18px;
+      font-family: 'Bebas Neue', sans-serif;
+      text-transform: uppercase;
+      font-weight: 400;
+      color: #000;
+      margin-bottom: 8px;
+    }
+
+    .variant-picker__option-values {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .variant-picker__option-values.is-loading .media-swatch:nth-of-type(n+9) {
+      display: none;
+    }
+
+    @-webkit-keyframes loading-gradient {
+      0% {
+        background-position: 0 50%
+      }
+      50% {
+        background-position: 100% 50%
+      }
+      100% {
+        background-position: 0 50%
+      }
+    }
+    
+    @keyframes loading-gradient {
+      0% {
+        background-position: 0 50%
+      }
+      50% {
+        background-position: 100% 50%
+      }
+      100% {
+        background-position: 0 50%
+      }
+    }
+
+    .variant-picker__option-values.is-loading .media-swatch:nth-of-type(-n+8) {
+      position: relative;
+    }
+
+    .variant-picker__option-values.is-loading .media-swatch:nth-of-type(-n+8):after {
+      content: '';
+      border-radius: inherit;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background: -webkit-gradient(linear,right top,left top,from(#fff),color-stop(#f5f6f9),color-stop(#e3e9ef),color-stop(#f5f6f9),to(#fff));
+      background: linear-gradient(270deg,#fff,#f5f6f9,#e3e9ef,#f5f6f9,#fff);
+      background-size: 400% 400%;
+      -webkit-animation: loading-gradient 2s ease infinite;
+      animation: loading-gradient 2s ease infinite
+
+    }
+
+    .variant-picker__option-values.mod-wide {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .variant-picker__option-values .media-swatch {
+      min-width: 100%;
+    }
+
+    .block-swatch,
+    .media-swatch {
+      text-align: center;
+      background-color: #fff;
+      border: 1px solid #f2f2f2;
+      padding: 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      max-width: 100%;
+    }
+
+    .media-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    :checked+.block-swatch,
+    .block-swatch.is-selected,
+    :checked+.media-swatch,
+    .media-swatch.is-selected {
+      border-color: #000;
+    }
+
+    .media-swatch--image {
+      height: 42px;
+      width: 42px;
+      object-fit: contain;
+    }
+
+    .media-swatch--label {
+      font-size: 9px;
+      display: block;
+      color: #000;
+    }
+    
+    [product-handle="rasierpinsel-set"] .media-swatch[data-value="Ohne Seife"] {
+      display: none !important;
+    }
+    /* END ID - 07.03.24 - Swatch selectors on PDP */
+  </style>
+{%- endunless -%}

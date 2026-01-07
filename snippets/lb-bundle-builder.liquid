@@ -1,0 +1,867 @@
+<div class="lb-bundle-builder-flyout-container">
+	<div class="lb-bundle-builder-flyout-container-header">
+		Wähle Dein Produkt 
+	    <div class="lb-bundle-builder-flyout-container-closer">X</div>
+	</div>
+ 
+
+
+ <div class="lb-bundle-builder-item-holder-1">
+		{% for product in collections.shampoo-bars.products %}
+      {% if product.variants.size < 1 %}
+        <div id="droppo1{{ product.id }}" class="droppo">
+        	<div id="lb-bb-select-item-1-{{ product.id }}" onclick="bbfso1{{product.id}}()" class="lb-bundle-builder-flyout-select-item-dropwdown">
+        		<img src="{{ product.featured_image | img_url: '50x' }}">
+                <div>
+            		<p>{{ product.title }}</p> 
+                </div>
+			</div> 
+  			
+            {% for variant in product.variants %} 		
+    			<div {% if variant.available %}onclick="bbfs1{{variant.id}}()"{%else%}style="opacity: 0.5;"{%endif%} class="lb-bundle-builder-flyout-select-item lb-bundle-builder-flyout-select-subitem {% if variant.available %}lb-bundle-builder-flyout-select-item-available{%endif%}">
+      				<img src="{{variant.image.src | img_url: '50x'}}">
+                    <p>{{ product.title }} <span>Variante: {{ variant.title }}</span></p>
+                    {% if variant.available %}{%else%}<div class="lb-bundle-builder-flyout-select-item-outofstock-call">Ausverkauft</div>{%endif%}
+  				</div> 	  
+			{%endfor%}
+    	  </div>
+    	{%else%}
+            {% if product.available %}
+        		<div onclick="bbf1{{product.id}}()" id="lb-bb-select-item-1-{{ product.id }}" class="lb-bundle-builder-flyout-select-item lb-bundle-builder-flyout-select-item-available">
+    				<img src="{{ product.featured_image | img_url: 'thumb' }}">
+					<div>
+    					<p>{{ product.title }}</p> 
+                    </div>
+  				</div> 
+            {%else%}
+    		  	<div id="lb-bb-select-item-1-{{ product.id }}" class="lb-bundle-builder-flyout-select-item-outofstock">
+    				<img src="{{ product.featured_image | img_url: 'thumb' }}">
+					<p>{{ product.title }}<span>Ausverkauft</span></p>
+  				</div> 		
+  			{%endif%}
+	   {%endif%}   
+      
+	  <!-- Script für einzelne Produkte -->
+		<script>
+		function bbf1{{product.id}}() {
+			document.getElementById('bundbuilder1valimg').src = "{{ product.featured_image | img_url: 'thumb' }}";
+			document.getElementById('bundbuilder1val').value = "{{product.selected_or_first_available_variant.id}}";
+			document.getElementById('bundlebuilder1name').innerHTML= "{{product.title}}";
+		}
+		</script>
+
+	  	<!-- Script für varianten opener -->
+		<script>
+		function bbfso1{{product.id}}() {
+			var element = document.getElementById("droppo1{{ product.id }}");
+			element.classList.toggle("lb-bundle-builder-flyout-select-item-dropwdown-show");
+		}
+		</script>
+
+	  	<!-- Script für mehrere Varianten -->
+		{% for variant in product.variants %}
+		<script>
+		function bbfs1{{variant.id}}() {
+			document.getElementById('bundbuilder1valimg').src = "{{variant.image.src | img_url: 'thumb'}}";
+			document.getElementById('bundbuilder1val').value = "{{variant.id}}";
+			document.getElementById('bundlebuilder1name').innerHTML= "{{product.title}} |&nbsp;{{variant.title}}";
+		}
+		</script>
+		{%endfor%}    
+
+		{% endfor %}
+	</div> 
+  
+  
+  
+  
+  
+  
+  
+  
+ <div class="lb-bundle-builder-item-holder-2">
+		{% for product in collections.shampoo-bars.products %}
+      {% if product.variants.size < 1 %}
+        <div id="droppo2{{ product.id }}" class="droppo">
+        	<div id="lb-bb-select-item-2-{{ product.id }}" onclick="bbfso2{{product.id}}()" class="lb-bundle-builder-flyout-select-item-dropwdown">
+        		<img src="{{ product.featured_image | img_url: '50x' }}">
+                <div>
+            		<p>{{ product.title }}</p> 
+                </div>
+			</div> 
+  			
+            {% for variant in product.variants %} 		
+    			<div {% if variant.available %}onclick="bbfs2{{variant.id}}()"{%else%}style="opacity: 0.5;"{%endif%} class="lb-bundle-builder-flyout-select-item lb-bundle-builder-flyout-select-subitem {% if variant.available %}lb-bundle-builder-flyout-select-item-available{%endif%}">
+      				<img src="{{variant.image.src | img_url: '50x'}}">
+                    <p>{{ product.title }} <span>Variante: {{ variant.title }}</span></p>
+                    {% if variant.available %}{%else%}<div class="lb-bundle-builder-flyout-select-item-outofstock-call">Ausverkauft</div>{%endif%}
+  				</div> 	  
+			{%endfor%}
+    	  </div>
+    	{%else%}
+            {% if product.available %}
+        		<div onclick="bbf2{{product.id}}()" id="lb-bb-select-item-2-{{ product.id }}" class="lb-bundle-builder-flyout-select-item lb-bundle-builder-flyout-select-item-available">
+    				<img src="{{ product.featured_image | img_url: 'thumb' }}">
+					<div>
+    					<p>{{ product.title }}</p>
+                        {% if product.title contains 'Solingen' %}<br><span style="background: white; padding: 3px 9px; font-size: 12px; display: inline-block; border-radius: 30px;color: #92C540;">Aufpreis +20€</span>{%endif%}
+                    </div>
+  				</div> 
+            {%else%}
+    		  	<div id="lb-bb-select-item-2-{{ product.id }}" class="lb-bundle-builder-flyout-select-item-outofstock">
+    				<img src="{{ product.featured_image | img_url: 'thumb' }}">
+					<p>{{ product.title }}<span>Ausverkauft</span></p>
+  				</div> 		
+  			{%endif%}
+	   {%endif%}	   
+      
+	  <!-- Script für einzelne Produkte -->
+		<script>
+		function bbf2{{product.id}}() {
+			document.getElementById('bundbuilder2valimg').src = "{{ product.featured_image | img_url: 'thumb' }}";
+			document.getElementById('bundbuilder2val').value = "{{product.selected_or_first_available_variant.id}}";
+			document.getElementById('bundlebuilder2name').innerHTML= "{{product.title}}";
+		}
+		</script>
+
+	  	<!-- Script für varianten opener -->
+		<script>
+		function bbfso2{{product.id}}() {
+			var element = document.getElementById("droppo2{{ product.id }}");
+			element.classList.toggle("lb-bundle-builder-flyout-select-item-dropwdown-show");
+		}
+		</script>
+
+	  	<!-- Script für mehrere Varianten -->
+		{% for variant in product.variants %}
+		<script>
+		function bbfs2{{variant.id}}() {
+			document.getElementById('bundbuilder2valimg').src = "{{variant.image.src | img_url: 'thumb'}}";
+			document.getElementById('bundbuilder2val').value = "{{variant.id}}";
+			document.getElementById('bundlebuilder2name').innerHTML= "{{product.title}} |&nbsp;{{variant.title}}";
+		}
+		</script>
+		{%endfor%}    
+
+		{% endfor %}
+	</div> 
+
+
+   <div class="lb-bundle-builder-item-holder-3">
+		{% for product in collections.shampoo-bars.products %}
+      {% if product.variants.size < 1 %}
+        <div id="droppo3{{ product.id }}" class="droppo">
+        	<div id="lb-bb-select-item-3-{{ product.id }}" onclick="bbfso3{{product.id}}()" class="lb-bundle-builder-flyout-select-item-dropwdown">
+        		<img src="{{ product.featured_image | img_url: '50x' }}">
+                <div>
+            		<p>{{ product.title }}</p> 
+                </div>
+			</div> 
+  			
+            {% for variant in product.variants %} 		
+    			<div {% if variant.available %}onclick="bbfs3{{variant.id}}()"{%else%}style="opacity: 0.5;"{%endif%} class="lb-bundle-builder-flyout-select-item lb-bundle-builder-flyout-select-subitem {% if variant.available %}lb-bundle-builder-flyout-select-item-available{%endif%}">
+      				<img src="{{variant.image.src | img_url: '50x'}}">
+                    <p>{{ product.title }} <span>Variante: {{ variant.title }}</span></p>
+                    {% if variant.available %}{%else%}<div class="lb-bundle-builder-flyout-select-item-outofstock-call">Ausverkauft</div>{%endif%}
+  				</div> 	  
+			{%endfor%}
+    	  </div>
+    	{%else%}
+            {% if product.available %}
+        		<div onclick="bbf3{{product.id}}()" id="lb-bb-select-item-3-{{ product.id }}" class="lb-bundle-builder-flyout-select-item lb-bundle-builder-flyout-select-item-available">
+    				<img src="{{ product.featured_image | img_url: 'thumb' }}">
+					<div>
+    					<p>{{ product.title }}</p>
+                        {% if product.title contains 'Solingen' %}<br><span style="background: white; padding: 3px 9px; font-size: 12px; display: inline-block; border-radius: 30px;color: #92C540;">Aufpreis +20€</span>{%endif%}
+                    </div>
+  				</div> 
+            {%else%}
+    		  	<div id="lb-bb-select-item-3-{{ product.id }}" class="lb-bundle-builder-flyout-select-item-outofstock">
+    				<img src="{{ product.featured_image | img_url: 'thumb' }}">
+					<p>{{ product.title }}<span>Ausverkauft</span></p>
+  				</div> 		
+  			{%endif%}
+	   {%endif%}	   
+       
+	  <!-- Script für einzelne Produkte -->
+		<script>
+		function bbf3{{product.id}}() {
+			document.getElementById('bundbuilder3valimg').src = "{{ product.featured_image | img_url: 'thumb' }}";
+			document.getElementById('bundbuilder3val').value = "{{product.selected_or_first_available_variant.id}}";
+			document.getElementById('bundlebuilder3name').innerHTML= "{{product.title}}";
+		}
+		</script>
+
+	  	<!-- Script für varianten opener -->
+		<script>
+		function bbfso3{{product.id}}() {
+			var element = document.getElementById("droppo3{{ product.id }}");
+			element.classList.toggle("lb-bundle-builder-flyout-select-item-dropwdown-show");
+		}
+		</script>
+
+	  	<!-- Script für mehrere Varianten -->
+		{% for variant in product.variants %}
+		<script>
+		function bbfs3{{variant.id}}() {
+			document.getElementById('bundbuilder3valimg').src = "{{variant.image.src | img_url: 'thumb'}}";
+			document.getElementById('bundbuilder3val').value = "{{variant.id}}";
+			document.getElementById('bundlebuilder3name').innerHTML= "{{product.title}} |&nbsp;{{variant.title}}";
+		}
+		</script>
+		{%endfor%}    
+
+		{% endfor %}
+	</div> 
+
+  
+  
+	</div> 
+
+{% if product.title contains 'Shampoo' or product.title contains 'Duschset'%}
+{% endif %}
+
+
+
+  
+{% comment %} 
+{% if product.title contains 'Rasierständer-Set' %}  
+  
+ <div class="lb-bundle-builder-item-holder-1">
+		{% for product in collections.rasierhobel.products %}
+		{% unless product.title contains 'Rasierset' or product.title contains 'Rasierhobel Solingen Stahl - Set' or product.title contains 'Rasierhobel Solingen Walnuss - Set' %}
+			{% if product.variants.size > 1 %}
+	   
+				<div id="droppo1{{ product.id }}" class="droppo">
+					<div id="lb-bb-select-item-1-{{ product.id }}" onclick="bbfso1{{product.id}}()" class="lb-bundle-builder-flyout-select-item-dropwdown">
+						<img src="{{ product.featured_image | img_url: '50x' }}">
+                      	<div>
+							<p>{{ product.title }}</p> 
+                      		
+						  		
+                    		{% if product.title contains 'Solingen' %}<br><span style="background: white; padding: 3px 9px; font-size: 12px; display: inline-block; border-radius: 30px;color: #92C540;">Aufpreis +25€</span>{%endif%}
+                    	
+                      	</div>
+					</div> 
+  			
+					{% for variant in product.variants %} 		
+					<div {% if variant.available %}onclick="bbfs1{{variant.id}}()"{%else%}style="opacity: 0.5;"{%endif%} class="lb-bundle-builder-flyout-select-item lb-bundle-builder-flyout-select-subitem {% if variant.available %}lb-bundle-builder-flyout-select-item-available{%endif%}">
+  						<img src="{{variant.image.src | img_url: '50x'}}">
+                      <p>{{ product.title }} <span>Variante: {{ variant.title }}</span></p>
+                      {% if variant.available %}{%else%}<div class="lb-bundle-builder-flyout-select-item-outofstock-call">Ausverkauft</div>{%endif%}
+  					</div> 	  
+					{%endfor%}
+			</div>
+		
+			{%else%}
+       
+	   			{% if product.available %}
+					<div onclick="bbf1{{product.id}}()" id="lb-bb-select-item-1-{{ product.id }}" class="lb-bundle-builder-flyout-select-item lb-bundle-builder-flyout-select-item-available">
+				  <img src="{{ product.featured_image | img_url: 'thumb' }}">
+							<div>
+						<p>{{ product.title }}</p>
+                          {% if product.title contains 'Solingen' %}<br><span style="background: white; padding: 3px 9px; font-size: 12px; display: inline-block; border-radius: 30px;color: #92C540;">Aufpreis +25€</span>{%endif%}
+                    	
+                      </div>
+  					</div> 
+   
+		  		{%else%}
+		  			<div id="lb-bb-select-item-1-{{ product.id }}" class="lb-bundle-builder-flyout-select-item-outofstock">
+  						<img src="{{ product.featured_image | img_url: 'thumb' }}">
+						<p>{{ product.title }}<span>Ausverkauft</span></p>
+  					</div> 		
+  				{%endif%}
+	   {%endif%}	   
+      
+	  <!-- Script für einzelne Produkte -->
+		<script>
+		function bbf1{{product.id}}() {
+			document.getElementById('bundbuilder1valimg').src = "{{ product.featured_image | img_url: 'thumb' }}";
+			document.getElementById('bundbuilder1val').value = "{{product.selected_or_first_available_variant.id}}";
+			document.getElementById('bundlebuilder1name').innerHTML= "{{product.title}}";
+		}
+		</script>
+
+	  	<!-- Script für varianten opener -->
+		<script>
+		function bbfso1{{product.id}}() {
+			var element = document.getElementById("droppo1{{ product.id }}");
+			element.classList.toggle("lb-bundle-builder-flyout-select-item-dropwdown-show");
+		}
+		</script>
+
+	  	<!-- Script für mehrere Varianten -->
+		{% for variant in product.variants %}
+		<script>
+		function bbfs1{{variant.id}}() {
+			document.getElementById('bundbuilder1valimg').src = "{{variant.image.src | img_url: 'thumb'}}";
+			document.getElementById('bundbuilder1val').value = "{{variant.id}}";
+			document.getElementById('bundlebuilder1name').innerHTML= "{{product.title}} |&nbsp;{{variant.title}}";
+		}
+		</script>
+		{%endfor%}    
+
+         {%endunless%}
+		{% endfor %}
+	</div> 
+  
+  
+  
+  
+  
+  
+  
+  
+ <div class="lb-bundle-builder-item-holder-2">
+		{% for product in collections.seife.products %}
+			{% if product.variants.size > 1 %}
+	   	<div onclick="bbf2{{product.id}}()" id="lb-bb-select-item-2-{{ product.id }}" class="lb-bundle-builder-flyout-select-item lb-bundle-builder-flyout-select-item-available">
+				  <img src="{{ product.featured_image | img_url: 'thumb' }}">
+						<p>{{ product.title }}</p>
+                      
+                 
+                      
+  					</div> 
+		
+			{%else%}
+       
+	   			{% if product.available %}
+					<div onclick="bbf2{{product.id}}()" id="lb-bb-select-item-2-{{ product.id }}" class="lb-bundle-builder-flyout-select-item lb-bundle-builder-flyout-select-item-available">
+				  <img src="{{ product.featured_image | img_url: 'thumb' }}">
+						<p>{{ product.title }}</p>
+                      
+                 
+                      
+  					</div> 
+		  		{%else%}
+		  			<div id="lb-bb-select-item-2-{{ product.id }}" class="lb-bundle-builder-flyout-select-item-outofstock">
+  						<img src="{{ product.featured_image | img_url: 'thumb' }}">
+						<p>{{ product.title }}<span>Ausverkauft</span></p>
+  					</div> 		
+  				{%endif%}
+	   {%endif%}	   
+      
+	  <!-- Script für einzelne Produkte -->
+		<script>
+		function bbf2{{product.id}}() {
+			document.getElementById('bundbuilder2valimg').src = "{{ product.featured_image | img_url: 'thumb' }}";
+			document.getElementById('bundbuilder2val').value = "{{product.selected_or_first_available_variant.id}}";
+			document.getElementById('bundlebuilder2name').innerHTML= "{{product.title}}";
+		}
+		</script>
+
+	  	<!-- Script für varianten opener -->
+		<script>
+		function bbfso2{{product.id}}() {
+			var element = document.getElementById("droppo2{{ product.id }}");
+			element.classList.toggle("lb-bundle-builder-flyout-select-item-dropwdown-show");
+		}
+		</script>
+
+	  	<!-- Script für mehrere Varianten -->
+		{% for variant in product.variants %}
+		<script>
+		function bbfs2{{variant.id}}() {
+			document.getElementById('bundbuilder2valimg').src = "{{variant.image.src | img_url: 'thumb'}}";
+			document.getElementById('bundbuilder2val').value = "{{variant.id}}";
+			document.getElementById('bundlebuilder2name').innerHTML= "{{product.title}} |&nbsp;{{variant.title}}";
+		}
+		</script>
+		{%endfor%}    
+
+		{% endfor %}
+	</div> 
+  
+  
+  
+{% else %}
+    
+  
+  
+  
+ <div class="lb-bundle-builder-item-holder-1">
+		{% for product in collections.rasierer.products %}
+		{% unless product.title contains 'set' %}
+			{% if product.variants.size > 1 %}
+	   
+				<div id="droppo1{{ product.id }}" class="droppo">
+					<div id="lb-bb-select-item-1-{{ product.id }}" onclick="bbfso1{{product.id}}()" class="lb-bundle-builder-flyout-select-item-dropwdown">
+						<img src="{{ product.featured_image | img_url: '50x' }}">
+                      	<div>
+							<p>{{ product.title }}</p> 
+                      		
+						  		{% if product.title contains 'Holz' %}<br><span style="background: white; padding: 3px 9px; font-size: 12px; display: inline-block; border-radius: 30px;color: #92C540;">Aufpreis +10€</span>{%endif%}
+                    		{% if product.title contains 'Solingen' %}<br><span style="background: white; padding: 3px 9px; font-size: 12px; display: inline-block; border-radius: 30px;color: #92C540;">Aufpreis +25€</span>{%endif%}
+                    	
+                      	</div>
+					</div> 
+  			
+					{% for variant in product.variants %} 		
+					<div {% if variant.available %}onclick="bbfs1{{variant.id}}()"{%else%}style="opacity: 0.5;"{%endif%} class="lb-bundle-builder-flyout-select-item lb-bundle-builder-flyout-select-subitem {% if variant.available %}lb-bundle-builder-flyout-select-item-available{%endif%}">
+  						<img src="{{variant.image.src | img_url: '50x'}}">
+                      <p>{{ product.title }} <span>Variante: {{ variant.title }}</span></p>
+                      {% if variant.available %}{%else%}<div class="lb-bundle-builder-flyout-select-item-outofstock-call">Ausverkauft</div>{%endif%}
+  					</div> 	  
+					{%endfor%}
+			</div>
+		
+			{%else%}
+       
+	   			{% if product.available %}
+					<div onclick="bbf1{{product.id}}()" id="lb-bb-select-item-1-{{ product.id }}" class="lb-bundle-builder-flyout-select-item lb-bundle-builder-flyout-select-item-available">
+				  <img src="{{ product.featured_image | img_url: 'thumb' }}">
+						<div>
+						<p>{{ product.title }}</p>
+                          {% if product.title contains 'Solingen' %}<br><span style="background: white; padding: 3px 9px; font-size: 12px; display: inline-block; border-radius: 30px;color: #92C540;">Aufpreis +25€</span>{%endif%}
+                    	
+                      </div>
+  					</div> 
+		  		{%else%}
+		  			<div id="lb-bb-select-item-1-{{ product.id }}" class="lb-bundle-builder-flyout-select-item-outofstock">
+  						<img src="{{ product.featured_image | img_url: 'thumb' }}">
+						<p>{{ product.title }}<span>Ausverkauft</span></p>
+  					</div> 		
+  				{%endif%}
+	   {%endif%}	   
+      
+	  <!-- Script für einzelne Produkte -->
+		<script>
+		function bbf1{{product.id}}() {
+			document.getElementById('bundbuilder1valimg').src = "{{ product.featured_image | img_url: 'thumb' }}";
+			document.getElementById('bundbuilder1val').value = "{{product.selected_or_first_available_variant.id}}";
+			document.getElementById('bundlebuilder1name').innerHTML= "{{product.title}}";
+		}
+		</script>
+
+	  	<!-- Script für varianten opener -->
+		<script>
+		function bbfso1{{product.id}}() {
+			var element = document.getElementById("droppo1{{ product.id }}");
+			element.classList.toggle("lb-bundle-builder-flyout-select-item-dropwdown-show");
+		}
+		</script>
+
+	  	<!-- Script für mehrere Varianten -->
+		{% for variant in product.variants %}
+		<script>
+		function bbfs1{{variant.id}}() {
+			document.getElementById('bundbuilder1valimg').src = "{{variant.image.src | img_url: 'thumb'}}";
+			document.getElementById('bundbuilder1val').value = "{{variant.id}}";
+			document.getElementById('bundlebuilder1name').innerHTML= "{{product.title}} |&nbsp;{{variant.title}}";
+		}
+		</script>
+		{%endfor%}    
+
+         {%endunless%}
+		{% endfor %}
+	</div> 
+  
+  
+  
+  
+  
+  
+  
+  
+ <div class="lb-bundle-builder-item-holder-2">
+		{% for product in collections.seife.products %}
+			{% if product.variants.size > 1 %}
+	      	<div onclick="bbf2{{product.id}}()" id="lb-bb-select-item-2-{{ product.id }}" class="lb-bundle-builder-flyout-select-item lb-bundle-builder-flyout-select-item-available">
+				  <img src="{{ product.featured_image | img_url: 'thumb' }}">
+						<p>{{ product.title }}</p>
+                      
+                 
+                      
+  					</div> 
+			{%else%}
+       
+	   			{% if product.available %}
+					<div onclick="bbf2{{product.id}}()" id="lb-bb-select-item-2-{{ product.id }}" class="lb-bundle-builder-flyout-select-item lb-bundle-builder-flyout-select-item-available">
+				  <img src="{{ product.featured_image | img_url: 'thumb' }}">
+						<p>{{ product.title }}</p>
+  					</div> 
+		  		{%else%}
+		  			<div id="lb-bb-select-item-2-{{ product.id }}" class="lb-bundle-builder-flyout-select-item-outofstock">
+  						<img src="{{ product.featured_image | img_url: 'thumb' }}">
+						<p>{{ product.title }}<span>Ausverkauft</span></p>
+  					</div> 		
+  				{%endif%}
+	   {%endif%}	   
+      
+	  <!-- Script für einzelne Produkte -->
+		<script>
+		function bbf2{{product.id}}() {
+			document.getElementById('bundbuilder2valimg').src = "{{ product.featured_image | img_url: 'thumb' }}";
+			document.getElementById('bundbuilder2val').value = "{{product.selected_or_first_available_variant.id}}";
+			document.getElementById('bundlebuilder2name').innerHTML= "{{product.title}}";
+		}
+		</script>
+
+	  	<!-- Script für varianten opener -->
+		<script>
+		function bbfso2{{product.id}}() {
+			var element = document.getElementById("droppo2{{ product.id }}");
+			element.classList.toggle("lb-bundle-builder-flyout-select-item-dropwdown-show");
+		}
+		</script>
+
+	  	<!-- Script für mehrere Varianten -->
+		{% for variant in product.variants %}
+		<script>
+		function bbfs2{{variant.id}}() {
+			document.getElementById('bundbuilder2valimg').src = "{{variant.image.src | img_url: 'thumb'}}";
+			document.getElementById('bundbuilder2val').value = "{{variant.id}}";
+			document.getElementById('bundlebuilder2name').innerHTML= "{{product.title}} |&nbsp;{{variant.title}}";
+		}
+		</script>
+		{%endfor%}    
+
+		{% endfor %}
+	</div> 
+  
+  
+  
+{% endif %}  
+ {% endcomment %}  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+
+
+
+<style>
+  
+  .lb-bundle-builder-flyout-container {
+	background: white;
+	padding: 18px;
+position: fixed;
+	height: 100%;
+	width: 90%;
+	max-width: 400px;
+	right: -400px;
+	top: 0px;
+	border-radius: 6px 0px 0px 6px;
+	z-index: 2147483647;
+	overflow: scroll;
+	transition: all 0.3s;
+  }
+  
+  .lb-bundle-builder-flyout-container-open {
+	right: 0px;
+	z-index: 2147483647;
+	box-shadow: 0px 0px 100px rgba(0,0,0,0.2);
+  }
+  
+  .lb-bundle-builder-flyout-container-header {
+	margin-bottom: 9px;
+  }
+  
+  .lb-bundle-builder-flyout-container-closer {
+	float: right;
+  }
+ 
+  
+  
+  
+  .lb-bundle-builder-flyout-select-item {
+	padding: 9px 18px;
+	border-radius: 6px;
+	margin-bottom: 9px;
+	background: #f2f2f2;
+	border: 1px solid #f2f2f2;
+	transition: all 0.3s;
+	overflow: hidden;
+	display: flex;
+	cursor: pointer;
+  	position: relative;
+	align-items: center;
+  }
+  
+  .lb-bundle-builder-flyout-select-item-outofstock-call {
+  	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: black;
+    background: rgba(255,255,255,0.6);
+    padding: 9px 18px;
+    font-size: 14px;
+  }
+  
+  .lb-bundle-builder-flyout-select-subitem {
+	margin-left: 18px;
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+  }
+  
+  .lb-bundle-builder-flyout-select-item-dropwdown-show .lb-bundle-builder-flyout-select-subitem {
+	height: auto!important;
+	display: block!important;
+  }
+  
+  .droppo .lb-bundle-builder-flyout-select-subitem {
+		display: none;
+  }
+  
+  .lb-bundle-builder-flyout-select-item-dropwdown {
+	padding: 9px 18px;
+	display: flex;
+	align-items: center;
+	border-radius: 6px;
+	margin-bottom: 9px;
+	background: #f2f2f2;
+	border: 1px solid #f2f2f2;
+	transition: all 0.3s;
+	overflow: hidden;
+	background-image: url(https://uploads-ssl.webflow.com/5aff3725b0b77a82cd43b02d/5e222be62f4ae1105af3b094_arrow-down.png);
+	background-repeat: no-repeat;
+	background-size: 16px;
+	background-position: center right 18px;
+	cursor: pointer;
+  }
+  
+  .lb-bundle-builder-flyout-select-item-outofstock {
+	padding: 9px 18px;
+	border-radius: 6px;
+	margin-bottom: 9px;
+	display: block;
+	background: #f2f2f2;
+	border: 1px solid #f2f2f2;
+	transition: all 0.3s;
+	opacity: 0.5;
+	overflow: hidden;
+  }
+  
+  .lb-bundle-builder-flyout-select-item img, .lb-bundle-builder-flyout-select-item-outofstock img, .lb-bundle-builder-flyout-select-item-dropwdown img {
+	border-radius: 6px;
+	float: left;
+	width: 52px;
+	height: 52px;
+	margin-right: 9px;
+  }
+
+  .lb-bundle-builder-flyout-select-item p, .lb-bundle-builder-flyout-select-item-outofstock p, .lb-bundle-builder-flyout-select-item-dropwdown p {
+	color: black;
+	display: inline-block;
+	font-size: 14px;
+  }
+  
+  .lb-bundle-builder-flyout-select-item span, .lb-bundle-builder-flyout-select-item-outofstock span, .lb-bundle-builder-flyout-select-item-dropwdown span {
+	color: grey;
+	display: block;
+	font-size: 14px;
+  }
+  
+  .lb-bundle-builder-flyout-select-item:hover {
+	border: 1px solid black;
+	cursor: pointer;
+  }
+  
+
+  
+  
+  
+  .lb-bundle-builder-item-holder-1, .lb-bundle-builder-item-holder-2, .lb-bundle-builder-item-holder-3, .lb-bundle-builder-item-holder-4 {
+	display: none;
+  }
+  
+  .lb-bundle-builder-item-holder-show {
+	display: block;
+  }
+
+</style>
+
+
+
+
+
+
+
+<div class="lb-bundle-builder-blur-bg"></div>
+
+<style>
+
+  .lb-bundle-builder-blur-bg {
+	background: rgba(0,0,0,0.3);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	display: none;
+	z-index: 2147483646;
+  -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+  }
+  
+  .lb-bundle-builder-blur-bg-open {
+	display: block;
+  }
+  
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% comment %}
+
+<script>
+window.addEventListener("load",()=&gt;{$(".js-addBundleProducts").on("click",t=&gt;{t.preventDefault(),$.ajax({type:"POST",url:"/cart/add.js",data:{items:Object.values([...document.querySelectorAll(".js-bundleProductId")].reduce((t,e)=&gt;{const a=e.value;return t[a]?t[a].quantity?t[a].quantity+=1:t[a].quantity=1:(t[a]={},t[a].quantity=1,t[a].id=a),t},{}))},success:e=&gt;{$(t.currentTarget).hasClass("js-cartUpdate")&amp;&amp;window._updateCart()},dataType:"JSON"})})});
+</script>
+
+
+
+<script>
+$('.lb-bundle-builder-atc').on('click',function(e){
+	e.preventDefault();
+	$.ajax({
+		type: "POST",
+		url: '/cart/add.js',
+		data: {  
+items: [
+  {
+   id: 32082157502596,
+   quantity: 2
+  },
+    {
+   id: 32082157469828,
+   quantity: 2
+  }
+]
+        },
+      	dataType: 'JSON',
+        success: function(responce){
+             _updateCart(); 
+          },
+	})
+});
+</script>
+
+
+
+
+
+<script>
+$(document).ready(function test(){
+ var str = $("#bundbuilder1val").val();
+        alert(str);
+  });
+</script>
+
+  
+  
+
+<script>
+window.addEventListener('load',() =&gt; {
+	$('.js-addBundleProducts').on('click', (e) =&gt; {
+		e.preventDefault();
+		$.ajax({
+			type: "POST",
+			url: '/cart/add.js',
+			data: {
+				items: Object.values([...document.querySelectorAll('.js-bundleProductId')].reduce((acc, item) =&gt; {
+					const id = item.value;
+					if (acc[id]) {
+						if (acc[id].quantity) {
+							acc[id].quantity += 1
+						} else {
+							acc[id].quantity = 1
+						}
+					} else {
+						acc[id] = {}
+						acc[id].quantity = 1
+						acc[id].id = id
+					}
+
+					return acc
+				}, {}))
+			},
+			success: (resp) =&gt; {
+				if($(e.currentTarget).hasClass('js-cartUpdate')) {
+					window._updateCart()
+				}
+			},
+			dataType: 'JSON'
+		});
+	})
+  })
+</script>
+
+
+
+{% endcomment %}
+
+  
+
+
+<script>
+
+$(".lb-bundle-builder-select-item-1, .lb-bundle-builder-select-item-2, .lb-bundle-builder-select-item-3, .lb-bundle-builder-select-item-4").click( function myFunction1() {
+$(".lb-bundle-builder-flyout-container").addClass("lb-bundle-builder-flyout-container-open");
+  $(".lb-bundle-builder-blur-bg").addClass("lb-bundle-builder-blur-bg-open");
+});
+  
+$(".lb-bundle-builder-blur-bg, .lb-bundle-builder-flyout-select-item, .lb-bundle-builder-flyout-container-closer").click( function myFunction2() {
+$(".lb-bundle-builder-flyout-container").removeClass("lb-bundle-builder-flyout-container-open");
+  $(".lb-bundle-builder-blur-bg").removeClass("lb-bundle-builder-blur-bg-open");
+});
+  
+  $(".lb-bundle-builder-select-item-1").click( function myFunction3() {
+$(".lb-bundle-builder-item-holder-1").addClass("lb-bundle-builder-item-holder-show");
+$(".lb-bundle-builder-item-holder-2").removeClass("lb-bundle-builder-item-holder-show");
+$(".lb-bundle-builder-item-holder-3").removeClass("lb-bundle-builder-item-holder-show");
+$(".lb-bundle-builder-item-holder-4").removeClass("lb-bundle-builder-item-holder-show");
+});
+  
+  $(".lb-bundle-builder-select-item-2").click( function myFunction4() {
+$(".lb-bundle-builder-item-holder-2").addClass("lb-bundle-builder-item-holder-show");
+$(".lb-bundle-builder-item-holder-1").removeClass("lb-bundle-builder-item-holder-show");
+$(".lb-bundle-builder-item-holder-3").removeClass("lb-bundle-builder-item-holder-show");
+$(".lb-bundle-builder-item-holder-4").removeClass("lb-bundle-builder-item-holder-show");
+});
+  
+  $(".lb-bundle-builder-select-item-3").click( function myFunction5() {
+$(".lb-bundle-builder-item-holder-3").addClass("lb-bundle-builder-item-holder-show");
+$(".lb-bundle-builder-item-holder-1").removeClass("lb-bundle-builder-item-holder-show");
+$(".lb-bundle-builder-item-holder-2").removeClass("lb-bundle-builder-item-holder-show");
+$(".lb-bundle-builder-item-holder-4").removeClass("lb-bundle-builder-item-holder-show");
+});
+  
+$(".lb-bundle-builder-select-item-4").click( function myFunction6() {
+$(".lb-bundle-builder-item-holder-4").addClass("lb-bundle-builder-item-holder-show");
+$(".lb-bundle-builder-item-holder-1").removeClass("lb-bundle-builder-item-holder-show");
+$(".lb-bundle-builder-item-holder-2").removeClass("lb-bundle-builder-item-holder-show");
+$(".lb-bundle-builder-item-holder-3").removeClass("lb-bundle-builder-item-holder-show");
+});
+
+</script>
+
+  

@@ -1,0 +1,52 @@
+<script>
+   if(Shopify.Checkout.step == "shipping_method"){
+       
+        const edSmallBadge = document.createElement("span");
+        edSmallBadge.className = 'ed-delivery-badge-container';
+        edSmallBadge.innerHTML = "<img src='https://cdn.shopify.com/s/files/1/0317/7116/4804/files/dhl-gogreen.svg?v=1679582570' alt='dhl'>";
+
+        const edBigBadge = document.createElement("span");
+        edBigBadge.className = 'ed-delivery-badge-container';
+        edBigBadge.innerHTML = "<img src='https://cdn.shopify.com/s/files/1/0317/7116/4804/files/dhl-gogreen.svg?v=1679582570' alt='dhl'>";
+
+     <!-- ERSTE ZEILE -->
+     let edStandardDelivery = document.querySelector('.radio__label__primary[data-shipping-method-label-title="DHL - Standard"]'); 
+     if (edStandardDelivery) {
+         edStandardDelivery.innerText = 'DHL Paket (Klimaneutral)'
+         edStandardDelivery.appendChild(edSmallBadge);
+     }
+     
+
+     <!-- ZWEITE ZEILE --> 
+      let edExpressDelivery = document.querySelector('.radio__label__primary[data-shipping-method-label-title="Express"]');
+
+     if (edExpressDelivery) {
+        edExpressDelivery.innerText = 'DHL Express (Klimaneutral)';  
+     {% comment %} edExpressDelivery.appendChild(edBigBadge) {% endcomment %}
+     }
+   }
+</script>
+
+<style>
+
+  .radio-wrapper[data-shipping-method] label.radio__label {
+  display : flex;
+}
+
+.radio-wrapper[data-shipping-method] label .radio__label__primary {
+  width : unset;
+  margin-right : auto;
+}
+
+.radio-wrapper[data-shipping-method] .radio__input {
+  width : 20px;
+}
+
+.ed-delivery-badge-container {
+  margin-top: 5px;
+  display : flex;
+  align-items : flex-start;
+}
+
+  
+</style>

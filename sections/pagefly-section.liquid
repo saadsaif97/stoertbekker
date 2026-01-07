@@ -1,0 +1,142 @@
+
+{% if section.settings.section_id.size > 0 %}
+  <!-- PageFlyGlobalSection -->
+  {% render 'pagefly-main-js' %}
+  {% render 'pagefly-main-css' %}
+  {% include section.settings.section_id %}
+{% else %}
+  
+    {% if request.design_mode %}
+      <style>.pf-ph{font-size:14px!important;background:#fafafa;padding:20px;text-align:center;border:1px solid #f0f0f0;border-radius:4px;margin:15px}.pf-ph span{display:block;background:#e6f7ff;padding:8px 15px;border:1px solid #91d5ff}</style>
+      <div class="pf-ph">
+        <h3>PageFly Section</h3>
+        <span>No section selected. Please select your section from the list</span>
+      </div>
+    {% endif %}
+  
+{% endif %}
+
+{% schema %}
+{
+  "name": "PageFly Section",
+  "settings": [
+    {
+      "id": "section_id",
+      "type": "select",
+      "label": "Sections",
+      "options": [
+        {
+          "label": "Select section",
+          "value": ""
+        },
+        {
+          "label": "Home Brandlinks",
+          "value": "pf-cf3881bf"
+        },
+        {
+          "label": "Reviews",
+          "value": "pf-da983c77"
+        },
+        {
+          "label": "Team",
+          "value": "pf-17513beb"
+        },
+        {
+          "label": "PDP Benefits",
+          "value": "pf-c9a77226"
+        },
+        {
+          "label": "Benefits - Homepage",
+          "value": "pf-ffcfd0d5"
+        },
+        {
+          "label": "Reihe mit Icons",
+          "value": "pf-ded671c1"
+        },
+        {
+          "label": "FAQs",
+          "value": "pf-c5e45044"
+        },
+        {
+          "label": "Duftnoten",
+          "value": "pf-08f4ce1c"
+        },
+        {
+          "label": "Home Collection",
+          "value": "pf-9fc05662"
+        },
+        {
+          "label": "Martin Zitat",
+          "value": "pf-fc677977"
+        },
+        {
+          "label": "Steps",
+          "value": "pf-ba757baf"
+        },
+        {
+          "label": "Header",
+          "value": "pf-414b9250"
+        },
+        {
+          "label": "Press",
+          "value": "pf-b975e0fd"
+        },
+        {
+          "label": "vor and after",
+          "value": "pf-fb826fcc"
+        },
+        {
+          "label": "filter",
+          "value": "pf-cf2dd122"
+        },
+        {
+          "label": "reviews",
+          "value": "pf-d54f08cd"
+        },
+        {
+          "label": "Bundle A/B Test Section",
+          "value": "pf-d9ef4771"
+        },
+        {
+          "label": "filter",
+          "value": "pf-e8944102"
+        },
+        {
+          "label": "collection",
+          "value": "pf-6190028a"
+        },
+        {
+          "label": "more options",
+          "value": "pf-9d09dff9"
+        },
+        {
+          "label": "Tabbox",
+          "value": "pf-19b4b717"
+        },
+        {
+          "label": "PDP Description",
+          "value": "pf-d4ead2c2"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "content": "Find and edit your section on the [section listing](https://stoertebekker.myshopify.com/admin/apps/pagefly/sections)"
+    },
+    {
+      "type": "paragraph",
+      "content": "To add block to a section, please use the App Block element on PageFly section editor."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "PageFly Section"
+    }
+  ]
+}
+{% endschema %}

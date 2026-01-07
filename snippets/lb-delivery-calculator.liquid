@@ -1,0 +1,47 @@
+<div id="lieferdatum" style="color: #008000; margin: 9px 0px;"></div>
+
+        
+<style>
+#lieferdatum {
+  display: none;
+}
+</style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function () {
+  function getLieferdatum() {
+    const WOCHENTAGE = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+    const MONATE = ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli',
+                    'August', 'September', 'Oktober', 'November', 'Dezember'];
+
+    let heute = new Date();
+    let tageDazu = 2;
+    let zielDatum = new Date(heute);
+
+    // Zwei Werktage (Mo–Fr) draufrechnen, Wochenenden überspringen
+    let hinzugefuegteTage = 0;
+    while (hinzugefuegteTage < tageDazu) {
+      zielDatum.setDate(zielDatum.getDate() + 1);
+      if (zielDatum.getDay() !== 0 && zielDatum.getDay() !== 6) { // Nicht Sonntag (0) und nicht Samstag (6)
+        hinzugefuegteTage++;
+      }
+    }
+
+    // Falls das Ziel-Datum trotzdem auf Samstag oder Sonntag fällt
+    while (zielDatum.getDay() === 0 || zielDatum.getDay() === 6) {
+      zielDatum.setDate(zielDatum.getDate() + 1);
+    }
+
+    let wochentag = WOCHENTAGE[zielDatum.getDay()];
+    let tag = zielDatum.getDate();
+    let monat = MONATE[zielDatum.getMonth()];
+
+    $('#lieferdatum').html(`• In 1-2 Tagen, am <b>${wochentag}, ${tag}. ${monat}</b> bei Dir`);
+  }
+
+  getLieferdatum();
+});
+</script>
+
+

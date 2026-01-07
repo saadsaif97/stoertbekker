@@ -1,0 +1,161 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "lb_collection_header_wA3rqd": {
+      "type": "lb-collection-header",
+      "disabled": true,
+      "settings": {
+        "customhtml": ""
+      }
+    },
+    "men_days_collection_NaUTXL": {
+      "type": "men-days-collection",
+      "blocks": {
+        "categories_jJLBdn": {
+          "type": "categories",
+          "settings": {
+            "rabatttext": "Alle",
+            "selected_collection": "alle-produkte"
+          }
+        },
+        "categories_pB64qc": {
+          "type": "categories",
+          "settings": {
+            "rabatttext": "Körper & Haar",
+            "selected_collection": "koerper-haar"
+          }
+        },
+        "categories_NFUU7N": {
+          "type": "categories",
+          "settings": {
+            "rabatttext": "Rasierer",
+            "selected_collection": "alle-rasierer"
+          }
+        },
+        "categories_EXjxBy": {
+          "type": "categories",
+          "settings": {
+            "rabatttext": "Sets",
+            "selected_collection": "sets"
+          }
+        },
+        "categories_bHYRBD": {
+          "type": "categories",
+          "settings": {
+            "rabatttext": "Neuheiten",
+            "selected_collection": "neuheiten"
+          }
+        },
+        "categories_kXr7Cd": {
+          "type": "categories",
+          "settings": {
+            "rabatttext": "Bart",
+            "selected_collection": "bart"
+          }
+        },
+        "categories_kVMpKN": {
+          "type": "categories",
+          "settings": {
+            "rabatttext": "Pflege",
+            "selected_collection": "geschenke-pflegeprodukte"
+          }
+        },
+        "categories_t3h6KW": {
+          "type": "categories",
+          "settings": {
+            "rabatttext": "Zubehör",
+            "selected_collection": "geschenke-zubehor"
+          }
+        },
+        "filter_dixXMN": {
+          "type": "filter",
+          "settings": {
+            "tagfiltername": "-30%",
+            "tagfilter": "mendays30"
+          }
+        },
+        "filter_zPYyGg": {
+          "type": "filter",
+          "settings": {
+            "tagfiltername": "-20%",
+            "tagfilter": "mendays20"
+          }
+        },
+        "filter_MyiRcm": {
+          "type": "filter",
+          "settings": {
+            "tagfiltername": "-10%",
+            "tagfilter": "mendays10"
+          }
+        }
+      },
+      "block_order": [
+        "categories_jJLBdn",
+        "categories_pB64qc",
+        "categories_NFUU7N",
+        "categories_EXjxBy",
+        "categories_bHYRBD",
+        "categories_kXr7Cd",
+        "categories_kVMpKN",
+        "categories_t3h6KW",
+        "filter_dixXMN",
+        "filter_zPYyGg",
+        "filter_MyiRcm"
+      ],
+      "settings": {
+        "bannertext": "MEN DAYS | BIS ZU -30%",
+        "bannerbg": "#2c709d",
+        "bannerfontcolor": "#ffffff",
+        "bannerfont": "sans-serif",
+        "customfont": "Bebas",
+        "introdate": "",
+        "introheadline": "MEN DAYS",
+        "headlinelogo": "shopify://shop_images/Bildschirmfoto_2024-10-29_um_15.28.21.png",
+        "introparagraph": "Spare bis zu -30% auf alle Produkte",
+        "plannable-date-day": "06",
+        "plannable-date-month": "11",
+        "plannable-date-year": "2024",
+        "plannable-date-time": "23:59:59",
+        "introbackground": "#f2f2f2",
+        "bannerbackgroundimage": "shopify://shop_images/Bildschirmfoto_2024-10-24_um_14.50.34.png",
+        "introtextcolor": "#2c709d",
+        "collectionbackground": "#f2f2f2",
+        "collectionbackgroundimage": "shopify://shop_images/Bildschirmfoto_2024-10-24_um_14.50.34.png",
+        "collectiontextcolor": "#2c709d",
+        "filtertext": "Entdecke unsere Black Friday Deals",
+        "filtercolor": "#2c709d",
+        "filterborder": "#2c709d",
+        "filtercoloractive": "#ffffff",
+        "filterborderactive": "#2c709d",
+        "collectionproductitembackground": "#ffffff",
+        "productitemborderradius": "#f2f2f2",
+        "productitemcolor": "#000000",
+        "productitempricecolor": "#000000",
+        "productitempricesalecolor": "#e12323",
+        "product-item-save-bg-color": "#d8ac63",
+        "product-item-save-font-color": "#ffffff",
+        "product-item-customcode": "<div class=\"ruk_rating_snippet\" style=\"margin-bottom:4px;margin-top: 4px; text-align: center;\" data-sku=\"{{ product.handle }};{{ product.variants | map: 'sku' | join: ';' }};{{ product.variants | map: 'id' | join: ';' }}\"></div>",
+        "productitembadgecolor": "#ffffff",
+        "productitembadgebg": "#2c709d",
+        "endsectionheadline": "Viel Spaß mit Deinen Produkten!",
+        "endsectionparagraph": "Dein Team von Störtebekker",
+        "endsectionimage": "shopify://shop_images/stortebekker_team.webp",
+        "endsectionbackgroundcolor": "#f2f2f2",
+        "endsectioncolor": "#2c709d",
+        "endsectionbackgroundimage": "shopify://shop_images/Bildschirmfoto_2024-10-24_um_14.50.34.png"
+      }
+    }
+  },
+  "order": [
+    "lb_collection_header_wA3rqd",
+    "men_days_collection_NaUTXL"
+  ]
+}

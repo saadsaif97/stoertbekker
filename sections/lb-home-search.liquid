@@ -1,0 +1,133 @@
+<div class="lb-home-search-section lb-home-search-section-old">
+  <div class="lb-home-search-section-holder">
+    <form action="{% if routes.root_url != '/' %}{{ shop.url }}{{ routes.root_url }}{% endif %}/search" method="get" class="search-form" role="search">
+      <input type="text" name="q" class="lb-home-search-input" placeholder="{% if canonical_url contains '.com/en' %}What are you looking for?...{% else %}Wonach suchst Du?...{% endif %}" aria-label="Search" value="{{ search.terms | escape }}" required>
+      <button type="submit" class="lb-home-search-button">
+       <svg width="400px" height="400px" viewBox="0 0 400 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>search copy</title>
+    <g id="search-copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(-28.6391, -27.8641)" fill-rule="nonzero" stroke="#000000" stroke-width="30">
+            <path d="M192.257726,319.785647 C221.559556,367.483555 261.676783,391.332508 312.609406,391.332508 C389.008341,391.332508 450.941915,329.398935 450.941915,253 C450.941915,176.601065 389.008341,114.667492 312.609406,114.667492 C236.210471,114.667492 174.276898,176.601065 174.276898,253 L52.6801549,268.044108 C33.5546091,270.806205 24.6515739,278.668051 25.9710495,291.629644 C27.2905251,304.591237 36.0214207,310.336595 52.1637362,308.865719 L150.103857,297.117569" id="Oval" transform="translate(238.3926, 253) rotate(-127) translate(-238.3926, -253)"></path>
+        </g>
+    </g>
+</svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+
+<style>
+
+  @media only screen and (min-width: 600px) {
+
+.lb-home-search-section {
+display: none!important;
+} 
+  }
+
+.lb-home-search-section { 
+  padding: 9px 9px;
+}  
+
+.lb-home-search-section-holder {
+  max-width: 800px;
+  margin: auto;
+  position: relative;
+}  
+
+.lb-home-search-input {
+   width: 100%;
+  display: block;
+  border-radius: 50px;
+  background: #f2f2f2;
+  border: none;
+  padding: 0px 18px;
+  line-height: 40px;
+}
+
+.lb-home-search-input:focus {
+   border: none!important;
+outline: none;
+  box-shadow: none;
+}
+
+.lb-home-search-button {
+  position: absolute;
+  right: 18px;
+  top: 14px;
+  background: none;
+  border: none;
+    font-size: 16px;
+}
+
+.lb-home-search-button svg {
+  width: 20px;
+  height: 20px;
+}
+  
+
+@media only screen and (max-width: 600px) {
+
+    .lb-imageonly-homebanner-mobile {
+    display: block!important;
+  }
+  
+  .lb-imageonly-homebanner-desktop {
+    display: none!important;
+  }
+}
+  
+
+  
+</style>
+
+
+
+{% schema %}
+{
+  "name": {
+    "en": "Lb Home Search"
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Einstellungen"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop-image",
+      "label": "Desktop Bild",
+      "info": "Wähle den Hintergrund der Section"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile-image",
+      "label": "Mobile Bild",
+      "info": "Wähle den Hintergrund der Section"
+    },
+    {
+      "type": "text",
+      "id": "link-url",
+      "label": "Link URL", 
+      "info": "Wähle den Hintergrund der Section"
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Placeholder", 
+      "default": "Wonach suchst Du?..."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lb Home Search",
+      "blocks": [
+
+      ]
+    }
+  ]
+}
+
+
+{% endschema %}

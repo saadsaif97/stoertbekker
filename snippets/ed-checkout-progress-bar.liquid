@@ -1,0 +1,233 @@
+<div class="progress-checkout-container-variant ed-ab-sb-4">
+    <ul id="ed-breadcrumbs" class="bc">
+        <a href="/cart">
+            <li id="step_cart" class="bc_item bc_complete">Dein Produkt ausgewählt</li>
+        </a>
+        <a href="/cart/checkout?step=contact_information">
+            <li id="step_info" class="bc_item bc_uncompleted step_info">Kontaktdaten<br>angeben</li>
+        </a>
+        <a href="/cart/checkout?step=shipping_method">
+            <li id="step_shipping" class="bc_item bc_uncompleted step_shipping">Versandart<br>wählen</li>
+        </a>
+        <a href="/cart/checkout?step=payment_method">
+            <li id="step_payment" class="bc_item bc_uncompleted step_payment">Bestellung<br>aufgeben</li>
+        </a>
+          <a>
+            <li id="step_end" class="bc_item bc_uncompleted step_end">Paket auf dem<br>Weg zu dir</li>
+        </a>
+    </ul>
+</div>
+
+<script>
+
+    const edBreadcrumbs = document.getElementById("ed-breadcrumbs");
+    const step_info = document.getElementById("step_info");
+    const step_shipping = document.getElementById("step_shipping");
+    const step_payment = document.getElementById("step_payment");
+    const step_confirmation = document.getElementById("step_end");
+
+    if (Shopify.Checkout.step == "contact_information") {
+       edBreadcrumbs.style.setProperty('--progess-width', '30%');
+        step_info.classList.add("current_step");
+    }
+      
+    else if (Shopify.Checkout.step == "shipping_method") {
+        step_shipping.classList.add("current_step");
+        edBreadcrumbs.style.setProperty('--progess-width', '50%');
+        step_info.classList.remove("bc_uncompleted");
+        step_info.classList.add("bc_complete");
+    }
+
+    else if (Shopify.Checkout.step == "payment_method") {
+        step_payment.classList.add("current_step");
+        edBreadcrumbs.style.setProperty('--progess-width', '90%');
+        step_info.classList.add("bc_complete");
+        step_info.classList.remove("bc_uncompleted");
+        step_shipping.classList.add("bc_complete");
+        step_shipping.classList.remove("bc_uncompleted");
+    }
+
+
+    else if (window.location.href.indexOf("orders") > -1) {
+        edBreadcrumbs.style.setProperty('--progess-width', '100%');
+        step_info.classList.add("bc_complete");
+        step_info.classList.remove("bc_uncompleted");
+        step_shipping.classList.add("bc_complete");
+        step_shipping.classList.remove("bc_uncompleted");
+        step_payment.classList.add("bc_complete");
+        step_payment.classList.remove("bc_uncompleted");
+        step_confirmation.classList.add("bc_complete");
+        step_confirmation.classList.remove("bc_uncompleted");
+    }
+
+    else if (Shopify.Checkout.step == "thank_you") {
+        edBreadcrumbs.style.setProperty('--progess-width', '100%');
+        step_info.classList.add("bc_complete");
+        step_info.classList.remove("bc_uncompleted");
+        step_shipping.classList.add("bc_complete");
+        step_shipping.classList.remove("bc_uncompleted");
+        step_payment.classList.add("bc_complete");
+        step_payment.classList.remove("bc_uncompleted");
+        step_confirmation.classList.add("bc_complete");
+        step_confirmation.classList.remove("bc_uncompleted");
+    }
+    
+    else {
+      edBreadcrumbs.style.display = "none";
+    }
+
+</script>
+
+<style>
+
+    .progress-checkout-container-variant {
+        margin-top: 10px;
+    }
+
+    .bc {
+        --progess-width: 20%;
+        margin: 0px;
+        padding: 0px;
+        list-style-type: none;
+        width: 100%;
+        max-width: 100%;
+        height: 120px;
+        counter-reset: breadcrumb;
+        position: relative;
+    }
+    .bc:before {
+        position: absolute;
+        top: 23px;
+        left: 0;
+        content: '';
+        width: 100%;
+        height: 1px;
+        background: black;
+        z-index: -2;
+    }
+    .bc:after {
+        position: absolute;
+        top: 23px;
+        left: 0;
+        content: '';
+        width: var(--progess-width);
+        height: 1px;
+        background: #7CC58C;
+        z-index: -1;
+    }
+
+    .bc .bc_item {
+        float: left;
+        padding-top: 44px;
+        width: 20%;
+        text-align: center;
+        position: relative;
+        font-size: 10px;
+        line-height: normal;
+    }
+
+    @media only screen and (min-width: 1000px) {
+        .bc .bc_item {
+            font-size: 11px;
+        }
+    }
+
+    /* BREADCRUMB ON CHECKOUT */
+    .bc .bc_item:after {
+        position: absolute;
+        top: 13px;
+        left: calc(50% - 11px);
+        width: 16px;
+        height: 16px;
+        text-align: center;
+        border-radius: 50%;
+        line-height: 15px;
+        background: #000000;
+        font-size: 11px;
+    }
+    .bc .bc_complete:after {
+        background: #7CC58C;
+        border: 3px solid #7CC58C !important;
+        color: black;
+        line-height: 49px;
+    }
+
+    .bc #step_cart.bc_complete:after {
+        left: calc(50% - 15px);
+        top: 9px;
+        line-height: 33px;
+        content: url('https://cdn.shopify.com/s/files/1/0317/7116/4804/files/razor-icon.svg?v=1675109153');
+        width: 21px;
+        height: 21px;
+    }
+
+    .bc #step_cart.bc_complete {
+        font-weight: 600;
+        color: #7CC58C;
+    }
+
+    .bc #step_info.bc_complete:after {
+        line-height: 19px;
+        content: url('https://cdn.shopify.com/s/files/1/0317/7116/4804/files/ed-checkout-checkmark-icon.svg?v=1675109465');
+    }
+
+    .bc #step_shipping.bc_complete:after {
+        line-height: 19px;
+        content: url('https://cdn.shopify.com/s/files/1/0317/7116/4804/files/ed-checkout-checkmark-icon.svg?v=1675109465');
+    }
+
+    .bc #step_payment.bc_complete:after {
+        line-height: 19px;
+        content: url('https://cdn.shopify.com/s/files/1/0317/7116/4804/files/ed-checkout-checkmark-icon.svg?v=1675109465');
+    }
+
+   .bc #step_end.bc_complete:after {
+        line-height: 19px;
+        content: url('https://cdn.shopify.com/s/files/1/0317/7116/4804/files/ed-checkout-checkmark-icon.svg?v=1675109465');
+    }
+
+
+  .bc #step_cart.bc_complete:after {
+        left: calc(50% - 15px);
+        top: 9px;
+        line-height: 33px;
+        content: url('https://cdn.shopify.com/s/files/1/0317/7116/4804/files/razor-icon.svg?v=1675109153');
+        width: 21px;
+        height: 21px;
+    }
+
+    .bc #step_info.bc_uncompleted:after {
+         content: '2';
+    }
+
+    .bc #step_shipping.bc_uncompleted:after {
+         content: '3';
+    }
+
+    .bc #step_payment.bc_uncompleted:after {
+        content: '4';
+    }
+
+   .bc #step_end.bc_uncompleted:after {
+        content: '5';
+    }
+
+    .bc .bc_uncompleted:after {
+        background: black;
+        border: 3px solid black !important;
+        color: white;
+    }
+
+    .bc .current_step:after {
+        background: #7CC58C;
+        border: 3px solid #7CC58C !important;
+        color: white;
+    }
+
+  .bc .current_step {
+        font-weight: 500;
+        text-decoration: underline;
+        color: #737373;
+    }
+
+</style>
