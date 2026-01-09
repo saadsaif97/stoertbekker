@@ -1245,9 +1245,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
        margin-bottom: 9px!important;
     }
 
-    .lb-accounting-btn {
-      background: #3c3c3b!important;
-    }
 
     .lb-footer__menu-link {
       display: flex;
@@ -1945,51 +1942,42 @@ span.pf-189_ {
  
 
 <script>
-  console.log('Variation script running');
+ console.log('Variation script running');
 
   const variant = 'b';
 
   //LOOP uses delays for everything
   const delay = 301;
 
-  const findAbo = () => {
+ /* const findAbo = () => {
     const targets = Array.from(document.querySelectorAll('div[id*="loop-product-variant-"]'))
-    const target = targets?.find(element => element.style.display === 'block')
-    const label = target?.querySelector('.loop-selling-plan-allocation > .loop-subscription-group');
+    const target = targets.find(element => element.style.display === 'block')
+    const label = target.querySelector('.loop-selling-plan-allocation > .loop-subscription-group');
 
-    console.log("HERE: ", targets)
-    
     //ABO LOOP creates a 300 delay each click, so we calculate them higher
     setTimeout(() => {
-      label?.click()
+      label.click()
     }, (delay * targets.length));
   }
-  
+  */
 
   document.documentElement.addEventListener('variant:change', (e) => {
     if(variant === 'b') {
       setTimeout(() => findAbo(), delay);
     }
   });
-  
 
-  document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(() => findAbo(), delay);
+  ablyftTools.domLoaded(() => {
+    document.body.classList.add('as-st-0047', `as-st-0047-${variant}`);
+  });
+
+  ablyftTools.waitForElement('#loop-selling-plan-fieldset', (e) => {
+    if(variant === 'b') {
+      setTimeout(() => findAbo(), delay);
+    }
   })
-
-
-  if(ablyftTools) {
-    ablyftTools?.domLoaded(() => {
-      document.body.classList.add('as-st-0047', `as-st-0047-${variant}`);
-    });
-
-    ablyftTools?.waitForElement('#loop-selling-plan-fieldset', (e) => {
-      if(variant === 'b') {
-        setTimeout(() => findAbo(), delay);
-      }
-    }) 
-  }
 </script>
+
 
 <style>
   .as-st-0047-a .loop-subscription-container {
@@ -2061,17 +2049,17 @@ span.pf-189_ {
   margin: 12px 0 0 0 !important;
   font-family: "Open Sans", sans-serif;
   font-weight: 600 !important;
-  font-size: 16px !important;
-  line-height: 1 !important;
+  font-size: 14px !important;
+  line-height: 18px!important;
   letter-spacing: 0px;
   border: 2px solid #000 !important;
-  padding: 16px 12px !important;
+  padding: 12px 12px !important;
   border-radius: 10px !important;
   color: #000 !important;
 }
 .as-st-0047-b .loop-selling-plan-selector:focus {
-  background: none !important;
-  padding: 16px 12px !important;
+  background: nofne !important;
+  padding: 12px 12px !important;
 }
 .as-st-0047-b .loop-subscription-group {
   border-radius: 0 0 10px 10px;

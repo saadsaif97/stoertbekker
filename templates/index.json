@@ -60,17 +60,17 @@
       "type": "lb-plannable-homebanner",
       "settings": {
         "abid": "withbadge",
-        "default-homebanner-link": "https://stoertebekker.com/pages/geschenksets",
-        "default-homebanner-desktop": "shopify://shop_images/stb-shop-banner-christmas-d-2_ecb19b96-4fbb-4f87-9ac2-cbcd1c1cc06a.jpg",
-        "default-homebanner-mobile": "shopify://shop_images/stb-shop-banner-christmas-m-2_4fc53bb3-9e2f-45cc-929c-b68a240f5a82.jpg",
+        "default-homebanner-link": "shopify://collections/alle-produkte",
+        "default-homebanner-desktop": "shopify://shop_images/stb-shop-banner-winterpflege-d.jpg",
+        "default-homebanner-mobile": "shopify://shop_images/stb-shop-banner-winterpflege-m.jpg",
         "plannable-homebanner-preview": false,
-        "plannable-homebanner-link": "https://stoertebekker.com/collections/sets",
+        "plannable-homebanner-link": "https://stoertebekker.com/collections/alle-produkte",
         "plannable-date-day": "27",
         "plannable-date-month": "12",
         "plannable-date-year": "2025",
         "plannable-date-time": "01:00:00",
-        "planned-homebanner-desktop": "shopify://shop_images/stb-shop-banner-new-year-d.jpg",
-        "planned-homebanner-mobile": "shopify://shop_images/stb-shop-banner-new-year-m-2.jpg"
+        "planned-homebanner-desktop": "shopify://shop_images/stb-shop-banner-winterpflege-d.jpg",
+        "planned-homebanner-mobile": "shopify://shop_images/stb-shop-banner-winterpflege-m.jpg"
       }
     },
     "lb_action_banner_PB9daq": {
