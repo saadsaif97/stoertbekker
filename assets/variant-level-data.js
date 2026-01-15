@@ -1,6 +1,13 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const variant = getVariantFromUrl();
   await updateSectionData(variant);
+  
+  document.querySelectorAll("[name='id']").forEach(id => {
+    id.addEventListener("change", async (event) => {
+      const variantId = event.target.value;
+      await updateSectionData(variantId)
+    });
+  })
 });
 
 async function updateSectionData(variant) {
@@ -12,6 +19,7 @@ async function updateSectionData(variant) {
       const doc = parser.parseFromString(data, 'text/html');
 
       updateElementContent("[data-metafiled='my_fields.subheadlines']", doc);
+      updateElementContent("[data-metafiled='custom.pdp_benefits']", doc);
     } else {
       console.error('Failed to fetch section data:', response.status);
     }

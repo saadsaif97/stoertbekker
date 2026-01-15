@@ -5,3 +5,12 @@
   {{ variant_subheading }}
 </div>
 {%- endif -%}
+
+{%- assign product_pdp_benifits = product.metafields.custom.pdp_benefits -%}
+{%- assign variant_pdp_benefits = product.selected_or_first_available_variant.metafields.custom.pdp_benefits | default: product_pdp_benifits -%}
+{%- if variant_pdp_benefits != blank -%}
+<div data-metafiled="custom.pdp_benefits">
+  {{ variant_pdp_benefits }}
+</div>
+{%- endif -%}
+
