@@ -20,6 +20,8 @@ async function updateSectionData(variant) {
 
       updateElementContent("[data-metafiled='my_fields.subheadlines']", doc);
       updateElementContent("[data-metafiled='custom.pdp_benefits']", doc);
+      updateImageSrc("[data-metafiled='custom.lb_pdp_compare_desktop']", doc);
+      updateImageSrc("[data-metafiled='custom.lb_pdp_compare_mobile']", doc);
     } else {
       console.error('Failed to fetch section data:', response.status);
     }
@@ -33,6 +35,15 @@ function updateElementContent(selector, doc) {
   const newContent = doc.querySelector(selector);
   if (element && newContent) {
     element.innerHTML = newContent.innerHTML;
+  }
+}
+
+function updateImageSrc(selector, doc) {
+  const element = document.querySelector(selector);
+  const newContent = doc.querySelector(selector);
+  console.log("updateImageSrc:", {element, newContent})
+  if (element && newContent) {
+    element.src = newContent.innerHTML;
   }
 }
 

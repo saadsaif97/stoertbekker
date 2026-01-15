@@ -14,3 +14,12 @@
 </div>
 {%- endif -%}
 
+{%- assign compare_image_desktop = product.selected_or_first_available_variant.metafields.custom.lb_pdp_compare_desktop | default: product.metafields.custom.lb_pdp_compare_desktop -%}
+{%- if compare_image_desktop != blank -%}
+  <div data-metafiled="custom.lb_pdp_compare_desktop">{{ compare_image_desktop | img_url: '1800x' }}</div>
+{%- endif -%}
+
+{%- assign compare_image_mobile = product.selected_or_first_available_variant.metafields.custom.lb_pdp_compare_mobile | default: product.metafields.custom.lb_pdp_compare_mobile -%}
+{%- if compare_image_mobile != blank -%}
+  <div data-metafield="custom.lb_pdp_compare_mobile">{{ compare_image_mobile | img_url: '500x' }}</div>
+{%- endif -%}
