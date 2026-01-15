@@ -68,7 +68,7 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
   data-sku="{{ product.handle }};{{ product.variants | map: 'sku' | join: ';' }};{{ product.variants | map: 'id' | join: ';' }}"
  data-widget-id="AD6VchqSEIYbrpLe"></div></a>
 --></div></div><h1 data-product-type="title" data-product-id="{{ product.id }}" data-pf-type="ProductTitle" class="sc-eXAmZk sc-dovdhf dfEIkC bhEJtC pf-29_ pf-heading-1-h3 pdp-titel lb-biz-old">{{ product.title }}</h1><div data-pf-type="Custom.HTML" class="sc-gRtvfn YJaia pf-30_"><div class="lb-biz-metafields">{{product.metafields.custom.a_b_test_name}}
-</div></div><div data-pf-type="Custom.HTML" class="sc-gRtvfn YJaia pf-31_"><div class="lb-pdp-subheadlines lb-biz-old">{{product.metafields.my_fields.subheadlines}}
+</div></div><div data-pf-type="Custom.HTML" class="sc-gRtvfn YJaia pf-31_"><div class="lb-pdp-subheadlines lb-biz-old" data-metafiled="my_fields.subheadlines">{{ product.metafields.my_fields.subheadlines}}
 </div>
 
 

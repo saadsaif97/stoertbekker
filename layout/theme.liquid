@@ -369,7 +369,9 @@
   
 
 
-
+{%- if template.name == 'product' -%}
+  <script src="{{ 'variant-level-data.js' | asset_url }}" defer></script>
+{%- endif -%}
 
 <script type="text/javascript" id="loop-subscription-script" src="{{ 'loop-widget.js' | asset_url }}"></script>
 {% include 'pagefly-app-header' %}</head>

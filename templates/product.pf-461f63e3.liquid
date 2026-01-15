@@ -24,7 +24,8 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
 		featured_media: {{ product_8246041182473.featured_media | json }},
 		images: {{ product_8246041182473.images | json }},
 		quantity: {% assign quantity = '' %}{% for variant in product_8246041182473.variants %}{% assign quantity = quantity | append: variant.id | append: ':' | append: variant.inventory_quantity | append: ',' %}{% endfor %}{% assign quantity = quantity | split: ','%}{{quantity | json }}
-	};{% unless product.id == null %}window.__pageflyProducts["{{product.id}}"] = {
+	};
+{% unless product.id == null %}window.__pageflyProducts["{{product.id}}"] = {
 		id: {{ product.id | json }},
 		handle: {{ product.handle | json }},
 		title: {{ product.title | json }},
@@ -703,7 +704,7 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
  -->
       
       
-                 </div></div><h1 data-product-type="title" data-product-id="{{ product.id }}" data-pf-type="ProductTitle" class="sc-kpKSlO sc-eBwJYS gIkzjG ijqvdJ pf-24_ pf-heading-1-h3 new-branding-headline-font moresize grey-font">{{ product.title }}</h1><div data-pf-type="Custom.HTML" class="sc-iMWBWc brhmIY pf-25_"><div class="lb-pdp-subheadlines">{{product.metafields.my_fields.subheadlines}}</div>
+                 </div></div><h1 data-product-type="title" data-product-id="{{ product.id }}" data-pf-type="ProductTitle" class="sc-kpKSlO sc-eBwJYS gIkzjG ijqvdJ pf-24_ pf-heading-1-h3 new-branding-headline-font moresize grey-font">{{ product.title }}</h1><div data-pf-type="Custom.HTML" class="sc-iMWBWc brhmIY pf-25_"><div class="lb-pdp-subheadlines" data-metafiled="my_fields.subheadlines">{{ product.metafields.my_fields.subheadlines}}</div>
 
 </div><div data-pf-type="Block" class="sc-eBHgEO esEFmD pf-26_ lb-pricing-new"><div data-pf-type="Custom.HTML" class="sc-iMWBWc brhmIY pf-27_">
 <a href="#ReviewsWidget"><div class="ruk_rating_snippet" style="margin-bottom: 9px;" data-sku="{{ product.handle }};{{ product.variants | map: 'sku' | join: ';' }};{{ product.variants | map: 'id' | join: ';' }}"></div></a>

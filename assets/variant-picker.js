@@ -496,5 +496,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
   handleVariantPickerGroups
     .finally(() => {
       groupItemsParent && groupItemsParent.classList.remove('is-loading');
+      document.querySelectorAll('.variantPickerMainValues').forEach(group => {group.classList.remove('is-loading')})
     });
 });

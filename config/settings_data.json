@@ -972,7 +972,7 @@
           "productitemcolor": "#3c3c3b",
           "productitemtitlesize": 20,
           "productitemtitlesizemobile": 18,
-          "subheadline": "<div style=\"color: #3c3c3b!important;\">{{ product.metafields.my_fields.subheadlines }}</div>",
+          "subheadline": "<div style=\"color: #3c3c3b!important;\" data-metafiled=\"my_fields.subheadlines\">{{ product.metafields.my_fields.subheadlines }}</div>",
           "productitempricecolor": "#3c3c3b",
           "productitempricesalecolor": "#da2c2c",
           "reviewfontscolor": "#3c3c3b",
