@@ -6,8 +6,8 @@
 </div>
 {%- endif -%}
 
-{%- assign product_pdp_benifits = product.metafields.custom.pdp_benefits -%}
-{%- assign variant_pdp_benefits = product.selected_or_first_available_variant.metafields.custom.pdp_benefits | default: product_pdp_benifits -%}
+{%- assign product_pdp_benefits = product.metafields.custom.pdp_benefits -%}
+{%- assign variant_pdp_benefits = product.selected_or_first_available_variant.metafields.custom.pdp_benefits | default: product_pdp_benefits -%}
 {%- if variant_pdp_benefits != blank -%}
 <div data-metafield="custom.pdp_benefits">
   {{ variant_pdp_benefits }}
@@ -22,4 +22,12 @@
 {%- assign compare_image_mobile = product.selected_or_first_available_variant.metafields.custom.lb_pdp_compare_mobile | default: product.metafields.custom.lb_pdp_compare_mobile -%}
 {%- if compare_image_mobile != blank -%}
   <div data-metafield="custom.lb_pdp_compare_mobile">{{ compare_image_mobile | img_url: '500x' }}</div>
+{%- endif -%}
+
+{%- assign product_inhaltsstoffe = product.my_fields.inhaltsstoffe -%}
+{%- assign variant_inhaltsstoffe = product.selected_or_first_available_variant.metafields.my_fields.inhaltsstoffe | default: product_inhaltsstoffe -%}
+{%- if variant_inhaltsstoffe != blank -%}
+<div data-metafield="my_fields.inhaltsstoffe">
+  {{ variant_inhaltsstoffe }}
+</div>
 {%- endif -%}
