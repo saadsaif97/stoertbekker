@@ -21,7 +21,7 @@ async function updateSectionData(variant) {
       updateElementContent("[data-metafiled='my_fields.subheadlines']", doc);
       updateElementContent("[data-metafiled='custom.pdp_benefits']", doc);
       updateImageSrc("[data-metafiled='custom.lb_pdp_compare_desktop']", doc);
-      updateImageSrc("[data-metafiled='custom.lb_pdp_compare_mobile']", doc);
+      updateImageSrc("[data-metafield='custom.lb_pdp_compare_mobile']", doc);
     } else {
       console.error('Failed to fetch section data:', response.status);
     }
@@ -39,11 +39,10 @@ function updateElementContent(selector, doc) {
 }
 
 function updateImageSrc(selector, doc) {
-  const element = document.querySelector(selector);
-  const newContent = doc.querySelector(selector);
-  console.log("updateImageSrc:", {element, newContent})
-  if (element && newContent) {
-    element.src = newContent.innerHTML;
+  const imageElement = document.querySelector(selector);
+  const newImageElement = doc.querySelector(selector);
+  if (imageElement && newImageElement) {
+    imageElement.src = newImageElement.textContent.trim();
   }
 }
 
