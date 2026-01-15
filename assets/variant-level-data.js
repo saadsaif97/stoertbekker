@@ -21,6 +21,8 @@ async function updateSectionData(variant) {
       updateElementContent("[data-metafield='my_fields.subheadlines']", doc);
       updateElementContent("[data-metafield='custom.pdp_benefits']", doc);
       updateElementContent("[data-metafield='my_fields.inhaltsstoffe']", doc);
+      updateElementContent("[data-metafield='custom.product_highlights']", doc);
+      
       updateImageSrc("[data-metafield='custom.lb_pdp_compare_desktop']", doc);
       updateImageSrc("[data-metafield='custom.lb_pdp_compare_mobile']", doc);
       updateImageSrc("[data-metafield='my_fields.anwendung']", doc);
