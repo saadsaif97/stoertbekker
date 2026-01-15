@@ -90,7 +90,7 @@ font-size: 14px;
     border-radius: 6px;
     font-family: BebasNeue-Regular;
   }
-</style></div><h1 data-product-type="title" data-product-id="{{ product.id }}" data-pf-type="ProductTitle" class="sc-eXAmZk sc-dovdhf dfEIkC bhEJtC pf-31_ pf-heading-1-h3 pdp-titel">{{ product.title }}</h1><div data-pf-type="Custom.HTML" class="sc-gRtvfn YJaia pf-32_"><div class="lb-pdp-subheadlines" data-metafiled="my_fields.subheadlines">{{ product.metafields.my_fields.subheadlines}}</div>
+</style></div><h1 data-product-type="title" data-product-id="{{ product.id }}" data-pf-type="ProductTitle" class="sc-eXAmZk sc-dovdhf dfEIkC bhEJtC pf-31_ pf-heading-1-h3 pdp-titel">{{ product.title }}</h1><div data-pf-type="Custom.HTML" class="sc-gRtvfn YJaia pf-32_"><div class="lb-pdp-subheadlines" data-metafield="my_fields.subheadlines">{{ product.metafields.my_fields.subheadlines}}</div>
 
 </div><div data-href="#reviews" data-target="_self" data-pf-type="Block" id="lb-old-reviews" class="sc-cgjCoP dOTEZX pf-33_"><div data-pf-type="Custom.HTML" class="sc-gRtvfn YJaia pf-34_"><a href="#ReviewsWidget">
   <div class="ruk_rating_snippet" style="margin-bottom: 9px;"
@@ -104,7 +104,7 @@ font-size: 14px;
 <div class="reviewsio--rating-snippet" style="height: 24px; margin-bottom: 9px;" 
   data-sku="{{ product.handle }};{{ product.variants | map: 'sku' | join: ';' }};{{ product.variants | map: 'id' | join: ';' }}"
  data-widget-id="AD6VchqSEIYbrpLe"></div></a>
---></div></div><div data-pf-type="Block" id="lb-pdp-benefits" class="sc-cgjCoP dOTEZX pf-35_"><div data-pf-type="Custom.HTML" class="sc-gRtvfn YJaia pf-36_" data-metafiled="custom.pdp_benefits">{{ product.metafields.custom.pdp_benefits }}</div></div><div data-pf-type="Block" class="sc-cgjCoP dOTEZX pf-37_ lb-pricing-old"><div data-pf-type="Custom.HTML" class="sc-gRtvfn YJaia pf-38_">
+--></div></div><div data-pf-type="Block" id="lb-pdp-benefits" class="sc-cgjCoP dOTEZX pf-35_"><div data-pf-type="Custom.HTML" class="sc-gRtvfn YJaia pf-36_" data-metafield="custom.pdp_benefits">{{ product.metafields.custom.pdp_benefits }}</div></div><div data-pf-type="Block" class="sc-cgjCoP dOTEZX pf-37_ lb-pricing-old"><div data-pf-type="Custom.HTML" class="sc-gRtvfn YJaia pf-38_">
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 
 {% assign pricesaving = current_variant.compare_at_price | minus: current_variant.price %}

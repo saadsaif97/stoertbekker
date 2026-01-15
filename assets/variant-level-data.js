@@ -18,9 +18,9 @@ async function updateSectionData(variant) {
       const parser = new DOMParser();
       const doc = parser.parseFromString(data, 'text/html');
 
-      updateElementContent("[data-metafiled='my_fields.subheadlines']", doc);
-      updateElementContent("[data-metafiled='custom.pdp_benefits']", doc);
-      updateImageSrc("[data-metafiled='custom.lb_pdp_compare_desktop']", doc);
+      updateElementContent("[data-metafield='my_fields.subheadlines']", doc);
+      updateElementContent("[data-metafield='custom.pdp_benefits']", doc);
+      updateImageSrc("[data-metafield='custom.lb_pdp_compare_desktop']", doc);
       updateImageSrc("[data-metafield='custom.lb_pdp_compare_mobile']", doc);
     } else {
       console.error('Failed to fetch section data:', response.status);
@@ -40,9 +40,10 @@ function updateElementContent(selector, doc) {
 
 function updateImageSrc(selector, doc) {
   const imageElement = document.querySelector(selector);
-  const newImageElement = doc.querySelector(selector);
-  if (imageElement && newImageElement) {
-    imageElement.src = newImageElement.textContent.trim();
+  const newImageSrc = doc.querySelector(selector);
+  console.log({imageElement, newImageSrc})
+  if (imageElement && newImageSrc) {
+    imageElement.src = newImageSrc.textContent.trim();
   }
 }
 
