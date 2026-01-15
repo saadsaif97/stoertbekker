@@ -24,7 +24,7 @@
   <div data-metafield="custom.lb_pdp_compare_mobile">{{ compare_image_mobile | img_url: '500x' }}</div>
 {%- endif -%}
 
-{%- assign product_inhaltsstoffe = product.my_fields.inhaltsstoffe -%}
+{%- assign product_inhaltsstoffe = product.metafields.my_fields.inhaltsstoffe -%}
 {%- assign variant_inhaltsstoffe = product.selected_or_first_available_variant.metafields.my_fields.inhaltsstoffe | default: product_inhaltsstoffe -%}
 {%- if variant_inhaltsstoffe != blank -%}
 <div data-metafield="my_fields.inhaltsstoffe">

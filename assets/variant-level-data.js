@@ -34,6 +34,7 @@ async function updateSectionData(variant) {
 function updateElementContent(selector, doc) {
   const element = document.querySelector(selector);
   const newContent = doc.querySelector(selector);
+  console.log({element, newContent})
   if (element && newContent) {
     element.innerHTML = newContent.innerHTML;
   }
