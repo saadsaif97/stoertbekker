@@ -41,6 +41,25 @@ Supported variables
 
 {%- unless product.has_only_default_variant and product.available == false -%}
   <variant-picker class="variant-picker" handle="{{ product.handle }}" form="{{ form_id }}" update-url>
+  
+    {%- assign family_collection = product.metafields.custom.family_collection.value -%}
+    {%- if family_collection != blank -%}
+      <fieldset class="variant-picker__option" option-name="Family Collection">
+        <legend class="variant-picker__option-info">{{ family_collection.label }}</legend>
+        
+        <div  class="variant-picker__option-values variantPickerMainValues">
+          {%- for fc_product in family_collection.products.value -%}
+            <a href="{{ fc_product.url }}">
+              <label class="media-swatch is-disabled {% if product.handle == fc_product.handle %} is-selected {% endif %}">
+                <img src="{{ fc_product.featured_image | img_url: '800x' }}" alt="{{ fc_product.title }}" srcset="{{ fc_product.featured_image | img_url: '42x' }} 42w, {{ fc_product.featured_image | img_url: '84x' }} 84w" width="800" height="800" loading="lazy" sizes="42px" class="media-swatch--image">
+                <span class="media-swatch--label">{{ fc_product.title }}</span>
+              </label>
+            </a>
+          {%- endfor -%}
+        </div>
+      </fieldset>
+    {%- endif -%}
+  
     {%- for option in product.options_with_values -%}
       {%- assign option_downcase = option.name | downcase -%}
       {% comment %} {%- assign selector_type = block.settings.selector_mode -%} {% endcomment %}
@@ -124,7 +143,7 @@ Supported variables
           {%- endif -%}
         </legend>
         
-        <div data-option-selector class="variant-picker__option-values{% if product.variants.size < 4 %} mod-wide{% endif %} variantPickerMainValues is-loading">
+        <div data-option-selector data-option-name="{{ option.name | handleize }}" class="variant-picker__option-values{% if product.variants.size < 4 %} mod-wide{% endif %} variantPickerMainValues is-loading">
           {%- assign name = 'option' | append: option.position -%}
             {%- for value in option.values -%}
               {%- assign selected = false -%}
