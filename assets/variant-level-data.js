@@ -10,6 +10,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   })
 });
 
+function updateVariantSelector(doc) {
+  const docLabels = doc.querySelectorAll("[data-option-name='menge'] label");
+  const liveLabels = document.querySelectorAll("[data-option-name='menge'] label");
+
+  docLabels.forEach((swatch, index) => {
+    if (!liveLabels[index]) return;
+    liveLabels[index].innerHTML = swatch.innerHTML;
+  });
+}
+
+
 async function updateSectionData(variant) {
   try {
     const response = await fetch(`${window.location.pathname}?section_id=variant-level-data&variant=${variant}`);
@@ -26,6 +37,8 @@ async function updateSectionData(variant) {
       updateImageSrc("[data-metafield='custom.lb_pdp_compare_desktop']", doc);
       updateImageSrc("[data-metafield='custom.lb_pdp_compare_mobile']", doc);
       updateImageSrc("[data-metafield='my_fields.anwendung']", doc);
+      
+      updateVariantSelector(doc);
     } else {
       console.error('Failed to fetch section data:', response.status);
     }
