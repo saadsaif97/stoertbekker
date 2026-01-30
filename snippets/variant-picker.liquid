@@ -52,7 +52,8 @@ Supported variables
             <a href="{{ fc_product.url }}">
               <label class="media-swatch is-disabled {% if product.handle == fc_product.handle %} is-selected {% endif %}">
                 <img src="{{ fc_product.featured_image | img_url: '800x' }}" alt="{{ fc_product.title }}" srcset="{{ fc_product.featured_image | img_url: '42x' }} 42w, {{ fc_product.featured_image | img_url: '84x' }} 84w" width="800" height="800" loading="lazy" sizes="42px" class="media-swatch--image">
-                <span class="media-swatch--label">{{ fc_product.title }}</span>
+                {%- assign display_name = family_collection.display_names.value[forloop.index0] | default: fc_product.title -%}
+                <span class="media-swatch--label">{{ display_name }}</span>
               </label>
             </a>
           {%- endfor -%}
@@ -300,7 +301,10 @@ Supported variables
 
     }
 
-    .variant-picker__option-values[data-option-name="menge"],
+    .variant-picker__option-values[data-option-name="menge"] {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
     .variant-picker__option-values.mod-wide {
       grid-template-columns: repeat(2, 1fr);
     }
