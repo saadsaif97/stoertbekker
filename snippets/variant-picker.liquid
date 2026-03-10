@@ -156,7 +156,8 @@ Supported variables
               {%- case selector_type -%}
                 {%- when 'variant' -%}
                   {%- assign variant_for_value = product.variants | where: name, value | first -%}
-                  {%- if option.name == "Menge" -%}
+                  {%- assign options_count = product.options_with_values.size -%}
+                  {%- if option.name == "Menge" and options_count > 1 -%}
                     {%- assign selected_duft = product.selected_or_first_available_variant.options[0] -%}
                     {%- assign variant_for_value = product.variants | where: 'option1', selected_duft | where: name, value | first -%}
                   {%- endif -%}
