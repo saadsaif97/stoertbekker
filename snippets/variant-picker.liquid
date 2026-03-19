@@ -305,10 +305,6 @@ Supported variables
       animation: loading-gradient 2s ease infinite
 
     }
-
-    .variant-picker__option-values[data-option-name="menge"] {
-      grid-template-columns: repeat(3, 1fr) !important;
-    }
     
     .variant-picker__option-values.mod-wide {
       grid-template-columns: repeat(2, 1fr);
@@ -360,3 +356,12 @@ Supported variables
     /* END ID - 07.03.24 - Swatch selectors on PDP */
   </style>
 {%- endunless -%}
+
+{% comment %} Festes Shampoo Parent - 100g (Dummy) {% endcomment %}
+{%  if product.id == 15443953844489  %}
+  <style>
+    .variant-picker__option-values[data-option-name="menge"] {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+  </style>
+{% endif %}
