@@ -333,6 +333,7 @@ padding: 3px 9px;
 {% endif %}
 
 {%- assign compare_image_desktop = product.selected_or_first_available_variant.metafields.custom.lb_pdp_compare_desktop | default: product.metafields.custom.lb_pdp_compare_desktop -%}
+{%- assign compare_image_mobile = product.selected_or_first_available_variant.metafields.custom.lb_pdp_compare_mobile | default: product.metafields.custom.lb_pdp_compare_mobile -%}
 {% if product.tags contains 'pdp-tab-tagescreme' %}
 <style>
   .lb-tab-tagescreme {
@@ -340,7 +341,7 @@ padding: 3px 9px;
   }
 </style>
 {% endif %}</div></div></div></div></div></div><div data-section-id="pf-71d2" data-pf-type="Section" class="sc-epRwmx cpmRjY pf-169_ pf-color-scheme-1 ab-test-section"><div style="--cw:1170px" class="sc-djVWQC dKziBg"><div class="sc-tafSX ePbmtR pf-170_ pf-r pf-r-eh" style="--s-xs:15px;position:relative" data-pf-type="Row"><div class="pf-c" style="--c-xs:12;--c-sm:12;--c-md:12;--c-lg:12"><div data-pf-type="Column" class="sc-pKreJ bIaXH pf-171_"><div data-pf-type="Custom.HTML" class="sc-gRtvfn YJaia pf-172_">{% if compare_image_desktop != blank %}</div><h3 data-pf-type="Heading" class="sc-kOHUsU fHbtje pf-173_ pf-heading-3-h3"><span data-pf-type="Text" class="sc-cRmpXP cGRimR pf-175_">Mach Schluss mit chemischen Shampoos</span></h3><p class="sc-kUdmUV iejJTZ pf-176_ pf-text-1" data-pf-type="Paragraph3">Unser Shampoo im Vergleich zu Flüssigshampoo<br></p><div data-pf-type="Custom.HTML" class="sc-gRtvfn YJaia pf-178_"><img class="lb-compare-desktop" data-metafield="custom.lb_pdp_compare_desktop" src="{{ compare_image_desktop | img_url: '1800x' }}">
-<img class="lb-compare-mobile" data-metafield="custom.lb_pdp_compare_mobile" src="{{ product.metafields.custom.lb_pdp_compare_mobile | img_url: '500x' }}">
+<img class="lb-compare-mobile" data-metafield="custom.lb_pdp_compare_mobile" src="{{ compare_image_mobile | img_url: '500x' }}">
 
 
 <style>
