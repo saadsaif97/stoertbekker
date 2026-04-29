@@ -41,6 +41,26 @@ Supported variables
 
 {%- unless product.has_only_default_variant and product.available == false -%}
   <variant-picker class="variant-picker" handle="{{ product.handle }}" form="{{ form_id }}" update-url>
+  
+    {%- assign family_collection = product.metafields.custom.family_collection.value -%}
+    {%- if family_collection != blank -%}
+      <fieldset class="variant-picker__option" option-name="Family Collection">
+        <legend class="variant-picker__option-info">{{ family_collection.label }}</legend>
+        
+        <div  class="variant-picker__option-values variantPickerMainValues">
+          {%- for fc_product in family_collection.products.value -%}
+            <a href="{{ fc_product.url }}">
+              <label class="media-swatch is-disabled {% if product.handle == fc_product.handle %} is-selected {% endif %}">
+                <img src="{{ fc_product.featured_image | img_url: '800x' }}" alt="{{ fc_product.title }}" srcset="{{ fc_product.featured_image | img_url: '42x' }} 42w, {{ fc_product.featured_image | img_url: '84x' }} 84w" width="800" height="800" loading="lazy" sizes="42px" class="media-swatch--image">
+                {%- assign display_name = family_collection.display_names.value[forloop.index0] | default: fc_product.title -%}
+                <span class="media-swatch--label">{{ display_name }}</span>
+              </label>
+            </a>
+          {%- endfor -%}
+        </div>
+      </fieldset>
+    {%- endif -%}
+  
     {%- for option in product.options_with_values -%}
       {%- assign option_downcase = option.name | downcase -%}
       {% comment %} {%- assign selector_type = block.settings.selector_mode -%} {% endcomment %}
@@ -124,7 +144,7 @@ Supported variables
           {%- endif -%}
         </legend>
         
-        <div data-option-selector class="variant-picker__option-values{% if product.variants.size < 4 %} mod-wide{% endif %} variantPickerMainValues is-loading">
+        <div data-option-selector data-option-name="{{ option.name | handleize }}" class="variant-picker__option-values{% if product.variants.size < 4 %} mod-wide{% endif %} variantPickerMainValues is-loading">
           {%- assign name = 'option' | append: option.position -%}
             {%- for value in option.values -%}
               {%- assign selected = false -%}
@@ -136,6 +156,11 @@ Supported variables
               {%- case selector_type -%}
                 {%- when 'variant' -%}
                   {%- assign variant_for_value = product.variants | where: name, value | first -%}
+                  {%- assign options_count = product.options_with_values.size -%}
+                  {%- if option.name == "Menge" and options_count > 1 -%}
+                    {%- assign selected_duft = product.selected_or_first_available_variant.options[0] -%}
+                    {%- assign variant_for_value = product.variants | where: 'option1', selected_duft | where: name, value | first -%}
+                  {%- endif -%}
                   {%- render 'swatch' with 'media', value: value, media: variant_for_value.featured_image, selected: selected, name: name, form: form_id, product: product -%}
                 {%- when 'block' -%}
                   {%- render 'swatch' with 'block', value: value, selected: selected, name: name, form: form_id, product: product -%}
@@ -280,7 +305,7 @@ Supported variables
       animation: loading-gradient 2s ease infinite
 
     }
-
+    
     .variant-picker__option-values.mod-wide {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -331,3 +356,12 @@ Supported variables
     /* END ID - 07.03.24 - Swatch selectors on PDP */
   </style>
 {%- endunless -%}
+
+{% comment %} Festes Shampoo Parent - 100g (Dummy) {% endcomment %}
+{%  if product.id == 15443953844489  %}
+  <style>
+    .variant-picker__option-values[data-option-name="menge"] {
+      grid-template-columns: repeat(3, 1fr) !important;
+    }
+  </style>
+{% endif %}

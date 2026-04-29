@@ -30,6 +30,19 @@ margin-bottom: 18px; font-size: 22px; font-weight: bold; color: #efece0;   font-
   }
 </style>
 
+{%- assign product_heighlights = product.selected_or_first_available_variant.metafields.custom.product_highlights.value | default: product.metafields.custom.product_highlights.value -%}
+
+{%- if product_heighlights != blank -%}
+<div data-metafield="custom.product_highlights" class="boxoboxo">
+        <div id="boxoheadline">Produkt-Highlights</div>
+        {%- for product_heighlight in product_heighlights -%}
+                <span><img src="{{ product_heighlight.icon | image_url: width: 50 }}" loading="lazy">{{ product_heighlight.title }}</span>
+        {%- endfor -%}
+</div>
+{%- else -%}
+        
+
+
 
 {% if product.title contains 'Geschenkgutschein' %}{%else%}
       <div class="boxoboxo">
@@ -1735,3 +1748,5 @@ margin-bottom: 18px; font-size: 22px; font-weight: bold; color: #efece0;   font-
       </div>  
       {% endif %}
   
+      
+{%- endif -%}
